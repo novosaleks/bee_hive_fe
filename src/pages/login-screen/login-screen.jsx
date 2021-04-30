@@ -3,10 +3,10 @@ import {
     LoginContainer,
     Presentation,
     PresentationText,
-    CreateAccountButton,
+    CreateAccountLink,
+    OptionText
 } from './login-screen.style';
 
-import { TextCenter } from '../../common/style';
 
 import logo from '../../assets/LOGO.svg';
 import LoginForm from '../../components/login-form';
@@ -23,11 +23,10 @@ const LoginScreen = () => {
             </Presentation>
             <div>
                 <LoginForm/>
-                <TextCenter>
-                    <div style={{lineHeight: '110px'}}>or</div>
-                    <CreateAccountButton primary>Create
-                                                 account</CreateAccountButton>
-                </TextCenter>
+                <OptionText>or</OptionText>
+                <CreateAccountLink to='/register'>
+                    Create account
+                </CreateAccountLink>
             </div>
         </LoginContainer>
     );
