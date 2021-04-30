@@ -27,7 +27,3 @@ export const Button = styled.button`
   ${space}
   ${layout}
 `;
-
-export const TextCenter = styled.div`
-  text-align: center;
-`;
