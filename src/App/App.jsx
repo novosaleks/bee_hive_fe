@@ -8,8 +8,9 @@ import { theme } from './app.theme';
 
 const App = () => {
     return (
+
         <ThemeProvider theme={theme.light}>
-            <RoutingContainer/>
+            <RoutingContainer />
         </ThemeProvider>
     );
 };
