@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { space, layout } from 'styled-system';
+import { space, layout, typography } from 'styled-system';
 
 import { getValueFromTheme } from '../utils';
 
