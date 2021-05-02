@@ -1,4 +1,5 @@
 export const theme = {
+<<<<<<< HEAD
         light: {
                 primaryColor: '#f15a29',
                 primaryBgColor: '#f8f5f2',
@@ -16,4 +17,20 @@ export const theme = {
                 textColor: '#fff',
                 inputColor: '#fff',
         },
+=======
+    light: {
+        primaryColor: '#f15a29',
+        primaryBgColor: '#f8f5f2',
+        textColor: '#000',
+        inputColor: '#000',
+        focusColor: '#484848',
+    },
+    dark: {
+        primaryColor: '#f15a29',
+        primaryBgColor: '#2f4858',
+        textColor: '#fff',
+        inputColor: '#fff',
+        focusColor: '#acacac'
+    },
+>>>>>>> Added user-friendly interact
 };
