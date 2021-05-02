@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import { space, layout } from 'styled-system';
 
 import { getValueFromTheme } from '../utils';
@@ -26,4 +26,18 @@ export const Button = styled.button`
   font-size: 36px;
   ${space}
   ${layout}
+`;
+
+export const StyledLabel = styled.div`
+  border: 2px solid ${getValueFromTheme('primaryColor')};
+  text-align: center;
+  width: 80%;
+  margin: 0 auto;
+  ${space}
+`;
+
+export const centerAlignedColumn = css`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 `;
