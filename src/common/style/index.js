@@ -1,8 +1,7 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import { space, layout, typography } from 'styled-system';
 
 import { getValueFromTheme } from '../utils';
-
 
 export const PrimaryBackground = styled.div`
   background-color: ${getValueFromTheme('primaryBgColor')};
@@ -12,9 +11,9 @@ export const PrimaryBackgroundPage = styled.div`
 `;
 
 export const StyledPageWrapper = styled(PrimaryBackgroundPage)`
-    display: flex;
-    min-height: 100vh;
-    padding: 5%;
+  display: flex;
+  min-height: 100vh;
+  padding: 5%;
 `;
 
 export const Input = styled.input`
@@ -32,7 +31,8 @@ export const Input = styled.input`
 
 export const Button = styled.button`
   background-color: ${props => props.backgroundColor || '#fff'};
-  border: 2px solid ${props => props.borderColor || getValueFromTheme('primaryColor')};
+  border: 2px solid ${props => props.borderColor ||
+          getValueFromTheme('primaryColor')};
   font-size: ${props => props.backgroundColor || '36px'};
   ${space}
   ${layout}
@@ -47,12 +47,12 @@ export const HrLine = styled.hr`
 `;
 
 export const StyledText = styled.p`
-    color: ${props => props.color || getValueFromTheme('textColor')};
-    font-weight: 200;
-    ${typography};
-    text-align: ${props => props.align || 'center'};
-    padding:0;
-    margin:0;
+  color: ${props => props.color || getValueFromTheme('textColor')};
+  font-weight: 200;
+  ${typography};
+  text-align: ${props => props.align || 'center'};
+  padding: 0;
+  margin: 0;
 `;
 
 export const StyledDiv = styled.div`
@@ -61,5 +61,19 @@ export const StyledDiv = styled.div`
   width: ${props => props.width || '100%'};
   align-items: ${props => props.align || 'center'};
   justify-content: ${props => props.content || 'center'};
+  ${space};
+`;
+
+export const StyledLabel = styled.div`
+  border: 2px solid ${getValueFromTheme('primaryColor')};
+  text-align: center;
+  width: 80%;
+  margin: 0 auto;
   ${space}
+`;
+
+export const centerAlignedColumn = css`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 `;
