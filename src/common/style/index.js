@@ -22,8 +22,15 @@ export const Input = styled.input`
   background: none;
   width: 100%;
   min-height: 35px;
+  outline: none;
+  transition: all .1s;
 
-  ${space}
+  ${space};
+
+  &:focus {
+    border: 2px solid ${getValueFromTheme('focusColor')};
+  }
+
   &::placeholder {
     color: ${getValueFromTheme('inputColor')};
   }
@@ -36,6 +43,24 @@ export const Button = styled.button`
   font-size: ${props => props.backgroundColor || '36px'};
   ${space}
   ${layout}
+  outline: 2px solid transparent;
+  transition: all .2s;
+
+  ${space};
+  ${layout};
+  
+  &:hover {
+    transform: scale(1.05);
+  }
+  
+  &:active {
+    background-color: ${getValueFromTheme('primaryColor')};
+    color: #fff;
+  }
+  
+  &:focus-within {
+    outline-color: ${getValueFromTheme('focusColor')};
+  }
 `;
 
 export const TextCenter = styled.div`

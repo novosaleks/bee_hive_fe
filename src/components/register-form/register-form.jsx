@@ -1,5 +1,10 @@
 import React from 'react';
-import { FormContainer, FormBlock, Form } from './register-form.style';
+import {
+    FormContainer,
+    FormBlock,
+    Form,
+    GroupedInputs,
+} from './register-form.style';
 import { Button, Input } from '../../common/style';
 import RegisterInputBlock from '../register-input-block';
 
@@ -9,10 +14,10 @@ const RegisterForm = () => {
             <FormContainer>
                 <FormBlock>
                     <RegisterInputBlock value='name'>
-                        <div style={{display: 'flex', gap: '2rem'}}>
+                        <GroupedInputs>
                             <Input placeholder='First Name'/>
                             <Input placeholder='Last Name'/>
-                        </div>
+                        </GroupedInputs>
                     </RegisterInputBlock>
                     <RegisterInputBlock value='birth date'>
                         <Input placeholder='Your birth date'/>
