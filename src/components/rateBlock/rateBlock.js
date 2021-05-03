@@ -27,13 +27,13 @@ const RateBlock = () => {
       };
    }, []);
    return (
-      <StyledDiv ref={RatingHintImgRef}>
+      <StyledDiv>
          <RateDiv direction="row" content="space-between" >
             <Button width={'100px'} height={'30px'} backgroundColor={'transparent'} borderColor={'#F15A29'} fontSize={'1em'} >
                Rate it!
             </Button>
             <RatingSuns />
-            <RatingHintImg src={hintImg} onClick={handlerClick} openState={openState} ref={RatingHintImgRef} />
+            <RatingHintImg src={hintImg} onClick={handlerClick} ref={RatingHintImgRef} alt="hint for rating scores" />
          </RateDiv>
          {openState && <RateExplanation hintBottom={bottomOfRatingHintImg} />}
       </StyledDiv>
