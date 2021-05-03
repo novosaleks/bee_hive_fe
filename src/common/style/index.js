@@ -13,7 +13,6 @@ export const PrimaryBackgroundPage = styled.div`
 
 export const StyledPageWrapper = styled(PrimaryBackgroundPage)`
     display: flex;
-    width: 100vw;
     min-height: 100vh;
     padding: 5%;
 `;
@@ -50,7 +49,7 @@ export const HrLine = styled.hr`
 export const StyledText = styled.p`
     color: ${props => props.color || getValueFromTheme('textColor')};
     font-weight: 200;
-    ${typography}
+    ${typography};
     text-align: ${props => props.align || 'center'};
     padding:0;
     margin:0;
