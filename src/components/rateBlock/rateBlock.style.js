@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import { StyledDiv } from '../../common/style/index';
 import { getValueFromTheme } from '../../common/utils';
 const media = {
-   mobile: '@media(max-width: 340px)'
+   mobile: '@media(max-width: 350px)'
 };
 
 export const RateDiv = styled(StyledDiv)`
