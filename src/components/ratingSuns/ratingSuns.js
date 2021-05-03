@@ -9,41 +9,44 @@ import { StyledDiv } from '../../common/style/index';
 import { StyledImg } from './ratingSuns.style';
 
 const RatingSuns = () => {
-   const [sunState, setActiveSunState] = useState(null);
-   const suns = [
-      { src: reallyBad, alt: 'really bad post' },
-      { src: bad, alt: 'just bad post' },
-      { src: nautral, alt: 'nautral post' },
-      { src: good, alt: 'just good post' },
-      { src: reallyGood, alt: 'really good post' },
-   ]
-   function toggleActive(index) {
-      setActiveSunState(prevState => {
-         if (!prevState) return prevState = suns[index];
-         if (prevState.src === suns[index].src) return prevState = null;
-         return prevState = suns[index];
-      })
-   }
+    const [sunState, setActiveSunState] = useState(null);
+    const suns = [
+        {src: reallyBad, alt: 'really bad post'},
+        {src: bad, alt: 'just bad post'},
+        {src: nautral, alt: 'nautral post'},
+        {src: good, alt: 'just good post'},
+        {src: reallyGood, alt: 'really good post'},
+    ];
 
-   function toggleActiveStyles(index) {
-      if (suns[index].src === sunState.src) {
-         return 'active'
-      }
-   }
-   return (
-      <StyledDiv direction="row" content="space-between" width="130px">
-         {suns.map((sun, index) => (
-            <StyledImg
-               key={index}
-               className={sunState ? toggleActiveStyles(index) : null}
-               onClick={() => { toggleActive(index) }}
-               src={sun.src}
-               alt={sun.alt}
-            />
-         ))}
+    const toggleActive = index => {
+        setActiveSunState(prevState => {
+            return prevState?.src !== suns[index].src ? suns[index] : null;
+        });
+    }
 
-      </StyledDiv>
-   );
-}
+    const toggleActiveStyles = index => {
+        if (suns[index].src === sunState?.src) {
+            return 'active';
+        }
+
+        return null;
+    }
+
+    return (
+        <StyledDiv direction='row' content='space-between' width='130px'>
+            {suns.map((sun, index) => (
+                <StyledImg
+                    key={sun.alt}
+                    className={toggleActiveStyles(index)}
+                    onClick={() => {
+                        toggleActive(index);
+                    }}
+                    {...sun}
+                />
+            ))}
+
+        </StyledDiv>
+    );
+};
 
 export default RatingSuns;
