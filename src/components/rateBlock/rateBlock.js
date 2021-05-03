@@ -9,16 +9,15 @@ import { StyledDiv, Button } from '../../common/style/index';
 
 
 const RateBlock = () => {
-   const RatingHintImgRef = useRef();
+   const RatingBlockRef = useRef();
    const [openState, setOpenState] = useState(false)
-   const [bottomOfRatingHintImg, setBottomOfRatingHintImg] = useState(null);
-
+   const [bottomOfRatingBlock, setBottomOfRatingBlock] = useState(null);
    const handlerClick = () => {
       setOpenState((prevState) => !prevState)
    }
 
    const scrollHandler = () => {
-      setBottomOfRatingHintImg(RatingHintImgRef.current.getBoundingClientRect().bottom + window.pageYOffset)
+      setBottomOfRatingBlock(RatingBlockRef.current.getBoundingClientRect().bottom + window.pageYOffset)
    };
    useEffect(() => {
       window.addEventListener("scroll", scrollHandler, true);
@@ -27,15 +26,15 @@ const RateBlock = () => {
       };
    }, []);
    return (
-      <StyledDiv>
-         <RateDiv direction="row" content="space-between" >
+      <StyledDiv >
+         <RateDiv direction="row" content="space-between" ref={RatingBlockRef}>
             <Button width={'100px'} height={'30px'} backgroundColor={'transparent'} borderColor={'#F15A29'} fontSize={'1em'} >
                Rate it!
             </Button>
             <RatingSuns />
-            <RatingHintImg src={hintImg} onClick={handlerClick} ref={RatingHintImgRef} alt="hint for rating scores" />
+            <RatingHintImg src={hintImg} onClick={handlerClick} alt="hint for rating scores" />
          </RateDiv>
-         {openState && <RateExplanation hintBottom={bottomOfRatingHintImg} />}
+         {openState && <RateExplanation hintBottom={bottomOfRatingBlock} />}
       </StyledDiv>
    );
 }
