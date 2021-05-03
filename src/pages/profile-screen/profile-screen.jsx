@@ -5,7 +5,7 @@ import AlbumsBlock from '../../components/albumsBlock';
 import SideBarUserInfo from '../../containers/sideBarUserInfo-container';
 import Publications from '../../components/publications';
 import { StyledDivPage, StyledPageContent } from './profile-screen.style';
-import { StyledPageWrapper, StyledDiv } from '../../common/style/index';
+import { StyledPageWrapper } from '../../common/style/index';
 
 
 const ProfileScreen = () => {

@@ -1,7 +1,6 @@
 import styled from 'styled-components';
 import { StyledDiv } from '../../common/style/index';
 import { getValueFromTheme } from '../../common/utils';
-
 const media = {
    mobile: '@media(max-width: 340px)'
 };
@@ -17,13 +16,6 @@ export const RateDiv = styled(StyledDiv)`
    left:-20%;
    width:220px;
    }
-`;
-
-export const RateTitleDiv = styled(StyledDiv)`
-   background-color: transparent;
-   border: 2px solid #F15A29;
-   width:100px;
-   height: 30px;
 `;
 
 export const RatingHintImg = styled.img`

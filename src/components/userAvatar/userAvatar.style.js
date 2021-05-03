@@ -1,7 +1,6 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import { getValueFromTheme } from '../../common/utils';
 import { layout } from 'styled-system';
-
 const media = {
     mobile: '@media(max-width: 700px)'
 }
@@ -11,30 +10,25 @@ export const DivImgForUserAvatar = styled.div`
     justify-content: flex-end;
     ${layout}
     border-radius: 50%;
-    -moz-border-radius: 50%;
-    -webkit-border-radius: 50%;
-    -khtml-border-radius: 50%;
-    background-color: ${getValueFromTheme('primaryBgColorDiv')};
     border: 10px solid ${props => props.rating || getValueFromTheme('primaryBgColorDiv')};
-    
-    &img{
-         display: block;
-         width:100%;
-         border-radius: 50%;
-         -moz-border-radius: 50%;
-         -webkit-border-radius: 50%;
-    }
-`;
+    background-color: ${getValueFromTheme('primaryBgColorDiv')};
+    ${props => props.photo && css`
+        background-image: url(${props => props.photo}) ;
+        background-size: cover;
+        background-position: center center;
+        background-repeat: no-repeat;
+    `}
+    `;
 
 
 export const RateScore = styled.div`
-    width:50px;
+    width: 50px;
     height: 25px;
-    text-align:center;
-    background-color:${getValueFromTheme('primaryBgColorDiv')};
+    text-align: center;
+    background-color: ${getValueFromTheme('primaryBgColorDiv')};
     align-self: flex-end;
     border: 1px solid ${getValueFromTheme('primaryBgColorPage')};
-    ${media.mobile}{
-      display:none;
-   }
-`
+    ${media.mobile} {
+        display: none;
+    }
+`;
