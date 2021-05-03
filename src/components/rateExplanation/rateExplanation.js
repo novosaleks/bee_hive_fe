@@ -9,11 +9,11 @@ import good from '../../assets/sun4.svg';
 import reallyGood from '../../assets/sun5.svg';
 
 const sunsRating = [[reallyBad, 'Really bad'], [bad, 'Bad'], [nautral, 'Nautral'], [good, 'Good'], [reallyGood, 'Really good']]
-const RateExplanation = () => {
+const RateExplanation = (props) => {
    return (
-      <ExplanationStyledDiv>
-         {sunsRating.map((sun) => (
-            <StyledDiv direction="row" content="flex-start">
+      <ExplanationStyledDiv {...props}>
+         {sunsRating.map((sun, index) => (
+            <StyledDiv direction="row" content="flex-start" key={index}>
                <img src={sun[0]} alt={sun[1]} />
                <ExplanationStyledText>
                   {sun[1]}

@@ -3,8 +3,6 @@ import { space, layout, typography } from 'styled-system';
 
 import { getValueFromTheme } from '../utils';
 
-const fontSizes = '1.7em';
-
 
 export const PrimaryBackground = styled.div`
   background-color: ${getValueFromTheme('primaryBgColor')};
@@ -15,7 +13,7 @@ export const PrimaryBackgroundPage = styled.div`
 
 export const StyledPageWrapper = styled(PrimaryBackgroundPage)`
     display: flex;
-    width: 100wh;
+    width: 100vw;
     min-height: 100vh;
     padding: 5%;
 `;
@@ -36,7 +34,7 @@ export const Input = styled.input`
 export const Button = styled.button`
   background-color: ${props => props.backgroundColor || '#fff'};
   border: 2px solid ${props => props.borderColor || getValueFromTheme('primaryColor')};
-  font-size: 36px;
+  font-size: ${props => props.backgroundColor || '36px'};
   ${space}
   ${layout}
 `;
