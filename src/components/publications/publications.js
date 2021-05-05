@@ -4,24 +4,24 @@ import NewPostInput from '../newPostInput';
 import UsersNews from '../../containers/userNews-container';
 import Title from '../title';
 
-import { HrLine, StyledDiv } from '../../common/style/index';
+import { DivLine, StyledDiv } from '../../common/style/index';
 import { PublicationBodyDiv } from './publications.style';
 
 const Publications = () => {
-   return (
-      <StyledDiv marginTop="5%" >
-         <Title>Publications</Title>
-         <PublicationBodyDiv>
-            <NewPostInput />
-            <UsersNews />
-            <HrLine color="#F15A29" />
-            <UsersNews />
-            <HrLine color="#F15A29" />
-            <UsersNews />
-         </PublicationBodyDiv>
+    return (
+        <StyledDiv marginTop='5%'>
+            <Title>Publications</Title>
+            <PublicationBodyDiv>
+                <NewPostInput/>
+                <UsersNews/>
+                <DivLine/>
+                <UsersNews/>
+                <DivLine/>
+                <UsersNews/>
+            </PublicationBodyDiv>
 
-      </StyledDiv>
-   );
-}
+        </StyledDiv>
+    );
+};
 
 export default Publications;

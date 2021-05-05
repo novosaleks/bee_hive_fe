@@ -2,6 +2,7 @@ import styled, { css } from 'styled-components';
 import { space, layout, typography } from 'styled-system';
 
 import { getValueFromTheme } from '../utils';
+import { Link } from 'react-router-dom';
 
 export const PrimaryBackground = styled.div`
   background-color: ${getValueFromTheme('primaryBgColor')};
@@ -48,27 +49,19 @@ export const Button = styled.button`
 
   ${space};
   ${layout};
-  
+
   &:hover {
     transform: scale(1.05);
   }
-  
+
   &:active {
     background-color: ${getValueFromTheme('primaryColor')};
     color: #fff;
   }
-  
+
   &:focus-within {
     outline-color: ${getValueFromTheme('focusColor')};
   }
-`;
-
-export const TextCenter = styled.div`
-  text-align: center;
-`;
-
-export const HrLine = styled.hr`
-  width: 100%;
 `;
 
 export const StyledText = styled.p`
@@ -101,4 +94,19 @@ export const centerAlignedColumn = css`
   display: flex;
   flex-direction: column;
   align-items: center;
+`;
+
+export const NavLink = styled(Link)`
+  color: ${getValueFromTheme('textColor')};
+
+  &:hover {
+    text-decoration: none;
+    color: ${getValueFromTheme('primaryColor')};
+  }
+`;
+
+export const DivLine = styled.div`
+  height: 2px;
+  width: 100%;
+  background-color: ${getValueFromTheme('primaryColor')};
 `;
