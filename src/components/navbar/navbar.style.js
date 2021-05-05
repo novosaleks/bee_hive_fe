@@ -1,6 +1,7 @@
 import styled from 'styled-components';
+import { PrimaryBackground } from '../../common/style';
 
-export const NavbarWrapper = styled.div`
+export const NavbarWrapper = styled(PrimaryBackground)`
   padding: 2px 0;
 `
 
