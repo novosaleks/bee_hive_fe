@@ -3,7 +3,7 @@ import { getValueFromTheme } from '../../common/utils';
 import { layout } from 'styled-system';
 
 const media = {
-    mobile: '@media(max-width: 700px)',
+  mobile: '@media(max-width: 700px)',
 };
 
 export const DivImgForUserAvatar = styled.div`
@@ -12,7 +12,7 @@ export const DivImgForUserAvatar = styled.div`
   ${layout};
   border-radius: 50%;
   border: 10px solid ${props => props.rating ||
-          getValueFromTheme('primaryBgColorDiv')};
+    getValueFromTheme('primaryBgColorDiv')};
   background-color: ${getValueFromTheme('primaryBgColorDiv')};
   ${props => props.photo && css`
     background-image: url(${props => props.photo});
@@ -31,6 +31,10 @@ export const RateScore = styled.div`
   border: 1px solid ${getValueFromTheme('primaryBgColorPage')};
 
   ${media.mobile} {
-    display: none;
+    width: 25px;
+    height: 20px;
+    font-size:0.7em;
+    position: relative;
+    left: 25%;
   }
 `;

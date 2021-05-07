@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { Button, Input } from '../../common/style/index';
+import { Button, Input, media } from '../../common/style/index';
 import { getValueFromTheme } from '../../common/utils';
 
 export const InputPost = styled(Input)`
@@ -16,4 +16,7 @@ export const InputPost = styled(Input)`
 export const PostButton = styled(Button)`
   background-color: transparent;
   align-self: flex-end;
+  ${media.laptop}{
+    width: 130px;
+  };
 `;

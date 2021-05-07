@@ -1,8 +1,14 @@
 import styled, { css } from 'styled-components';
-import { space, layout, typography } from 'styled-system';
+import { space, layout, typography, color, flexbox } from 'styled-system';
 
 import { getValueFromTheme } from '../utils';
 import { Link } from 'react-router-dom';
+
+export const media = {
+  miniMobile: '@media(max-width: 500px)',
+  mobile: '@media(max-width: 899px)',
+  laptop: '@media(min-width: 900px) and (max-width: 1300px)'
+};
 
 export const PrimaryBackground = styled.div`
   background-color: ${getValueFromTheme('primaryBgColor')};
@@ -49,10 +55,12 @@ export const Input = styled.input`
 export const Button = styled.button`
   background-color: ${props => props.backgroundColor || '#fff'};
   border: 2px solid ${props => props.borderColor ||
-          getValueFromTheme('primaryColor')};
+    getValueFromTheme('primaryColor')};
   font-size: ${props => props.backgroundColor || '36px'};
-  ${space}
-  ${layout}
+  ${space};
+  ${layout};
+  ${color};
+  ${typography};
   outline: 2px solid transparent;
   transition: all .2s;
 
@@ -76,10 +84,10 @@ export const Button = styled.button`
 export const StyledText = styled.p`
   color: ${props => props.color || getValueFromTheme('textColor')};
   font-weight: 200;
+  ${space};
   ${typography};
+  ${color};
   text-align: ${props => props.align || 'center'};
-  padding: 0;
-  margin: 0;
 `;
 
 export const StyledDiv = styled.div`
@@ -88,7 +96,9 @@ export const StyledDiv = styled.div`
   width: ${props => props.width || '100%'};
   align-items: ${props => props.align || 'center'};
   justify-content: ${props => props.content || 'center'};
+  ${layout};
   ${space};
+  ${flexbox};
 `;
 
 export const StyledLabel = styled.div`
@@ -96,7 +106,7 @@ export const StyledLabel = styled.div`
   text-align: center;
   width: 80%;
   margin: 0 auto;
-  ${space}
+  ${space};
 `;
 
 export const centerAlignedColumn = css`
@@ -106,6 +116,8 @@ export const centerAlignedColumn = css`
 `;
 
 export const NavLink = styled(Link)`
+  ${space};
+  ${layout};
   color: ${getValueFromTheme('textColor')};
 
   &:hover {
@@ -117,5 +129,14 @@ export const NavLink = styled(Link)`
 export const DivLine = styled.div`
   height: 2px;
   width: 100%;
-  background-color: ${getValueFromTheme('primaryColor')};
+  background-color: ${(props) => props.backgroundColor || getValueFromTheme('primaryColor')};
+  ${space};
+`;
+export const StyledDivPage = styled(StyledDiv)`
+flex-direction:row;
+align-items:flex-start;
+justify-content: space-around;
+   ${media.mobile}{
+      flex-direction:column;
+   }
 `;
