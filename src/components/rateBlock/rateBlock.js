@@ -27,10 +27,11 @@ const RateBlock = () => {
     }
     useEffect(() => {
         window.addEventListener('resize', scrollHandler, true);
+        window.addEventListener('scroll', scrollHandler, true);
         window.addEventListener('resize', resizeHandler, true);
-
         return () => {
             window.removeEventListener('resize', scrollHandler, true);
+            window.removeEventListener('scroll', scrollHandler, true);
             window.removeEventListener('resize', resizeHandler, true);
         };
     }, []);

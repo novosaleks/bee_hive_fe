@@ -12,7 +12,8 @@ const SubscriptionUser = ({
    statusColor,
    rateScore,
    isFollow,
-   login
+   login,
+   onlineBlock
 }) => {
    return (
       <StyledDiv align='center' mt={10} mb={15} direction='row' content='space-between' >
@@ -21,21 +22,25 @@ const SubscriptionUser = ({
                rating={ratingColor || '#C53B0E'}
                rateScore={rateScore || '1,5'}
                photo={photo}
-               width={[70, 135]}
-               height={[70, 135]} />
+               width={onlineBlock ? 70 : [70, 135]}
+               height={onlineBlock ? 70 : [70, 135]}
+               {...{ onlineBlock }}
+            />
 
          </StyledDiv>
 
-         <StyledDiv width='80%' align='flex-end'>
+         <StyledDiv width={onlineBlock ? '70%' : '80%'} align='flex-end'>
             <FollowButton
                isFollow={isFollow}
-               width='150px'
+               width={onlineBlock ? '70px' : '150px'}
                height='30px' />
             <NavLink to={`/${login}`} width={1} >
                <PostAuthorAndData
                   name={name || 'First and last name'}
                   data={status || 'Online'}
-                  color={statusColor || '#5DAC38'} />
+                  color={statusColor || '#5DAC38'}
+                  {...{ onlineBlock }}
+               />
             </NavLink>
 
          </StyledDiv>

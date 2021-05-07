@@ -8,6 +8,8 @@ export const TabsDivStyled = styled(StyledDiv)`
    cursor: pointer;
    align-self: center;
    margin-right: 5%;
+   position: sticky;
+   top: 40%;
       ${media.mobile} {
          flex-direction: row;
           width:60%;

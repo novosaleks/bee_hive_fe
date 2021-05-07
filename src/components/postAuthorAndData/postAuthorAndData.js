@@ -9,10 +9,10 @@ const PostAuthorAndData = (props) => {
    return (
       <StyledDiv>
          <StyledDiv align='center' direction='row' content='space-between'>
-            <StyledText fontSize={['1.2em', '1.6em']} align='left'>
+            <StyledText fontSize={props.onlineBlock ? '1em' : ['1.2em', '1.6em']} align='left'>
                {props.name}
             </StyledText>
-            <StyledText fontSize={['0.6em', '1em']} align='right' color={props.color}>
+            <StyledText fontSize={props.onlineBlock ? '0.7em' : ['0.6em', '1em']} align='right' color={props.color}>
                {props.data}
             </StyledText>
          </StyledDiv>

@@ -1,10 +1,8 @@
 import styled, { css } from 'styled-components';
+import { media } from '../../common/style/index';
 import { getValueFromTheme } from '../../common/utils';
 import { layout } from 'styled-system';
 
-const media = {
-  mobile: '@media(max-width: 700px)',
-};
 
 export const DivImgForUserAvatar = styled.div`
   display: flex;
@@ -30,11 +28,20 @@ export const RateScore = styled.div`
   align-self: flex-end;
   border: 1px solid ${getValueFromTheme('primaryBgColorPage')};
 
-  ${media.mobile} {
+  ${props => props.onlineBlock && css`
     width: 25px;
     height: 20px;
     font-size:0.7em;
     position: relative;
     left: 25%;
-  }
+  `};
+
+  ${media.miniMobile}{
+      width: 25px;
+      height: 20px;
+      font-size:0.7em;
+      position: relative;
+      left: 25%;
+  };
+  
 `;

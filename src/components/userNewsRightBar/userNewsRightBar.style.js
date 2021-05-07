@@ -3,7 +3,7 @@ import { StyledDiv, media } from '../../common/style/index';
 
 export const RightBarDiv = styled(StyledDiv)`
  width:80%;
- ${media.laptop}{
+ ${media.mobile}{
     width:70%;
  }
 `

@@ -1,11 +1,11 @@
 import React from 'react';
 import SubscriptionUser from '../subscriptionUser';
-const FollowUser = (props) => {
+const FollowUser = ({ follow, onlineBlock }) => {
 
    return (
 
       <>
-         {props.follow.map(({
+         {follow.map(({
             name,
             photo,
             status,
@@ -25,7 +25,8 @@ const FollowUser = (props) => {
                   statusColor,
                   rateScore,
                   isFollow,
-                  login
+                  login,
+                  onlineBlock
                }}
                key={index}
             />

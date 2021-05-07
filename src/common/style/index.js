@@ -140,3 +140,12 @@ justify-content: space-around;
       flex-direction:column;
    }
 `;
+export const StyledPageContent = styled(StyledDiv)`
+   width:60%;
+   ${media.laptop}{
+      width:70%;
+   };
+   ${media.mobile}{
+      width:100%;
+   };
+`;
