@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import 'react-tabs/style/react-tabs.css';
 import SidebarTab from '../../components/sidebarTab';
 import { StyledPageWrapper, StyledDivPage } from '../../common/style/index';
 import FollowUsersBlock from '../../components/followUsersBlock';
