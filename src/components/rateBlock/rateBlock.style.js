@@ -3,7 +3,7 @@ import { StyledDiv } from '../../common/style/index';
 import { getValueFromTheme } from '../../common/utils';
 
 const media = {
-    mobile: '@media(max-width: 350px)',
+  mobile: '@media(max-width: 350px)',
 };
 
 export const RateDiv = styled(StyledDiv)`
@@ -14,13 +14,12 @@ export const RateDiv = styled(StyledDiv)`
   background-color: ${getValueFromTheme('primaryBgColor')};
 
   ${media.mobile} {
-    position: relative;
-    left: -20%;
-    width: 220px;
+    width: 150px;
   }
 `;
 
 export const RatingHintImg = styled.img`
   align-self: flex-start;
   cursor: pointer;
+  margin-left:10px;
 `;

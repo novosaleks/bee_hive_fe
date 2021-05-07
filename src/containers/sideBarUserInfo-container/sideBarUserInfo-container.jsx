@@ -25,25 +25,26 @@ const generalIngo = {
     },
 };
 const SideBarUserInfo = ({
-                             name,
-                             status,
-                             ratingColor,
-                             statusColor,
-                             rateScore,
-                         }) => {
+    name,
+    photo,
+    status,
+    ratingColor,
+    statusColor,
+    rateScore,
+}) => {
     const generalIngoArray = Object.entries(generalIngo);
 
     return (
 
         <StyledSidebarDiv>
             <UserAvatar rating={ratingColor || '#c53b0e'}
-                rateScore={rateScore || '1,5'} photo={null} width={[130, 190]}
-                height={[130, 190]}/>
+                rateScore={rateScore || '1,5'} photo={photo} width={[130, 190]}
+                height={[130, 190]} />
             <StyledText>{name || 'First name Second name'}</StyledText>
-            <DivLine/>
+            <DivLine />
             <StyledText color={statusColor || '#5dac38'}>{status ||
-            'Drink coffeee'}</StyledText>
-            <DivLine/>
+                'Drink coffeee'}</StyledText>
+            <DivLine />
             <UserInfo>
                 {generalIngoArray.filter((info, index) => index <= 1)}
             </UserInfo>
