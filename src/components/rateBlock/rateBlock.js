@@ -19,16 +19,18 @@ const RateBlock = () => {
 
     const scrollHandler = () => {
         setBottomOfRatingBlock(
-            RatingBlockRef.current.getBoundingClientRect().bottom +
+            RatingBlockRef.current?.getBoundingClientRect().bottom +
             window.pageYOffset);
     };
     const resizeHandler = () => {
-        setLeftOfRatingBlock(RatingHintRef.current.getBoundingClientRect().right);
+        setLeftOfRatingBlock(RatingHintRef.current?.getBoundingClientRect().right);
     }
     useEffect(() => {
         window.addEventListener('resize', scrollHandler, true);
         window.addEventListener('scroll', scrollHandler, true);
         window.addEventListener('resize', resizeHandler, true);
+        resizeHandler();
+        scrollHandler();
         return () => {
             window.removeEventListener('resize', scrollHandler, true);
             window.removeEventListener('scroll', scrollHandler, true);
