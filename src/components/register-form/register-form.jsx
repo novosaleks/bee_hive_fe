@@ -19,8 +19,11 @@ const RegisterForm = ({RegisterInput, registrationHandler}) => {
                             <RegisterInput name='lastName' required placeholder='Last Name'/>
                         </GroupedInputs>
                     </RegisterInputBlock>
-                    <RegisterInputBlock value='email'>
-                        <RegisterInput name='email' required placeholder='Your email'/>
+                    <RegisterInputBlock value='email and password'>
+                        <GroupedInputs>
+                            <RegisterInput name='email' required placeholder='Email...'/>
+                            <RegisterInput name='password' type='password' required placeholder='Password...'/>
+                        </GroupedInputs>
                     </RegisterInputBlock>
                     <RegisterInputBlock value='birth date'>
                         <RegisterInput name='birthDate' type='date' placeholder='Your birth date'/>
