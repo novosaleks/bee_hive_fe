@@ -5,33 +5,36 @@ import {
     Form,
     GroupedInputs,
 } from './register-form.style';
-import { Button, Input } from '../../common/style';
+import { Button } from '../../common/style';
 import RegisterInputBlock from '../register-input-block';
 
-const RegisterForm = () => {
+const RegisterForm = ({RegisterInput, registrationHandler}) => {
     return (
-        <Form>
+        <Form onSubmit={registrationHandler}>
             <FormContainer>
                 <FormBlock>
                     <RegisterInputBlock value='name'>
                         <GroupedInputs>
-                            <Input placeholder='First Name'/>
-                            <Input placeholder='Last Name'/>
+                            <RegisterInput name='firstName' required placeholder='First Name'/>
+                            <RegisterInput name='lastName' required placeholder='Last Name'/>
                         </GroupedInputs>
                     </RegisterInputBlock>
-                    <RegisterInputBlock value='birth date'>
-                        <Input placeholder='Your birth date'/>
+                    <RegisterInputBlock value='email'>
+                        <RegisterInput name='email' required placeholder='Your email'/>
                     </RegisterInputBlock>
-                    <RegisterInputBlock value='location'>
-                        <Input placeholder='Your Location'/>
+                    <RegisterInputBlock value='birth date'>
+                        <RegisterInput name='birthDate' type='date' placeholder='Your birth date'/>
                     </RegisterInputBlock>
                 </FormBlock>
                 <FormBlock>
                     <RegisterInputBlock value='occupation'>
-                        <Input placeholder='Occupation'/>
+                        <RegisterInput name='occupation' placeholder='Occupation'/>
                     </RegisterInputBlock>
                     <RegisterInputBlock value='about yourself'>
-                        <Input placeholder='Me and 23 my personalities'/>
+                        <RegisterInput name='userInfo' placeholder='Me and 23 my personalities'/>
+                    </RegisterInputBlock>
+                    <RegisterInputBlock value='location'>
+                        <RegisterInput name='location' placeholder='Your Location'/>
                     </RegisterInputBlock>
                 </FormBlock>
             </FormContainer>

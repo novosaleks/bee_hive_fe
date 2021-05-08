@@ -18,6 +18,7 @@ export const StyledPageWrapper = styled(PrimaryBackgroundPage)`
 `;
 
 export const Input = styled.input`
+  position: relative;
   border: none;
   border-bottom: 2px solid ${getValueFromTheme('inputColor')};
   background: none;
@@ -34,6 +35,14 @@ export const Input = styled.input`
 
   &::placeholder {
     color: ${getValueFromTheme('inputColor')};
+  }
+
+  &.required {
+    border: 2px solid #002e6b;
+  }
+
+  &.v-invalid {
+    border: 2px solid red;
   }
 `;
 
