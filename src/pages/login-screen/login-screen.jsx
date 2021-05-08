@@ -4,12 +4,11 @@ import {
     Presentation,
     PresentationText,
     CreateAccountLink,
-    OptionText
+    OptionText,
 } from './login-screen.style';
 
-
 import logo from '../../assets/LOGO.svg';
-import LoginForm from '../../components/login-form';
+import LoginFormContainer from '../../containers/login-form-container';
 
 const LoginScreen = () => {
     return (
@@ -22,7 +21,7 @@ const LoginScreen = () => {
                 </PresentationText>
             </Presentation>
             <div>
-                <LoginForm/>
+                <LoginFormContainer/>
                 <OptionText>or</OptionText>
                 <CreateAccountLink to='/register'>
                     Create account
