@@ -22,18 +22,18 @@ const SettingsScreen = () => {
         ],
     };
 
-    const [activeTab, setActiveTab] = useState(tabs.settingsPage[0].label);
+    const [activeTabLabel, setActiveTabLabel] = useState(tabs.settingsPage[0].label);
 
     const clickHandler = (label) => () => {
-        setActiveTab(label);
+        setActiveTabLabel(label);
     };
 
     return (
         <StyledPageWrapper>
             <StyledDivPage>
-                <SidebarTab {...{activeTab, clickHandler}}
+                <SidebarTab {...{activeTabLabel, clickHandler}}
                     tabs={tabs.settingsPage}/>
-                <TabsContentContainer/>
+                <TabsContentContainer label={activeTabLabel}/>
             </StyledDivPage>
         </StyledPageWrapper>
     );

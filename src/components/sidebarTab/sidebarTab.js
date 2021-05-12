@@ -1,12 +1,12 @@
 import React from 'react';
 import { StyledText } from '../../common/style/index';
 import { TabsDivStyled, TabDivStyled, TabLine, TabAndLineDiv, TabWrapper } from './sidebarTab.style';
-const SidebarTab = ({ activeTab, clickHandler, tabs }) => {
+const SidebarTab = ({ activeTabLabel, clickHandler, tabs }) => {
 
    return (
       <TabsDivStyled>
-         {tabs.map((tab, index) => (
-            <TabWrapper mb='10px' key={index} label={tab.label} className={activeTab === tab.label ? 'active' : null} onClick={clickHandler(tab.label)}>
+         {tabs.map(tab => (
+            <TabWrapper mb='10px' key={tab.label} label={tab.label} className={activeTabLabel === tab.label ? 'active' : null} onClick={clickHandler(tab.label)}>
                <TabAndLineDiv>
                   <TabDivStyled>
                      <img src={tab.img} alt={tab.alt} />
