@@ -6,7 +6,7 @@ const SidebarTab = ({ activeTab, clickHandler, tabs }) => {
    return (
       <TabsDivStyled>
          {tabs.map((tab, index) => (
-            <TabWrapper mb='10px' key={index} label={tab.label} className={activeTab === tab.label ? 'active' : null} onClick={() => clickHandler(tab.label)}>
+            <TabWrapper mb='10px' key={index} label={tab.label} className={activeTab === tab.label ? 'active' : null} onClick={clickHandler(tab.label)}>
                <TabAndLineDiv>
                   <TabDivStyled>
                      <img src={tab.img} alt={tab.alt} />
