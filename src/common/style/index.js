@@ -5,9 +5,9 @@ import { getValueFromTheme } from '../utils';
 import { Link } from 'react-router-dom';
 
 export const media = {
-  miniMobile: '@media(max-width: 500px)',
-  mobile: '@media(max-width: 899px)',
-  laptop: '@media(min-width: 900px) and (max-width: 1300px)'
+    miniMobile: '@media(max-width: 500px)',
+    mobile: '@media(max-width: 899px)',
+    laptop: '@media(min-width: 900px) and (max-width: 1300px)',
 };
 
 export const PrimaryBackground = styled.div`
@@ -55,7 +55,7 @@ export const Input = styled.input`
 export const Button = styled.button`
   background-color: ${props => props.backgroundColor || '#fff'};
   border: 2px solid ${props => props.borderColor ||
-    getValueFromTheme('primaryColor')};
+          getValueFromTheme('primaryColor')};
   font-size: ${props => props.backgroundColor || '36px'};
   ${space};
   ${layout};
@@ -129,23 +129,30 @@ export const NavLink = styled(Link)`
 export const DivLine = styled.div`
   height: 2px;
   width: 100%;
-  background-color: ${(props) => props.backgroundColor || getValueFromTheme('primaryColor')};
+  background-color: ${(props) => props.backgroundColor ||
+          getValueFromTheme('primaryColor')};
   ${space};
 `;
 export const StyledDivPage = styled(StyledDiv)`
-flex-direction:row;
-align-items:flex-start;
-justify-content: space-around;
-   ${media.mobile}{
-      flex-direction:column;
-   }
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: space-around;
+
+  ${media.mobile} {
+    flex-direction: column;
+  }
 `;
 export const StyledPageContent = styled(StyledDiv)`
-   width:60%;
-   ${media.laptop}{
-      width:70%;
-   };
-   ${media.mobile}{
-      width:100%;
-   };
+  width: 60%;
+
+  ${media.laptop} {
+    width: 70%;
+  }
+;
+
+  ${media.mobile} {
+    width: 100%;
+  }
+;
 `;
+
