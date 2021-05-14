@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-import SidebarTab from '../../components/sidebarTab';
+import SidebarTab from '../../components/sidebar-tab';
 import { StyledPageWrapper, StyledDivPage } from '../../common/style/index';
-import FollowUsersBlock from '../../components/followUsersBlock';
+import FollowUsersBlock from '../../components/follow-users-block';
 
 import followers from '../../assets/followers.svg';
 import following from '../../assets/following.svg';
