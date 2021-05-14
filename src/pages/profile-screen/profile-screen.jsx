@@ -1,8 +1,8 @@
 import React from 'react';
 
 
-import AlbumsBlock from '../../components/albumsBlock';
-import SideBarUserInfo from '../../containers/sideBarUserInfo-container';
+import AlbumsBlock from '../../components/albums-block';
+import SideBarUserInfo from '../../containers/sidebar-user-info-container';
 import Publications from '../../components/publications';
 import { StyledPageWrapper, StyledDivPage, StyledPageContent } from '../../common/style/index';
 
