@@ -10,6 +10,7 @@ const FollowButton = (props) => {
    return (
       <Button
          fontFamily='Source Code Pro'
+         fontSize={isFollow && '0.9em'}
          color='#fff'
          width={props.width || 1}
          height={props.height || 30}

@@ -5,9 +5,9 @@ import { getValueFromTheme } from '../utils';
 import { Link } from 'react-router-dom';
 
 export const media = {
-    miniMobile: '@media(max-width: 500px)',
-    mobile: '@media(max-width: 899px)',
-    laptop: '@media(min-width: 900px) and (max-width: 1300px)',
+  miniMobile: '@media(max-width: 639px)',
+  mobile: '@media(max-width: 949px)',
+  laptop: '@media(min-width: 950px) and (max-width: 1300px)'
 };
 
 export const PrimaryBackground = styled.div`
@@ -155,4 +155,3 @@ export const StyledPageContent = styled(StyledDiv)`
   }
 ;
 `;
-
