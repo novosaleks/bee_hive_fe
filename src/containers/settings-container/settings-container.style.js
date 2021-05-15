@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const SettingsContainer = styled.div`
+export const SettingsWrapper = styled.div`
   width: 60%;
 `
 
@@ -10,4 +10,9 @@ export const FormContainer = styled.div`
   display: flex;
   flex-direction: column;
   gap: 41px;
+`;
+
+export const SettingTitle = styled.h2`
+  font-weight: 600;
+  padding-left: 20px;
 `

@@ -5,8 +5,10 @@ export const Form = styled.form`
   justify-content: space-between;
   align-items: center;
   gap: 30px;
-`
+`;
 
 export const Label = styled.label`
   flex-basis: 120px;
-`
+  color: #675849;
+  cursor: pointer;
+`;
