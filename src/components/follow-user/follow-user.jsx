@@ -14,7 +14,7 @@ const FollowUser = ({ follow, onlineBlock }) => {
             rateScore,
             isFollow,
             login,
-         }, index) => (
+         }) => (
 
             <SubscriptionUser
                {...{
@@ -28,7 +28,7 @@ const FollowUser = ({ follow, onlineBlock }) => {
                   login,
                   onlineBlock
                }}
-               key={index}
+               key={login}
             />
 
 

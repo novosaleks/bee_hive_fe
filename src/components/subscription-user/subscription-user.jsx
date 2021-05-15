@@ -17,7 +17,7 @@ const SubscriptionUser = ({
 }) => {
    return (
       <StyledDiv align='center' mt={10} mb={15} direction='row' content='space-between' >
-         <StyledDiv width='18%'>
+         <StyledDiv width='18%' >
             <UserAvatar
                rating={ratingColor || '#C53B0E'}
                rateScore={rateScore || '1,5'}
@@ -29,7 +29,7 @@ const SubscriptionUser = ({
 
          </StyledDiv>
 
-         <StyledDiv width={onlineBlock ? '70%' : '80%'} align='flex-end'>
+         <StyledDiv width={onlineBlock ? '70%' : '80%'} align='flex-end' ml='20px'>
             <FollowButton
                isFollow={isFollow}
                width={onlineBlock ? '70px' : '150px'}

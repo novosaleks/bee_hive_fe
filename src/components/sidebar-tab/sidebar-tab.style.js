@@ -13,6 +13,7 @@ export const TabsDivStyled = styled(StyledDiv)`
       ${media.mobile} {
          flex-direction: row;
           width:60%;
+          top:0;
       };
 `;
 export const TabDivStyled = styled(StyledDiv)`
