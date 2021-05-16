@@ -1,6 +1,6 @@
 import React from 'react';
 import { StyledText } from '../../common/style/index';
-import { TabsDivStyled, TabDivStyled, TabLine, TabAndLineDiv, TabWrapper } from './sidebarTab.style';
+import { TabsDivStyled, TabDivStyled, TabLine, TabAndLineDiv, TabWrapper } from './sidebar-tab.style';
 const SidebarTab = ({ activeTabLabel, clickHandler, tabs }) => {
 
    return (

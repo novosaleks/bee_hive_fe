@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { StyledDivPage, StyledPageWrapper } from '../../common/style';
-import SidebarTab from '../../components/sidebarTab';
+import SidebarTab from '../../components/sidebar-tab';
 
 import settingsGeneral from '../../assets/settings-general.svg';
 import settingsPage from '../../assets/settings-page.svg';
