@@ -14,9 +14,12 @@ const RegisterFormContainer = () => {
 
     useEffect(() => {
         if (data) {
-            const success = data.createUser;
-            if (success) {
+            const response = data.createUser;
+            if (response.success) {
+                console.log(response.message);
                 history.push("/login");
+            } else {
+                console.error(response.message);
             }
         }
     }, [data])
