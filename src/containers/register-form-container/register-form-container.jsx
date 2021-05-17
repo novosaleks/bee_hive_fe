@@ -1,13 +1,39 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 import InputContainer from '../input-container';
 import RegisterForm from '../../components/register-form';
+import { useMutation } from "@apollo/client";
+import { useHistory } from "react-router-dom";
+
+import { CREATE_USER } from "../../graphql/user";
 
 const RegisterFormContainer = () => {
     const {register, handleSubmit, formState: {errors}} = useForm();
+    const [createUser, { data }] = useMutation(CREATE_USER);
+    const history = useHistory();
 
-    const registrationHandler = d => {
-        // TODO implement registration service
+    useEffect(() => {
+        if (data) {
+            const success = data.createUser;
+            if (success) {
+                history.push("/login");
+            }
+        }
+    }, [data])
+
+    const registrationHandler = async d => {
+        await createUser({
+            variables: {
+                firstName: d.firstName,
+                lastName: d.lastName,
+                email: d.email,
+                password: d.password,
+                occupation: d.occupation,
+                location: d.location,
+                birthDate: d.birthDate,
+                userInfo: d.userInfo
+            }
+        });
     };
 
     const RegisterInput = (props) => {
