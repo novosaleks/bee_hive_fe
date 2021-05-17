@@ -44,6 +44,9 @@ export const CREATE_USER = gql`
             location: $location
             birthDate: $birthDate
             userInfo: $userInfo
-        )
+        ) {
+          success
+          message
+        }
     }
 `;
