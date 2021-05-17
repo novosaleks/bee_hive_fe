@@ -11,6 +11,8 @@ export const LOGIN = gql`
       occupation
       location
       birthDate
+      createdAt
+      updatedAt
     }
   }
 `;
