@@ -6,17 +6,21 @@ import { useMutation } from "@apollo/client";
 import { useHistory } from "react-router-dom";
 
 import { CREATE_USER } from "../../graphql/user";
+import { useNotificationService } from '../../common/context/notificationContext';
 
 const RegisterFormContainer = () => {
     const {register, handleSubmit, formState: {errors}} = useForm();
     const [createUser, { data }] = useMutation(CREATE_USER);
     const history = useHistory();
 
+    const notificationHandler = useNotificationService();
+
     useEffect(() => {
         if (data) {
             const response = data.createUser;
             if (response.success) {
                 console.log(response.message);
+                console.log(notificationHandler);
                 history.push("/login");
             } else {
                 console.error(response.message);
