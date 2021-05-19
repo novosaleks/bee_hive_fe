@@ -6,6 +6,6 @@ export const RegisterContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding-top: 54px;
+  padding: 15px;
   gap: 70px;
 `;

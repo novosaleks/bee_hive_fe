@@ -3,11 +3,12 @@ import { RegisterContainer } from './register-screen.style';
 
 import logo from '../../assets/LOGO.svg';
 import RegisterFormContainer from '../../containers/register-form-container';
+import {Logo} from "../../common/style";
 
 const RegisterScreen = () => {
     return (
         <RegisterContainer>
-            <img src={logo} alt='logo'/>
+            <Logo src={logo} alt='logo'/>
             <RegisterFormContainer/>
         </RegisterContainer>
     );

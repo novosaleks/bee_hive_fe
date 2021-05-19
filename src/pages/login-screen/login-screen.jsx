@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import {
     LoginContainer,
     Presentation,
@@ -7,11 +7,13 @@ import {
     OptionText,
 } from './login-screen.style';
 
+import {Logo} from "../../common/style";
+
 import logo from '../../assets/LOGO.svg';
 import LoginFormContainer from '../../containers/login-form-container';
 
 import { useQuery } from '@apollo/client';
-import { useHistory, Redirect } from 'react-router-dom';
+import { Redirect } from 'react-router-dom';
 
 import { GET_CURRENT_USER } from '../../graphql/user';
 
@@ -26,7 +28,7 @@ const LoginScreen = () => {
     return (<>
         { user ? <Redirect to="/" /> : <LoginContainer>
             <Presentation>
-                <img src={logo} alt="logo" />
+                <Logo src={logo} alt='logo'/>
                 <PresentationText>
                     Start to be in the spotlight <br />
                     right now
