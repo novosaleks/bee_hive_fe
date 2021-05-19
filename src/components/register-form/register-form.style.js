@@ -1,15 +1,18 @@
 import styled from 'styled-components';
-import { centerAlignedColumn } from '../../common/style';
+import {centerAlignedColumn, CommonForm} from '../../common/style';
 
-export const Form = styled.form`
+export const Form = styled(CommonForm)`
   padding-bottom: 150px;
   ${centerAlignedColumn};
   gap: 55px;
 `;
 
 export const FormContainer = styled.div`
+  width: 100%;
   display: flex;
-  gap: 187px;
+  flex-wrap: wrap;
+  gap: 50px;
+  justify-content: space-around;
   align-items: center;
 `;
 

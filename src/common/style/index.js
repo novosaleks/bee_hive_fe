@@ -1,17 +1,18 @@
-import styled, { css } from 'styled-components';
-import { space, layout, typography, color, flexbox } from 'styled-system';
+import styled, {css} from 'styled-components';
+import {space, layout, typography, color, flexbox} from 'styled-system';
 
-import { getValueFromTheme } from '../utils';
-import { Link } from 'react-router-dom';
+import {getValueFromTheme} from '../utils';
+import {Link} from 'react-router-dom';
 
 export const media = {
-  miniMobile: '@media(max-width: 639px)',
-  mobile: '@media(max-width: 949px)',
-  laptop: '@media(min-width: 950px) and (max-width: 1300px)'
+    miniMobile: '@media(max-width: 639px)',
+    mobile: '@media(max-width: 949px)',
+    laptop: '@media(min-width: 950px) and (max-width: 1300px)'
 };
 
 export const PrimaryBackground = styled.div`
   background-color: ${getValueFromTheme('primaryBgColor')};
+  min-height: 100vh;
 `;
 export const PrimaryBackgroundPage = styled.div`
   background-color: ${getValueFromTheme('primaryBgColorPage')};
@@ -155,3 +156,14 @@ export const StyledPageContent = styled(StyledDiv)`
   }
 ;
 `;
+
+export const CommonForm = styled.form`
+  width: 100%;
+  padding: 0 5px;
+`
+
+export const Logo = styled.img`
+  max-width: 550px;
+  width: 100%;
+  height: auto;
+`

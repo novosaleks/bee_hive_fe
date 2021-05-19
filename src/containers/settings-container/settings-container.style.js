@@ -1,7 +1,8 @@
 import styled from 'styled-components';
+import {media} from "../../common/style";
 
 export const SettingsWrapper = styled.div`
-  width: 60%;
+  width: 100%;
 `
 
 export const FormContainer = styled.div`
@@ -10,6 +11,10 @@ export const FormContainer = styled.div`
   display: flex;
   flex-direction: column;
   gap: 41px;
+  
+  ${media.mobile} {
+    padding-left: 5px;
+  }
 `;
 
 export const SettingTitle = styled.span`
