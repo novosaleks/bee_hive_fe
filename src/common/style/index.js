@@ -138,6 +138,7 @@ export const StyledDivPage = styled(StyledDiv)`
   flex-direction: row;
   align-items: flex-start;
   justify-content: space-around;
+  ${flexbox};
 
   ${media.mobile} {
     flex-direction: column;
