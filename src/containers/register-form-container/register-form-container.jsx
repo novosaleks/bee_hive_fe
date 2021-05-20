@@ -1,26 +1,26 @@
-import React, { useEffect } from 'react';
-import { useForm } from 'react-hook-form';
+import React, {useEffect} from 'react';
+import {useForm} from 'react-hook-form';
 import InputContainer from '../input-container';
 import RegisterForm from '../../components/register-form';
-import { useMutation } from "@apollo/client";
-import { useHistory } from "react-router-dom";
+import {useMutation} from "@apollo/client";
+import {useHistory} from "react-router-dom";
 
-import { CREATE_USER } from "../../graphql/user";
-import { useNotificationService } from '../../common/context/notificationContext';
+import {CREATE_USER} from "../../graphql/user";
+import {useNotificationService} from '../../common/context/notificationContext';
 
 const RegisterFormContainer = () => {
     const {register, handleSubmit, formState: {errors}} = useForm();
-    const [createUser, { data }] = useMutation(CREATE_USER);
+    const [createUser, {data}] = useMutation(CREATE_USER);
     const history = useHistory();
 
-    const notificationHandler = useNotificationService();
+    const notify = useNotificationService();
 
     useEffect(() => {
         if (data) {
             const response = data.createUser;
             if (response.success) {
                 console.log(response.message);
-                console.log(notificationHandler);
+                notify({text: 'successfully registered'})
                 history.push("/login");
             } else {
                 console.error(response.message);
@@ -48,14 +48,14 @@ const RegisterFormContainer = () => {
 
         return (
             <InputContainer register={register} name={name}
-                errors={errors} rules={{required}}
-                attrs={attrs}/>
+                            errors={errors} rules={{required}}
+                            attrs={attrs}/>
         );
     };
 
     return (
         <RegisterForm RegisterInput={RegisterInput}
-            registrationHandler={handleSubmit(registrationHandler)}/>
+                      registrationHandler={handleSubmit(registrationHandler)}/>
     );
 };
 
