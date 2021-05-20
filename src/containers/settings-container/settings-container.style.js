@@ -12,7 +12,8 @@ export const FormContainer = styled.div`
   gap: 41px;
 `;
 
-export const SettingTitle = styled.h2`
+export const SettingTitle = styled.span`
+  font-size: 1.5rem;
   font-weight: 600;
   padding-left: 20px;
 `
