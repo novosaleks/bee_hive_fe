@@ -8,18 +8,17 @@ import { StyledPageWrapper, StyledDivPage, StyledPageContent } from '../../commo
 
 
 const ProfileScreen = () => {
-
     return (
         <StyledPageWrapper>
-            <StyledDivPage >
+            <StyledDivPage>
                 <SideBarUserInfo />
                 <StyledPageContent>
                     <AlbumsBlock />
                     <Publications />
                 </StyledPageContent>
             </StyledDivPage>
-        </StyledPageWrapper >
-    )
+        </StyledPageWrapper>
+    );
 };
 
 export default ProfileScreen;

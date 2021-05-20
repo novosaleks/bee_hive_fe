@@ -1,5 +1,5 @@
 import styled from 'styled-components';
+import {CommonForm} from "../../common/style";
 
-export const Form = styled.form`
-  width: 440px;
+export const Form = styled(CommonForm)`
 `;

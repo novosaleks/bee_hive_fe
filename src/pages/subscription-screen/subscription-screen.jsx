@@ -26,7 +26,7 @@ const SubscriptionScreen = () => {
         ]
     };
     const [activeTab, setActiveTab] = useState(tabs.subscriptionPage[0].label);
-    const clickHandler = (label) => {
+    const clickHandler = (label) => () => {
         setActiveTab(label)
     };
 

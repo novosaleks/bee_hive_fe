@@ -1,14 +1,16 @@
 import styled from 'styled-components';
-import { PrimaryBackground } from '../../common/style';
-import { getValueFromTheme } from '../../common/utils';
+import {media, PrimaryBackground} from '../../common/style';
+import {getValueFromTheme} from '../../common/utils';
 
-import { Link } from 'react-router-dom';
+import {Link} from 'react-router-dom';
 
 export const LoginContainer = styled(PrimaryBackground)`
   display: flex;
-  justify-content: space-between;
-  padding: 230px 180px;
+  justify-content: space-around;
+  padding: 15px;
+  flex-wrap: wrap;
   align-items: center;
+  gap: 50px;
 `;
 
 export const Presentation = styled.div`
@@ -22,7 +24,11 @@ export const PresentationText = styled.div`
   font-size: 24px;
   line-height: 30px;
   text-align: center;
-  color: ${getValueFromTheme('textColor')}
+  color: ${getValueFromTheme('textColor')};
+
+  ${media.mobile} {
+    display: none;
+  }
 `;
 
 export const CreateAccountLink = styled(Link)`
@@ -35,7 +41,7 @@ export const CreateAccountLink = styled(Link)`
   margin: 0 auto;
   text-align: center;
   color: ${getValueFromTheme('primaryColor')};
-  
+
   &:hover {
     text-decoration: none;
     color: ${getValueFromTheme('primaryColor')};

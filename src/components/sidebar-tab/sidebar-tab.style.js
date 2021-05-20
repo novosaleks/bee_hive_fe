@@ -11,8 +11,10 @@ export const TabsDivStyled = styled(StyledDiv)`
    position: sticky;
    top: 40%;
       ${media.mobile} {
-         flex-direction: row;
+          position: static;
+          flex-direction: row;
           width:60%;
+          top:0;
       };
 `;
 export const TabDivStyled = styled(StyledDiv)`

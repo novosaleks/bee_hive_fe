@@ -6,9 +6,9 @@ const FollowUsersBlock = ({ tabsInfo, activeTab }) => {
    return (
       <>
          {
-            tabsInfo.map((info, index) => (
+            tabsInfo.map((info) => (
                info.label === activeTab &&
-               <StyledDiv StyledDiv alignSelf='center' label={info.label} key={index} >
+               <StyledDiv StyledDiv alignSelf='center' label={info.label} key={info.label} >
                   <FollowUser follow={info.data} />
                </StyledDiv>
             ))

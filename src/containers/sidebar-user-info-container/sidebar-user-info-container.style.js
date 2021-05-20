@@ -10,5 +10,6 @@ export const StyledSidebarDiv = styled(StyledDiv)`
    }
    ${media.laptop}{
       width:30%;
+      margin-right: 10px;
    }
 `;

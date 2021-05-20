@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyledPageWrapper, StyledDivPage, StyledDiv, StyledPageContent } from '../../common/style/index';
+import { StyledPageWrapper, StyledDivPage, StyledPageContent } from '../../common/style/index';
 import { SidebarDivStyled } from './news-screen.style';
 import Title from '../../components/title';
 import FollowUser from '../../components/follow-user';
