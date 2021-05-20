@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import {
     LoginContainer,
     Presentation,
@@ -10,25 +10,37 @@ import {
 import logo from '../../assets/LOGO.svg';
 import LoginFormContainer from '../../containers/login-form-container';
 
+import { useQuery } from '@apollo/client';
+import { useHistory, Redirect } from 'react-router-dom';
+
+import { GET_CURRENT_USER } from '../../graphql/user';
+
 const LoginScreen = () => {
-    return (
-        <LoginContainer>
+    const { loading, error, data } = useQuery(GET_CURRENT_USER);
+
+    if (loading) return <div>Loading...</div>;
+    if (error) return <div>{`Error: ${error.message}`}</div>;
+
+    const user = data.currentUser;
+
+    return (<>
+        { user ? <Redirect to="/" /> : <LoginContainer>
             <Presentation>
-                <img src={logo} alt='logo'/>
+                <img src={logo} alt="logo" />
                 <PresentationText>
-                    Start to be in the spotlight <br/>
+                    Start to be in the spotlight <br />
                     right now
                 </PresentationText>
             </Presentation>
             <div>
-                <LoginFormContainer/>
+                <LoginFormContainer />
                 <OptionText>or</OptionText>
-                <CreateAccountLink to='/register'>
+                <CreateAccountLink to="/register">
                     Create account
                 </CreateAccountLink>
             </div>
-        </LoginContainer>
-    );
+        </LoginContainer>}
+    </>);
 };
 
 export default LoginScreen;

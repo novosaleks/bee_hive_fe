@@ -12,18 +12,6 @@ export const GET_ALL_USERS = gql`
     }
 `;
 
-export const GET_CURRENT_USER = gql`
-    query {
-        me {
-            id
-            firstName
-            lastName
-            email
-            password
-        }
-    }
-`;
-
 export const CREATE_USER = gql`
     mutation CreateUser(
         $firstName: String!
@@ -45,8 +33,26 @@ export const CREATE_USER = gql`
             birthDate: $birthDate
             userInfo: $userInfo
         ) {
-          success
-          message
+            success
+            message
+        }
+    }
+`;
+
+export const GET_CURRENT_USER = gql`
+    query CurrentUser {
+        currentUser {
+            id
+            firstName
+            lastName
+            email
+            password
+            occupation
+            location
+            birthDate
+            userInfo
+            createdAt
+            updatedAt
         }
     }
 `;

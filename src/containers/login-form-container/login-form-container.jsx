@@ -18,12 +18,10 @@ const LoginFormContainer = () => {
 
     useEffect(() => {
         if (data) {
-            const user = data.login;
-            console.log('data:', user);
-            // TODO implement saving user data in the cache
-            if (user) {
-                history.push('/');
+            const success = data.login;
+            if (success) {
                 notify({ text: 'LOGGED IN' });
+                history.push("/");
             } else {
                 console.error('Login failed!');
             }
