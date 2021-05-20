@@ -3,6 +3,7 @@ import {media} from "../../common/style";
 
 export const SettingsWrapper = styled.div`
   width: 100%;
+  justify-content: flex-start;
 `
 
 export const FormContainer = styled.div`

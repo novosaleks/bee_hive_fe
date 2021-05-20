@@ -1,9 +1,9 @@
 import React from 'react';
-import { Select } from './settings-select.style';
+import {Select} from './settings-select.style';
 
 const SettingsSelect = ({targetField, children, ...attrs}) => {
     return (
-        <Select {...attrs}>
+        <Select width={[160, 240]} {...attrs}>
             {children}
         </Select>
     );
