@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import RoutingContainer from '../containers/routing-container';
 
 import 'bootstrap/dist/css/bootstrap-reboot.min.css';
@@ -9,8 +9,8 @@ import useNotifications from '../common/hooks/useNotifications';
 
 import NotificationProvider from '../common/context/notificationContext';
 
-import { useQuery } from "@apollo/client";
-import { GET_ACTIVE_THEME } from "../graphql/theme";
+import { useQuery } from '@apollo/client';
+import { GET_ACTIVE_THEME } from '../graphql/theme';
 
 const App = () => {
     const { loading, error, data } = useQuery(GET_ACTIVE_THEME);
@@ -24,12 +24,12 @@ const App = () => {
     };
 
     if (loading) return <div>Loading...</div>;
-    if (error) return <div>{`Error: ${error.message}`}</div>
+    if (error) return <div>{`Error: ${error.message}`}</div>;
 
     const activeTheme = data.activeTheme;
 
     return (
-        <ThemeProvider theme={theme[activeTheme]}>
+        <ThemeProvider theme={theme.light}>
             <NotificationProvider value={notify}>
                 {notification}
                 <RoutingContainer />
