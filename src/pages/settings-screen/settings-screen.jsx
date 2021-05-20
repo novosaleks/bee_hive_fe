@@ -30,7 +30,7 @@ const SettingsScreen = () => {
 
     return (
         <StyledPageWrapper>
-            <StyledDivPage>
+            <StyledDivPage justifyContent='flex-start'>
                 <SidebarTab {...{activeTabLabel, clickHandler}}
                     tabs={tabs.settingsPage}/>
                 <TabsContentContainer label={activeTabLabel}/>
