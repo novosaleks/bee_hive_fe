@@ -7,8 +7,7 @@ import App from './App';
 import { ApolloProvider } from '@apollo/client/react';
 import { ApolloClient, createHttpLink } from '@apollo/client';
 import { cache } from './cache';
-
-import GlobalStyles from "./index.style";
+import GlobalStyles from './index.style';
 
 const link = createHttpLink({
     uri: 'http://localhost:4000/graphql',
@@ -20,8 +19,8 @@ const client = new ApolloClient({ link, cache });
 ReactDOM.render(
     <ApolloProvider client={client}>
         <Router>
-            <GlobalStyles/>
-            <App/>
+            <GlobalStyles />
+            <App />
         </Router>
     </ApolloProvider>,
     document.getElementById('root')

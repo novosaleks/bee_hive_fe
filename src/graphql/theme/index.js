@@ -1,6 +1,6 @@
 import { gql } from '@apollo/client';
 import { activeThemeVar } from '../../cache';
-import { THEMES } from "../../common/utils/constants";
+import { THEMES } from '../../common/utils/constants';
 
 export const GET_ACTIVE_THEME = gql`
     query GetActiveTheme {
@@ -9,6 +9,6 @@ export const GET_ACTIVE_THEME = gql`
 `;
 
 export const setActiveTheme = (theme) => {
-  window.localStorage.setItem('activeTheme', theme);
-  activeThemeVar(THEMES[theme]);
+    window.localStorage.setItem('activeTheme', theme);
+    activeThemeVar(THEMES[theme]);
 };
