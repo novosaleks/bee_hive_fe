@@ -9,7 +9,11 @@ import useNotifications from '../common/hooks/useNotifications';
 
 import NotificationProvider from '../common/context/notificationContext';
 
+import { useQuery } from "@apollo/client";
+import { GET_ACTIVE_THEME } from "../graphql/theme";
+
 const App = () => {
+    const { loading, error, data } = useQuery(GET_ACTIVE_THEME);
 
     const [notification, setNotification] = useNotifications();
 
@@ -19,8 +23,13 @@ const App = () => {
         setNotification(props);
     };
 
+    if (loading) return <div>Loading...</div>;
+    if (error) return <div>{`Error: ${error.message}`}</div>
+
+    const activeTheme = data.activeTheme;
+
     return (
-        <ThemeProvider theme={theme.light}>
+        <ThemeProvider theme={theme[activeTheme]}>
             <NotificationProvider value={notify}>
                 {notification}
                 <RoutingContainer />
