@@ -4,13 +4,13 @@ import UserInfo from '../../components/user-info';
 import UserExtraInfo from '../../components/user-extra-info';
 
 import { useQuery } from '@apollo/client';
-import { GET_CURRENT_USER } from '../../graphql/auth';
+import { GET_CURRENT_USER } from '../../graphql/user';
 
 import { StyledSidebarDiv } from './sidebar-user-info-container.style';
 import { DivLine, StyledText } from '../../common/style/index';
 import FollowButton from '../../components/follow-button';
 
-const generalIngo = {
+const generalInfo = {
     birth: {
         label: 'Date of birth',
         data: '23.09.2000',
@@ -37,6 +37,7 @@ const SideBarUserInfo = ({
     rateScore,
     userID,
 }) => {
+    const generalInfoArray = Object.entries(generalInfo);
     const { loading, error, data } = useQuery(GET_CURRENT_USER);
     const [currentUserID, setCurrentUserID] = useState();
     useEffect(() => {
@@ -61,13 +62,13 @@ const SideBarUserInfo = ({
             </StyledText>
             <DivLine />
             <UserInfo>
-                {generalIngoArray.filter((info, index) => index <= 1)}
+                {generalInfoArray.filter((info, index) => index <= 1)}
             </UserInfo>
 
             {currentUserID !== userID && <FollowButton />}
 
             <UserExtraInfo>
-                {generalIngoArray.filter((info, index) => index > 1)}
+                {generalInfoArray.filter((info, index) => index > 1)}
             </UserExtraInfo>
         </StyledSidebarDiv>
     );

@@ -6,8 +6,8 @@ import deleteIcon from '../../assets/deleteIcon.svg';
 
 import { DeleteEditPostDiv, StyledImg } from './delete-edit-post.style';
 const DeleteEditPost = () => {
-    const [updatePost, { error }] = useMutation(UPDATE_POST);
-    const [removePost, { error }] = useMutation(REMOVE_POST);
+    const [updatePost] = useMutation(UPDATE_POST);
+    const [removePost] = useMutation(REMOVE_POST);
 
     // const [text, setText] = useState('');
 
