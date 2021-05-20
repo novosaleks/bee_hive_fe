@@ -1,12 +1,13 @@
 import { InMemoryCache, makeVar } from '@apollo/client';
+import { THEMES } from './common/utils/constants';
 
 export const cache = new InMemoryCache({
     typePolicies: {
         Query: {
             fields: {
-                theme: {
+                activeTheme: {
                     read() {
-                        return themeVar();
+                        return activeThemeVar();
                     },
                 },
             },
@@ -14,4 +15,7 @@ export const cache = new InMemoryCache({
     },
 });
 
-export const themeVar = makeVar({});
+const activeThemeFromLocalStorage = window.localStorage.getItem('activeTheme');
+const activeThemeInitialValue = activeThemeFromLocalStorage || THEMES.light;
+
+export const activeThemeVar = makeVar(activeThemeInitialValue);
