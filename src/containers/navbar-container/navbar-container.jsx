@@ -8,7 +8,7 @@ const NavbarContainer = () => {
         <Navbar>
             <NavLink to='/'>Profile</NavLink>
             <NavLink to='/subscription'>Subscriptions</NavLink>
-            <NavLink to='/'>Messages</NavLink>
+            <NavLink to='/messages'>Messages</NavLink>
             <NavLink to='/news'>News</NavLink>
         </Navbar>
     );
