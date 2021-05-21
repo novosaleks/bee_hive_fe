@@ -29,7 +29,7 @@ const App = () => {
     const activeTheme = data.activeTheme;
 
     return (
-        <ThemeProvider theme={theme.light}>
+        <ThemeProvider theme={theme[activeTheme]}>
             <NotificationProvider value={notify}>
                 {notification}
                 <RoutingContainer />
