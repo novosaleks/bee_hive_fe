@@ -1,22 +1,6 @@
-<svg width="147" height="125" viewBox="0 0 147 125" fill="none" xmlns="http://www.w3.org/2000/svg">
-<g clip-path="url(#clip0)" filter="url(#filter0_d)">
-<path d="M31.2536 1.77875L57.0407 17.4162V48.6911L31.2536 64.3286L5.46655 48.6911V17.4162L31.2536 1.77875Z" stroke="#F15A29" stroke-width="7.88" stroke-miterlimit="10"/>
-<path d="M87.458 1.77875L113.245 17.4162V48.6911L87.458 64.3286L61.6709 48.6911V17.4162L87.458 1.77875Z" stroke="#F15A29" stroke-width="7.88" stroke-miterlimit="10"/>
-<path d="M59.2888 52.4481L85.0796 68.0855V99.3605L59.2888 114.998L33.5017 99.3605V68.0855L59.2888 52.4481Z" stroke="#F15A29" stroke-width="7.88" stroke-miterlimit="10"/>
-<path d="M115.746 52.4481L141.533 68.0855V99.3605L115.746 114.998L89.9592 99.3605V68.0855L115.746 52.4481Z" stroke="#F15A29" stroke-width="7.88" stroke-miterlimit="10"/>
-</g>
-<defs>
-<filter id="filter0_d" x="0" y="0" width="147" height="124.777" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
-<feFlood flood-opacity="0" result="BackgroundImageFix"/>
-<feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"/>
-<feOffset dy="4"/>
-<feGaussianBlur stdDeviation="2"/>
-<feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0"/>
-<feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow"/>
-<feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow" result="shape"/>
-</filter>
-<clipPath id="clip0">
-<rect width="139" height="116.777" fill="white" transform="translate(4)"/>
-</clipPath>
-</defs>
+<svg width="139" height="117" viewBox="0 0 139 117" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M32.1211 8L55.2423 21.6736V49.0207L32.1211 62.6942L9 49.0207V21.6736L32.1211 8Z" stroke="#F15A29" stroke-width="7.88" stroke-miterlimit="10"/>
+<path d="M82.5152 8L105.636 21.6736V49.0207L82.5152 62.6942L59.394 49.0207V21.6736L82.5152 8Z" stroke="#F15A29" stroke-width="7.88" stroke-miterlimit="10"/>
+<path d="M57.2579 52.3058L80.3824 65.9793V93.3265L57.2579 107L34.1367 93.3265V65.9793L57.2579 52.3058Z" stroke="#F15A29" stroke-width="7.88" stroke-miterlimit="10"/>
+<path d="M107.879 52.3058L131 65.9793V93.3265L107.879 107L84.7578 93.3265V65.9793L107.879 52.3058Z" stroke="#F15A29" stroke-width="7.88" stroke-miterlimit="10"/>
 </svg>
