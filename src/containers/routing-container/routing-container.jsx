@@ -1,40 +1,22 @@
 import React from 'react';
-import { Switch, Route } from 'react-router-dom';
-
-import ProfileScreen from '../../pages/profile-screen';
-import LoginScreen from '../../pages/login-screen';
-import RegisterScreen from '../../pages/register-screen';
-import SettingsScreen from '../../pages/settings-screen';
-import NewsScreen from '../../pages/news-screen';
-import SubscriptionScreen from '../../pages/subscription-screen';
-import NavbarContainer from '../navbar-container';
+import Unauthorized from "./routes/unauthorized";
+import User from "./routes/user";
+import { useQuery } from '@apollo/client';
+import { GET_CURRENT_USER } from '../../graphql/user';
 
 const RoutingContainer = () => {
+    const {loading, error, data} = useQuery(GET_CURRENT_USER);
+
+    if (loading) return <div>Loading...</div>;
+    if (error) return <div>{`Error: ${error.message}`}</div>;
+
+    const user = data.currentUser;
+
     return (
-        <Switch>
-            <Route path='/login' exact>
-                <LoginScreen />
-            </Route>
-            <Route path='/register' exact>
-                <RegisterScreen />
-            </Route>
-            <>
-                <NavbarContainer />
-                <Route path='/' exact>
-                    <ProfileScreen />
-                </Route>
-                <Route path='/settings' exact>
-                    <SettingsScreen />
-                </Route>
-                <Route path='/news' exact>
-                    <NewsScreen />
-                </Route>
-                <Route path='/subscription' exact>
-                    <SubscriptionScreen />
-                </Route>
-            </>
-            <h1>Page not found</h1>
-        </Switch>
+        <>
+            <Unauthorized user={user}/>
+            <User user={user}/>
+        </>
     );
 };
 

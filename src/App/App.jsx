@@ -13,7 +13,7 @@ import { useQuery } from '@apollo/client';
 import { GET_ACTIVE_THEME } from '../graphql/theme';
 
 const App = () => {
-    const { loading, error, data } = useQuery(GET_ACTIVE_THEME);
+    const { data } = useQuery(GET_ACTIVE_THEME);
 
     const [notification, setNotification] = useNotifications();
 
@@ -22,9 +22,6 @@ const App = () => {
 
         setNotification(props);
     };
-
-    if (loading) return <div>Loading...</div>;
-    if (error) return <div>{`Error: ${error.message}`}</div>;
 
     const activeTheme = data.activeTheme;
 
