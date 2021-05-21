@@ -2,6 +2,7 @@ import React from 'react';
 import UserAvatar from '../../components/user-avatar';
 import UserInfo from '../../components/user-info';
 import UserExtraInfo from '../../components/user-extra-info';
+import FollowButton from '../../components/follow-button';
 
 import { StyledSidebarDiv } from './sidebar-user-info-container.style';
 import { DivLine, StyledText } from '../../common/style/index';
@@ -50,6 +51,7 @@ const SideBarUserInfo = ({
                     </StyledText>
                     <DivLine />
                     <UserInfo user={user} />
+                    {!user && <FollowButton />}
                     <UserExtraInfo user={user} />
                 </StyledSidebarDiv>
             ) : (
