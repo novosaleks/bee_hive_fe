@@ -19,7 +19,6 @@ const Publications = () => {
                 <DivLine />
                 <UsersNews />
             </PublicationBodyDiv>
-
         </StyledDiv>
     );
 };

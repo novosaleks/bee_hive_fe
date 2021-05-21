@@ -1,14 +1,14 @@
 import React from 'react';
 import SettingsContainer from '../settings-container';
 import SettingsSelect from '../../components/settings-select';
-import {SelectContainer} from './page-information-container.style';
+import { SelectContainer } from './page-information-container.style';
 
-import {GET_ACTIVE_THEME, setActiveTheme} from '../../graphql/theme';
-import {useQuery} from '@apollo/client';
-import {THEMES} from '../../common/utils/constants';
+import { GET_ACTIVE_THEME, setActiveTheme } from '../../graphql/theme';
+import { useQuery } from '@apollo/client';
+import { THEMES } from '../../common/utils/constants';
 
 const PageInformationContainer = () => {
-    const {loading, error, data} = useQuery(GET_ACTIVE_THEME);
+    const { loading, error, data } = useQuery(GET_ACTIVE_THEME);
 
     const selectForms = [
         {
@@ -26,15 +26,13 @@ const PageInformationContainer = () => {
         },
     ];
 
-    const generateOptions = (options) => {
-        return options.map(({label, value}) => {
-
+    const generateOptions = options => {
+        return options.map(({ label, value }) => {
             return (
                 <option
                     key={value}
                     value={value}
-                    defaultValue={THEMES[activeTheme]}
-                >
+                    defaultValue={THEMES[activeTheme]}>
                     {label}
                 </option>
             );
@@ -47,15 +45,14 @@ const PageInformationContainer = () => {
     const activeTheme = data.activeTheme;
 
     return (
-        <SettingsContainer title="Page settings">
-            {selectForms.map(({label, options}) => {
+        <SettingsContainer title='Page settings'>
+            {selectForms.map(({ label, options }) => {
                 return (
                     <SelectContainer key={label}>
                         <span>{label}:</span>
                         <SettingsSelect
                             selectedValue={THEMES[activeTheme]}
-                            onChange={(e) => setActiveTheme(e.target.value)}
-                        >
+                            onChange={e => setActiveTheme(e.target.value)}>
                             {generateOptions(options)}
                         </SettingsSelect>
                     </SelectContainer>

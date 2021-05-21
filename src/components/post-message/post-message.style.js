@@ -4,8 +4,8 @@ import { getValueFromTheme } from '../../common/utils';
 import { layout } from 'styled-system';
 
 export const MessageDiv = styled(StyledDiv)`
-  margin-top: 5%;
-  padding: 2%;
-  ${layout};
-  background-color: ${getValueFromTheme('primaryBgColorDiv')};
+    margin-top: 5%;
+    padding: 2%;
+    ${layout};
+    background-color: ${getValueFromTheme('primaryBgColorDiv')};
 `;

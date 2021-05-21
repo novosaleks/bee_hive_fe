@@ -55,7 +55,7 @@ const SideBarUserInfo = ({
                     <UserExtraInfo user={user} />
                 </StyledSidebarDiv>
             ) : (
-                <Redirect to="/login" />
+                <Redirect to='/login' />
             )}
         </>
     );

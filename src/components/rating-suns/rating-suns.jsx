@@ -22,7 +22,7 @@ const RatingSuns = () => {
         setActiveSunState(prevState => {
             return prevState?.src !== suns[index].src ? suns[index] : null;
         });
-    }
+    };
 
     const toggleActiveStyles = index => {
         if (suns[index].src === sunState?.src) {
@@ -30,7 +30,7 @@ const RatingSuns = () => {
         }
 
         return null;
-    }
+    };
 
     return (
         <StyledDiv direction='row' content='space-between' width='130px'>
@@ -44,7 +44,6 @@ const RatingSuns = () => {
                     {...sun}
                 />
             ))}
-
         </StyledDiv>
     );
 };

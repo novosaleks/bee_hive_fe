@@ -10,7 +10,11 @@ import { useNotificationService } from '../../common/context/notificationContext
 import { LOGIN } from '../../graphql/auth';
 
 const LoginFormContainer = () => {
-    const { register, handleSubmit, formState: { errors } } = useForm();
+    const {
+        register,
+        handleSubmit,
+        formState: { errors },
+    } = useForm();
     const [login, { data }] = useMutation(LOGIN);
     const history = useHistory();
 
@@ -21,7 +25,7 @@ const LoginFormContainer = () => {
             const success = data.login;
             if (success) {
                 notify({ text: 'LOGGED IN' });
-                history.push("/");
+                history.push('/');
             } else {
                 console.error('Login failed!');
             }
@@ -32,23 +36,31 @@ const LoginFormContainer = () => {
         await login({
             variables: {
                 email: d.email,
-                password: d.password
-            }
+                password: d.password,
+            },
         });
     };
 
-    const LoginInput = (props) => {
+    const LoginInput = props => {
         const { name, ...attrs } = props;
 
         return (
-            <InputContainer register={register} name={name}
-                errors={errors} rules={{ required: true }}
-                attrs={attrs} />
+            <InputContainer
+                register={register}
+                name={name}
+                errors={errors}
+                rules={{ required: true }}
+                attrs={attrs}
+            />
         );
     };
 
-    return <LoginForm LoginInput={LoginInput}
-        onSubmit={handleSubmit(loginHandler)} />;
+    return (
+        <LoginForm
+            LoginInput={LoginInput}
+            onSubmit={handleSubmit(loginHandler)}
+        />
+    );
 };
 
 export default LoginFormContainer;

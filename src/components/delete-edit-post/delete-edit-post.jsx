@@ -28,11 +28,11 @@ const DeleteEditPost = () => {
     };
     return (
         <DeleteEditPostDiv>
-            <StyledImg src={editIcon} alt="edit post" onClick={editPost} />
+            <StyledImg src={editIcon} alt='edit post' onClick={editPost} />
 
             <StyledImg
                 src={deleteIcon}
-                alt="delete post"
+                alt='delete post'
                 onClick={deletePost}
             />
         </DeleteEditPostDiv>

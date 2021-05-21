@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-import {CommonForm} from "../../common/style";
+import { CommonForm } from '../../common/style';
 
-export const Form = styled(CommonForm)`
-`;
+export const Form = styled(CommonForm)``;

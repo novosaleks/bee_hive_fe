@@ -14,17 +14,20 @@ const RateBlock = () => {
     const [bottomOfRatingBlock, setBottomOfRatingBlock] = useState(null);
     const [leftOfRatingBlock, setLeftOfRatingBlock] = useState(null);
     const handlerClick = () => {
-        setOpenState((prevState) => !prevState);
+        setOpenState(prevState => !prevState);
     };
 
     const scrollHandler = () => {
         setBottomOfRatingBlock(
             RatingBlockRef.current?.getBoundingClientRect().bottom +
-            window.pageYOffset);
+                window.pageYOffset
+        );
     };
     const resizeHandler = () => {
-        setLeftOfRatingBlock(RatingHintRef.current?.getBoundingClientRect().right);
-    }
+        setLeftOfRatingBlock(
+            RatingHintRef.current?.getBoundingClientRect().right
+        );
+    };
     useEffect(() => {
         window.addEventListener('resize', scrollHandler, true);
         window.addEventListener('scroll', scrollHandler, true);
@@ -39,16 +42,21 @@ const RateBlock = () => {
     }, []);
     return (
         <StyledDiv>
-            <RateDiv direction='row' content='flex-start'
-                ref={RatingBlockRef}>
+            <RateDiv direction='row' content='flex-start' ref={RatingBlockRef}>
                 <RatingSuns />
                 <RatingHintImg
                     src={hintImg}
                     onClick={handlerClick}
                     alt='hint for rating scores'
-                    ref={RatingHintRef} />
+                    ref={RatingHintRef}
+                />
             </RateDiv>
-            {openState && <RateExplanation hintBottom={bottomOfRatingBlock} hintLeft={leftOfRatingBlock} />}
+            {openState && (
+                <RateExplanation
+                    hintBottom={bottomOfRatingBlock}
+                    hintLeft={leftOfRatingBlock}
+                />
+            )}
         </StyledDiv>
     );
 };

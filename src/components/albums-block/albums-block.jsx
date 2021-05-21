@@ -5,12 +5,12 @@ import PhotoAlbum from '../photo-album';
 import { StyledDiv } from '../../common/style/index';
 
 const AlbumsBlock = () => {
-   return (
-      <StyledDiv >
-         <Title>Photo albums</Title>
-         <PhotoAlbum />
-      </StyledDiv>
-   );
-}
+    return (
+        <StyledDiv>
+            <Title>Photo albums</Title>
+            <PhotoAlbum />
+        </StyledDiv>
+    );
+};
 
 export default AlbumsBlock;

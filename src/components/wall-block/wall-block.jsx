@@ -8,22 +8,21 @@ import { InputDiv } from './wall-block.style';
 
 import { DivLine, StyledDiv } from '../../common/style/index';
 const WallBlock = () => {
-   return (
-      <StyledDiv marginTop='5%'>
-         <InputDiv>
-            <NewPostInput />
-         </InputDiv>
-         <StyledDiv marginTop='10%'>
-            <Title>Wall</Title>
-            <UsersNews />
-            <DivLine />
-            <UsersNews />
-            <DivLine />
-            <UsersNews />
-         </StyledDiv>
-
-      </StyledDiv>
-   );
+    return (
+        <StyledDiv marginTop='5%'>
+            <InputDiv>
+                <NewPostInput />
+            </InputDiv>
+            <StyledDiv marginTop='10%'>
+                <Title>Wall</Title>
+                <UsersNews />
+                <DivLine />
+                <UsersNews />
+                <DivLine />
+                <UsersNews />
+            </StyledDiv>
+        </StyledDiv>
+    );
 };
 
 export default WallBlock;

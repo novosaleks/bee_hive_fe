@@ -1,7 +1,7 @@
 import React from 'react';
 import { StyledLabel } from '../../common/style';
 
-const RegisterInputBlock = ({value, children}) => {
+const RegisterInputBlock = ({ value, children }) => {
     return (
         <fieldset>
             <StyledLabel mb={46}>Enter your {value}</StyledLabel>
@@ -10,4 +10,4 @@ const RegisterInputBlock = ({value, children}) => {
     );
 };
 
-export default RegisterInputBlock
+export default RegisterInputBlock;

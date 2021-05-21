@@ -13,24 +13,24 @@ const RoutingContainer = () => {
     return (
         <Switch>
             <Route path='/login' exact>
-                <LoginScreen/>
+                <LoginScreen />
             </Route>
             <Route path='/register' exact>
-                <RegisterScreen/>
+                <RegisterScreen />
             </Route>
             <>
-                <NavbarContainer/>
+                <NavbarContainer />
                 <Route path='/' exact>
-                    <ProfileScreen/>
+                    <ProfileScreen />
                 </Route>
                 <Route path='/settings' exact>
-                    <SettingsScreen/>
+                    <SettingsScreen />
                 </Route>
                 <Route path='/news' exact>
-                    <NewsScreen/>
+                    <NewsScreen />
                 </Route>
                 <Route path='/subscription' exact>
-                    <SubscriptionScreen/>
+                    <SubscriptionScreen />
                 </Route>
             </>
             <h1>Page not found</h1>

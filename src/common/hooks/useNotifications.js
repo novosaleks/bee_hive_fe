@@ -5,7 +5,7 @@ import Notification from '../../components/notification';
 export const useNotifications = () => {
     const [notificationParams, setNotificationParams] = useState({});
 
-    const {text, type} = notificationParams;
+    const { text, type } = notificationParams;
 
     useEffect(() => {
         if (text) {
@@ -17,15 +17,11 @@ export const useNotifications = () => {
         }
     }, [text]);
 
-    const element = text ?
-        (
-            <Portal>
-                <Notification type={type}>
-                    {text}
-                </Notification>
-            </Portal>
-        ) :
-        null;
+    const element = text ? (
+        <Portal>
+            <Notification type={type}>{text}</Notification>
+        </Portal>
+    ) : null;
 
     return [element, setNotificationParams];
 };

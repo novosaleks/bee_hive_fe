@@ -2,44 +2,43 @@ import styled from 'styled-components';
 import { StyledDiv, media, DivLine } from '../../common/style/index';
 import { getValueFromTheme } from '../../common/utils';
 
-
 export const TabsDivStyled = styled(StyledDiv)`
-   width:20%;
-   cursor: pointer;
-   align-self: center;
-   margin-right: 5%;
-   position: sticky;
-   top: 40%;
-      ${media.mobile} {
-          position: static;
-          flex-direction: row;
-          width:60%;
-          top:0;
-      };
+    width: 20%;
+    cursor: pointer;
+    align-self: center;
+    margin-right: 5%;
+    position: sticky;
+    top: 40%;
+    ${media.mobile} {
+        position: static;
+        flex-direction: row;
+        width: 60%;
+        top: 0;
+    } ;
 `;
 export const TabDivStyled = styled(StyledDiv)`
-   flex-direction: row;
-   justify-content: flex-start;
-   
-   ${media.mobile} {
-         flex-direction: column;
-         justify-content: center;
-      };
+    flex-direction: row;
+    justify-content: flex-start;
+
+    ${media.mobile} {
+        flex-direction: column;
+        justify-content: center;
+    } ;
 `;
 export const TabAndLineDiv = styled(StyledDiv)`
-${media.laptop && media.mobile}{
-   flex-direction: row;
-};
+    ${media.laptop && media.mobile} {
+        flex-direction: row;
+    } ;
 `;
 export const TabLine = styled(DivLine)`
-   ${media.laptop && media.mobile}{
-      height: 103px;
-      width: 2px;
-   };
+    ${media.laptop && media.mobile} {
+        height: 103px;
+        width: 2px;
+    } ;
 `;
 
 export const TabWrapper = styled(StyledDiv)`
-&.active{
-      background-color: ${getValueFromTheme('primaryBgColor')};
-   };
+    &.active {
+        background-color: ${getValueFromTheme('primaryBgColor')};
+    }
 `;
