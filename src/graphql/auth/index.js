@@ -7,7 +7,7 @@ export const LOGIN = gql`
 `;
 
 export const LOGOUT = gql`
-    mutation Logout($res: [res]!) {
-        logout(res: $res)
+    mutation Logout {
+        logout
     }
 `;
