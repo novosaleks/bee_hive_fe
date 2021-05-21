@@ -9,3 +9,8 @@ export const getValidateMessage = validationType => {
 
     return validateOptions[validationType];
 };
+
+export const formatDate = date => {
+    const d = new Date(date);
+    return `${d.getDate()}.${d.getMonth()}.${d.getFullYear()}`;
+};
