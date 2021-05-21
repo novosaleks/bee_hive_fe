@@ -3,10 +3,6 @@ import InputContainer from '../input-container';
 import { useForm } from 'react-hook-form';
 import LoginForm from '../../components/login-form';
 import { useMutation } from '@apollo/client';
-import { useHistory } from 'react-router-dom';
-
-import { useNotificationService } from '../../common/context/notificationContext';
-
 import { LOGIN } from '../../graphql/auth';
 
 const LoginFormContainer = () => {
@@ -16,16 +12,12 @@ const LoginFormContainer = () => {
         formState: { errors },
     } = useForm();
     const [login, { data }] = useMutation(LOGIN);
-    const history = useHistory();
-
-    const notify = useNotificationService();
 
     useEffect(() => {
         if (data) {
             const success = data.login;
             if (success) {
-                notify({ text: 'LOGGED IN' });
-                history.push('/');
+                window.location.reload();
             } else {
                 console.error('Login failed!');
             }

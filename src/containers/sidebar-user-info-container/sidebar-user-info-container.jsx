@@ -32,32 +32,26 @@ const SideBarUserInfo = ({
     const user = data.currentUser;
 
     return (
-        <>
-            {user ? (
-                <StyledSidebarDiv>
-                    <UserAvatar
-                        rating={ratingColor || '#c53b0e'}
-                        rateScore={rateScore || '1,5'}
-                        photo={photo}
-                        width={[130, 190]}
-                        height={[130, 190]}
-                    />
-                    <StyledText>
-                        {name || `${user.firstName} ${user.lastName}`}
-                    </StyledText>
-                    <DivLine />
-                    <StyledText color={statusColor || '#5dac38'}>
-                        {status || 'Drink coffeee'}
-                    </StyledText>
-                    <DivLine />
-                    <UserInfo user={user} />
-                    {!user && <FollowButton />}
-                    <UserExtraInfo user={user} />
-                </StyledSidebarDiv>
-            ) : (
-                <Redirect to='/login' />
-            )}
-        </>
+        <StyledSidebarDiv>
+            <UserAvatar
+                rating={ratingColor || '#c53b0e'}
+                rateScore={rateScore || '1,5'}
+                photo={photo}
+                width={[130, 190]}
+                height={[130, 190]}
+            />
+            <StyledText>
+                {name || `${user.firstName} ${user.lastName}`}
+            </StyledText>
+            <DivLine/>
+            <StyledText color={statusColor || '#5dac38'}>
+                {status || 'Drink coffee'}
+            </StyledText>
+            <DivLine/>
+            <UserInfo user={user}/>
+            {!user && <FollowButton/>}
+            <UserExtraInfo user={user}/>
+        </StyledSidebarDiv>
     );
 };
 
