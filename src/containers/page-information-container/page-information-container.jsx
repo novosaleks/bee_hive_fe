@@ -1,19 +1,18 @@
 import React from 'react';
 import SettingsContainer from '../settings-container';
 import SettingsSelect from '../../components/settings-select';
-import { SelectContainer } from './page-information-container.style';
+import {SelectContainer} from './page-information-container.style';
 
-import { GET_ACTIVE_THEME, setActiveTheme } from '../../graphql/theme';
-import { useQuery } from '@apollo/client';
-import { THEMES } from '../../common/utils/constants';
+import {GET_ACTIVE_THEME, setActiveTheme} from '../../graphql/theme';
+import {useQuery} from '@apollo/client';
+import {THEMES} from '../../common/utils/constants';
 
 const PageInformationContainer = () => {
-    const { loading, error, data } = useQuery(GET_ACTIVE_THEME);
+    const {loading, error, data} = useQuery(GET_ACTIVE_THEME);
 
     const selectForms = [
         {
             label: 'Theme',
-            targetField: 'theme',
             options: [
                 {
                     label: 'Light',
@@ -28,12 +27,13 @@ const PageInformationContainer = () => {
     ];
 
     const generateOptions = (options) => {
-        return options.map(({ label, value }) => {
+        return options.map(({label, value}) => {
+
             return (
                 <option
                     key={value}
                     value={value}
-                    selected={value === activeTheme}
+                    defaultValue={THEMES[activeTheme]}
                 >
                     {label}
                 </option>
@@ -48,12 +48,12 @@ const PageInformationContainer = () => {
 
     return (
         <SettingsContainer title="Page settings">
-            {selectForms.map(({ label, targetField, options }) => {
+            {selectForms.map(({label, options}) => {
                 return (
                     <SelectContainer key={label}>
                         <span>{label}:</span>
                         <SettingsSelect
-                            targetField={targetField}
+                            selectedValue={THEMES[activeTheme]}
                             onChange={(e) => setActiveTheme(e.target.value)}
                         >
                             {generateOptions(options)}
