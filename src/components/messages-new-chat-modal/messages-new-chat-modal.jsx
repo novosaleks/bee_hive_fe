@@ -1,21 +1,28 @@
 import React, { useState } from 'react';
-import { Modal, Form, Button } from 'react-bootstrap';
+import { Modal, Form } from 'react-bootstrap';
+
+import { Input } from '../../common/style';
+import { ChatModalButton } from './messages-new-chat-modal.style';
+
 import { useConversations } from '../../common/context/conversationContext';
 import { useContacts } from '../../common/context/ContactsProvider';
 
-const MessagesNewChatModal = ({ closeModal }) => {
+const MessagesNewChatModal = ({ closeModal, identifyUser }) => {
     const [selectedContactIds, setSelectedContactIds] = useState([]);
+    const [searchTerm, setSearchTerm] = useState('');
+
     const avaliableContacts = useContacts();
     const { createConversation } = useConversations();
 
-    function handleSubmit(e) {
+    const handleSubmit = (e) => {
         e.preventDefault();
 
-        createConversation(selectedContactIds);
+        selectedContactIds.length !== 0 &&
+            createConversation(selectedContactIds);
         closeModal();
-    }
+    };
 
-    function handleCheckboxChange(contactId) {
+    const handleCheckboxChange = (contactId) => {
         setSelectedContactIds((prevSelectedContactIds) => {
             if (prevSelectedContactIds.includes(contactId)) {
                 return prevSelectedContactIds.filter((prevId) => {
@@ -25,15 +32,31 @@ const MessagesNewChatModal = ({ closeModal }) => {
                 return [...prevSelectedContactIds, contactId];
             }
         });
-    }
+    };
 
+    const contacts = avaliableContacts.filter((user) =>
+        (user.firstName.toLowerCase().includes(searchTerm.toLowerCase()) ||
+            user.lastName.toLowerCase().includes(searchTerm.toLowerCase())) &&
+        user.id !== identifyUser
+            ? user
+            : null
+    );
     return (
         <>
-            <Modal.Header closeButton>Create Chat</Modal.Header>
-            <Modal.Body>
+            <Modal.Header closeButton>Create Conversation</Modal.Header>
+            <Modal.Body overflow="auto">
+                <Input
+                    placeholder="Start conversation with ..."
+                    buttonText="Search"
+                    value={searchTerm}
+                    onChange={(event) => setSearchTerm(event.target.value)}
+                    mb={3}
+                />
+
                 <Form onSubmit={handleSubmit}>
                     {avaliableContacts &&
-                        avaliableContacts.map((contact) => (
+                        searchTerm !== '' &&
+                        contacts.map((contact) => (
                             <Form.Group controlId={contact.id} key={contact.id}>
                                 <Form.Check
                                     type="checkbox"
@@ -47,7 +70,7 @@ const MessagesNewChatModal = ({ closeModal }) => {
                                 />
                             </Form.Group>
                         ))}
-                    <Button type="submit">Create</Button>
+                    <ChatModalButton type="submit">Create</ChatModalButton>
                 </Form>
             </Modal.Body>
         </>

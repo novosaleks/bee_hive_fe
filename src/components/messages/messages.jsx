@@ -2,7 +2,11 @@ import React from 'react';
 import MessagesOpenConversation from '../messages-open-conversation';
 import MessagesSidebar from '../messages-sidebar';
 
-import { MessagesDivBlock } from './messages.style';
+import {
+    MessagesDivBlock,
+    NotificationDiv,
+    NotificationTitle,
+} from './messages.style';
 
 // //NOT NESECCERY IN PROJECT
 import { useConversations } from '../../common/context/conversationContext';
@@ -13,7 +17,17 @@ const Messages = ({ identifyUser }) => {
 
     return (
         <MessagesDivBlock conversationOpen={selectedConversation}>
-            <MessagesSidebar identifyUser={identifyUser} />
+            <MessagesSidebar
+                identifyUser={identifyUser}
+                conversationOpen={selectedConversation}
+            />
+            {!selectedConversation && (
+                <NotificationDiv>
+                    <NotificationTitle>
+                        You do not have selected conversations yet
+                    </NotificationTitle>
+                </NotificationDiv>
+            )}
             {selectedConversation && <MessagesOpenConversation />}
         </MessagesDivBlock>
     );
