@@ -13,7 +13,7 @@ export const MessagesDivBlock = styled(StyledDivPage)`
             grid-template-columns: repeat(4, 1fr);
             grid-template-rows: 1fr;
             grid-column-gap: 5px;
-            min-height: 60vh;
+            height: 60vh;
         `}
 `;
 

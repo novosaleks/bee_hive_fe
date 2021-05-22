@@ -47,7 +47,6 @@ const MessagesNewChatModal = ({ closeModal, identifyUser }) => {
             <Modal.Body overflow="auto">
                 <Input
                     placeholder="Start conversation with ..."
-                    buttonText="Search"
                     value={searchTerm}
                     onChange={(event) => setSearchTerm(event.target.value)}
                     mb={3}

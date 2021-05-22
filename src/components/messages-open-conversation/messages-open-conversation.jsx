@@ -1,10 +1,11 @@
 import React, { useState, useCallback } from 'react';
-import { Form, InputGroup, Button } from 'react-bootstrap';
+import { StyledDiv, Input, StyledText } from '../../common/style';
 import { useConversations } from '../../common/context/conversationContext';
 import {
     OpenConversationGroup,
     OpenConversationDiv,
     MessageDiv,
+    SendButton,
 } from './messages-open-conversation.style';
 const MessagesOpenConversation = () => {
     const [text, setText] = useState('');
@@ -27,9 +28,9 @@ const MessagesOpenConversation = () => {
     }
 
     return (
-        <OpenConversationGroup className="d-flex flex-column flex-grow-1">
-            <OpenConversationDiv className="flex-grow-1 overflow-auto">
-                <MessageDiv className="d-flex flex-column align-items-start justify-content-end px-3">
+        <OpenConversationGroup>
+            <OpenConversationDiv>
+                <MessageDiv>
                     {selectedConversation.messages.map((message, index) => {
                         const lastMessage =
                             selectedConversation.messages.length - 1 === index;
@@ -46,15 +47,15 @@ const MessagesOpenConversation = () => {
                                 <div
                                     className={`rounded px-2 py-1 ${
                                         message.fromMe
-                                            ? 'bg-primary text-white'
+                                            ? 'bg-light text-muted'
                                             : 'border'
                                     }`}
                                 >
                                     {message.text}
                                 </div>
                                 <div
-                                    className={`text-muted small ${
-                                        message.fromMe ? 'text-right' : ''
+                                    className={`text-light small ${
+                                        message.fromMe ? 'text-right ' : ''
                                     }`}
                                 >
                                     {message.fromMe
@@ -66,22 +67,15 @@ const MessagesOpenConversation = () => {
                     })}
                 </MessageDiv>
             </OpenConversationDiv>
-            <Form onSubmit={handleSubmit}>
-                <Form.Group className="m-2">
-                    <InputGroup>
-                        <Form.Control
-                            as="textarea"
-                            required
-                            value={text}
-                            onChange={(e) => setText(e.target.value)}
-                            style={{ height: '75px', resize: 'none' }}
-                        />
-                        <InputGroup.Append>
-                            <Button type="submit">Send</Button>
-                        </InputGroup.Append>
-                    </InputGroup>
-                </Form.Group>
-            </Form>
+            <StyledDiv direction="row" mt={1}>
+                <Input
+                    placeholder="Type ..."
+                    value={text}
+                    onChange={(e) => setText(e.target.value)}
+                    mr={3}
+                />
+                <SendButton onClick={handleSubmit}>Send</SendButton>
+            </StyledDiv>
         </OpenConversationGroup>
     );
 };

@@ -20,6 +20,7 @@ import { ConversationsProvider } from '../../common/context/conversationContext'
 // import { Modal, Form, Button } from 'react-bootstrap';
 import { ContactsProvider } from '../../common/context/ContactsProvider';
 import { SocketProvider } from '../../common/context/SocketProvider';
+import MessagesOpenConversation from '../../components/messages-open-conversation';
 
 const MessagesScreen = () => {
     const tabs = {
