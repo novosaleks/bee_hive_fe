@@ -22,6 +22,7 @@ export const StyledPageWrapper = styled(PrimaryBackgroundPage)`
     display: flex;
     min-height: 100vh;
     padding: 5%;
+    ${flexbox};
 `;
 
 export const Input = styled.input`
