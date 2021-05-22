@@ -7,6 +7,7 @@ export const theme = {
         textColor: '#000',
         inputColor: '#000',
         focusColor: '#484848',
+        hoverColor: '#BDD3E9',
     },
     dark: {
         primaryColor: '#f15a29',
@@ -16,5 +17,6 @@ export const theme = {
         textColor: '#fff',
         inputColor: '#fff',
         focusColor: '#acacac',
+        hoverColor: '#BDD3E9',
     },
 };
