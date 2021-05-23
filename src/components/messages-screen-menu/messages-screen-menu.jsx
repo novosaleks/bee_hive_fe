@@ -5,11 +5,11 @@ import { MenuWrapper, Hamburger, Menu } from './messages-screen-menu.style';
 const MessagesScreenMenu = ({ activeTab, clickHandler, tabs }) => {
     return (
         <MenuWrapper>
-            <input type="checkbox" class="toggle" />
+            <input type="checkbox" className="toggler" />
             <Hamburger>
                 <div></div>
             </Hamburger>
-            <Menu>
+            <Menu className="menu">
                 <SidebarTab
                     {...{ activeTab, clickHandler, tabs }}
                     messageBlock={true}

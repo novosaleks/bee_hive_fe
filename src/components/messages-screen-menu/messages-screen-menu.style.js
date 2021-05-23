@@ -1,7 +1,105 @@
-import styled, { css } from 'styled-components';
+import styled from 'styled-components';
 import { StyledDiv } from '../../common/style';
+import { getValueFromTheme } from '../../common/utils';
+export const MenuWrapper = styled.div`
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    height: 100vh;
+    width: 4vw;
+    background-color: ${getValueFromTheme('messagesScreenSidebarColor')};
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    .toggler {
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: 2;
+        cursor: pointer;
+        width: 50px;
+        height: 50px;
+        opacity: 0;
+    }
+    //animation for menu
+    .toggler:checked + section > div {
+        transform: rotate(135deg);
+    }
 
-export const MenuWrapper = styled(StyledDiv)``;
+    .toggler:checked + section > div::before,
+    .toggler:checked + section > div::after {
+        top: 0;
+        transform: rotate(90deg);
+    }
+    .toggler:checked:hover + section > div {
+        transform: rotate(225deg);
+    }
 
-export const Hamburger = styled(StyledDiv)``;
-export const Menu = styled(StyledDiv)``;
+    //Show menu
+    .toggler:checked ~ .menu {
+        visibility: visible;
+    }
+    .toggler:checked ~ .menu > div {
+        transform: scale(1);
+        transition-duration: 0.75s;
+    }
+    .toggler:checked ~ .menu > div > div {
+        opacity: 1;
+        transition: opacity 0.4s easy 0.4s;
+    }
+`;
+
+export const Hamburger = styled.section`
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    width: 100%;
+    height: 60px;
+    padding: 0.5rem;
+    background-color: ${getValueFromTheme('messagesScreenSidebarColor')};
+    display: flex;
+    align-items: center;
+    justify-content: start;
+
+    div {
+        position: relative;
+        flex: none;
+        width: 100%;
+        height: 2px;
+        background-color: ${getValueFromTheme(
+            'messagesScreenSidebarTextColor'
+        )};
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: all 0.4s ease;
+        &::before,
+        &::after {
+            content: '';
+            position: absolute;
+            top: -10px;
+            z-index: 1;
+            width: 100%;
+            height: 2px;
+            background: inherit;
+        }
+        &::after {
+            top: 10px;
+        }
+    }
+`;
+export const Menu = styled(StyledDiv)`
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    visibility: hidden;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+`;

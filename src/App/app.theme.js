@@ -8,6 +8,8 @@ export const theme = {
         inputColor: '#000',
         focusColor: '#484848',
         hoverColor: '#BDD3E9',
+        messagesScreenSidebarColor: '#324b51',
+        messagesScreenSidebarTextColor: '#f1f1e6',
     },
     dark: {
         primaryColor: '#f15a29',
@@ -18,5 +20,7 @@ export const theme = {
         inputColor: '#fff',
         focusColor: '#acacac',
         hoverColor: '#BDD3E9',
+        messagesScreenSidebarColor: '#324b51',
+        messagesScreenSidebarTextColor: '#f1f1e6',
     },
 };
