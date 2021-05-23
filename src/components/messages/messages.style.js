@@ -4,7 +4,7 @@ import { StyledDivPage, StyledDiv } from '../../common/style';
 export const MessagesDivBlock = styled(StyledDivPage)`
     margin-top: 1%;
     flex-direction: column;
-    height: 80vh;
+    height: 70vh;
     box-sizing: border-box;
     ${(props) =>
         props.conversationOpen &&

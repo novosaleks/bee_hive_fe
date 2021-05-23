@@ -1,5 +1,7 @@
-import React, { useState, useEffect } from 'react';
-import { StyledPageWrapper, StyledDivPage } from '../../common/style/index';
+import React, { useState } from 'react';
+
+import { StyledMessagePageWrapper } from './messages-screen.style';
+import { StyledDivPage } from '../../common/style/index';
 
 import { tabs } from '../../common/tabs';
 import MessagesScreenMenu from '../../components/messages-screen-menu';
@@ -40,7 +42,7 @@ const MessagesScreen = () => {
         </SocketProvider>
     );
     return (
-        <StyledPageWrapper flexDirection="column">
+        <StyledMessagePageWrapper flexDirection="column">
             <MessagesScreenMenu
                 activeTab={activeTab}
                 clickHandler={clickHandler}
@@ -53,7 +55,7 @@ const MessagesScreen = () => {
                     <ActionsNotifications />
                 )}
             </StyledDivPage>
-        </StyledPageWrapper>
+        </StyledMessagePageWrapper>
     );
 };
 
