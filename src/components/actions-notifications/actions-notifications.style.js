@@ -1,4 +1,4 @@
-import styled, { css } from 'styled-components';
+import styled from 'styled-components';
 import { StyledDiv, StyledText } from '../../common/style';
 import { getValueFromTheme } from '../../common/utils';
 

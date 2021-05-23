@@ -1,7 +1,11 @@
 import React, { useContext, useState, useEffect, useCallback } from 'react';
 import useLocalStorage from '../hooks/useLocalStorage';
-import { useContacts } from './ContactsProvider';
-import { useSocket } from './SocketProvider';
+import { useContacts } from './contactsContext';
+import { useSocket } from './socketContext';
+
+//with gql
+// import { useQuery, useMutation } from '@apollo/client';
+// import { GET_ALL_CONVERSATIONS, ADD_NEW_CONVERSATION } from '../../graphql/conversation';
 
 const ConversationsContext = React.createContext();
 
@@ -10,24 +14,46 @@ export function useConversations() {
 }
 
 export function ConversationsProvider({ id, children }) {
+    //with gql (and we do not need useLocalStorage)
+    // const { loading, error, data } = useQuery(GET_ALL_CONVERSATIONS);
+    // const [addNewConversation, { data }] = useMutation(ADD_NEW_CONVERSATION);
+
+    // if (loading) {
+    //     return <div>LOADING...</div>;
+    // }
+
+    // if (error) {
+    //     return <div>Error: {error.message}</div>;
+    // }
+
+    // const conversations = data.getAllConversations;
+
+    // const createConversation = async (recipients) => {
+    //     await addNewConversation({
+    //         variables: {
+    //             recipients: recipients,
+    //             messages: [],
+    //         },
+    //     });
+    // };
+
     const [conversations, setConversations] = useLocalStorage(
         'conversations',
         []
     );
-
     const [selectedConversationIndex, setSelectedConversationIndex] =
         useState(0);
     const avaliableContacts = useContacts();
     const socket = useSocket();
 
-    function createConversation(recipients) {
+    const createConversation = (recipients) => {
         setConversations((prevConversations) => {
             return [
                 ...prevConversations,
                 { recipients: recipients, messages: [] },
             ];
         });
-    }
+    };
 
     const addMessageToConversation = useCallback(
         ({ recipients, text, sender }) => {
@@ -74,11 +100,11 @@ export function ConversationsProvider({ id, children }) {
         return () => socket.off('receive-message');
     }, [socket, addMessageToConversation]);
 
-    function sendMessage(recipients, text) {
+    const sendMessage = (recipients, text) => {
         socket.emit('send-message', { recipients, text });
 
         addMessageToConversation({ recipients, text, sender: id });
-    }
+    };
 
     const formattedConversations = conversations.map((conversation, index) => {
         const recipients = conversation.recipients.map((recipient) => {

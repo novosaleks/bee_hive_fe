@@ -11,10 +11,9 @@ import ActionsNotifications from '../../components/actions-notifications';
 import { useQuery } from '@apollo/client';
 import { GET_CURRENT_USER } from '../../graphql/user';
 
-// NOT NESECCERY IN REAL PROJECT
 import { ConversationsProvider } from '../../common/context/conversationContext';
-import { ContactsProvider } from '../../common/context/ContactsProvider';
-import { SocketProvider } from '../../common/context/SocketProvider';
+import { ContactsProvider } from '../../common/context/contactsContext';
+import { SocketProvider } from '../../common/context/socketContext';
 
 const MessagesScreen = () => {
     const [activeTab, setActiveTab] = useState(tabs.messagesPage[0].label);

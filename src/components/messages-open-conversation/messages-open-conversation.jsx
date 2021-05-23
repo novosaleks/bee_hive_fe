@@ -1,5 +1,5 @@
 import React, { useState, useCallback } from 'react';
-import { StyledDiv, Input, StyledText } from '../../common/style';
+import { StyledDiv, Input } from '../../common/style';
 import { useConversations } from '../../common/context/conversationContext';
 import {
     OpenConversationGroup,
@@ -19,7 +19,7 @@ const MessagesOpenConversation = () => {
     function handleSubmit(e) {
         e.preventDefault();
 
-        sendMessage(selectedConversation.recipients, text);
+        text !== '' && sendMessage(selectedConversation.recipients, text);
         setText('');
     }
 
