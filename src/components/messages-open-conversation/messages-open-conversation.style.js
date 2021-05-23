@@ -1,6 +1,5 @@
 import styled from 'styled-components';
 import { StyledDiv, Button } from '../../common/style';
-import { getValueFromTheme } from '../../common/utils';
 
 export const OpenConversationGroup = styled(StyledDiv)`
     grid-area: 1 / 2 / 2 / 5;
@@ -12,10 +11,11 @@ export const OpenConversationDiv = styled(StyledDiv)`
     background-color: #72898f;
     overflow: auto;
     flex-grow: 1;
+    justify-content: flex-start;
 `;
 export const MessageDiv = styled(StyledDiv)`
     align-items: start;
-    justify-content: end;
+    justify-self: end;
     padding: 5px;
 `;
 export const SendButton = styled(Button)`

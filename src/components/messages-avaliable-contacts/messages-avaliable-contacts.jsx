@@ -1,6 +1,6 @@
 import React from 'react';
 import MessagesContact from '../messages-contact';
-import { useContacts } from '../../common/context/ContactsProvider';
+import { useContacts } from '../../common/context/contactsContext';
 
 import { Form } from 'react-bootstrap';
 import {

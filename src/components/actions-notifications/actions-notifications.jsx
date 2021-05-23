@@ -7,9 +7,10 @@ import {
     NotificationText,
     PostTextStyled,
 } from './actions-notifications.style';
+
 const NOTOFICATIONS_EXEMPLE = [
     {
-        photo: 2,
+        photo: null,
         firstName: 'Mark',
         lastName: 'Jacobs',
         userRatingColor: '#c53b0e',
@@ -20,7 +21,7 @@ const NOTOFICATIONS_EXEMPLE = [
             'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
     },
     {
-        photo: 2,
+        photo: null,
         firstName: 'Mark',
         lastName: 'Jacobs',
         userRatingColor: '#c53b0e',
@@ -32,7 +33,26 @@ const NOTOFICATIONS_EXEMPLE = [
     },
 ];
 
+//with gql
+
+// import { useQuery } from '@apollo/client';
+// import { GET_ALL_NOTIFICATIONS } from '../../graphql/notification';
+
 const ActionsNotifications = () => {
+    //with gql
+
+    // const { loading, error, data } = useQuery(GET_ALL_NOTIFICATIONS);
+
+    // if (loading) {
+    //     return <div>LOADING...</div>;
+    // }
+
+    // if (error) {
+    //     return <div>Error: {error.message}</div>;
+    // }
+
+    // const notifications = data.getAllNotifications;
+
     return (
         <StyledDiv>
             {NOTOFICATIONS_EXEMPLE.map(

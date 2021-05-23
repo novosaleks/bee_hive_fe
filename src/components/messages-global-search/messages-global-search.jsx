@@ -1,7 +1,7 @@
 import React from 'react';
 import { Form } from 'react-bootstrap';
 import MessagesContact from '../messages-contact';
-import { useContacts } from '../../common/context/ContactsProvider';
+import { useContacts } from '../../common/context/contactsContext';
 
 import {
     StyledDiv,
