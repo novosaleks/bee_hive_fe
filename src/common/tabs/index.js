@@ -1,4 +1,3 @@
-import React, { useState } from 'react';
 import followers from '../../assets/followers.svg';
 import following from '../../assets/following.svg';
 import messages from '../../assets/messages.svg';

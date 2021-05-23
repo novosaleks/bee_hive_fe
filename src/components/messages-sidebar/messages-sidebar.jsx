@@ -1,7 +1,5 @@
 import React, { useState } from 'react';
 
-import MessagesAvaliableContacts from '../messages-avaliable-contacts';
-import MessagesGlobalSearch from '../messages-global-search';
 import MessagesNewChatModal from '../messages-new-chat-modal';
 
 import {
@@ -11,8 +9,6 @@ import {
 
 import { Modal } from 'react-bootstrap';
 
-// NOT NESECCERY IN REAL PROJECT
-// import { useConversations } from '../../common/context/conversationContext';
 import MessagesConversations from '../messages-conversations';
 
 const MessagesSidebar = ({ identifyUser, conversationOpen }) => {

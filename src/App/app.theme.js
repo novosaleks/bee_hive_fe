@@ -12,6 +12,11 @@ export const theme = {
         messagesScreenSidebarTextColor: '#f1f1e6',
         searchContactsBgColor: '#72898f',
         searchContactsTextColor: '#f0f0ef',
+        reallyGoodColor: '#5DAC38',
+        goodColor: '#5B8C45',
+        nautralColor: '#97A98F',
+        badColor: '#EF6A3F',
+        reallyBadColor: '#C53B0E',
     },
     dark: {
         primaryColor: '#f15a29',
@@ -26,5 +31,10 @@ export const theme = {
         messagesScreenSidebarTextColor: '#f1f1e6',
         searchContactsBgColor: '#72898f',
         searchContactsTextColor: '#f0f0ef',
+        reallyGoodColor: '#5DAC38',
+        goodColor: '#5B8C45',
+        nautralColor: '#97A98F',
+        badColor: '#EF6A3F',
+        reallyBadColor: '#C53B0E',
     },
 };

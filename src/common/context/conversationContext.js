@@ -1,28 +1,3 @@
-// const formattedConversations = conversations.map((conversation, index) => {
-//     const recipients = conversation.recipients.map((recipient) => {
-//         const name = `${recipient.firstName} ${recipient.lastName}`;
-
-//         return { user: recipient, name };
-//     });
-//     const messages = conversation.messages.map((message) => {
-//         //we need to find a first name of the sender here
-
-//         const contact = avaliableContacts.find((contact) => {
-//             return contact.id === message.sender;
-//         });
-
-//         const name = contact.firstName;
-
-//         //we compere our current user id with the user who send the message
-
-//         const fromMe = id === message.sender;
-
-//         return { ...message, senderName: name, fromMe };
-//     });
-//     const selected = index === selectedConversationIndex;
-//     return { ...conversation, messages, recipients, selected };
-// });
-
 import React, { useContext, useState, useEffect, useCallback } from 'react';
 import useLocalStorage from '../hooks/useLocalStorage';
 import { useContacts } from './ContactsProvider';
@@ -39,7 +14,6 @@ export function ConversationsProvider({ id, children }) {
         'conversations',
         []
     );
-    // const [conversations, setConversations] = useState([]);
 
     const [selectedConversationIndex, setSelectedConversationIndex] =
         useState(0);
@@ -62,11 +36,6 @@ export function ConversationsProvider({ id, children }) {
                 const newMessage = { sender, text };
                 const newConversations = prevConversations.map(
                     (conversation) => {
-                        console.log(
-                            'conversation.recipients',
-                            conversation.recipients
-                        );
-                        console.log('recipients', recipients);
                         if (
                             arrayEquality(conversation.recipients, recipients)
                         ) {
