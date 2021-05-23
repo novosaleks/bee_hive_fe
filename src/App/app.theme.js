@@ -10,6 +10,8 @@ export const theme = {
         hoverColor: '#BDD3E9',
         messagesScreenSidebarColor: '#324b51',
         messagesScreenSidebarTextColor: '#f1f1e6',
+        searchContactsBgColor: '#72898f',
+        searchContactsTextColor: '#f0f0ef',
     },
     dark: {
         primaryColor: '#f15a29',
@@ -22,5 +24,7 @@ export const theme = {
         hoverColor: '#BDD3E9',
         messagesScreenSidebarColor: '#324b51',
         messagesScreenSidebarTextColor: '#f1f1e6',
+        searchContactsBgColor: '#72898f',
+        searchContactsTextColor: '#f0f0ef',
     },
 };

@@ -1,6 +1,6 @@
 import styled, { css } from 'styled-components';
-import { StyledDivPage, StyledDiv } from '../../common/style';
-
+import { StyledDivPage, SearchContactsDiv } from '../../common/style';
+import { getValueFromTheme } from '../../common/utils';
 export const MessagesDivBlock = styled(StyledDivPage)`
     margin-top: 1%;
     flex-direction: column;
@@ -18,14 +18,11 @@ export const MessagesDivBlock = styled(StyledDivPage)`
         `}
 `;
 
-export const NotificationDiv = styled(StyledDiv)`
-    background-color: #72898f;
+export const NotificationDiv = styled(SearchContactsDiv)`
     height: 30vh;
-    box-sizing: border-box;
-    align-self: center;
 `;
 export const NotificationTitle = styled.h2`
     font-size: 1.2rem;
-    color: #f0f0ef;
+    color: ${getValueFromTheme('searchContactsTextColor')};
     padding: 3px;
 `;

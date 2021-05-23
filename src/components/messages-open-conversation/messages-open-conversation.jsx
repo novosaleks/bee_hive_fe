@@ -19,11 +19,7 @@ const MessagesOpenConversation = () => {
     function handleSubmit(e) {
         e.preventDefault();
 
-        sendMessage(
-            //deleted .map(r=>r.id)
-            selectedConversation.recipients,
-            text
-        );
+        sendMessage(selectedConversation.recipients, text);
         setText('');
     }
 
