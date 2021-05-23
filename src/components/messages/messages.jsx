@@ -16,10 +16,7 @@ const Messages = ({ identifyUser }) => {
     // const selectedConversation = false;
 
     return (
-        <MessagesDivBlock
-            conversationOpen={selectedConversation}
-            style={{ height: '400px' }}
-        >
+        <MessagesDivBlock conversationOpen={selectedConversation}>
             <MessagesSidebar
                 identifyUser={identifyUser}
                 conversationOpen={selectedConversation}

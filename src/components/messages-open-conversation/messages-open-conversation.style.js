@@ -6,15 +6,12 @@ export const OpenConversationGroup = styled(StyledDiv)`
     grid-area: 1 / 2 / 2 / 5;
     flex-grow: 2;
     margin-left: 3%;
-    height: 400px;
+    overflow: auto;
 `;
 export const OpenConversationDiv = styled(StyledDiv)`
     background-color: #72898f;
-    flex-grow: 1;
     overflow: auto;
-    /* overflow-y: scroll; */
-    height: 400px;
-    justify-content: flex-end;
+    flex-grow: 1;
 `;
 export const MessageDiv = styled(StyledDiv)`
     align-items: start;
@@ -22,8 +19,7 @@ export const MessageDiv = styled(StyledDiv)`
     padding: 5px;
 `;
 export const SendButton = styled(Button)`
-    width: 20vw;
+    width: 15vw;
     font-size: 1rem;
+    margin-right: 3%;
 `;
-
-export const MessageTextDiv = styled.div``;

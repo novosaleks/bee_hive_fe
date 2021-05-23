@@ -67,12 +67,13 @@ const MessagesOpenConversation = () => {
                     })}
                 </MessageDiv>
             </OpenConversationDiv>
-            <StyledDiv direction="row" mt={1}>
+            <StyledDiv direction="row" mt={1} content="space-between">
                 <Input
                     placeholder="Type ..."
                     value={text}
                     onChange={(e) => setText(e.target.value)}
                     mr={3}
+                    style={{ height: '45px', width: '50vw' }}
                 />
                 <SendButton onClick={handleSubmit}>Send</SendButton>
             </StyledDiv>
