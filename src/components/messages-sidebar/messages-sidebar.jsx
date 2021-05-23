@@ -4,10 +4,6 @@ import MessagesAvaliableContacts from '../messages-avaliable-contacts';
 import MessagesGlobalSearch from '../messages-global-search';
 import MessagesNewChatModal from '../messages-new-chat-modal';
 
-import { useQuery } from '@apollo/client';
-import { GET_CURRENT_USER } from '../../graphql/user';
-
-import { Input } from '../../common/style';
 import {
     MessagesSidebarStyled,
     NewConversationButton,

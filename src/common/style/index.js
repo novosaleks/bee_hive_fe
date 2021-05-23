@@ -166,3 +166,13 @@ export const Logo = styled.img`
     width: 100%;
     height: auto;
 `;
+
+export const SearchContactsDiv = styled(StyledDiv)`
+    background-color: ${getValueFromTheme('searchContactsBgColor')};
+    box-sizing: border-box;
+`;
+export const SearchContactsTitle = styled.h2`
+    font-size: 1.2rem;
+    color: ${getValueFromTheme('searchContactsTextColor')};
+    padding: 3px;
+`;
