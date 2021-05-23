@@ -4,6 +4,8 @@ import { StyledDivPage, StyledDiv } from '../../common/style';
 export const MessagesDivBlock = styled(StyledDivPage)`
     margin-top: 1%;
     flex-direction: column;
+    height: 80vh;
+    box-sizing: border-box;
     ${(props) =>
         props.conversationOpen &&
         css`
@@ -13,7 +15,6 @@ export const MessagesDivBlock = styled(StyledDivPage)`
             grid-template-columns: repeat(4, 1fr);
             grid-template-rows: 1fr;
             grid-column-gap: 5px;
-            height: 60vh;
         `}
 `;
 
