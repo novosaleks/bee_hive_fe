@@ -57,6 +57,7 @@ export function ConversationsProvider({ id, children }) {
 
     const addMessageToConversation = useCallback(
         ({ recipients, text, sender }) => {
+            console.log(recipients);
             setConversations((prevConversations) => {
                 let madeChange = false;
                 const newMessage = { sender, text };
@@ -94,6 +95,12 @@ export function ConversationsProvider({ id, children }) {
 
     useEffect(() => {
         if (socket == null) return;
+        console.log(socket);
+
+        socket.on('connect', function () {
+            console.log('Connected to WS server');
+            console.log(socket.connected);
+        });
 
         socket.on('receive-message', addMessageToConversation);
 
@@ -150,14 +157,13 @@ export function ConversationsProvider({ id, children }) {
     );
 }
 
-function arrayEquality(a, b) {
+const arrayEquality = (a, b) => {
     if (a.length !== b.length) return false;
 
     a.sort();
     b.sort();
 
     return a.every((element, index) => {
-        console.log('b[index]', b[index]);
         return element === b[index].id;
     });
-}
+};
