@@ -23,9 +23,7 @@ const Messages = ({ identifyUser }) => {
                     </SearchContactsTitle>
                 </NotificationDiv>
             )}
-            {selectedConversation && (
-                <MessagesOpenConversation style={{ height: '400px' }} />
-            )}
+            {selectedConversation && <MessagesOpenConversation />}
         </MessagesDivBlock>
     );
 };

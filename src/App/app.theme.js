@@ -17,6 +17,7 @@ export const theme = {
         nautralColor: '#97A98F',
         badColor: '#EF6A3F',
         reallyBadColor: '#C53B0E',
+        buttonBgColor: '#ffffff',
     },
     dark: {
         primaryColor: '#f15a29',
@@ -36,5 +37,6 @@ export const theme = {
         nautralColor: '#97A98F',
         badColor: '#EF6A3F',
         reallyBadColor: '#C53B0E',
+        buttonBgColor: '#9BAEBC',
     },
 };

@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
 import { Modal, Form } from 'react-bootstrap';
 
-import { Input } from '../../common/style';
-import { ChatModalButton } from './messages-new-chat-modal.style';
+import {
+    ChatModalButton,
+    ChatModalInput,
+} from './messages-new-chat-modal.style';
 
 import { useConversations } from '../../common/context/conversationContext';
 
@@ -39,7 +41,7 @@ const MessagesNewChatModal = ({ closeModal, identifyUser }) => {
         <>
             <Modal.Header closeButton>Create Conversation</Modal.Header>
             <Modal.Body overflow="auto">
-                <Input
+                <ChatModalInput
                     placeholder="Start conversation with ..."
                     value={searchTerm}
                     onChange={(event) => setSearchTerm(event.target.value)}

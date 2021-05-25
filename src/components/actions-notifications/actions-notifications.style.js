@@ -6,7 +6,8 @@ export const NotificationBlock = styled(StyledDiv)`
     border: 2px solid ${getValueFromTheme('primaryColor')};
     flex-direction: row;
     padding: 5px;
-    margin-top: 5%;
+    margin-top: 2%;
+    margin-bottom: 5%;
     width: 85vw;
     height: 12vw;
     overflow: hidden;

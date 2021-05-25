@@ -25,7 +25,7 @@ const MessagesSidebar = ({ identifyUser, conversationOpen }) => {
                 New Conversation
             </NewConversationButton>
 
-            <MessagesConversations />
+            <MessagesConversations smallBlock />
 
             {/* modal for choosing with which avaliable contacts user whant to start a chat with */}
 

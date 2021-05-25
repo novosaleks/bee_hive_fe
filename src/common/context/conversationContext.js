@@ -1,7 +1,6 @@
 import React, { useContext, useState, useEffect, useCallback } from 'react';
 import useLocalStorage from '../hooks/useLocalStorage';
 import { useContacts } from './contactsContext';
-import { useSocket } from './socketContext';
 
 //with gql
 // import { useQuery, useMutation } from '@apollo/client';
@@ -44,7 +43,6 @@ export function ConversationsProvider({ id, children }) {
     const [selectedConversationIndex, setSelectedConversationIndex] =
         useState(0);
     const avaliableContacts = useContacts();
-    const socket = useSocket();
 
     const createConversation = (recipients) => {
         setConversations((prevConversations) => {
@@ -55,61 +53,34 @@ export function ConversationsProvider({ id, children }) {
         });
     };
 
-    const addMessageToConversation = useCallback(
-        ({ recipients, text, sender }) => {
-            console.log(recipients);
-            setConversations((prevConversations) => {
-                let madeChange = false;
-                const newMessage = { sender, text };
-                const newConversations = prevConversations.map(
-                    (conversation) => {
-                        if (
-                            arrayEquality(conversation.recipients, recipients)
-                        ) {
-                            madeChange = true;
-                            return {
-                                ...conversation,
-                                messages: [
-                                    ...conversation.messages,
-                                    newMessage,
-                                ],
-                            };
-                        }
-
-                        return conversation;
-                    }
-                );
-
-                if (madeChange) {
-                    return newConversations;
-                } else {
-                    return [
-                        ...prevConversations,
-                        { recipients, messages: [newMessage] },
-                    ];
+    const addMessageToConversation = ({ recipients, text, sender }) => {
+        setConversations((prevConversations) => {
+            let madeChange = false;
+            const newMessage = { sender, text };
+            const newConversations = prevConversations.map((conversation) => {
+                if (arrayEquality(conversation.recipients, recipients)) {
+                    madeChange = true;
+                    return {
+                        ...conversation,
+                        messages: [...conversation.messages, newMessage],
+                    };
                 }
+
+                return conversation;
             });
-        },
-        [setConversations]
-    );
 
-    useEffect(() => {
-        if (socket == null) return;
-        console.log(socket);
-
-        socket.on('connect', function () {
-            console.log('Connected to WS server');
-            console.log(socket.connected);
+            if (madeChange) {
+                return newConversations;
+            } else {
+                return [
+                    ...prevConversations,
+                    { recipients, messages: [newMessage] },
+                ];
+            }
         });
-
-        socket.on('receive-message', addMessageToConversation);
-
-        return () => socket.off('receive-message');
-    }, [socket, addMessageToConversation]);
+    };
 
     const sendMessage = (recipients, text) => {
-        socket.emit('send-message', { recipients, text });
-
         addMessageToConversation({ recipients, text, sender: id });
     };
 

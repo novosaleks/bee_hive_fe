@@ -13,7 +13,6 @@ import { GET_CURRENT_USER } from '../../graphql/user';
 
 import { ConversationsProvider } from '../../common/context/conversationContext';
 import { ContactsProvider } from '../../common/context/contactsContext';
-import { SocketProvider } from '../../common/context/socketContext';
 
 const MessagesScreen = () => {
     const [activeTab, setActiveTab] = useState(tabs.messagesPage[0].label);
@@ -32,22 +31,20 @@ const MessagesScreen = () => {
     const identifyUser = data.currentUser.id;
 
     const messagesDiv = (
-        <SocketProvider id={identifyUser}>
-            <ContactsProvider>
-                <ConversationsProvider id={identifyUser}>
-                    <Messages identifyUser={identifyUser} />
-                </ConversationsProvider>
-            </ContactsProvider>
-        </SocketProvider>
+        <ContactsProvider>
+            <ConversationsProvider id={identifyUser}>
+                <Messages identifyUser={identifyUser} />
+            </ConversationsProvider>
+        </ContactsProvider>
     );
     return (
-        <StyledMessagePageWrapper flexDirection="column">
+        <StyledMessagePageWrapper>
             <MessagesScreenMenu
                 activeTab={activeTab}
                 clickHandler={clickHandler}
                 tabs={tabs.messagesPage}
             />
-            <StyledDivPage>
+            <StyledDivPage pt={3}>
                 {tabs.messagesPage[0].label === activeTab ? (
                     messagesDiv
                 ) : (

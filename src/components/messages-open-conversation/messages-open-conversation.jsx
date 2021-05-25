@@ -7,6 +7,8 @@ import {
     MessageDiv,
     SendButton,
 } from './messages-open-conversation.style';
+import MessagesContact from '../messages-contact';
+import MessagesChatHeader from '../messages-chat-header';
 const MessagesOpenConversation = () => {
     const [text, setText] = useState('');
     const setRef = useCallback((node) => {
@@ -25,6 +27,12 @@ const MessagesOpenConversation = () => {
 
     return (
         <OpenConversationGroup>
+            {selectedConversation.recipients.length !== 1 ? (
+                <MessagesChatHeader />
+            ) : (
+                <MessagesContact contactSearch={false} smallBlock />
+            )}
+
             <OpenConversationDiv>
                 <MessageDiv>
                     {selectedConversation.messages.map((message, index) => {

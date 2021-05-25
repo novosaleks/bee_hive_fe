@@ -2,49 +2,54 @@ import React from 'react';
 import { StyledDiv } from '../../common/style/index';
 import UserAvatar from '../user-avatar';
 import PostAuthorAndData from '../post-author-and-data';
-
+import { useContacts } from '../../common/context/contactsContext';
+import { useConversations } from '../../common/context/conversationContext';
 import { MessagesContactsDiv } from './messages-contact.style';
 
 const MessagesContact = ({
-    // firstName,
-    // lastName,
-    name,
+    smallBlock,
+    contactSearch,
+    contactID,
     status,
     ratingColor,
     statusColor,
     rateScore,
     photo,
-    smallBlock,
-    event,
 }) => {
+    const { selectedConversation } = useConversations();
+    const avaliableContacts = useContacts();
+    const recipients = selectedConversation && selectedConversation.recipients;
+
+    const contact =
+        contactID &&
+        avaliableContacts.find((contact) => contact.id === contactID);
+    const contactName = contact && `${contact.firstName} ${contact.lastName}`;
+    //make GQL query by id of the recipeint to find all needed info about the user:
+    //status,
+    // ratingColor,
+    // statusColor,
+    // rateScore,
+    // photo
+
     return (
-        <MessagesContactsDiv
-            align="center"
-            direction="row"
-            content="space-between"
-            onClick={event}
-            m={3}
-            p={3}
-        >
+        <MessagesContactsDiv contactSearch={contactSearch}>
             <UserAvatar
                 rating={ratingColor || '#C53B0E'}
                 rateScore={rateScore || '1,5'}
                 photo={photo}
-                width={smallBlock ? 70 : [70, 135]}
-                height={smallBlock ? 70 : [70, 135]}
+                width={70}
+                height={70}
                 {...{ smallBlock }}
             />
-            <StyledDiv
-                width={smallBlock ? '70%' : '80%'}
-                align="flex-end"
-                ml="20px"
-            >
+            <StyledDiv width="90%" align="flex-end" ml="20px">
                 <PostAuthorAndData
-                    // name={`${firstName} ${lastName}` || 'First and last name'}
-                    name={name || 'First and last name'}
+                    name={
+                        contactSearch
+                            ? contactName
+                            : recipients.map((r) => r.name).join(', ')
+                    }
                     data={status || 'Online'}
                     color={statusColor || '#5DAC38'}
-                    {...{ smallBlock }}
                 />
             </StyledDiv>
         </MessagesContactsDiv>

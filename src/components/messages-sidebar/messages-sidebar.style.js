@@ -2,12 +2,8 @@ import styled, { css } from 'styled-components';
 import { StyledDiv, Button, media } from '../../common/style/index';
 
 export const MessagesSidebarStyled = styled(StyledDiv)`
-    width: 100%;
-    height: 100%;
     justify-content: flex-start;
-    align-self: center;
-    margin-top: 5%;
-    margin-bottom: 5%;
+    align-self: self-start;
     ${(props) =>
         props.conversationOpen &&
         css`
