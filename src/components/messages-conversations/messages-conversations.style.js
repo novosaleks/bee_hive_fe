@@ -1,4 +1,4 @@
-import styled, { css } from 'styled-components';
+import styled from 'styled-components';
 import { StyledDiv } from '../../common/style';
 import { getValueFromTheme } from '../../common/utils';
 
@@ -13,5 +13,22 @@ export const ConversationStyledDiv = styled(StyledDiv)`
     }
     &.active {
         background-color: ${getValueFromTheme('hoverColor')};
+    }
+`;
+
+export const ContactInfoDiv = styled.div`
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    width: 20vw;
+    margin-left: 15px;
+
+    span {
+        width: 100px;
+        font-style: italic;
+        opacity: 0.8;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
     }
 `;

@@ -3,8 +3,8 @@ import { Form } from 'react-bootstrap';
 import MessagesContact from '../messages-contact';
 import { useContacts } from '../../common/context/contactsContext';
 
+import { MessagesGlobalSearchDiv } from './messages-global-search.style';
 import {
-    StyledDiv,
     SearchContactsDiv,
     SearchContactsTitle,
 } from '../../common/style/index';
@@ -16,7 +16,7 @@ const MessagesGlobalSearch = ({
 }) => {
     const avaliableContacts = useContacts();
     return (
-        <StyledDiv mt="10px">
+        <MessagesGlobalSearchDiv>
             <SearchContactsDiv>
                 <SearchContactsTitle>Global Search</SearchContactsTitle>
             </SearchContactsDiv>
@@ -31,14 +31,21 @@ const MessagesGlobalSearch = ({
                             <Form.Check
                                 type="checkbox"
                                 value={selectedContactIds.includes(+contact.id)}
-                                label={`${contact.firstName} ${contact.lastName}`}
+                                label={
+                                    <MessagesContact
+                                        smallBlock
+                                        contactSearch
+                                        contactID={contact.id}
+                                    />
+                                }
                                 onChange={() =>
                                     handleCheckboxChange(+contact.id)
                                 }
+                                className="mt-2"
                             />
                         </Form.Group>
                     ))}
-        </StyledDiv>
+        </MessagesGlobalSearchDiv>
     );
 };
 

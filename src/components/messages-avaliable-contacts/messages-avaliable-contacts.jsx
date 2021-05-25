@@ -3,8 +3,9 @@ import MessagesContact from '../messages-contact';
 import { useContacts } from '../../common/context/contactsContext';
 
 import { Form } from 'react-bootstrap';
+
+import { MessagesAvailiableContactsDiv } from './messages-avaliable-contacts.style';
 import {
-    StyledDiv,
     StyledText,
     SearchContactsDiv,
     SearchContactsTitle,
@@ -30,7 +31,7 @@ const MessagesAvaliableContacts = ({
         );
 
     return (
-        <StyledDiv content="start">
+        <MessagesAvailiableContactsDiv content="start">
             <SearchContactsDiv>
                 <SearchContactsTitle>Search Result</SearchContactsTitle>
             </SearchContactsDiv>
@@ -42,13 +43,19 @@ const MessagesAvaliableContacts = ({
                         <Form.Check
                             type="checkbox"
                             value={selectedContactIds.includes(+contact.id)}
-                            label={`${contact.firstName} ${contact.lastName}`}
+                            label={
+                                <MessagesContact
+                                    smallBlock
+                                    contactSearch
+                                    contactID={contact.id}
+                                />
+                            }
                             onChange={() => handleCheckboxChange(+contact.id)}
                         />
                     </Form.Group>
                 ))
             )}
-        </StyledDiv>
+        </MessagesAvailiableContactsDiv>
     );
 };
 

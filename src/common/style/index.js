@@ -55,7 +55,8 @@ export const Input = styled.input`
 `;
 
 export const Button = styled.button`
-    background-color: ${props => props.backgroundColor || '#fff'};
+    background-color: ${props =>
+        props.backgroundColor || getValueFromTheme('buttonBgColor')};
     border: 2px solid
         ${props => props.borderColor || getValueFromTheme('primaryColor')};
     font-size: ${props => props.backgroundColor || '36px'};
@@ -140,7 +141,7 @@ export const StyledDivPage = styled(StyledDiv)`
     align-items: flex-start;
     justify-content: space-around;
     ${flexbox};
-
+    ${layout};
     ${media.mobile} {
         flex-direction: column;
     }

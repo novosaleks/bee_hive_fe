@@ -49,6 +49,7 @@ export const CreateAccountLink = styled(Link)`
 `;
 
 export const OptionText = styled.div`
+    color: ${getValueFromTheme('textColor')};
     text-align: center;
     margin: 55px 0;
 `;
