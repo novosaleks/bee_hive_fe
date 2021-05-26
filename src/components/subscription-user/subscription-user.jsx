@@ -13,7 +13,7 @@ const SubscriptionUser = ({
     rateScore,
     isFollow,
     login,
-    onlineBlock,
+    smallBlock,
 }) => {
     return (
         <StyledDiv
@@ -27,19 +27,19 @@ const SubscriptionUser = ({
                     rating={ratingColor || '#C53B0E'}
                     rateScore={rateScore || '1,5'}
                     photo={photo}
-                    width={onlineBlock ? 70 : [70, 135]}
-                    height={onlineBlock ? 70 : [70, 135]}
-                    {...{ onlineBlock }}
+                    width={smallBlock ? 70 : [70, 135]}
+                    height={smallBlock ? 70 : [70, 135]}
+                    {...{ smallBlock }}
                 />
             </StyledDiv>
 
             <StyledDiv
-                width={onlineBlock ? '70%' : '80%'}
+                width={smallBlock ? '70%' : '80%'}
                 align='flex-end'
                 ml='20px'>
                 <FollowButton
                     isFollow={isFollow}
-                    width={onlineBlock ? '70px' : '150px'}
+                    width={smallBlock ? '70px' : '150px'}
                     height='30px'
                 />
                 <NavLink to={`/${login}`} width={1}>
@@ -47,7 +47,7 @@ const SubscriptionUser = ({
                         name={name || 'First and last name'}
                         data={status || 'Online'}
                         color={statusColor || '#5DAC38'}
-                        {...{ onlineBlock }}
+                        {...{ smallBlock }}
                     />
                 </NavLink>
             </StyledDiv>
