@@ -19,6 +19,11 @@ export const DivImgForUserAvatar = styled.div`
             background-position: center center;
             background-repeat: no-repeat;
         `}
+    ${props =>
+        props.dropdownBlock &&
+        css`
+            border: 2px solid ${getValueFromTheme('primaryColor')};
+        `}
 `;
 
 export const RateScore = styled.div`
@@ -30,13 +35,19 @@ export const RateScore = styled.div`
     border: 1px solid ${getValueFromTheme('primaryBgColorPage')};
 
     ${props =>
-        props.onlineBlock &&
+        props.smallBlock &&
         css`
             width: 25px;
             height: 20px;
             font-size: 0.7em;
             position: relative;
             left: 25%;
+        `};
+
+    ${props =>
+        props.dropdownBlock &&
+        css`
+            display: none;
         `};
 
     ${media.miniMobile} {

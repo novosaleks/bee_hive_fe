@@ -46,7 +46,7 @@ const NewsScreen = () => {
             <StyledDivPage>
                 <SidebarDivStyled>
                     <Title>Users online</Title>
-                    <FollowUser follow={usersOnline} onlineBlock={true} />
+                    <FollowUser follow={usersOnline} smallBlock={true} />
                 </SidebarDivStyled>
                 <StyledPageContent>
                     <WallBlock />

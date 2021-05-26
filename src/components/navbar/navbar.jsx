@@ -7,6 +7,7 @@ import {
     MobileNavbarLinks,
 } from './navbar.style';
 
+import NavbarDropDownMenu from '../navbar-dropdown-menu';
 import logo_mini from '../../assets/logo_mini.svg';
 import { DivLine } from '../../common/style';
 
@@ -20,6 +21,7 @@ const Navbar = ({ children }) => {
             <InnerContent>
                 <img src={logo_mini} alt='logo' />
                 <NavbarLinks>{children}</NavbarLinks>
+                <NavbarDropDownMenu />
                 <MobileMenu onClick={handlerClick} isOpen={openState} />
             </InnerContent>
             <DivLine />

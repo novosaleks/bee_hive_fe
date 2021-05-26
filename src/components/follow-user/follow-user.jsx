@@ -1,6 +1,6 @@
 import React from 'react';
 import SubscriptionUser from '../subscription-user';
-const FollowUser = ({ follow, onlineBlock }) => {
+const FollowUser = ({ follow, smallBlock }) => {
     return (
         <>
             {follow.map(
@@ -24,7 +24,7 @@ const FollowUser = ({ follow, onlineBlock }) => {
                             rateScore,
                             isFollow,
                             login,
-                            onlineBlock,
+                            smallBlock,
                         }}
                         key={login}
                     />

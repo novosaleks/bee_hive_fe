@@ -1,6 +1,5 @@
 import React from 'react';
 import Navbar from '../../components/navbar';
-import Logout from '../../components/logout';
 
 import { NavLink } from '../../common/style';
 
@@ -11,8 +10,6 @@ const NavbarContainer = () => {
             <NavLink to='/subscription'>Subscriptions</NavLink>
             <NavLink to='/'>Messages</NavLink>
             <NavLink to='/news'>News</NavLink>
-            <NavLink to='/settings'>Settings</NavLink>
-            <Logout />
         </Navbar>
     );
 };
