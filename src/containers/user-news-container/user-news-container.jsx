@@ -11,7 +11,7 @@ const UserNews = ({
     rateScore,
     photo,
     date,
-    massege,
+    text,
 }) => {
     return (
         <StyledDiv
@@ -34,7 +34,7 @@ const UserNews = ({
                 {...{
                     name,
                     date,
-                    massege,
+                    text,
                 }}
             />
         </StyledDiv>

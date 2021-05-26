@@ -1,23 +1,49 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 
 import NewPostInput from '../new-post-input';
-import UsersNews from '../../containers/user-news-container';
+import UserNews from '../../containers/user-news-container';
 import Title from '../title';
 
 import { DivLine, StyledDiv } from '../../common/style/index';
 import { PublicationBodyDiv } from './publications.style';
 
-const Publications = () => {
+import { useQuery } from '@apollo/client';
+import { GET_POSTS_BY_AUTHOR_ID } from '../../graphql/post';
+
+import { formatDate } from '../../common/utils';
+
+const Publications = ({ user }) => {
+    const [posts, setPosts] = useState([]);
+    const { loading, error, data } = useQuery(GET_POSTS_BY_AUTHOR_ID, {
+        variables: { authorId: user.id },
+    });
+
+    useEffect(() => {
+        if (data) {
+            setPosts(data.getPostsByAuthorId);
+        }
+    }, [data]);
+
+    if (loading) return <div>Loading...</div>;
+    if (error) return <div>{`Error ${error.message}`}</div>;
+
     return (
         <StyledDiv marginTop='5%'>
             <Title>Publications</Title>
             <PublicationBodyDiv>
                 <NewPostInput />
-                <UsersNews />
-                <DivLine />
-                <UsersNews />
-                <DivLine />
-                <UsersNews />
+                {posts &&
+                    posts.map((post, index, arr) => (
+                        <div key={post.id}>
+                            <UserNews
+                                name={user.firstName + ' ' + user.lastName}
+                                text={post.text}
+                                date={formatDate(post.createdAt)}
+                            />
+                            {/* Don't render DivLine after the last post */}
+                            {index !== arr.length - 1 && <DivLine />}
+                        </div>
+                    ))}
             </PublicationBodyDiv>
         </StyledDiv>
     );
