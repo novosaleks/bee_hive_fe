@@ -13,7 +13,7 @@ export const UPDATE_POST = gql`
 `;
 
 export const REMOVE_POST = gql`
-    mutation RemovePost($postId: Int!) {
+    mutation RemovePost($postId: ID!) {
         removePost(postId: $postId)
     }
 `;

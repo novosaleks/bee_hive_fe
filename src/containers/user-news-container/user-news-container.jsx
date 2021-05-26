@@ -11,6 +11,7 @@ const UserNews = ({
     rateScore,
     photo,
     date,
+    postId,
     text,
 }) => {
     return (
@@ -34,6 +35,7 @@ const UserNews = ({
                 {...{
                     name,
                     date,
+                    postId,
                     text,
                 }}
             />
