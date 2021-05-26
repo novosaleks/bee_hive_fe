@@ -37,6 +37,7 @@ const Publications = ({ user }) => {
                         <div key={post.id}>
                             <UserNews
                                 name={user.firstName + ' ' + user.lastName}
+                                postId={post.id}
                                 text={post.text}
                                 date={formatDate(post.createdAt)}
                             />
