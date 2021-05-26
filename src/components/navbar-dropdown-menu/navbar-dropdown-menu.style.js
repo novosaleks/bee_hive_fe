@@ -23,7 +23,7 @@ export const NavbarDropdownMenuHeaderDiv = styled(StyledDiv)`
         margin-left: 20%;
     }
     ${media.miniMobile} {
-        margin-left: 5%;
+        margin-left: 3%;
         width: 15%;
         justify-content: flex-end;
         p,
