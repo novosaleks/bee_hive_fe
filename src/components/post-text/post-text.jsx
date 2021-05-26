@@ -5,7 +5,7 @@ const PostText = ({ text }) => {
     return (
         <TextDiv width='100%' minHeight={[250]}>
             <StyledText align='justify' size='1em'>
-                {text}
+                <pre>{text}</pre>
             </StyledText>
         </TextDiv>
     );

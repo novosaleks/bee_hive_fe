@@ -31,9 +31,10 @@ const PostEdit = ({ postId, text, handleEdit }) => {
     return (
         <>
             <form onSubmit={handleSubmit}>
-                <input ref={inputRef} defaultValue={text} />
+                <textarea ref={inputRef} defaultValue={text} />
+                <button type='submit'>Submit</button>
+                <button onClick={handleClick}>Cancel</button>
             </form>
-            <button onClick={handleClick}>X</button>
         </>
     );
 };
