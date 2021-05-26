@@ -7,8 +7,8 @@ export const CREATE_POST = gql`
 `;
 
 export const UPDATE_POST = gql`
-    mutation UpdatePost($text: String!, $postId: ID!) {
-        updatePost(text: $text, postId: $postId)
+    mutation UpdatePost($postId: ID!, $text: String!) {
+        updatePost(postId: $postId, text: $text)
     }
 `;
 
