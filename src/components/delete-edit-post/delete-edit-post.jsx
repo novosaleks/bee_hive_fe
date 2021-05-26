@@ -5,30 +5,23 @@ import editIcon from '../../assets/editIcon.svg';
 import deleteIcon from '../../assets/deleteIcon.svg';
 
 import { DeleteEditPostDiv, StyledImg } from './delete-edit-post.style';
-const DeleteEditPost = ({ postId }) => {
-    const [updatePost, { data: updateData }] = useMutation(UPDATE_POST);
-    const [removePost, { data: deleteData }] = useMutation(REMOVE_POST);
-
-    const [text, setText] = useState('');
+const DeleteEditPost = ({ postId, handleEdit }) => {
+    const [removePost, { data }] = useMutation(REMOVE_POST);
 
     const editPost = async () => {
-        await updatePost({
-            variables: {
-                text
-            },
-        });
+        handleEdit(true);
     };
 
     useEffect(() => {
-        if (deleteData) {
-            const success = deleteData.removePost;
+        if (data) {
+            const success = data.removePost;
             if (success) {
                 console.log("Success!");
                 // TODO after removal reload the component, not the page
                 window.location.reload();
             }
         }
-    }, [deleteData]);
+    }, [data]);
 
     const deletePost = async () => {
         await removePost({
