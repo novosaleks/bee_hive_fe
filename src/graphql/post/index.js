@@ -25,10 +25,6 @@ export const GET_POSTS_BY_AUTHOR_ID = gql`
             text
             createdAt
             updatedAt
-            author {
-                firstName
-                lastName
-            }
         }
     }
 `;

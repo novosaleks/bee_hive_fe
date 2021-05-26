@@ -14,7 +14,7 @@ const PostAuthorAndData = props => {
                     fontSize={props.onlineBlock ? '0.7em' : ['0.6em', '1em']}
                     align='right'
                     color={props.color}>
-                    {props.data}
+                    {props.date}
                 </StyledText>
             </StyledDiv>
             <DivLine />

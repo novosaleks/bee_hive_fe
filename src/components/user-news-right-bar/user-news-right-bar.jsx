@@ -1,18 +1,18 @@
 import React from 'react';
 import PostAuthorAndData from '../post-author-and-data';
 import RateBlock from '../rate-block';
-import PostMessage from '../post-message';
+import PostText from '../post-text';
 import DeleteEditPost from '../delete-edit-post';
 import { RightBarDiv } from './user-news-right-bar.style';
-const UserNewsRightBar = ({ name, date, massege }) => {
+const UserNewsRightBar = ({ name, date, text }) => {
     return (
         <RightBarDiv>
             <DeleteEditPost />
             <PostAuthorAndData
-                name={name || 'First and last name'}
-                data={date || '23.04.2021'}
+                name={name}
+                date={date}
             />
-            <PostMessage massege={massege} />
+            <PostText text={text} />
             <RateBlock />
         </RightBarDiv>
     );
