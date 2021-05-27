@@ -24,7 +24,7 @@ export const StyledPageWrapper = styled(PrimaryBackgroundPage)`
     padding: 5%;
 `;
 
-export const Input = styled.textarea`
+export const Input = styled.input`
     position: relative;
     border: none;
     border-bottom: 2px solid ${getValueFromTheme('inputColor')};
