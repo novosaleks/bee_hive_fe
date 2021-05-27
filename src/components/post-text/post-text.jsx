@@ -4,10 +4,9 @@ import { StyledText } from '../../common/style/index';
 const PostText = ({ text }) => {
     return (
         <TextDiv width='100%' minHeight={[250]}>
-            {/* <StyledText align='justify' size='1em'> */}
-            {/* pre for multiline */}
-                <pre>{text}</pre>
-            {/* </StyledText> */}
+            <StyledText align='justify' size='1em'>
+                {text}
+            </StyledText>
         </TextDiv>
     );
 };

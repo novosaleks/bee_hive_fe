@@ -2,6 +2,14 @@ import React, { useEffect, useRef } from 'react';
 import { useMutation } from '@apollo/client';
 import { UPDATE_POST } from '../../graphql/post';
 
+import {
+    TextareaDiv,
+    PostEditForm,
+    SubmitButton,
+    CloseContainer,
+    ButtonsBlock,
+} from './post-edit.style';
+
 const PostEdit = ({ postId, text, handleEdit }) => {
     const [updatePost, { data }] = useMutation(UPDATE_POST);
     const inputRef = useRef();
@@ -30,11 +38,17 @@ const PostEdit = ({ postId, text, handleEdit }) => {
 
     return (
         <>
-            <form onSubmit={handleSubmit}>
-                <textarea ref={inputRef} defaultValue={text} />
-                <button type='submit'>Submit</button>
-                <button onClick={handleClick}>Cancel</button>
-            </form>
+            <PostEditForm onSubmit={handleSubmit}>
+                <TextareaDiv ref={inputRef} defaultValue={text} />
+                <ButtonsBlock>
+                    <SubmitButton type='submit'>Submit</SubmitButton>
+                    <CloseContainer onClick={handleClick}>
+                        <div className='leftright'></div>
+                        <div className='rightleft'></div>
+                        <label className='close'>close</label>
+                    </CloseContainer>
+                </ButtonsBlock>
+            </PostEditForm>
         </>
     );
 };
