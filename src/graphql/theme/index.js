@@ -9,7 +9,6 @@ export const GET_ACTIVE_THEME = gql`
 `;
 
 export const setActiveTheme = theme => {
-    console.log('hello');
     window.localStorage.setItem('activeTheme', theme);
     activeThemeVar(THEMES[theme]);
 };
