@@ -39,6 +39,33 @@ export const CREATE_USER = gql`
     }
 `;
 
+export const UPDATE_USER = gql`
+    mutation UpdateUser(
+        $firstName: String
+        $lastName: String
+        $email: String
+        $password: String
+        $occupation: String
+        $location: String
+        $birthDate: String
+        $userInfo: String
+    ) {
+        updateUser(
+            firstName: $firstName
+            lastName: $lastName
+            email: $email
+            password: $password
+            occupation: $occupation
+            location: $location
+            birthDate: $birthDate
+            userInfo: $userInfo
+        ) {
+            success
+            message
+        }
+    }
+`;
+
 export const GET_CURRENT_USER = gql`
     query CurrentUser {
         currentUser {
