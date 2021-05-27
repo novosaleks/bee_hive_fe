@@ -10,7 +10,7 @@ import {
     ButtonsBlock,
 } from './post-edit.style';
 
-const PostEdit = ({ postId, text, handleEdit }) => {
+const PostEdit = ({ postId, text, handleEdit, updatePublications }) => {
     const [updatePost, { data }] = useMutation(UPDATE_POST);
     const inputRef = useRef();
 
@@ -18,9 +18,10 @@ const PostEdit = ({ postId, text, handleEdit }) => {
         if (data) {
             const success = data.updatePost;
             if (success) {
+                // TODO add a notification
+                console.log("Post have been edited!");
                 handleEdit(false);
-                // TODO after update reload the component, not the page
-                window.location.reload();
+                updatePublications();
             }
         }
     }, [data]);

@@ -19,7 +19,7 @@ const UserNewsRightBar = ({ name, date, postId, text, updatePublications }) => {
                 name={name}
                 date={date}
             />
-            {edit ? <PostEdit postId={postId} text={text} handleEdit={handleEdit} /> : <PostText text={text} />}
+            {edit ? <PostEdit postId={postId} text={text} handleEdit={handleEdit} updatePublications={updatePublications} /> : <PostText text={text} />}
             <RateBlock />
         </RightBarDiv>
     );
