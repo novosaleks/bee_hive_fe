@@ -1,11 +1,11 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import { useMutation } from '@apollo/client';
-import { UPDATE_POST, REMOVE_POST } from '../../graphql/post';
+import { REMOVE_POST } from '../../graphql/post';
 import editIcon from '../../assets/editIcon.svg';
 import deleteIcon from '../../assets/deleteIcon.svg';
 
 import { DeleteEditPostDiv, StyledImg } from './delete-edit-post.style';
-const DeleteEditPost = ({ postId, handleEdit }) => {
+const DeleteEditPost = ({ postId, handleEdit, updatePublications }) => {
     const [removePost, { data }] = useMutation(REMOVE_POST);
 
     const editPost = async () => {
@@ -17,8 +17,7 @@ const DeleteEditPost = ({ postId, handleEdit }) => {
             const success = data.removePost;
             if (success) {
                 console.log("Success!");
-                // TODO after removal reload the component, not the page
-                window.location.reload();
+                updatePublications();
             }
         }
     }, [data]);

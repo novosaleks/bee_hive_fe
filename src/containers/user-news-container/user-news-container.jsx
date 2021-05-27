@@ -1,4 +1,3 @@
-import React from 'react';
 import UserAvatarAndStatusOnline from '../../components/user-avatar-and-status-online';
 import UserNewsRightBar from '../../components/user-news-right-bar';
 import { StyledDiv } from '../../common/style/index';
@@ -13,6 +12,7 @@ const UserNews = ({
     date,
     postId,
     text,
+    updatePublications
 }) => {
     return (
         <StyledDiv
@@ -37,6 +37,7 @@ const UserNews = ({
                     date,
                     postId,
                     text,
+                    updatePublications
                 }}
             />
         </StyledDiv>
