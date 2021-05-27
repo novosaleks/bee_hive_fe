@@ -19,7 +19,7 @@ const PostEdit = ({ postId, text, handleEdit, updatePublications }) => {
             const success = data.updatePost;
             if (success) {
                 // TODO add a notification
-                console.log("Post have been edited!");
+                console.log("Success! The post has been edited!");
                 handleEdit(false);
                 updatePublications();
             }
