@@ -2,8 +2,8 @@ import React from 'react';
 import { StyledDiv } from '../../common/style/index';
 import UserAvatar from '../user-avatar';
 import PostAuthorAndData from '../post-author-and-data';
-import { useContacts } from '../../common/context/contactsContext';
-import { useConversations } from '../../common/context/conversationContext';
+import { useContactContext } from '../../common/context/contactContext';
+import { useConversationContext } from '../../common/context/conversationContext';
 import { MessagesContactsDiv } from './messages-contact.style';
 
 const MessagesContact = ({
@@ -16,13 +16,13 @@ const MessagesContact = ({
     rateScore,
     photo,
 }) => {
-    const { selectedConversation } = useConversations();
-    const avaliableContacts = useContacts();
+    const { selectedConversation } = useConversationContext();
+    const availableContacts = useContactContext();
     const recipients = selectedConversation && selectedConversation.recipients;
 
     const contact =
         contactID &&
-        avaliableContacts.find((contact) => contact.id === contactID);
+        availableContacts.find((contact) => contact.id === contactID);
     const contactName = contact && `${contact.firstName} ${contact.lastName}`;
     //make GQL query by id of the recipeint to find all needed info about the user:
     //status,

@@ -1,26 +1,27 @@
 import React from 'react';
 import MessagesContact from '../messages-contact';
-import { useContacts } from '../../common/context/contactsContext';
+import { useContactContext } from '../../common/context/contactContext';
 
 import { Form } from 'react-bootstrap';
 
-import { MessagesAvailiableContactsDiv } from './messages-avaliable-contacts.style';
+import { MessagesAvailiableContactsDiv } from './messages-available-contacts.style';
 import {
     StyledText,
     SearchContactsDiv,
     SearchContactsTitle,
 } from '../../common/style/index';
 
-const MessagesAvaliableContacts = ({
+const MessagesAvailableContacts = ({
     identifyUser,
     selectedContactIds,
     handleCheckboxChange,
     searchTerm,
 }) => {
-    const avaliableContacts = useContacts();
+    const availableContacts = useContactContext();
+
     const contacts =
-        avaliableContacts &&
-        avaliableContacts.filter((user) =>
+        availableContacts &&
+        availableContacts.filter((user) =>
             (user.firstName.toLowerCase().includes(searchTerm.toLowerCase()) ||
                 user.lastName
                     .toLowerCase()
@@ -59,4 +60,4 @@ const MessagesAvaliableContacts = ({
     );
 };
 
-export default MessagesAvaliableContacts;
+export default MessagesAvailableContacts;

@@ -5,14 +5,11 @@ import { StyledDivPage } from '../../common/style/index';
 
 import { tabs } from '../../common/tabs';
 import MessagesScreenMenu from '../../components/messages-screen-menu';
-import Messages from '../../components/messages';
 import ActionsNotifications from '../../components/actions-notifications';
 
 import { useQuery } from '@apollo/client';
 import { GET_CURRENT_USER } from '../../graphql/user';
-
-import { ConversationsProvider } from '../../common/context/conversationContext';
-import { ContactsProvider } from '../../common/context/contactsContext';
+import MessageContainer from '../../containers/message-container';
 
 const MessagesScreen = () => {
     const [activeTab, setActiveTab] = useState(tabs.messagesPage[0].label);
@@ -30,13 +27,6 @@ const MessagesScreen = () => {
 
     const identifyUser = data.currentUser.id;
 
-    const messagesDiv = (
-        <ContactsProvider>
-            <ConversationsProvider id={identifyUser}>
-                <Messages identifyUser={identifyUser} />
-            </ConversationsProvider>
-        </ContactsProvider>
-    );
     return (
         <StyledMessagePageWrapper>
             <MessagesScreenMenu
@@ -46,7 +36,7 @@ const MessagesScreen = () => {
             />
             <StyledDivPage pt={3}>
                 {tabs.messagesPage[0].label === activeTab ? (
-                    messagesDiv
+                    <MessageContainer identifyUser={identifyUser} />
                 ) : (
                     <ActionsNotifications />
                 )}

@@ -1,6 +1,6 @@
 import React, { useState, useCallback } from 'react';
 import { StyledDiv, Input } from '../../common/style';
-import { useConversations } from '../../common/context/conversationContext';
+import { useConversationContext } from '../../common/context/conversationContext';
 import {
     OpenConversationGroup,
     OpenConversationDiv,
@@ -16,7 +16,7 @@ const MessagesOpenConversation = () => {
             node.scrollIntoView({ smooth: true });
         }
     }, []);
-    const { sendMessage, selectedConversation } = useConversations();
+    const { sendMessage, selectedConversation } = useConversationContext();
 
     function handleSubmit(e) {
         e.preventDefault();

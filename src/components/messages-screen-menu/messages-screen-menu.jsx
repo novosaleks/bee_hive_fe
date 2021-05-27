@@ -7,7 +7,7 @@ const MessagesScreenMenu = ({ activeTab, clickHandler, tabs }) => {
         <MenuWrapper>
             <input type="checkbox" className="toggler" />
             <Hamburger>
-                <div></div>
+                <div/>
             </Hamburger>
             <Menu className="menu">
                 <SidebarTab
