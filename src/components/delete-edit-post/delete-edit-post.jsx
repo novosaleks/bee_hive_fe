@@ -16,7 +16,8 @@ const DeleteEditPost = ({ postId, handleEdit, updatePublications }) => {
         if (data) {
             const success = data.removePost;
             if (success) {
-                console.log("Success!");
+                // TODO add a notification
+                console.log("Success! The post has been deleted!");
                 updatePublications();
             }
         }

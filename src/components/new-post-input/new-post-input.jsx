@@ -13,7 +13,7 @@ const NewPostInput = ({ updatePublications }) => {
             const success = data.createPost;
             if (success) {
                 // TODO add a notification
-                console.log('New post has been created!');
+                console.log('Success! The new post has been created!');
                 inputRef.current.value = '';
                 updatePublications();
             }
