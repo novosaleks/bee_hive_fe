@@ -12,7 +12,6 @@ const UserNews = ({
     date,
     postId,
     text,
-    updatePublications
 }) => {
     return (
         <StyledDiv
@@ -37,7 +36,6 @@ const UserNews = ({
                     date,
                     postId,
                     text,
-                    updatePublications
                 }}
             />
         </StyledDiv>

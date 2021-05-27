@@ -1,7 +1,6 @@
 import React, { useEffect, useRef } from 'react';
 import { useMutation } from '@apollo/client';
 import { UPDATE_POST } from '../../graphql/post';
-
 import {
     TextareaDiv,
     PostEditForm,
@@ -9,17 +8,19 @@ import {
     CloseContainer,
     ButtonsBlock,
 } from './post-edit.style';
+import { useUpdatePublications } from '../../common/context/updatePublicationsContext';
 
-const PostEdit = ({ postId, text, handleEdit, updatePublications }) => {
+const PostEdit = ({ postId, text, handleEdit }) => {
     const [updatePost, { data }] = useMutation(UPDATE_POST);
     const inputRef = useRef();
+    const updatePublications = useUpdatePublications();
 
     useEffect(() => {
         if (data) {
             const success = data.updatePost;
             if (success) {
                 // TODO add a notification
-                console.log("Success! The post has been edited!");
+                console.log('Success! The post has been edited!');
                 handleEdit(false);
                 updatePublications();
             }

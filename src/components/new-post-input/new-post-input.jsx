@@ -3,10 +3,12 @@ import { StyledDiv, StyledText } from '../../common/style/index';
 import { InputPost, PostButton } from './new-post-input.style';
 import { useMutation } from '@apollo/client';
 import { CREATE_POST } from '../../graphql/post';
+import { useUpdatePublications } from '../../common/context/updatePublicationsContext';
 
-const NewPostInput = ({ updatePublications }) => {
+const NewPostInput = () => {
     const [createPost, { data }] = useMutation(CREATE_POST);
     const inputRef = useRef();
+    const updatePublications = useUpdatePublications();
 
     useEffect(() => {
         if (data) {

@@ -3,10 +3,12 @@ import { useMutation } from '@apollo/client';
 import { REMOVE_POST } from '../../graphql/post';
 import editIcon from '../../assets/editIcon.svg';
 import deleteIcon from '../../assets/deleteIcon.svg';
-
 import { DeleteEditPostDiv, StyledImg } from './delete-edit-post.style';
-const DeleteEditPost = ({ postId, handleEdit, updatePublications }) => {
+import { useUpdatePublications } from '../../common/context/updatePublicationsContext';
+
+const DeleteEditPost = ({ postId, handleEdit }) => {
     const [removePost, { data }] = useMutation(REMOVE_POST);
+    const updatePublications = useUpdatePublications();
 
     const editPost = async () => {
         handleEdit(true);
@@ -17,7 +19,7 @@ const DeleteEditPost = ({ postId, handleEdit, updatePublications }) => {
             const success = data.removePost;
             if (success) {
                 // TODO add a notification
-                console.log("Success! The post has been deleted!");
+                console.log('Success! The post has been deleted!');
                 updatePublications();
             }
         }
@@ -26,7 +28,7 @@ const DeleteEditPost = ({ postId, handleEdit, updatePublications }) => {
     const deletePost = async () => {
         await removePost({
             variables: {
-                 postId
+                postId,
             },
         });
     };
