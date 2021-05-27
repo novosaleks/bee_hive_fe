@@ -1,7 +1,7 @@
 import React from 'react';
 import { Form } from 'react-bootstrap';
 import MessagesContact from '../messages-contact';
-import { useContacts } from '../../common/context/contactsContext';
+import { useContactContext } from '../../common/context/contactContext';
 
 import { MessagesGlobalSearchDiv } from './messages-global-search.style';
 import {
@@ -14,15 +14,15 @@ const MessagesGlobalSearch = ({
     selectedContactIds,
     handleCheckboxChange,
 }) => {
-    const avaliableContacts = useContacts();
+    const availableContacts = useContactContext();
     return (
         <MessagesGlobalSearchDiv>
             <SearchContactsDiv>
                 <SearchContactsTitle>Global Search</SearchContactsTitle>
             </SearchContactsDiv>
 
-            {avaliableContacts &&
-                avaliableContacts
+            {availableContacts &&
+                availableContacts
                     .filter((user, index) =>
                         index < 5 && user.id !== identifyUser ? user : null
                     )

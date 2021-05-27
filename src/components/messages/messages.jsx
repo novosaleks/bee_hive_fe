@@ -4,11 +4,11 @@ import MessagesSidebar from '../messages-sidebar';
 
 import { SearchContactsTitle } from '../../common/style/index';
 import { MessagesDivBlock, NotificationDiv } from './messages.style';
-
-import { useConversations } from '../../common/context/conversationContext';
+import { useConversationContext } from '../../common/context/conversationContext';
 
 const Messages = ({ identifyUser }) => {
-    const { selectedConversation } = useConversations();
+
+    const { selectedConversation } = useConversationContext();
 
     return (
         <MessagesDivBlock conversationOpen={selectedConversation}>

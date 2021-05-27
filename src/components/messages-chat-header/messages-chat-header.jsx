@@ -8,16 +8,16 @@ import {
     MembersMessagesChatHeaderDiv,
 } from './messages-chat-header.style';
 import { StyledDiv, DivLine } from '../../common/style/index';
-import { useConversations } from '../../common/context/conversationContext';
+import { useConversationContext } from '../../common/context/conversationContext';
 
 const MessagesChatHeader = () => {
-    const { selectedConversation } = useConversations();
+    const { selectedConversation } = useConversationContext();
     const recipients = selectedConversation.recipients;
     return (
         <MessagesChatHeaderDiv>
             <ImgMessagesChatHeaderDiv />
             <ContactsInfoMessagesChatHeader>
-                <StyledDiv align="flex-start">
+                <StyledDiv align='flex-start'>
                     <NameMessagesChatHeaderDiv>
                         {recipients.map((r) => r.name).join(', ')}
                     </NameMessagesChatHeaderDiv>

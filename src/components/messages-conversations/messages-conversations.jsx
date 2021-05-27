@@ -1,17 +1,18 @@
 import React from 'react';
 import UserAvatar from '../user-avatar';
 
-import { useConversations } from '../../common/context/conversationContext';
+import { useConversationContext } from '../../common/context/conversationContext';
 import { StyledDiv, DivLine } from '../../common/style/index';
 import {
     ConversationStyledDiv,
     ContactInfoDiv,
     ConversationsBlockStyled,
 } from './messages-conversations.style';
+
 const MessagesConversations = ({ smallBlock }) => {
     const { conversations, selectConversationIndex, selectedConversation } =
-        useConversations();
-    console.log(selectedConversation);
+        useConversationContext();
+
     return (
         <ConversationsBlockStyled>
             {conversations.map((conversation, index) => {

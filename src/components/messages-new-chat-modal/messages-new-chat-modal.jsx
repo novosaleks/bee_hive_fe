@@ -6,16 +6,16 @@ import {
     ChatModalInput,
 } from './messages-new-chat-modal.style';
 
-import { useConversations } from '../../common/context/conversationContext';
+import { useConversationContext } from '../../common/context/conversationContext';
 
 import MessagesGlobalSearch from '../messages-global-search';
-import MessagesAvaliableContacts from '../messages-avaliable-contacts';
+import MessagesAvailableContacts from '../messages-available-contacts';
 
 const MessagesNewChatModal = ({ closeModal, identifyUser }) => {
     const [selectedContactIds, setSelectedContactIds] = useState([]);
     const [searchTerm, setSearchTerm] = useState('');
 
-    const { createConversation } = useConversations();
+    const { createConversation } = useConversationContext();
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -58,7 +58,7 @@ const MessagesNewChatModal = ({ closeModal, identifyUser }) => {
                             }}
                         />
                     ) : (
-                        <MessagesAvaliableContacts
+                        <MessagesAvailableContacts
                             {...{
                                 identifyUser,
                                 selectedContactIds,
