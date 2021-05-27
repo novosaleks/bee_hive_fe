@@ -13,6 +13,7 @@ const NewPostInput = () => {
             const success = data.createPost;
             if (success) {
                 console.log('New post has been created!');
+                inputRef.current.value = "";
             }
         }
     }, [data]);
