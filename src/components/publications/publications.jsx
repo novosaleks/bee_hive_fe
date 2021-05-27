@@ -14,7 +14,7 @@ import { formatDate } from '../../common/utils';
 
 const Publications = ({ user }) => {
     const [posts, setPosts] = useState([]);
-    const { loading, error, data } = useQuery(GET_POSTS_BY_AUTHOR_ID, {
+    const { loading, error, data, refetch } = useQuery(GET_POSTS_BY_AUTHOR_ID, {
         variables: { authorId: user.id },
     });
 
@@ -24,6 +24,10 @@ const Publications = ({ user }) => {
         }
     }, [data]);
 
+    const updatePublications = () => {
+        refetch();
+    };
+
     if (loading) return <div>Loading...</div>;
     if (error) return <div>{`Error ${error.message}`}</div>;
 
@@ -31,7 +35,7 @@ const Publications = ({ user }) => {
         <StyledDiv marginTop='5%'>
             <Title>Publications</Title>
             <PublicationBodyDiv>
-                <NewPostInput />
+                <NewPostInput updatePublications={updatePublications} />
                 {posts &&
                     posts.map((post, index, arr) => (
                         <UserPostBlock key={post.id}>
