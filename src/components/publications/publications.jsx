@@ -12,6 +12,8 @@ import { GET_POSTS_BY_AUTHOR_ID } from '../../graphql/post';
 
 import { formatDate } from '../../common/utils';
 
+import { UpdatePublicationsProvider } from '../../common/context/updatePublicationsContext';
+
 const Publications = ({ user }) => {
     const [posts, setPosts] = useState([]);
     const { loading, error, data, refetch } = useQuery(GET_POSTS_BY_AUTHOR_ID, {
@@ -32,26 +34,27 @@ const Publications = ({ user }) => {
     if (error) return <div>{`Error ${error.message}`}</div>;
 
     return (
-        <StyledDiv marginTop='5%'>
-            <Title>Publications</Title>
-            <PublicationBodyDiv>
-                <NewPostInput updatePublications={updatePublications} />
-                {posts &&
-                    posts.map((post, index, arr) => (
-                        <UserPostBlock key={post.id}>
-                            <UserNews
-                                name={user.firstName + ' ' + user.lastName}
-                                postId={post.id}
-                                text={post.text}
-                                date={formatDate(post.createdAt)}
-                                updatePublications={updatePublications}
-                            />
-                            {/* Don't render DivLine after the last post */}
-                            {index !== arr.length - 1 && <DivLine />}
-                        </UserPostBlock>
-                    ))}
-            </PublicationBodyDiv>
-        </StyledDiv>
+        <UpdatePublicationsProvider updatePublications={updatePublications}>
+            <StyledDiv marginTop='5%'>
+                <Title>Publications</Title>
+                <PublicationBodyDiv>
+                    <NewPostInput />
+                    {posts &&
+                        posts.map((post, index, arr) => (
+                            <UserPostBlock key={post.id}>
+                                <UserNews
+                                    name={user.firstName + ' ' + user.lastName}
+                                    postId={post.id}
+                                    text={post.text}
+                                    date={formatDate(post.createdAt)}
+                                />
+                                {/* Don't render DivLine after the last post */}
+                                {index !== arr.length - 1 && <DivLine />}
+                            </UserPostBlock>
+                        ))}
+                </PublicationBodyDiv>
+            </StyledDiv>
+        </UpdatePublicationsProvider>
     );
 };
 
