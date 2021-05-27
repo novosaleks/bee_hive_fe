@@ -5,7 +5,7 @@ import UserNews from '../../containers/user-news-container';
 import Title from '../title';
 
 import { DivLine, StyledDiv } from '../../common/style/index';
-import { PublicationBodyDiv } from './publications.style';
+import { PublicationBodyDiv, UserPostBlock } from './publications.style';
 
 import { useQuery } from '@apollo/client';
 import { GET_POSTS_BY_AUTHOR_ID } from '../../graphql/post';
@@ -34,7 +34,7 @@ const Publications = ({ user }) => {
                 <NewPostInput />
                 {posts &&
                     posts.map((post, index, arr) => (
-                        <div key={post.id}>
+                        <UserPostBlock key={post.id}>
                             <UserNews
                                 name={user.firstName + ' ' + user.lastName}
                                 postId={post.id}
@@ -43,7 +43,7 @@ const Publications = ({ user }) => {
                             />
                             {/* Don't render DivLine after the last post */}
                             {index !== arr.length - 1 && <DivLine />}
-                        </div>
+                        </UserPostBlock>
                     ))}
             </PublicationBodyDiv>
         </StyledDiv>
