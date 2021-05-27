@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 
 import NewPostInput from '../new-post-input';
 import UserNews from '../../containers/user-news-container';
@@ -44,6 +44,7 @@ const Publications = ({ user }) => {
                                 postId={post.id}
                                 text={post.text}
                                 date={formatDate(post.createdAt)}
+                                updatePublications={updatePublications}
                             />
                             {/* Don't render DivLine after the last post */}
                             {index !== arr.length - 1 && <DivLine />}
