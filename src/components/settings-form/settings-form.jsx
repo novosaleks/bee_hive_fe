@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect } from 'react';
 import InputContainer from '../../containers/input-container';
 import { useForm } from 'react-hook-form';
 
@@ -7,6 +7,7 @@ import { Button } from '../../common/style';
 
 import { useMutation } from '@apollo/client';
 import { UPDATE_USER } from '../../graphql/user';
+import { useNotificationService } from '../../common/context/notificationContext';
 
 const SettingsForm = ({ label, name, type, defaultValue }) => {
     const {
@@ -17,14 +18,16 @@ const SettingsForm = ({ label, name, type, defaultValue }) => {
     const [updateUser, { data }] = useMutation(UPDATE_USER);
     console.log(name, defaultValue);
 
+    const notify = useNotificationService();
+
     useEffect(() => {
         if (data) {
             const response = data.updateUser;
             if (response.success) {
-                // TODO make a success notification
+                notify({ text: 'Successfully updated' });
                 console.log(response.message);
             } else {
-                // TODO make an error notification
+                notify({ text: 'Error' });
                 console.error(response.message);
             }
         }
