@@ -10,10 +10,9 @@ const GlobalStyles = createGlobalStyle`
     -webkit-appearance: none;
     display: none;
   }
-
-  //* {
-  //  transition: 1.5s;
-  //}
+  *{
+    transition: 1s;
+  }
 `;
 
 export default GlobalStyles;
