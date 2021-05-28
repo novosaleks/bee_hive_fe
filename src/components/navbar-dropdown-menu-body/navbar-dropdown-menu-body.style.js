@@ -1,29 +1,7 @@
 import styled, { css } from 'styled-components';
-import { StyledDiv, media } from '../../common/style/index';
-import { getValueFromTheme } from '../../common/utils';
+import { StyledDiv, DropDown, media } from '../../common/style/index';
 
-export const NavbarDropdownMenuBodyDiv = styled(StyledDiv)`
-    background-color: ${getValueFromTheme('primaryBgColorDiv')};
-    width: 240px;
-    height: 150px;
-    padding: 1%;
-    position: absolute;
-    justify-content: center;
-    align-items: flex-start;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-    left: ${props => props.left}px;
-    top: ${props => props.bottom + 35}px;
-    visibility: hidden;
-    z-index: 0;
-    transition: 1.2s;
-    opacity: 0;
-    ${props =>
-        props.isOpen &&
-        css`
-            opacity: 1;
-            z-index: 3;
-            visibility: visible;
-        `}
+export const NavbarDropdownMenuBodyDiv = styled(DropDown)`
     ${media.laptop} {
         left: 72%;
     }

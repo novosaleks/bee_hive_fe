@@ -58,7 +58,7 @@ const NavbarDropdownMenu = () => {
                 <img src={dropdown} alt='icon for dopdown menu' />
             </NavbarDropdownMenuHeaderDiv>
             <NavbarDropdownMenuBody
-                bottom={headerBottom}
+                bottom={headerBottom + 35}
                 left={headerLeft}
                 isOpen={openState}
             />
