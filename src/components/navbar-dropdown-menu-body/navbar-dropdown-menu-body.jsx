@@ -2,7 +2,7 @@ import Logout from '../../components/logout';
 import ToggleSwitchTheme from '../toggle-switch-theme';
 import settings from '../../assets/settings.svg';
 
-import { NavLink, DivLine, StyledDiv, StyledText } from '../../common/style';
+import { NavLink, DivLine } from '../../common/style';
 import {
     NavbarDropdownMenuBodyDiv,
     NavbarDropdownItem,
