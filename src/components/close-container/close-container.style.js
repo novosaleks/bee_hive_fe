@@ -17,7 +17,6 @@ export const CloseContainerDiv = styled.div`
         transform: rotate(45deg);
         transition: all 0.3s ease-in;
     }
-
     .rightleft {
         height: 2px;
         width: 20px;
@@ -28,7 +27,6 @@ export const CloseContainerDiv = styled.div`
         transform: rotate(-45deg);
         transition: all 0.3s ease-in;
     }
-
     label {
         color: ${getValueFromTheme('textColor')};
         font-size: 0.6em;
@@ -40,7 +38,6 @@ export const CloseContainerDiv = styled.div`
         position: absolute;
         right: 15%;
     }
-
     &:hover .leftright {
         transform: rotate(-45deg);
         background-color: #f25c66;
