@@ -5,13 +5,15 @@ import Notification from '../../components/notification';
 export const useNotifications = () => {
     const [notificationParams, setNotificationParams] = useState({});
 
+    const timeout = 3500;
+
     const { text, type } = notificationParams;
 
     useEffect(() => {
         if (text) {
             const id = setTimeout(() => {
                 setNotificationParams({});
-            }, 3000);
+            }, 30000);
 
             return () => clearTimeout(id);
         }
@@ -19,7 +21,7 @@ export const useNotifications = () => {
 
     const element = text ? (
         <Portal>
-            <Notification type={type}>{text}</Notification>
+            <Notification type={type} timeout={timeout}>{text}</Notification>
         </Portal>
     ) : null;
 
