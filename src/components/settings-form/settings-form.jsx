@@ -24,10 +24,10 @@ const SettingsForm = ({ label, name, type, defaultValue }) => {
         if (data) {
             const response = data.updateUser;
             if (response.success) {
-                notify({ text: 'Successfully updated' });
+                notify({ text: 'Successfully updated', type: 'success' });
                 console.log(response.message);
             } else {
-                notify({ text: 'Error' });
+                notify({ text: 'Error', type: 'fail' });
                 console.error(response.message);
             }
         }

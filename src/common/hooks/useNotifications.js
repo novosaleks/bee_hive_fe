@@ -7,7 +7,7 @@ export const useNotifications = () => {
 
     const timeout = 3500;
 
-    const { text, type } = notificationParams;
+    const { text, type = 'info' } = notificationParams;
 
     useEffect(() => {
         if (text) {

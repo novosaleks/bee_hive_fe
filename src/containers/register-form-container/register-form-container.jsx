@@ -24,7 +24,7 @@ const RegisterFormContainer = () => {
             const response = data.createUser;
             if (response.success) {
                 console.log(response.message);
-                notify({ text: 'successfully registered' });
+                notify({ text: 'successfully registered', type: 'success' });
                 history.push('/login');
             } else {
                 console.error(response.message);

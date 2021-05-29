@@ -17,7 +17,7 @@ const App = () => {
 
     const [notification, setNotification] = useNotifications();
 
-    const notify = ({ text, type = 'success' }) => {
+    const notify = ({ text, type}) => {
         const props = { text, type };
 
         setNotification(props);

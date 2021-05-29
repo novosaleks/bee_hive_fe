@@ -4,8 +4,11 @@ import { useForm } from 'react-hook-form';
 import LoginForm from '../../components/login-form';
 import { useMutation } from '@apollo/client';
 import { LOGIN } from '../../graphql/auth';
+import { useNotificationService } from '../../common/context/notificationContext';
 
 const LoginFormContainer = () => {
+    const notify = useNotificationService();
+
     const {
         register,
         handleSubmit,
@@ -19,7 +22,7 @@ const LoginFormContainer = () => {
             if (success) {
                 window.location.reload();
             } else {
-                console.error('Login failed!');
+                notify({ text: 'Authorization failed', type: 'fail' });
             }
         }
     }, [data]);
