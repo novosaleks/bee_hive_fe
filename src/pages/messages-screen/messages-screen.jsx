@@ -13,7 +13,7 @@ import MessageContainer from '../../containers/message-container';
 
 const MessagesScreen = () => {
     const [activeTab, setActiveTab] = useState(tabs.messagesPage[0].label);
-    const clickHandler = (label) => {
+    const clickHandler = label => () => {
         setActiveTab(label);
     };
     const { loading, error, data } = useQuery(GET_CURRENT_USER);

@@ -11,9 +11,9 @@ const GlobalStyles = createGlobalStyle`
     display: none;
   }
 
-  * {
-    transition: 1.5s;
-  }
+  //* {
+  //  transition: 1.5s;
+  //}
 `;
 
 export default GlobalStyles;
