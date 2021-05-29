@@ -259,12 +259,4 @@ export const SubmitButton = styled.button`
             transition: right 0.3s 0.2s cubic-bezier(0.1, 0, 0.1, 1);
         }
     }
-    @media (max-width: 495px) {
-        font-size: 1em;
-        padding: 0;
-        width: 23vh;
-        &::after {
-            background-size: 1.3em;
-        }
-    }
 `;
