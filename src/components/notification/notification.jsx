@@ -21,7 +21,7 @@ const Notification = ({ children, type, timeout }) => {
 
     return (
         <SlideInDown animationDuration={animationDuration} in={loaded}>
-            <NotificationWrapper>{children}</NotificationWrapper>
+            <NotificationWrapper type={type}>{children}</NotificationWrapper>
         </SlideInDown>
     );
 };
