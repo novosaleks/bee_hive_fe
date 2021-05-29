@@ -1,11 +1,13 @@
 import { useState, useEffect } from 'react';
-
-import RateBlock from '../../components/rate-block';
-import FooterCommentsBlock from '../../components/footer-comments-block';
 import { useQuery } from '@apollo/client';
 import { GET_COMMENTS_BY_POST_ID } from '../../graphql/comment';
 
+import FooterPostNewComment from '../../components/footer-post-new-comment';
+import RateBlock from '../../components/rate-block';
+import FooterCommentsBlock from '../../components/footer-comments-block';
+
 import comments from '../../assets/comments.svg';
+
 import {
     PostFooterMainBlock,
     CommentsPreview,
@@ -13,11 +15,15 @@ import {
 
 const PostFooter = ({ postId }) => {
     const [openCommentsState, setOpenCommentsState] = useState(false);
+    const [openNewCommentState, setOpenNewCommentState] = useState(false);
     //  const [commentsContent, setCommentsContent] = useState([]);
     const handlerClickComments = () => {
         setOpenCommentsState(prevState => !prevState);
     };
-    //  const { loading, error, data } = useQuery(GET_COMMENTS_BY_POST_ID, {
+    const handlerClickNewComment = () => {
+        setOpenNewCommentState(prevState => !prevState);
+    };
+    //  const { loading, error, data, refetch } = useQuery(GET_COMMENTS_BY_POST_ID, {
     //      variables: { postId: postId },
     //  });
 
@@ -26,6 +32,11 @@ const PostFooter = ({ postId }) => {
     //          setCommentsContent(data.getCommentsByPostId);
     //      }
     //  }, [data]);
+
+    //  const updateComments = () => {
+    //      refetch();
+    //  };
+
     //  if (loading) return <div>Loading...</div>;
     //  if (error) return <div>{`Error ${error.message}`}</div>;
 
@@ -56,9 +67,15 @@ const PostFooter = ({ postId }) => {
                     src={comments}
                     alt='add comment icon'
                     className='comments'
+                    onClick={handlerClickNewComment}
                 />
             </PostFooterMainBlock>
-
+            {openNewCommentState && (
+                <FooterPostNewComment
+                    // updateComments={updateComments}
+                    setOpenNewCommentState={setOpenNewCommentState}
+                />
+            )}
             <CommentsPreview onClick={handlerClickComments}>
                 {!openCommentsState
                     ? `View all ${commentsContent.length} comments`
