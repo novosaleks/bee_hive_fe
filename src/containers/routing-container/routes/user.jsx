@@ -5,6 +5,7 @@ import ProfileScreen from '../../../pages/profile-screen';
 import SettingsScreen from '../../../pages/settings-screen';
 import NewsScreen from '../../../pages/news-screen';
 import SubscriptionScreen from '../../../pages/subscription-screen';
+import MessagesScreen from '../../../pages/messages-screen';
 
 const User = ({ user }) => {
     return (
@@ -25,6 +26,10 @@ const User = ({ user }) => {
                 <Route path='/subscription' exact>
                     <NavbarContainer />
                     <SubscriptionScreen />
+                </Route>
+                <Route path='/messages' exact>
+                    <NavbarContainer />
+                    <MessagesScreen />
                 </Route>
             </Switch>
             : <Redirect to='/login' />
