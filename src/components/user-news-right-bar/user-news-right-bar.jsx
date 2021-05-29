@@ -1,10 +1,10 @@
 import { useState } from 'react';
 import PostAuthorAndData from '../post-author-and-data';
-import RateBlock from '../rate-block';
 import PostText from '../post-text';
 import PostEdit from '../post-edit';
 import DeleteEditPost from '../delete-edit-post';
 import { RightBarDiv } from './user-news-right-bar.style';
+import PostFooter from '../../containers/post-footer-container';
 
 const UserNewsRightBar = ({ name, date, postId, authorId, text }) => {
     const [edit, setEdit] = useState(false);
@@ -26,7 +26,7 @@ const UserNewsRightBar = ({ name, date, postId, authorId, text }) => {
             ) : (
                 <PostText text={text} />
             )}
-            <RateBlock />
+            <PostFooter postId={postId} />
         </RightBarDiv>
     );
 };
