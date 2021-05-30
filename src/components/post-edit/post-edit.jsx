@@ -3,6 +3,7 @@ import { useMutation } from '@apollo/client';
 import { UPDATE_POST } from '../../graphql/post';
 
 import CloseContainer from '../close-container';
+<<<<<<< HEAD
 import {
     TextareaDiv,
     PostEditForm,
@@ -10,6 +11,11 @@ import {
     ButtonsBlock,
 } from './post-edit.style';
 import { useUpdateWall } from '../../common/context/updateWallContext';
+=======
+import { TextareaDiv, PostEditForm, ButtonsBlock } from './post-edit.style';
+import { SubmitButton } from '../../common/style';
+import { useUpdatePublications } from '../../common/context/updatePublicationsContext';
+>>>>>>> dce35c2... added style to albums and modified dropdown menu
 
 const PostEdit = ({ postId, text, handleEdit }) => {
     const [updatePost, { data }] = useMutation(UPDATE_POST);
