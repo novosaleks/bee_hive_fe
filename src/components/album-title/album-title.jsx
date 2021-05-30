@@ -8,12 +8,10 @@ import AlbumSettingsModal from '../album-setting-modal';
 
 const AlbumTitle = ({ description, title, setIsOpen }) => {
     const [isOpenModal, setIsOpenModal] = useState(false);
-    const [headerBottom, setHeaderBottom] = useState(null);
     const [headerLeft, setHeaderLeft] = useState(null);
 
     const HeaderRef = useRef();
     const resizeHandler = () => {
-        setHeaderBottom(HeaderRef.current?.getBoundingClientRect().bottom);
         setHeaderLeft(HeaderRef.current?.getBoundingClientRect().left);
     };
     useEffect(() => {
@@ -26,15 +24,11 @@ const AlbumTitle = ({ description, title, setIsOpen }) => {
     const handelClick = () => {
         setIsOpenModal(prevState => !prevState);
     };
+
     return (
         <StyledDiv>
-            <Header>
-                <img
-                    src={settings}
-                    alt='settings icon'
-                    onClick={handelClick}
-                    ref={HeaderRef}
-                />
+            <Header ref={HeaderRef}>
+                <img src={settings} alt='settings icon' onClick={handelClick} />
                 <CloseContainer
                     event={() => {
                         setIsOpen(false);
@@ -43,8 +37,8 @@ const AlbumTitle = ({ description, title, setIsOpen }) => {
             </Header>
             {isOpenModal && (
                 <AlbumSettingsModal
-                    bottom={headerBottom - 25}
-                    right={headerLeft - 105}
+                    bottom={60}
+                    right={headerLeft}
                     isOpen={isOpenModal}
                     placeholderTitle='New title'
                     placeholderDescription='New description'

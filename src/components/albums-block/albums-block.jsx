@@ -9,12 +9,13 @@ import AlbumSettingsModal from '../album-setting-modal';
 const AlbumsBlock = () => {
     const [isOpenModal, setIsOpenModal] = useState(false);
     const [headerBottom, setHeaderBottom] = useState(null);
-    const [headerLeft, setHeaderLeft] = useState(null);
 
     const HeaderRef = useRef();
     const resizeHandler = () => {
-        setHeaderBottom(HeaderRef.current?.getBoundingClientRect().bottom);
-        setHeaderLeft(HeaderRef.current?.getBoundingClientRect().left);
+        setHeaderBottom(
+            HeaderRef.current?.getBoundingClientRect().bottom +
+                window.pageYOffset
+        );
     };
     useEffect(() => {
         window.addEventListener('resize', resizeHandler, true);
@@ -41,8 +42,8 @@ const AlbumsBlock = () => {
             {isOpenModal && (
                 <AlbumSettingsModal
                     bottom={headerBottom + 10}
-                    right='65'
                     isOpen={isOpenModal}
+                    albomBlock={true}
                 />
             )}
             <PhotoAlbum />
