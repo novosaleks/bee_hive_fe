@@ -1,8 +1,18 @@
 import { gql } from '@apollo/client';
 
 export const ADD_COMMENT = gql`
-    mutation AddComment($content: String!) {
-        addComment(content: $content)
+    mutation AddComment(
+        $content: String!
+        $reply: Boolean!
+        $addresseeId: String!
+        $replyContent: String!
+    ) {
+        addComment(
+            content: $content
+            reply: $reply
+            addresseeId: $addresseeId
+            replyContent: $replyContent
+        )
     }
 `;
 
@@ -12,6 +22,9 @@ export const GET_COMMENTS_BY_POST_ID = gql`
             authorId
             content
             createdAt
+            reply
+            addresseeId
+            replyContent
         }
     }
 `;

@@ -3,12 +3,12 @@ import { GET_ALL_USERS } from '../../graphql/user';
 
 import UserAvatar from '../user-avatar';
 import PostAuthorAndData from '../post-author-and-data';
+import FooterPostNewReply from '../footer-post-new-reply';
 
-import { CommentInfoDiv } from './footer-comment.style';
-import { StyledDiv, StyledText } from '../../common/style';
+import { CommentInfoDiv, CommentBlock } from './footer-comment.style';
+import { StyledText } from '../../common/style';
 
 const FooterComment = ({ comment }) => {
-    console.log(comment);
     const { loading, error, data } = useQuery(GET_ALL_USERS);
 
     if (loading) {
@@ -23,13 +23,14 @@ const FooterComment = ({ comment }) => {
     const auth = users && users.filter(user => user.id !== comment.authorId);
     const smallBlock = true;
     return (
-        <StyledDiv direction='row' content='flex-start'>
+        <CommentBlock>
             <UserAvatar
                 rating={'#C53B0E'}
                 rateScore={'1,5'}
                 width={smallBlock ? 70 : [70, 135]}
                 height={smallBlock ? 70 : [70, 135]}
                 {...{ smallBlock }}
+                className='user-avatar'
             />
             <CommentInfoDiv content='flex-start' ml='3px'>
                 <PostAuthorAndData
@@ -38,8 +39,13 @@ const FooterComment = ({ comment }) => {
                     date={comment.createdAt}
                 />
                 <StyledText className='content'>{comment.content}</StyledText>
+                <FooterPostNewReply
+                    firstName={auth[0].firstName}
+                    authorId={comment.authorId}
+                    content={comment.content}
+                />
             </CommentInfoDiv>
-        </StyledDiv>
+        </CommentBlock>
     );
 };
 

@@ -5,6 +5,7 @@ import { GET_COMMENTS_BY_POST_ID } from '../../graphql/comment';
 import FooterPostNewComment from '../../components/footer-post-new-comment';
 import RateBlock from '../../components/rate-block';
 import FooterCommentsBlock from '../../components/footer-comments-block';
+import { NewCommentProvider } from '../../common/context/newCommentContext';
 
 import comments from '../../assets/comments.svg';
 
@@ -33,9 +34,9 @@ const PostFooter = ({ postId }) => {
     //      }
     //  }, [data]);
 
-    //  const updateComments = () => {
-    //      refetch();
-    //  };
+    const updateComments = () => {
+        //  refetch();
+    };
 
     //  if (loading) return <div>Loading...</div>;
     //  if (error) return <div>{`Error ${error.message}`}</div>;
@@ -46,21 +47,38 @@ const PostFooter = ({ postId }) => {
             authorId: '1',
             content: 'hi',
             createdAt: '23.06.20020',
+            reply: false,
+            addresseeId: '',
+            replyContent: '',
         },
         {
             authorId: '1',
             content: 'hello',
             createdAt: '23.06.20020',
+            reply: false,
+            addresseeId: '',
+            replyContent: '',
         },
         {
             authorId: '1',
             content: 'hello, world',
             createdAt: '23.06.20020',
+            reply: false,
+            addresseeId: '',
+            replyContent: '',
+        },
+        {
+            authorId: '2',
+            content: 'i do not agree',
+            createdAt: '23.06.20020',
+            reply: true,
+            addresseeId: '1',
+            replyContent: 'hello, world',
         },
     ];
 
     return (
-        <>
+        <NewCommentProvider value={updateComments}>
             <PostFooterMainBlock>
                 <RateBlock />
                 <img
@@ -72,8 +90,8 @@ const PostFooter = ({ postId }) => {
             </PostFooterMainBlock>
             {openNewCommentState && (
                 <FooterPostNewComment
-                    // updateComments={updateComments}
                     setOpenNewCommentState={setOpenNewCommentState}
+                    reply={false}
                 />
             )}
             <CommentsPreview onClick={handlerClickComments}>
@@ -84,7 +102,7 @@ const PostFooter = ({ postId }) => {
             {openCommentsState && (
                 <FooterCommentsBlock comments={commentsContent} />
             )}
-        </>
+        </NewCommentProvider>
     );
 };
 
