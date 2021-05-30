@@ -11,6 +11,12 @@ export const PostFooterMainBlock = styled.div`
         height: 25px;
         cursor: pointer;
     }
+    @media (max-width: 290px) {
+        flex-direction: column;
+        .comments {
+            align-self: flex-end;
+        }
+    }
 `;
 
 export const CommentsPreview = styled(StyledText)`
@@ -33,5 +39,12 @@ export const CommentsPreview = styled(StyledText)`
     }
     &::after {
         margin-left: 0.5%;
+    }
+    @media (max-width: 385px) {
+        text-align: left;
+        &::before,
+        &::after {
+            display: none;
+        }
     }
 `;

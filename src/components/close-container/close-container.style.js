@@ -7,7 +7,8 @@ export const CloseContainerDiv = styled.div`
     height: 30px;
     cursor: pointer;
     margin-right: 2px;
-    .leftright {
+    .leftright,
+    .rightleft {
         height: 2px;
         width: 20px;
         position: absolute;
@@ -18,14 +19,7 @@ export const CloseContainerDiv = styled.div`
         transition: all 0.3s ease-in;
     }
     .rightleft {
-        height: 2px;
-        width: 20px;
-        position: absolute;
-        margin-top: 14px;
-        background-color: #f4a259;
-        border-radius: 2px;
         transform: rotate(-45deg);
-        transition: all 0.3s ease-in;
     }
     label {
         color: ${getValueFromTheme('textColor')};
@@ -48,5 +42,14 @@ export const CloseContainerDiv = styled.div`
     }
     &:hover label {
         opacity: 1;
+    }
+    @media (max-width: 495px) {
+        width: 20px;
+        height: 20px;
+        .leftright,
+        .rightleft {
+            height: 1px;
+            width: 15px;
+        }
     }
 `;
