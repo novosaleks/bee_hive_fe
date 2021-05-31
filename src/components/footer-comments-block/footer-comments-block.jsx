@@ -1,7 +1,7 @@
 import FooterComment from '../footer-comment';
 import { StyledDiv } from '../../common/style';
 
-const FooterCommentsBlock = ({ comments }) => {
+const FooterCommentsBlock = ({ comments, componentId }) => {
     const allReplies = comments.filter(comment => comment.reply === true);
     return (
         <StyledDiv>
@@ -12,6 +12,7 @@ const FooterCommentsBlock = ({ comments }) => {
                             comment={comment}
                             allReplies={allReplies}
                             key={comment.commentId}
+                            componentId={componentId}
                         />
                     )
             )}

@@ -14,6 +14,7 @@ import { SubmitButton } from '../../common/style';
 
 const FooterPostNewComment = ({
     setOpenNewCommentState,
+    componentId,
     reply,
     addresseeId,
     addresCommentId,
@@ -40,6 +41,7 @@ const FooterPostNewComment = ({
     const handleSubmit = async () => {
         await addComment({
             variables: {
+                componentId: componentId,
                 content: textareaRef.current.value,
                 reply: reply,
                 addresseeId: addresId,
