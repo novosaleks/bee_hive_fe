@@ -5,7 +5,7 @@ import hintImg from '../../assets/hintImg.svg';
 import { RateDiv, RatingHintImg } from './rate-block.style';
 import { StyledDiv } from '../../common/style/index';
 
-const RateBlock = () => {
+const RateBlock = ({ photoModal }) => {
     const RatingBlockRef = useRef();
     const RatingHintRef = useRef();
     const [openState, setOpenState] = useState(false);
@@ -53,6 +53,7 @@ const RateBlock = () => {
                 <RateExplanation
                     hintBottom={bottomOfRatingBlock}
                     hintLeft={leftOfRatingBlock}
+                    photoModal={photoModal}
                 />
             )}
         </StyledDiv>
