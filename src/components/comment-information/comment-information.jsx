@@ -9,7 +9,13 @@ import CommentEdit from '../comment-edit';
 import { CommentInfoDiv } from './comment-information.style';
 import { StyledText } from '../../common/style';
 
-const CommentInformation = ({ comment, auth, replies, smallBlock }) => {
+const CommentInformation = ({
+    comment,
+    auth,
+    replies,
+    smallBlock,
+    componentId,
+}) => {
     const [edit, setEdit] = useState(false);
 
     const handleEdit = edit => {
@@ -23,7 +29,7 @@ const CommentInformation = ({ comment, auth, replies, smallBlock }) => {
             />
             <PostAuthorAndData
                 {...{ smallBlock }}
-                name={`${auth[0].firstName} ${auth[0].lastName}`}
+                name={`${auth.firstName} ${auth.lastName}`}
                 date={comment.createdAt}
             />
             {edit ? (
@@ -38,7 +44,8 @@ const CommentInformation = ({ comment, auth, replies, smallBlock }) => {
                         {comment.content}
                     </StyledText>
                     <FooterPostNewReply
-                        firstName={auth[0].firstName}
+                        firstName={auth.firstName}
+                        componentId={componentId}
                         authorId={comment.authorId}
                         addresCommentId={comment.commentId}
                     />

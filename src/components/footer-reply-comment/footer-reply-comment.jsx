@@ -21,13 +21,12 @@ const FooterReplyComment = ({ comment }) => {
     }
     const users = data.getAllUsers;
     const addressee =
-        users && users.filter(user => user.id !== comment.addresseeId);
+        users && users.find(user => user.id === comment.addresseeId);
     return (
         <ReplyCommentDiv>
             <AddresseeInfoBlock>
                 <StyledText>
-                    Replied to{' '}
-                    {`${addressee[0].firstName} ${addressee[0].lastName}`}
+                    Replied to {`${addressee.firstName} ${addressee.lastName}`}
                     {': '}
                 </StyledText>
             </AddresseeInfoBlock>

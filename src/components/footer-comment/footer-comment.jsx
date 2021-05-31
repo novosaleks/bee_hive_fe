@@ -6,7 +6,7 @@ import CommentInformation from '../comment-information';
 
 import { CommentBlock } from './footer-comment.style';
 
-const FooterComment = ({ comment, allReplies, replyBlock }) => {
+const FooterComment = ({ comment, allReplies, replyBlock, componentId }) => {
     const { loading, error, data } = useQuery(GET_ALL_USERS);
 
     if (loading) {
@@ -19,7 +19,7 @@ const FooterComment = ({ comment, allReplies, replyBlock }) => {
 
     //find the name of the auth
     const users = data.getAllUsers;
-    const auth = users && users.filter(user => user.id !== comment.authorId);
+    const auth = users && users.find(user => user.id === comment.authorId);
 
     //find all replies to the comment
     const replies =
@@ -39,7 +39,9 @@ const FooterComment = ({ comment, allReplies, replyBlock }) => {
                 {...{ smallBlock }}
                 className='user-avatar'
             />
-            <CommentInformation {...{ comment, auth, replies, smallBlock }} />
+            <CommentInformation
+                {...{ comment, auth, replies, smallBlock, componentId }}
+            />
         </CommentBlock>
     );
 };

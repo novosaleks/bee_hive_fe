@@ -53,7 +53,7 @@ const PostFooter = ({ postId }) => {
             replyContent: '',
         },
         {
-            authorId: '1',
+            authorId: '2',
             commentId: '12',
             content: 'hello',
             createdAt: '23.06.20020',
@@ -95,6 +95,7 @@ const PostFooter = ({ postId }) => {
             {openNewCommentState && (
                 <FooterPostNewComment
                     setOpenNewCommentState={setOpenNewCommentState}
+                    componentId={postId}
                     reply={false}
                 />
             )}
@@ -104,7 +105,10 @@ const PostFooter = ({ postId }) => {
                     : `Hide comments`}
             </CommentsPreview>
             {openCommentsState && (
-                <FooterCommentsBlock comments={commentsContent} />
+                <FooterCommentsBlock
+                    comments={commentsContent}
+                    componentId={postId}
+                />
             )}
         </NewCommentProvider>
     );
