@@ -16,14 +16,14 @@ const FooterPostNewComment = ({
     setOpenNewCommentState,
     reply,
     addresseeId,
-    replyContent,
+    addresCommentId,
 }) => {
     const [addComment, { data }] = useMutation(ADD_COMMENT);
     const textareaRef = useRef();
 
     const updateComments = useNewComment();
     const addresId = addresseeId || '';
-    const replyCont = replyContent || '';
+    const addrCommentId = addresCommentId || '';
 
     useEffect(() => {
         if (data) {
@@ -43,7 +43,7 @@ const FooterPostNewComment = ({
                 content: textareaRef.current.value,
                 reply: reply,
                 addresseeId: addresId,
-                replyContent: replyCont,
+                addresCommentId: addrCommentId,
             },
         });
     };

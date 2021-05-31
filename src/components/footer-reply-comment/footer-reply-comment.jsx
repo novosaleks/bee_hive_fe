@@ -26,15 +26,12 @@ const FooterReplyComment = ({ comment }) => {
         <ReplyCommentDiv>
             <AddresseeInfoBlock>
                 <StyledText>
-                    Reply to{' '}
+                    Replied to{' '}
                     {`${addressee[0].firstName} ${addressee[0].lastName}`}
                     {': '}
                 </StyledText>
-                <StyledText className='reply-content'>
-                    {comment.replyContent}
-                </StyledText>
             </AddresseeInfoBlock>
-            <FooterComment comment={comment} />
+            <FooterComment comment={comment} replyBlock={true} />
         </ReplyCommentDiv>
     );
 };

@@ -4,7 +4,7 @@ import FooterPostNewComment from '../footer-post-new-comment';
 
 import { StyledText } from '../../common/style';
 
-const FooterPostNewReply = ({ firstName, authorId, content }) => {
+const FooterPostNewReply = ({ firstName, authorId, addresCommentId }) => {
     const [openState, setOpenState] = useState(false);
     const handlerClick = () => {
         setOpenState(prevState => !prevState);
@@ -20,7 +20,7 @@ const FooterPostNewReply = ({ firstName, authorId, content }) => {
                     setOpenNewCommentState={setOpenState}
                     reply={true}
                     addresseeId={authorId}
-                    replyContent={content}
+                    addresCommentId={addresCommentId}
                 />
             )}
         </>
