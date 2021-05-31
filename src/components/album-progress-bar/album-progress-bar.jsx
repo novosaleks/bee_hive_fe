@@ -1,9 +1,11 @@
 import { useEffect } from 'react';
-import useStorage from '../../common/firebase/hooks/useStorage';
+import { useMutation } from '@apollo/client';
+import { ADD_PHOTO } from '../../graphql/album';
+
 import { motion } from 'framer-motion';
 
 const AlbumProgressBar = ({ file, setFile }) => {
-    const { progress, url } = useStorage(file);
+    const [addPhoto, { progress, url }] = useMutation(ADD_PHOTO);
 
     useEffect(() => {
         if (url) {

@@ -1,15 +1,6 @@
 import styled from 'styled-components';
 import { getValueFromTheme } from '../../common/utils';
 
-const scrollHeight = Math.max(
-    document.body.scrollHeight,
-    document.documentElement.scrollHeight,
-    document.body.offsetHeight,
-    document.documentElement.offsetHeight,
-    document.body.clientHeight,
-    document.documentElement.clientHeight
-);
-
 export const Window = styled.div`
     position: fixed;
     top: 0;
@@ -24,12 +15,14 @@ export const AlbumOpenModalDiv = styled.div`
     position: absolute;
     top: 3%;
     left: 30%;
+    bottom: 3%;
     color: #4e4e4e;
     width: 50vw;
     padding-top: 5px;
     height: ${document.documentElement.clientHeight - 50}px;
     background-color: ${getValueFromTheme('primaryBgColorDiv')};
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    overflow: hidden;
     .backdrop {
         position: fixed;
         top: 0;

@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 
-import AlbumsBlock from '../../components/albums-block';
+import AlbumsContainer from '../../containers/albums-container';
 import SideBarUserInfo from '../../containers/sidebar-user-info-container';
 import Wall from '../../components/wall';
 import {
@@ -35,7 +35,7 @@ const ProfileScreen = () => {
                     <StyledDivPage>
                         <SideBarUserInfo user={user} />
                         <StyledPageContent>
-                            <AlbumsBlock />
+                            <AlbumsContainer user={user} />
                             <Wall user={user} />
                         </StyledPageContent>
                     </StyledDivPage>

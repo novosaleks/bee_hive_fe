@@ -1,29 +1,33 @@
-import useFirestore from '../../common/firebase/hooks/useFirestore';
-
 import { motion } from 'framer-motion';
 import { ImgGrid } from './album-image-grid.style';
 
-const AlbumImageGrid = ({ setSelectedImg }) => {
-    const { docs } = useFirestore('images');
+import { StyledText } from '../../common/style';
 
+const AlbumImageGrid = ({ setSelectedImg, albumId, images }) => {
+    const displayImg =
+        images &&
+        images.map(image => (
+            <motion.div
+                key={image.id}
+                layout
+                whileHover={{ opacity: 1 }}
+                onClick={() => setSelectedImg(image.url)}>
+                <motion.img
+                    src={image.url}
+                    alt='uploaded pic'
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    transition={{ delay: 0.3 }}
+                />
+            </motion.div>
+        ));
     return (
         <ImgGrid>
-            {docs &&
-                docs.map(doc => (
-                    <motion.div
-                        key={doc.id}
-                        layout
-                        whileHover={{ opacity: 1 }}
-                        onClick={() => setSelectedImg(doc.url)}>
-                        <motion.img
-                            src={doc.url}
-                            alt='uploaded pic'
-                            initial={{ opacity: 0 }}
-                            animate={{ opacity: 1 }}
-                            transition={{ delay: 1 }}
-                        />
-                    </motion.div>
-                ))}
+            {images.length !== 0 ? (
+                displayImg
+            ) : (
+                <StyledText>You do not have any photo here...</StyledText>
+            )}
         </ImgGrid>
     );
 };
