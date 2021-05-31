@@ -45,6 +45,7 @@ const PostFooter = ({ postId }) => {
     const commentsContent = [
         {
             authorId: '1',
+            commentId: '11',
             content: 'hi',
             createdAt: '23.06.20020',
             reply: false,
@@ -53,6 +54,7 @@ const PostFooter = ({ postId }) => {
         },
         {
             authorId: '1',
+            commentId: '12',
             content: 'hello',
             createdAt: '23.06.20020',
             reply: false,
@@ -61,6 +63,7 @@ const PostFooter = ({ postId }) => {
         },
         {
             authorId: '1',
+            commentId: '13',
             content: 'hello, world',
             createdAt: '23.06.20020',
             reply: false,
@@ -69,11 +72,12 @@ const PostFooter = ({ postId }) => {
         },
         {
             authorId: '2',
+            commentId: '14',
             content: 'i do not agree',
             createdAt: '23.06.20020',
             reply: true,
+            addresCommentId: '13',
             addresseeId: '1',
-            replyContent: 'hello, world',
         },
     ];
 

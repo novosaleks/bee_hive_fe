@@ -1,16 +1,19 @@
 import FooterComment from '../footer-comment';
 import { StyledDiv } from '../../common/style';
-import FooterReplyComment from '../footer-reply-comment/footer-reply-comment';
 
 const FooterCommentsBlock = ({ comments }) => {
+    const allReplies = comments.filter(comment => comment.reply === true);
     return (
         <StyledDiv>
-            {comments.map(comment =>
-                comment.reply !== true ? (
-                    <FooterComment comment={comment} />
-                ) : (
-                    <FooterReplyComment comment={comment} />
-                )
+            {comments.map(
+                comment =>
+                    comment.reply !== true && (
+                        <FooterComment
+                            comment={comment}
+                            allReplies={allReplies}
+                            key={comment.commentId}
+                        />
+                    )
             )}
         </StyledDiv>
     );

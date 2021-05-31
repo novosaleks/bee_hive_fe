@@ -1,39 +1,37 @@
 import { useEffect, useRef } from 'react';
 import { useMutation } from '@apollo/client';
-import { UPDATE_POST } from '../../graphql/post';
-
-import { useUpdateWall } from '../../common/context/updateWallContext';
+import { UPDATE_COMMENT } from '../../graphql/comment';
+import { useNewComment } from '../../common/context/newCommentContext';
 
 import ComponentEdit from '../component-edit/component-edit';
 
-const PostEdit = ({ postId, text, handleEdit }) => {
-    const [updatePost, { data }] = useMutation(UPDATE_POST);
+const CommentEdit = ({ commentId, text, handleEdit }) => {
+    const [updateComment, { data }] = useMutation(UPDATE_COMMENT);
     const inputRef = useRef();
-    const updateWall = useUpdateWall();
+    const updateComments = useNewComment();
 
     useEffect(() => {
         if (data) {
-            const success = data.updatePost;
+            const success = data.updateComment;
             if (success) {
                 // TODO add a notification
-                console.log('Success! The post has been edited!');
+                console.log('Success! The comment has been edited!');
                 handleEdit(false);
-                updateWall();
+                updateComments();
             }
         }
     }, [data]);
 
     const handleSubmit = async e => {
         e.preventDefault();
-        await updatePost({
-            variables: { postId: postId, text: inputRef.current.value },
+        await updateComment({
+            variables: { commentId: commentId, text: inputRef.current.value },
         });
     };
 
     const handleClick = () => {
         handleEdit(false);
     };
-
     return (
         <ComponentEdit
             handleSubmit={handleSubmit}
@@ -44,4 +42,4 @@ const PostEdit = ({ postId, text, handleEdit }) => {
     );
 };
 
-export default PostEdit;
+export default CommentEdit;
