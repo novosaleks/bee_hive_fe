@@ -6,16 +6,19 @@ import AlbumPhotoModal from '../album-photo-modal';
 
 import { AlbumOpenModalDiv, Window } from './album-open-modal.style';
 
-const AlbumOpenModal = ({ description, title, setIsOpen }) => {
+const AlbumOpenModal = ({ description, title, albumId, images, setIsOpen }) => {
     const [selectedImg, setSelectedImg] = useState(null);
 
     return (
         <Window>
             <AlbumOpenModalDiv>
-                <AlbumTitle {...{ description, title, setIsOpen }} />
+                <AlbumTitle {...{ description, title, albumId, setIsOpen }} />
 
-                <AlbumUploadForm />
-                <AlbumImageGrid setSelectedImg={setSelectedImg} />
+                <AlbumUploadForm albumId={albumId} />
+                <AlbumImageGrid
+                    setSelectedImg={setSelectedImg}
+                    {...{ albumId, images }}
+                />
                 {selectedImg && (
                     <AlbumPhotoModal
                         selectedImg={selectedImg}

@@ -3,7 +3,7 @@ import AlbumProgressBar from '../album-progress-bar';
 
 import { Form, Label, Output, Error } from './album-upload-form.style';
 
-const AlbumUploadForm = () => {
+const AlbumUploadForm = ({ albumId }) => {
     const [file, setFile] = useState(null);
     const [error, setError] = useState(null);
 
@@ -30,7 +30,13 @@ const AlbumUploadForm = () => {
             <Output>
                 {error && <Error>{error}</Error>}
                 {file && <div>{file.name}</div>}
-                {file && <AlbumProgressBar file={file} setFile={setFile} />}
+                {file && (
+                    <AlbumProgressBar
+                        file={file}
+                        setFile={setFile}
+                        albumId={albumId}
+                    />
+                )}
             </Output>
         </Form>
     );

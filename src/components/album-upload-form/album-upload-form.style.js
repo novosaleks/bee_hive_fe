@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import { getValueFromTheme } from '../../common/utils';
 
 export const Form = styled.form`
-    margin: 30px auto 10px;
+    margin: 30px auto 2px;
     text-align: center;
 `;
 export const Label = styled.label`
@@ -29,7 +29,7 @@ export const Label = styled.label`
 `;
 
 export const Output = styled.div`
-    height: 60px;
+    height: 40px;
     font-size: 0.8rem;
     .progress-bar {
         height: 5px;

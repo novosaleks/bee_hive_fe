@@ -21,6 +21,28 @@ export const ImgGrid = styled.div`
             position: absolute;
             top: 0;
             left: 0;
+            border: 1px solid #f9f9fd;
         }
+    }
+    p {
+        width: 270px;
+        font-style: italic;
+        text-align: left;
+        font-weight: 500;
+        @media (max-width: 360px) {
+            width: 160px;
+        }
+    }
+    &::-webkit-scrollbar {
+        width: 3px;
+        background-color: #f9f9fd;
+    }
+    &::-webkit-scrollbar-thumb {
+        border-radius: 5px;
+        background-color: #4a8367;
+    }
+    &::-webkit-scrollbar-track {
+        border-radius: 10px;
+        background-color: #f9f9fd;
     }
 `;
