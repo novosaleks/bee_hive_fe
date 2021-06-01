@@ -10,9 +10,9 @@ const User = ({ user }) => {
     return user ? (
         <Switch>
             <Route path='/' exact>
-                <Redirect to={`/${user.id}`} />
+                <Redirect to={`/user/${user.id}`} />
             </Route>
-            <Route path='/:userId'>
+            <Route path='/user/:userId'>
                 <NavbarContainer />
                 <ProfileScreen />
             </Route>
