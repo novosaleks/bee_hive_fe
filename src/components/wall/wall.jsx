@@ -41,7 +41,7 @@ const Wall = ({ user }) => {
             <StyledDiv marginTop='5%'>
                 <Title>Wall</Title>
                 <WallBodyDiv>
-                    <NewPostInput />
+                    <NewPostInput userId={user.id} />
                     {posts &&
                         posts.map((post, index, arr) => (
                             <UserPostBlock key={post.id}>
