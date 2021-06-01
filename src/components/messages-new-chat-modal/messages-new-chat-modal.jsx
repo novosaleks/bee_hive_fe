@@ -4,6 +4,8 @@ import { Modal, Form } from 'react-bootstrap';
 import {
     ChatModalButton,
     ChatModalInput,
+    ModalHeader,
+    ModalBody,
 } from './messages-new-chat-modal.style';
 
 import { useConversationContext } from '../../common/context/conversationContext';
