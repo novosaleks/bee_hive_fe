@@ -24,7 +24,7 @@ const DeleteEditIconsBlock = ({ editComponent, deleteComponent, authorId }) => {
     return (
         <>
             {currentUserId && (
-                <DeleteEditDiv>
+                <DeleteEditDiv className='delete-edit-icons'>
                     {/* if it's our post show edit post button */}
                     {currentUserId === authorId && (
                         <StyledImg

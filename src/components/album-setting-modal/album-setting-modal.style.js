@@ -6,6 +6,8 @@ export const DropDownAlbum = styled(DropDown)`
     background-color: ${getValueFromTheme('primaryBgColor')};
     width: 350px;
     height: 300px;
+    top: ${props => props.settingModal && '10%'};
+    left: ${props => props.settingModal && '3%'};
     right: ${props => props.albomBlock && '10%'};
     @media (max-width: 600px) {
         width: 250px;
@@ -35,17 +37,4 @@ export const Textarea = styled.textarea`
     line-height: 40px;
     border-width: 0;
     border-radius: 20px;
-`;
-
-export const ButtonsBlock = styled.div`
-    display: flex;
-    align-self: flex-end;
-    flex-direction: column;
-`;
-
-export const Submit = styled(SubmitButton)`
-    width: 23vh;
-    @media (max-width: 600px) {
-        width: 17vh;
-    }
 `;

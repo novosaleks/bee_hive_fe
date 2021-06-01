@@ -129,7 +129,9 @@ const AlbumsSlider = ({ handelClick }) => {
                                     album.images
                                 )
                             }>
-                            <StyledText>{album.description}</StyledText>
+                            <StyledText className='description'>
+                                {album.description}
+                            </StyledText>
                             <PhotoAlbumNameDiv>
                                 <StyledText>{album.title}</StyledText>
                             </PhotoAlbumNameDiv>

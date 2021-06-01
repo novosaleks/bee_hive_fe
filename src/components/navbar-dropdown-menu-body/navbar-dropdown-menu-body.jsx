@@ -8,9 +8,9 @@ import {
     NavbarDropdownItem,
 } from './navbar-dropdown-menu-body.style';
 
-const NavbarDropdownMenuBody = ({ left, bottom, isOpen }) => {
+const NavbarDropdownMenuBody = ({ left, isOpen }) => {
     return (
-        <NavbarDropdownMenuBodyDiv {...{ left, bottom, isOpen }}>
+        <NavbarDropdownMenuBodyDiv {...{ left, isOpen }}>
             <NavbarDropdownItem direction='row'>
                 <img src={settings} alt='settings icon' />
                 <NavLink to='/settings'>Settings</NavLink>

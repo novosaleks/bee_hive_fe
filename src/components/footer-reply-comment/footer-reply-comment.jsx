@@ -25,7 +25,7 @@ const FooterReplyComment = ({ comment }) => {
     return (
         <ReplyCommentDiv>
             <AddresseeInfoBlock>
-                <StyledText>
+                <StyledText className='replied-to'>
                     Replied to {`${addressee.firstName} ${addressee.lastName}`}
                     {': '}
                 </StyledText>

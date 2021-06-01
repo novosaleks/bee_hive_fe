@@ -1,6 +1,5 @@
 import styled from 'styled-components';
 import { StyledDiv } from '../../common/style';
-import { getValueFromTheme } from '../../common/utils';
 
 export const AddresseeInfoBlock = styled.div`
     background-color: #00594a;
@@ -14,10 +13,8 @@ export const AddresseeInfoBlock = styled.div`
     }
 
     @media (max-width: 375px) {
-        width: 90vw;
         position: relative;
         right: 0;
-        margin-right: 35%;
         .reply-content {
             width: 120px;
         }

@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect } from 'react';
 import { useMutation } from '@apollo/client';
 import { UPDATE_ALBUM } from '../../graphql/album';
 
@@ -12,7 +12,6 @@ import AlbumSettingsModal from '../album-setting-modal';
 
 const AlbumTitle = ({ description, title, albumId, setIsOpen }) => {
     const [isOpenModal, setIsOpenModal] = useState(false);
-    const [headerLeft, setHeaderLeft] = useState(null);
     const [updateAlbum, { data }] = useMutation(UPDATE_ALBUM);
 
     //update album, gql mutation
@@ -40,19 +39,6 @@ const AlbumTitle = ({ description, title, albumId, setIsOpen }) => {
         });
     };
 
-    //define AlbumSettingsModal absolute position
-    const HeaderRef = useRef();
-    const resizeHandler = () => {
-        setHeaderLeft(HeaderRef.current?.getBoundingClientRect().left);
-    };
-    useEffect(() => {
-        window.addEventListener('resize', resizeHandler, true);
-        resizeHandler();
-        return () => {
-            window.removeEventListener('resize', resizeHandler, true);
-        };
-    }, [isOpenModal]);
-
     // open/close AlbumSettingsModal
     const handelClick = () => {
         setIsOpenModal(prevState => !prevState);
@@ -60,7 +46,7 @@ const AlbumTitle = ({ description, title, albumId, setIsOpen }) => {
 
     return (
         <StyledDiv>
-            <Header ref={HeaderRef}>
+            <Header>
                 <img src={settings} alt='settings icon' onClick={handelClick} />
                 <CloseContainer
                     event={() => {
@@ -70,8 +56,7 @@ const AlbumTitle = ({ description, title, albumId, setIsOpen }) => {
             </Header>
             {isOpenModal && (
                 <AlbumSettingsModal
-                    bottom={60}
-                    right={headerLeft}
+                    settingModal={true}
                     isOpen={isOpenModal}
                     placeholderTitle='New title'
                     placeholderDescription='New description'

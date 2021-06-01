@@ -1,9 +1,9 @@
-import RateBlock from '../rate-block';
+import PostFooter from '../../containers/post-footer-container';
 import { motion } from 'framer-motion';
 
-import { ImgModal } from './album-photo-modal.style';
+import { ImgModal, AlbumPhotomodal__CSS } from './album-photo-modal.style';
 
-const AlbumPhotoModal = ({ setSelectedImg, selectedImg }) => {
+const AlbumPhotoModal = ({ setSelectedImg, selectedImg, photoId }) => {
     const handleClick = e => {
         if (e.target.classList.contains('backdrop')) {
             setSelectedImg(null);
@@ -24,7 +24,9 @@ const AlbumPhotoModal = ({ setSelectedImg, selectedImg }) => {
                     animate={{ y: 0 }}
                     className='backdrop-img'
                 />
-                <RateBlock photoModal={true} />
+                <AlbumPhotomodal__CSS>
+                    <PostFooter componentId={photoId} photoModal={true} />
+                </AlbumPhotomodal__CSS>
             </ImgModal>
         </motion.div>
     );

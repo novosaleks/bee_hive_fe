@@ -190,7 +190,7 @@ export const DropDown = styled(StyledDiv)`
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
     left: ${props => props.left}px;
     right: ${props => props.right}px;
-    top: ${props => props.bottom}px;
+    top: ${props => (props.bottom && props.bottom + 'px') || '28%'};
     visibility: hidden;
     z-index: 0;
     transition: 1.2s;

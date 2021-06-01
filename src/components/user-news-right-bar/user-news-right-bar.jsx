@@ -26,7 +26,7 @@ const UserNewsRightBar = ({ name, date, postId, authorId, text }) => {
             ) : (
                 <PostText text={text} />
             )}
-            <PostFooter postId={postId} />
+            <PostFooter componentId={postId} />
         </RightBarDiv>
     );
 };

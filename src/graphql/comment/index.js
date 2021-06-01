@@ -30,22 +30,9 @@ export const REMOVE_COMMENT = gql`
     }
 `;
 
-export const GET_COMMENTS_BY_POST_ID = gql`
-    query GetCommentsByPostId($postId: ID!) {
-        getCommentsByPostId(postId: $postId) {
-            commentId
-            authorId
-            content
-            createdAt
-            reply
-            addresCommentId
-            addresseeId
-        }
-    }
-`;
-export const GET_COMMENTS_BY_PHOTO_ID = gql`
-    query GetCommentsByPostId($photoId: ID!) {
-        getCommentsByPostId(photoId: $photoId) {
+export const GET_COMMENTS_BY_COMPONENT_ID = gql`
+    query GetCommentsByPostId($componentId: ID!) {
+        getCommentsByPostId(componentId: $componentId) {
             commentId
             authorId
             content
