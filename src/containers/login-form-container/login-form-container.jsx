@@ -20,7 +20,7 @@ const LoginFormContainer = () => {
         if (data) {
             const success = data.login;
             if (success) {
-                window.location.reload();
+                window.location.href = '/';
             } else {
                 notify({ text: 'Authorization failed', type: 'fail' });
             }
