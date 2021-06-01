@@ -20,7 +20,7 @@ const UserNewsRightBar = ({ name, date, postId, authorId, text }) => {
                 authorId={authorId}
                 handleEdit={handleEdit}
             />
-            <PostAuthorAndData name={name} date={date} />
+            <PostAuthorAndData name={name} authorId={authorId} date={date} />
             {edit ? (
                 <PostEdit postId={postId} text={text} handleEdit={handleEdit} />
             ) : (
