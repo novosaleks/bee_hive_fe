@@ -6,7 +6,13 @@ import CommentInformation from '../comment-information';
 
 import { CommentBlock } from './footer-comment.style';
 
-const FooterComment = ({ comment, allReplies, replyBlock, componentId }) => {
+const FooterComment = ({
+    comment,
+    allReplies,
+    replyBlock,
+    componentId,
+    photoModal,
+}) => {
     const { loading, error, data } = useQuery(GET_ALL_USERS);
 
     if (loading) {
@@ -30,7 +36,10 @@ const FooterComment = ({ comment, allReplies, replyBlock, componentId }) => {
     const smallBlock = true;
 
     return (
-        <CommentBlock replyBlock={replyBlock}>
+        <CommentBlock
+            replyBlock={replyBlock}
+            photoModal={photoModal}
+            className='comment-block'>
             <UserAvatar
                 rating={'#C53B0E'}
                 rateScore={'1,5'}

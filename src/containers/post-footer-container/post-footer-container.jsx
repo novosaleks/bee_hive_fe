@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useQuery } from '@apollo/client';
-import { GET_COMMENTS_BY_POST_ID } from '../../graphql/comment';
+import { GET_COMMENTS_BY_COMPONENT_ID } from '../../graphql/comment';
 
 import FooterPostNewComment from '../../components/footer-post-new-comment';
 import RateBlock from '../../components/rate-block';
@@ -14,7 +14,7 @@ import {
     CommentsPreview,
 } from './post-footer-container.style';
 
-const PostFooter = ({ postId }) => {
+const PostFooter = ({ componentId, photoModal }) => {
     const [openCommentsState, setOpenCommentsState] = useState(false);
     const [openNewCommentState, setOpenNewCommentState] = useState(false);
     //  const [commentsContent, setCommentsContent] = useState([]);
@@ -24,13 +24,14 @@ const PostFooter = ({ postId }) => {
     const handlerClickNewComment = () => {
         setOpenNewCommentState(prevState => !prevState);
     };
-    //  const { loading, error, data, refetch } = useQuery(GET_COMMENTS_BY_POST_ID, {
-    //      variables: { postId: postId },
+
+    //  const { loading, error, data, refetch } = useQuery(GET_COMMENTS_BY_COMPONENT_ID, {
+    //      variables: { componentId: componentId },
     //  });
 
     //  useEffect(() => {
     //      if (data) {
-    //          setCommentsContent(data.getCommentsByPostId);
+    //          setCommentsContent(data.getCommentsByComponentId);
     //      }
     //  }, [data]);
 
@@ -84,7 +85,9 @@ const PostFooter = ({ postId }) => {
     return (
         <NewCommentProvider value={updateComments}>
             <PostFooterMainBlock>
-                <RateBlock />
+                <RateBlock photoModal={photoModal} />
+
+                {/* open/hide textarea for adding a comment */}
                 <img
                     src={comments}
                     alt='add comment icon'
@@ -92,22 +95,29 @@ const PostFooter = ({ postId }) => {
                     onClick={handlerClickNewComment}
                 />
             </PostFooterMainBlock>
+
+            {/* add new comment */}
             {openNewCommentState && (
                 <FooterPostNewComment
                     setOpenNewCommentState={setOpenNewCommentState}
-                    componentId={postId}
+                    componentId={componentId}
                     reply={false}
                 />
             )}
+
+            {/* hide/open comments */}
             <CommentsPreview onClick={handlerClickComments}>
                 {!openCommentsState
                     ? `View all ${commentsContent.length} comments`
                     : `Hide comments`}
             </CommentsPreview>
+
+            {/* post`s comments */}
             {openCommentsState && (
                 <FooterCommentsBlock
                     comments={commentsContent}
-                    componentId={postId}
+                    componentId={componentId}
+                    photoModal={photoModal}
                 />
             )}
         </NewCommentProvider>

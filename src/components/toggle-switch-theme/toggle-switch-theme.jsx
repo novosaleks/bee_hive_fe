@@ -6,17 +6,18 @@ import { Wrapper } from './toggle-switch-theme.style';
 
 const ToggleSwitchTheme = () => {
     const { loading, error, data } = useQuery(GET_ACTIVE_THEME);
+
+    let activeTheme = data.activeTheme;
     if (loading) return <div>Loading...</div>;
     if (error) return <div>{`Error: ${error.message}`}</div>;
 
-    const activeTheme = data.activeTheme;
     return (
         <Wrapper className='wrapper'>
             <div className='toggle'>
                 <input
                     className='toggle-input'
                     type='checkbox'
-                    checked={THEMES[activeTheme] === 'dark'}
+                    checked={THEMES[activeTheme] === THEMES.dark ? true : false}
                     onChange={e =>
                         e.target.checked === true
                             ? setActiveTheme(THEMES.dark)

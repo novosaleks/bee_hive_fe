@@ -2,6 +2,7 @@ import styled from 'styled-components';
 
 import { getValueFromTheme } from '../../common/utils';
 import { StyledDiv } from '../../common/style/index';
+import albumBGImg from '../../assets/albumBGImg.jpg';
 
 export const AlbomsBlock = styled(StyledDiv)`
     flex-direction: row;
@@ -12,6 +13,16 @@ export const PhotoAlbumDiv = styled(StyledDiv)`
     height: 240px;
     cursor: pointer;
     background-color: ${getValueFromTheme('primaryBgColorDiv')};
+
+    background-image: url(${albumBGImg});
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    .description {
+        color: #fff;
+        font-weight: 400;
+    }
+
     &:hover {
         box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
     }

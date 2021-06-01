@@ -13,16 +13,14 @@ export const Window = styled.div`
 
 export const AlbumOpenModalDiv = styled.div`
     position: absolute;
-    top: 3%;
-    left: 30%;
-    bottom: 3%;
     color: #4e4e4e;
-    width: 50vw;
+    width: 100vw;
     padding-top: 5px;
-    height: ${document.documentElement.clientHeight - 50}px;
+    height: 100vh;
     background-color: ${getValueFromTheme('primaryBgColorDiv')};
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
     overflow: hidden;
+
     .backdrop {
         position: fixed;
         top: 0;
@@ -38,9 +36,5 @@ export const AlbumOpenModalDiv = styled.div`
         margin: 20px auto;
         box-shadow: 3px 5px 7px rgba(0, 0, 0, 0.5);
         border: 3px solid white;
-    }
-    @media (max-width: 700px) {
-        left: 10%;
-        width: 80vw;
     }
 `;

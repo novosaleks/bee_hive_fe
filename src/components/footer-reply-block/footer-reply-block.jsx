@@ -17,7 +17,7 @@ const FooterReplyBlock = ({ replies }) => {
                     : `Hide replies`}
             </ReplyPreview>
             {openReplyState && (
-                <ReplyUL>
+                <ReplyUL className='reply-ul'>
                     {replies &&
                         replies.map(reply => (
                             <li key={reply.commentId}>

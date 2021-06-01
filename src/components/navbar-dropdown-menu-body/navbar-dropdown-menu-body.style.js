@@ -4,11 +4,12 @@ import { StyledDiv, DropDown, media } from '../../common/style/index';
 export const NavbarDropdownMenuBodyDiv = styled(DropDown)`
     @media (max-width: 398px) {
         left: 10%;
-        top: ${props => props.bottom + 15}px;
     }
     @media (max-width: 610px) {
         left: ${props => props.left - 150}px;
-        top: ${props => props.bottom + 15}px;
+    }
+    @media (min-width: 910px) {
+        top: 20%;
     }
     @media (min-width: 989px) and (max-width: 1060px) {
         left: 75%;

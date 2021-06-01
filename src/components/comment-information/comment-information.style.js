@@ -27,9 +27,12 @@ export const CommentInfoDiv = styled.div`
     .comment-form {
         padding: 3%;
     }
-    &:hover {
-        background-color: #768996;
-        opacity: 0.8;
-        border-radius: 5px;
+
+    @media (max-width: 330px) {
+        width: 70%;
+        ul {
+            width: 100vw;
+            margin-left: -55%;
+        }
     }
 `;

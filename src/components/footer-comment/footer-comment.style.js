@@ -1,6 +1,5 @@
 import styled, { css } from 'styled-components';
 import { StyledDiv } from '../../common/style';
-import { getValueFromTheme } from '../../common/utils';
 
 const CSS__REPLY_BLOCK = css`
     width: inherit;

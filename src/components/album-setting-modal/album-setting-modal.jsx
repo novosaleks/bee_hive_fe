@@ -1,19 +1,13 @@
 import { useRef } from 'react';
-import CloseContainer from '../close-container';
-
-import {
-    Input,
-    Textarea,
-    DropDownAlbum,
-    ButtonsBlock,
-    Submit,
-} from './album-setting-modal.style';
+import ButtonsSubmitClose from '../bottons-submit-close';
+import { Input, Textarea, DropDownAlbum } from './album-setting-modal.style';
 
 const AlbumSettingsModal = ({
     right,
     bottom,
     isOpen,
     albomBlock,
+    settingModal,
     placeholderTitle,
     placeholderDescription,
     handelClick,
@@ -30,7 +24,7 @@ const AlbumSettingsModal = ({
     };
 
     return (
-        <DropDownAlbum {...{ right, bottom, isOpen, albomBlock }}>
+        <DropDownAlbum {...{ right, bottom, isOpen, albomBlock, settingModal }}>
             <Input
                 type='text'
                 placeholder={placeholderTitle || 'Title for your album'}
@@ -41,10 +35,11 @@ const AlbumSettingsModal = ({
                 rows='3'
                 ref={textareaRef}
             />
-            <ButtonsBlock>
-                <Submit onClick={setEmptyValuesAfterSubmit}>Submit</Submit>
-                <CloseContainer event={handelClick} />
-            </ButtonsBlock>
+            <ButtonsSubmitClose
+                handleClickClose={handelClick}
+                handleClickSubmit={setEmptyValuesAfterSubmit}
+                settingModal={true}
+            />
         </DropDownAlbum>
     );
 };

@@ -8,6 +8,7 @@ import { AlbumOpenModalDiv, Window } from './album-open-modal.style';
 
 const AlbumOpenModal = ({ description, title, albumId, images, setIsOpen }) => {
     const [selectedImg, setSelectedImg] = useState(null);
+    const [selectedImgId, setSelectedImgId] = useState(null);
 
     return (
         <Window>
@@ -16,13 +17,13 @@ const AlbumOpenModal = ({ description, title, albumId, images, setIsOpen }) => {
 
                 <AlbumUploadForm albumId={albumId} />
                 <AlbumImageGrid
-                    setSelectedImg={setSelectedImg}
-                    {...{ albumId, images }}
+                    {...{ images, setSelectedImgId, setSelectedImg }}
                 />
                 {selectedImg && (
                     <AlbumPhotoModal
                         selectedImg={selectedImg}
                         setSelectedImg={setSelectedImg}
+                        photoId={selectedImgId}
                     />
                 )}
             </AlbumOpenModalDiv>
