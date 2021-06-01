@@ -7,50 +7,23 @@ import FollowButton from '../../components/follow-button';
 import { StyledSidebarDiv } from './sidebar-user-info-container.style';
 import { DivLine, StyledText } from '../../common/style/index';
 
-import { Redirect } from 'react-router-dom';
-import { useQuery } from '@apollo/client';
-import { GET_CURRENT_USER } from '../../graphql/user';
-
-const SideBarUserInfo = ({
-    name,
-    photo,
-    status,
-    ratingColor,
-    statusColor,
-    rateScore,
-}) => {
-    const { loading, error, data } = useQuery(GET_CURRENT_USER);
-
-    if (loading) {
-        return <div>LOADING...</div>;
-    }
-
-    if (error) {
-        return <div>Error: {error.message}</div>;
-    }
-
-    const user = data.currentUser;
-
+const SideBarUserInfo = ({ user }) => {
     return (
         <StyledSidebarDiv>
             <UserAvatar
-                rating={ratingColor || '#c53b0e'}
-                rateScore={rateScore || '1,5'}
-                photo={photo}
+                rating={'#c53b0e'}
+                rateScore={'1,5'}
+                // photo={photo}
                 width={[130, 190]}
                 height={[130, 190]}
             />
-            <StyledText>
-                {name || `${user.firstName} ${user.lastName}`}
-            </StyledText>
-            <DivLine/>
-            <StyledText color={statusColor || '#5dac38'}>
-                {status || 'Drink coffee'}
-            </StyledText>
-            <DivLine/>
-            <UserInfo user={user}/>
-            {!user && <FollowButton/>}
-            <UserExtraInfo user={user}/>
+            <StyledText>{`${user.firstName} ${user.lastName}`}</StyledText>
+            <DivLine />
+            <StyledText color={'#5dac38'}>{'Drink coffee'}</StyledText>
+            <DivLine />
+            <UserInfo user={user} />
+            {!user && <FollowButton />}
+            <UserExtraInfo user={user} />
         </StyledSidebarDiv>
     );
 };

@@ -8,12 +8,12 @@ import {
     CloseContainer,
     ButtonsBlock,
 } from './post-edit.style';
-import { useUpdatePublications } from '../../common/context/updatePublicationsContext';
+import { useUpdateWall } from '../../common/context/updateWallContext';
 
 const PostEdit = ({ postId, text, handleEdit }) => {
     const [updatePost, { data }] = useMutation(UPDATE_POST);
     const inputRef = useRef();
-    const updatePublications = useUpdatePublications();
+    const updateWall = useUpdateWall();
 
     useEffect(() => {
         if (data) {
@@ -22,7 +22,7 @@ const PostEdit = ({ postId, text, handleEdit }) => {
                 // TODO add a notification
                 console.log('Success! The post has been edited!');
                 handleEdit(false);
-                updatePublications();
+                updateWall();
             }
         }
     }, [data]);

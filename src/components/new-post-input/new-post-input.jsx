@@ -3,12 +3,12 @@ import { StyledDiv, StyledText } from '../../common/style/index';
 import { InputPost, PostButton } from './new-post-input.style';
 import { useMutation } from '@apollo/client';
 import { CREATE_POST } from '../../graphql/post';
-import { useUpdatePublications } from '../../common/context/updatePublicationsContext';
+import { useUpdateWall } from '../../common/context/updateWallContext';
 
 const NewPostInput = () => {
     const [createPost, { data }] = useMutation(CREATE_POST);
     const inputRef = useRef();
-    const updatePublications = useUpdatePublications();
+    const updateWall = useUpdateWall();
 
     useEffect(() => {
         if (data) {
@@ -17,17 +17,21 @@ const NewPostInput = () => {
                 // TODO add a notification
                 console.log('Success! The new post has been created!');
                 inputRef.current.value = '';
-                updatePublications();
+                updateWall();
             }
         }
     }, [data]);
 
     const handleClick = async () => {
+        console.log('test1');
+        const recipientId = 2;
         await createPost({
             variables: {
+                recipientId: recipientId,
                 text: inputRef.current.value,
             },
         });
+        console.log('test2');
     };
 
     return (
