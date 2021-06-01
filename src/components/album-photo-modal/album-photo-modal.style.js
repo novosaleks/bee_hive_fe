@@ -2,7 +2,7 @@ import styled, { css } from 'styled-components';
 import { getValueFromTheme } from '../../common/utils';
 
 export const ImgModal = styled.div`
-    background-color: ${getValueFromTheme('primaryBgColorDiv')};
+    background-color: ${getValueFromTheme('primaryBgColor')};
     padding: 5%;
     display: flex;
     flex-direction: column;
