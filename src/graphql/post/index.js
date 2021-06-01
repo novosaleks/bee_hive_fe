@@ -36,6 +36,10 @@ export const GET_WALL_POSTS_BY_USER_ID = gql`
             text
             createdAt
             updatedAt
+            author {
+                firstName
+                lastName
+            }
         }
     }
 `;
