@@ -1,4 +1,3 @@
-import React from 'react';
 import { StyledDiv, StyledText } from '../../common/style/index';
 import { PhotoAlbumDiv, PhotoAlbumNameDiv } from './photo-album.style';
 

@@ -1,4 +1,3 @@
-import React from 'react';
 import { DivLine, StyledDiv, StyledText } from '../../common/style/index';
 
 const Title = props => {

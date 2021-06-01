@@ -1,4 +1,3 @@
-import React from 'react';
 import { Form } from 'react-bootstrap';
 import MessagesContact from '../messages-contact';
 import { useContactContext } from '../../common/context/contactContext';
@@ -26,10 +25,10 @@ const MessagesGlobalSearch = ({
                     .filter((user, index) =>
                         index < 5 && user.id !== identifyUser ? user : null
                     )
-                    .map((contact) => (
+                    .map(contact => (
                         <Form.Group controlId={contact.id} key={contact.id}>
                             <Form.Check
-                                type="checkbox"
+                                type='checkbox'
                                 value={selectedContactIds.includes(+contact.id)}
                                 label={
                                     <MessagesContact
@@ -41,7 +40,7 @@ const MessagesGlobalSearch = ({
                                 onChange={() =>
                                     handleCheckboxChange(+contact.id)
                                 }
-                                className="mt-2"
+                                className='mt-2'
                             />
                         </Form.Group>
                     ))}

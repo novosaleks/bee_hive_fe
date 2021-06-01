@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import reallyBad from '../../assets/sun1.svg';
 import bad from '../../assets/sun2.svg';
 import nautral from '../../assets/sun3.svg';

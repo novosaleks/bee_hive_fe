@@ -1,4 +1,3 @@
-import React from 'react';
 import { StyledDiv } from '../../common/style/index';
 import UserAvatar from '../user-avatar';
 import PostAuthorAndData from '../post-author-and-data';
@@ -22,7 +21,7 @@ const MessagesContact = ({
 
     const contact =
         contactID &&
-        availableContacts.find((contact) => contact.id === contactID);
+        availableContacts.find(contact => contact.id === contactID);
     const contactName = contact && `${contact.firstName} ${contact.lastName}`;
     //make GQL query by id of the recipeint to find all needed info about the user:
     //status,
@@ -41,12 +40,12 @@ const MessagesContact = ({
                 height={70}
                 {...{ smallBlock }}
             />
-            <StyledDiv width="90%" align="flex-end" ml="20px">
+            <StyledDiv width='90%' align='flex-end' ml='20px'>
                 <PostAuthorAndData
                     name={
                         contactSearch
                             ? contactName
-                            : recipients.map((r) => r.name).join(', ')
+                            : recipients.map(r => r.name).join(', ')
                     }
                     data={status || 'Online'}
                     color={statusColor || '#5DAC38'}

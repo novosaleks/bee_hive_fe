@@ -1,5 +1,3 @@
-import React from 'react';
-
 import { GET_ACTIVE_THEME, setActiveTheme } from '../../graphql/theme';
 import { useQuery } from '@apollo/client';
 import { THEMES } from '../../common/utils/constants';

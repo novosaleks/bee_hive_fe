@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { Modal, Form } from 'react-bootstrap';
 
 import {
@@ -17,7 +17,7 @@ const MessagesNewChatModal = ({ closeModal, identifyUser }) => {
 
     const { createConversation } = useConversationContext();
 
-    const handleSubmit = (e) => {
+    const handleSubmit = e => {
         e.preventDefault();
 
         selectedContactIds.length !== 0 &&
@@ -25,10 +25,10 @@ const MessagesNewChatModal = ({ closeModal, identifyUser }) => {
         closeModal();
     };
 
-    const handleCheckboxChange = (contactId) => {
-        setSelectedContactIds((prevSelectedContactIds) => {
+    const handleCheckboxChange = contactId => {
+        setSelectedContactIds(prevSelectedContactIds => {
             if (prevSelectedContactIds.includes(contactId)) {
-                return prevSelectedContactIds.filter((prevId) => {
+                return prevSelectedContactIds.filter(prevId => {
                     return contactId !== prevId;
                 });
             } else {
@@ -40,11 +40,11 @@ const MessagesNewChatModal = ({ closeModal, identifyUser }) => {
     return (
         <>
             <Modal.Header closeButton>Create Conversation</Modal.Header>
-            <Modal.Body overflow="auto">
+            <Modal.Body overflow='auto'>
                 <ChatModalInput
-                    placeholder="Start conversation with ..."
+                    placeholder='Start conversation with ...'
                     value={searchTerm}
-                    onChange={(event) => setSearchTerm(event.target.value)}
+                    onChange={event => setSearchTerm(event.target.value)}
                     mb={3}
                 />
 
@@ -68,7 +68,7 @@ const MessagesNewChatModal = ({ closeModal, identifyUser }) => {
                         />
                     )}
 
-                    <ChatModalButton type="submit">Create</ChatModalButton>
+                    <ChatModalButton type='submit'>Create</ChatModalButton>
                 </Form>
             </Modal.Body>
         </>

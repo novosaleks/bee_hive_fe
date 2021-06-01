@@ -1,5 +1,3 @@
-import React from 'react';
-
 import NewPostInput from '../new-post-input';
 import UsersNews from '../../containers/user-news-container';
 import Title from '../title';

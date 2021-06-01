@@ -1,4 +1,4 @@
-import React, { useState, useCallback } from 'react';
+import { useState, useCallback } from 'react';
 import { StyledDiv, Input } from '../../common/style';
 import { useConversationContext } from '../../common/context/conversationContext';
 import {
@@ -11,7 +11,7 @@ import MessagesContact from '../messages-contact';
 import MessagesChatHeader from '../messages-chat-header';
 const MessagesOpenConversation = () => {
     const [text, setText] = useState('');
-    const setRef = useCallback((node) => {
+    const setRef = useCallback(node => {
         if (node) {
             node.scrollIntoView({ smooth: true });
         }
@@ -46,22 +46,19 @@ const MessagesOpenConversation = () => {
                                     message.fromMe
                                         ? 'align-self-end align-items-end'
                                         : 'align-items-start'
-                                }`}
-                            >
+                                }`}>
                                 <div
                                     className={`rounded px-2 py-1 ${
                                         message.fromMe
                                             ? 'bg-light text-muted'
                                             : 'border'
-                                    }`}
-                                >
+                                    }`}>
                                     {message.text}
                                 </div>
                                 <div
                                     className={`text-light small ${
                                         message.fromMe ? 'text-right ' : ''
-                                    }`}
-                                >
+                                    }`}>
                                     {message.fromMe
                                         ? 'You'
                                         : message.senderName}
@@ -71,11 +68,11 @@ const MessagesOpenConversation = () => {
                     })}
                 </MessageDiv>
             </OpenConversationDiv>
-            <StyledDiv direction="row" mt={1} content="space-between">
+            <StyledDiv direction='row' mt={1} content='space-between'>
                 <Input
-                    placeholder="Type ..."
+                    placeholder='Type ...'
                     value={text}
-                    onChange={(e) => setText(e.target.value)}
+                    onChange={e => setText(e.target.value)}
                     mr={3}
                     style={{ height: '45px', width: '50vw' }}
                 />

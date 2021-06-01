@@ -1,4 +1,3 @@
-import React from 'react';
 import RoutingContainer from '../containers/routing-container';
 
 import 'bootstrap/dist/css/bootstrap-reboot.min.css';
@@ -17,7 +16,7 @@ const App = () => {
 
     const [notification, setNotification] = useNotifications();
 
-    const notify = ({ text, type}) => {
+    const notify = ({ text, type }) => {
         const props = { text, type };
 
         setNotification(props);

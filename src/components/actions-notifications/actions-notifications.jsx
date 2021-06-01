@@ -1,4 +1,3 @@
-import React from 'react';
 import UserAvatar from '../user-avatar';
 import { StyledDiv } from '../../common/style/index';
 import {

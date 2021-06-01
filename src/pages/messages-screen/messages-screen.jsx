@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 
 import { StyledMessagePageWrapper } from './messages-screen.style';
 import { StyledDivPage } from '../../common/style/index';

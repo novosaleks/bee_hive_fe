@@ -1,5 +1,3 @@
-import React from 'react';
-
 import { StyledText } from '../../common/style/index';
 import { formatDate } from '../../common/utils';
 

@@ -1,4 +1,3 @@
-import React from 'react';
 import { Select } from './settings-select.style';
 
 const SettingsSelect = ({ selectedValue, children, ...attrs }) => {
