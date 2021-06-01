@@ -4,9 +4,8 @@ import { getValueFromTheme } from '../../common/utils';
 
 const CSS_FOR_MESSAGE_SCREEN__TabsDivStyled = css`
     background: rgba(24, 39, 51, 0.85);
-
     width: 200vw;
-    height: 200vw;
+    height: 200vh;
     display: flex;
     flex-direction: column;
     flex: none;

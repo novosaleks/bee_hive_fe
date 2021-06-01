@@ -10,3 +10,20 @@ export const ChatModalInput = styled(Input)`
         color: #000;
     }
 `;
+
+export const ModalHeader = styled.div`
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    padding: 1rem 1rem;
+    border-bottom: 1px solid #dee2e6;
+    border-top-left-radius: calc(0.3rem - 1px);
+    border-top-right-radius: calc(0.3rem - 1px);
+`;
+
+export const ModalBody = styled.div`
+    position: relative;
+    flex: 1 1 auto;
+    padding: 1rem;
+    overflow: auto;
+`;

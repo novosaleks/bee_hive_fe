@@ -6,6 +6,8 @@ import {
     OpenConversationDiv,
     MessageDiv,
     SendButton,
+    MessagesContactHeader,
+    Left,
 } from './messages-open-conversation.style';
 import MessagesContact from '../messages-contact';
 import MessagesChatHeader from '../messages-chat-header';
@@ -27,11 +29,10 @@ const MessagesOpenConversation = () => {
 
     return (
         <OpenConversationGroup>
-            {selectedConversation.recipients.length !== 1 ? (
-                <MessagesChatHeader />
-            ) : (
+            <MessagesContactHeader>
+                <Left />
                 <MessagesContact contactSearch={false} smallBlock />
-            )}
+            </MessagesContactHeader>
 
             <OpenConversationDiv>
                 <MessageDiv>
@@ -76,7 +77,9 @@ const MessagesOpenConversation = () => {
                     mr={3}
                     style={{ height: '45px', width: '50vw' }}
                 />
-                <SendButton onClick={handleSubmit}>Send</SendButton>
+                <SendButton onClick={handleSubmit} className='send-button'>
+                    Send
+                </SendButton>
             </StyledDiv>
         </OpenConversationGroup>
     );
