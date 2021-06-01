@@ -1,7 +1,7 @@
 import { gql } from '@apollo/client';
 
 export const GET_ALL_USERS = gql`
-    query {
+    query GetAllUsers {
         getAllUsers {
             id
             firstName
@@ -80,6 +80,20 @@ export const GET_CURRENT_USER = gql`
             userInfo
             createdAt
             updatedAt
+        }
+    }
+`;
+
+export const GET_USER_BY_ID = gql`
+    query GetUserById($userId: ID!) {
+        getUserById(userId: $userId) {
+            id
+            firstName
+            lastName
+            occupation
+            location
+            birthDate
+            userInfo
         }
     }
 `;
