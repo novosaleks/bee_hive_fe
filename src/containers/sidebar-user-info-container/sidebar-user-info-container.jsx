@@ -1,4 +1,3 @@
-import React from 'react';
 import UserAvatar from '../../components/user-avatar';
 import UserInfo from '../../components/user-info';
 import UserExtraInfo from '../../components/user-extra-info';

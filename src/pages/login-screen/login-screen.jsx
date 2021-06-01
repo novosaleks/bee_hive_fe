@@ -1,4 +1,3 @@
-import React from 'react';
 import {
     LoginContainer,
     Presentation,
@@ -12,21 +11,20 @@ import { Logo } from '../../common/style';
 import logo from '../../assets/LOGO.svg';
 import LoginFormContainer from '../../containers/login-form-container';
 
-
 const LoginScreen = () => {
     return (
         <LoginContainer>
             <Presentation>
-                <Logo src={logo} alt='logo'/>
+                <Logo src={logo} alt='logo' />
                 <PresentationText>
-                    Start to be in the spotlight <br/>
+                    Start to be in the spotlight <br />
                     right now
                 </PresentationText>
             </Presentation>
             <div>
-                <LoginFormContainer/>
+                <LoginFormContainer />
                 <OptionText>or</OptionText>
-                <CreateAccountLink to="/register">
+                <CreateAccountLink to='/register'>
                     Create account
                 </CreateAccountLink>
             </div>

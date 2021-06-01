@@ -1,4 +1,4 @@
-import React, { useRef, useState, useEffect } from 'react';
+import { useRef, useState, useEffect } from 'react';
 import UserAvatar from '../user-avatar';
 import NavbarDropdownMenuBody from '../navbar-dropdown-menu-body';
 import dropdown from '../../assets/dropdown.svg';

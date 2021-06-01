@@ -1,15 +1,14 @@
-import React from 'react';
 import SidebarTab from '../sidebar-tab';
 import { MenuWrapper, Hamburger, Menu } from './messages-screen-menu.style';
 
 const MessagesScreenMenu = ({ activeTab, clickHandler, tabs }) => {
     return (
         <MenuWrapper>
-            <input type="checkbox" className="toggler" />
+            <input type='checkbox' className='toggler' />
             <Hamburger>
-                <div/>
+                <div />
             </Hamburger>
-            <Menu className="menu">
+            <Menu className='menu'>
                 <SidebarTab
                     {...{ activeTab, clickHandler, tabs }}
                     messageBlock={true}

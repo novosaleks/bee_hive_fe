@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import { useEffect } from 'react';
 import { useMutation } from '@apollo/client';
 import { LOGOUT } from '../../graphql/auth';
 import { LogoutDiv } from './logout.style';

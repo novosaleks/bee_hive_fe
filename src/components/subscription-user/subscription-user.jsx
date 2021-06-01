@@ -1,4 +1,3 @@
-import React from 'react';
 import UserAvatar from '../user-avatar';
 import PostAuthorAndData from '../post-author-and-data';
 import FollowButton from '../follow-button';
@@ -17,13 +16,12 @@ const SubscriptionUser = ({
 }) => {
     return (
         <StyledDiv
-            align="center"
+            align='center'
             mt={10}
             mb={15}
-            direction="row"
-            content="space-between"
-           >
-            <StyledDiv width="18%">
+            direction='row'
+            content='space-between'>
+            <StyledDiv width='18%'>
                 <UserAvatar
                     rating={ratingColor || '#C53B0E'}
                     rateScore={rateScore || '1,5'}

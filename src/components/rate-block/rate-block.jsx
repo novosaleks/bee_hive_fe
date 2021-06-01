@@ -1,5 +1,3 @@
-import React from 'react';
-
 import { useState, useRef, useEffect } from 'react';
 import RatingSuns from '../rating-suns';
 import RateExplanation from '../rate-explanation';

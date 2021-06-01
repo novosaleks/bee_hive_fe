@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react';
+import { useEffect, useRef } from 'react';
 import { useMutation } from '@apollo/client';
 import { UPDATE_POST } from '../../graphql/post';
 import {

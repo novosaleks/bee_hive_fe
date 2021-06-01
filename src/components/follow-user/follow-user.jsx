@@ -1,4 +1,3 @@
-import React from 'react';
 import SubscriptionUser from '../subscription-user';
 const FollowUser = ({ follow, smallBlock }) => {
     return (

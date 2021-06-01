@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { StyledDivPage, StyledPageWrapper } from '../../common/style';
 import SidebarTab from '../../components/sidebar-tab';
 

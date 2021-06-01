@@ -1,4 +1,3 @@
-import React from 'react';
 import { TextDiv } from './post-text.style';
 import { StyledText } from '../../common/style/index';
 const PostText = ({ text }) => {

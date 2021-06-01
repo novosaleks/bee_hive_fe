@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import { useEffect } from 'react';
 import InputContainer from '../input-container';
 import { useForm } from 'react-hook-form';
 import LoginForm from '../../components/login-form';

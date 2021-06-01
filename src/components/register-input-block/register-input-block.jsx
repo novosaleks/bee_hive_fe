@@ -1,4 +1,3 @@
-import React from 'react';
 import { StyledLabel } from '../../common/style';
 
 const RegisterInputBlock = ({ value, children }) => {

@@ -1,4 +1,3 @@
-import React from 'react';
 import SettingsContainer from '../settings-container';
 import SettingsSelect from '../../components/settings-select';
 import { SelectContainer } from './page-information-container.style';

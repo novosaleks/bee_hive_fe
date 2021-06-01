@@ -1,4 +1,3 @@
-import React from 'react';
 import MessagesContact from '../messages-contact';
 import { useContactContext } from '../../common/context/contactContext';
 
@@ -21,7 +20,7 @@ const MessagesAvailableContacts = ({
 
     const contacts =
         availableContacts &&
-        availableContacts.filter((user) =>
+        availableContacts.filter(user =>
             (user.firstName.toLowerCase().includes(searchTerm.toLowerCase()) ||
                 user.lastName
                     .toLowerCase()
@@ -32,17 +31,17 @@ const MessagesAvailableContacts = ({
         );
 
     return (
-        <MessagesAvailiableContactsDiv content="start">
+        <MessagesAvailiableContactsDiv content='start'>
             <SearchContactsDiv>
                 <SearchContactsTitle>Search Result</SearchContactsTitle>
             </SearchContactsDiv>
             {contacts.length === 0 ? (
                 <StyledText>We do not know this user...</StyledText>
             ) : (
-                contacts.map((contact) => (
+                contacts.map(contact => (
                     <Form.Group controlId={contact.id} key={contact.id}>
                         <Form.Check
-                            type="checkbox"
+                            type='checkbox'
                             value={selectedContactIds.includes(+contact.id)}
                             label={
                                 <MessagesContact

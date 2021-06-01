@@ -1,4 +1,3 @@
-import React from 'react';
 import GeneralInformationContainer from '../general-information-container';
 import PageInformationContainer from '../page-information-container';
 

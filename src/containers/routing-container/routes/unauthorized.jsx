@@ -1,4 +1,3 @@
-import React from 'react';
 import { Route, Switch } from 'react-router-dom';
 import LoginScreen from '../../../pages/login-screen';
 import RegisterScreen from '../../../pages/register-screen';

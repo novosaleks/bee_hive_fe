@@ -1,4 +1,3 @@
-import React from 'react';
 import Logout from '../../components/logout';
 import ToggleSwitchTheme from '../toggle-switch-theme';
 import settings from '../../assets/settings.svg';

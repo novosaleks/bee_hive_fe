@@ -1,4 +1,3 @@
-import React from 'react';
 import FollowUser from '../follow-user';
 import { StyledDiv } from '../../common/style/index';
 const FollowUsersBlock = ({ tabsInfo, activeTab }) => {

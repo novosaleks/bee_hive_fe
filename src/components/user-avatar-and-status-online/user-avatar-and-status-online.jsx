@@ -1,4 +1,3 @@
-import React from 'react';
 import UserAvatar from '../user-avatar';
 import { AvatarAndStatusDiv } from './user-avatar-and-status-online.style';
 import { StyledText } from '../../common/style/index';

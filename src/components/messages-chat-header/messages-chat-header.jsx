@@ -1,5 +1,3 @@
-import React from 'react';
-
 import {
     MessagesChatHeaderDiv,
     ImgMessagesChatHeaderDiv,
@@ -19,7 +17,7 @@ const MessagesChatHeader = () => {
             <ContactsInfoMessagesChatHeader>
                 <StyledDiv align='flex-start'>
                     <NameMessagesChatHeaderDiv>
-                        {recipients.map((r) => r.name).join(', ')}
+                        {recipients.map(r => r.name).join(', ')}
                     </NameMessagesChatHeaderDiv>
                     <MembersMessagesChatHeaderDiv fontSize={'0.7em'}>
                         {recipients.length} members

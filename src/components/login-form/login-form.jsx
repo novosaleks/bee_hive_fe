@@ -1,4 +1,3 @@
-import React from 'react';
 import { Button } from '../../common/style';
 import { Form } from './login-form.style';
 const LoginForm = ({ LoginInput, onSubmit }) => {

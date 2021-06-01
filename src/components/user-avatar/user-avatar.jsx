@@ -1,4 +1,3 @@
-import React from 'react';
 import { DivImgForUserAvatar, RateScore } from './user-avatar.style';
 
 const UserAvatar = props => {
@@ -10,4 +9,3 @@ const UserAvatar = props => {
 };
 
 export default UserAvatar;
-
