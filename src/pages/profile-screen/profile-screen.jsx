@@ -1,23 +1,27 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 
 import AlbumsBlock from '../../components/albums-block';
 import SideBarUserInfo from '../../containers/sidebar-user-info-container';
-import Publications from '../../components/publications';
+import Wall from '../../components/wall';
 import {
     StyledPageWrapper,
     StyledDivPage,
     StyledPageContent,
 } from '../../common/style/index';
 import { useQuery } from '@apollo/client';
-import { GET_CURRENT_USER } from '../../graphql/user';
+import { GET_USER_BY_ID } from '../../graphql/user';
+import { useParams } from 'react-router-dom';
 
 const ProfileScreen = () => {
     const [user, setUser] = useState(null);
-    const { loading, error, data } = useQuery(GET_CURRENT_USER);
+    const { userId } = useParams();
+    const { loading, error, data } = useQuery(GET_USER_BY_ID, {
+        variables: { userId: userId },
+    });
 
     useEffect(() => {
         if (data) {
-            setUser(data.currentUser);
+            setUser(data.getUserById);
         }
     }, [data]);
 
@@ -29,10 +33,10 @@ const ProfileScreen = () => {
             {user && (
                 <StyledPageWrapper>
                     <StyledDivPage>
-                        <SideBarUserInfo />
+                        <SideBarUserInfo user={user} />
                         <StyledPageContent>
                             <AlbumsBlock />
-                            <Publications user={user} />
+                            <Wall user={user} />
                         </StyledPageContent>
                     </StyledDivPage>
                 </StyledPageWrapper>

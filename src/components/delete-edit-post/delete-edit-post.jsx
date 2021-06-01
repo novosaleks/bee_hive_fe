@@ -4,11 +4,11 @@ import { REMOVE_POST } from '../../graphql/post';
 import editIcon from '../../assets/editIcon.svg';
 import deleteIcon from '../../assets/deleteIcon.svg';
 import { DeleteEditPostDiv, StyledImg } from './delete-edit-post.style';
-import { useUpdatePublications } from '../../common/context/updatePublicationsContext';
+import { useUpdateWall } from '../../common/context/updateWallContext';
 
 const DeleteEditPost = ({ postId, handleEdit }) => {
     const [removePost, { data }] = useMutation(REMOVE_POST);
-    const updatePublications = useUpdatePublications();
+    const updateWall = useUpdateWall();
 
     const editPost = async () => {
         handleEdit(true);
@@ -20,7 +20,7 @@ const DeleteEditPost = ({ postId, handleEdit }) => {
             if (success) {
                 // TODO add a notification
                 console.log('Success! The post has been deleted!');
-                updatePublications();
+                updateWall();
             }
         }
     }, [data]);

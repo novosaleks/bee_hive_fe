@@ -5,28 +5,31 @@ import UserNews from '../../containers/user-news-container';
 import Title from '../title';
 
 import { DivLine, StyledDiv } from '../../common/style/index';
-import { PublicationBodyDiv, UserPostBlock } from './publications.style';
+import { WallBodyDiv, UserPostBlock } from './wall.style';
 
 import { useQuery } from '@apollo/client';
-import { GET_POSTS_BY_AUTHOR_ID } from '../../graphql/post';
+import { GET_WALL_POSTS_BY_USER_ID } from '../../graphql/post';
 
 import { formatDate } from '../../common/utils';
 
-import { UpdatePublicationsProvider } from '../../common/context/updatePublicationsContext';
+import { UpdateWallProvider } from '../../common/context/updateWallContext';
 
-const Publications = ({ user }) => {
+const Wall = ({ user }) => {
     const [posts, setPosts] = useState([]);
-    const { loading, error, data, refetch } = useQuery(GET_POSTS_BY_AUTHOR_ID, {
-        variables: { authorId: user.id },
-    });
+    const { loading, error, data, refetch } = useQuery(
+        GET_WALL_POSTS_BY_USER_ID,
+        {
+            variables: { userId: user.id },
+        }
+    );
 
     useEffect(() => {
         if (data) {
-            setPosts(data.getPostsByAuthorId);
+            setPosts(data.getWallPostsByUserId);
         }
     }, [data]);
 
-    const updatePublications = () => {
+    const updateWall = () => {
         refetch();
     };
 
@@ -34,10 +37,10 @@ const Publications = ({ user }) => {
     if (error) return <div>{`Error ${error.message}`}</div>;
 
     return (
-        <UpdatePublicationsProvider updatePublications={updatePublications}>
+        <UpdateWallProvider updateWall={updateWall}>
             <StyledDiv marginTop='5%'>
-                <Title>Publications</Title>
-                <PublicationBodyDiv>
+                <Title>Wall</Title>
+                <WallBodyDiv>
                     <NewPostInput />
                     {posts &&
                         posts.map((post, index, arr) => (
@@ -52,10 +55,10 @@ const Publications = ({ user }) => {
                                 {index !== arr.length - 1 && <DivLine />}
                             </UserPostBlock>
                         ))}
-                </PublicationBodyDiv>
+                </WallBodyDiv>
             </StyledDiv>
-        </UpdatePublicationsProvider>
+        </UpdateWallProvider>
     );
 };
 
-export default Publications;
+export default Wall;
