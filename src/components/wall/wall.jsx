@@ -52,6 +52,7 @@ const Wall = ({ user }) => {
                                         post.author.lastName
                                     }
                                     postId={post.id}
+                                    authorId={post.author.id}
                                     text={post.text}
                                     date={formatDate(post.createdAt)}
                                 />

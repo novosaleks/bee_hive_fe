@@ -11,6 +11,7 @@ const UserNews = ({
     photo,
     date,
     postId,
+    authorId,
     text,
 }) => {
     return (
@@ -35,6 +36,7 @@ const UserNews = ({
                     name,
                     date,
                     postId,
+                    authorId,
                     text,
                 }}
             />

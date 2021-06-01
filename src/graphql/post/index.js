@@ -37,6 +37,7 @@ export const GET_WALL_POSTS_BY_USER_ID = gql`
             createdAt
             updatedAt
             author {
+                id
                 firstName
                 lastName
             }
