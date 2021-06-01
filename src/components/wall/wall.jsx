@@ -46,7 +46,11 @@ const Wall = ({ user }) => {
                         posts.map((post, index, arr) => (
                             <UserPostBlock key={post.id}>
                                 <UserNews
-                                    name={user.firstName + ' ' + user.lastName}
+                                    name={
+                                        post.author.firstName +
+                                        ' ' +
+                                        post.author.lastName
+                                    }
                                     postId={post.id}
                                     text={post.text}
                                     date={formatDate(post.createdAt)}
