@@ -5,7 +5,7 @@ import { useMutation } from '@apollo/client';
 import { CREATE_POST } from '../../graphql/post';
 import { useUpdateWall } from '../../common/context/updateWallContext';
 
-const NewPostInput = () => {
+const NewPostInput = ({ userId }) => {
     const [createPost, { data }] = useMutation(CREATE_POST);
     const inputRef = useRef();
     const updateWall = useUpdateWall();
@@ -23,15 +23,12 @@ const NewPostInput = () => {
     }, [data]);
 
     const handleClick = async () => {
-        console.log('test1');
-        const recipientId = 2;
         await createPost({
             variables: {
-                recipientId: recipientId,
+                recipientId: userId,
                 text: inputRef.current.value,
             },
         });
-        console.log('test2');
     };
 
     return (
