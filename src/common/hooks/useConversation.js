@@ -4,30 +4,27 @@ import { useState } from 'react';
 import { arrayEquality } from '../utils';
 import useContact from './useContact';
 
-const useConversation = (id) => {
+const useConversation = id => {
     const [conversations, setConversations] = useLocalStorage(
         'conversations',
-        [],
+        []
     );
     const [selectedConversationIndex, setSelectedConversationIndex] =
         useState(0);
     const availableContacts = useContact();
 
-
-    const createConversation = (recipients) => {
-        setConversations((prevConversations) => {
-            return [
-                ...prevConversations,
-                { recipients, messages: [] },
-            ];
+    const createConversation = recipients => {
+        console.log(recipients);
+        setConversations(prevConversations => {
+            return [...prevConversations, { recipients, messages: [] }];
         });
     };
 
     const addMessageToConversation = ({ recipients, text, sender }) => {
-        setConversations((prevConversations) => {
+        setConversations(prevConversations => {
             let madeChange = false;
             const newMessage = { sender, text };
-            const newConversations = prevConversations.map((conversation) => {
+            const newConversations = prevConversations.map(conversation => {
                 if (arrayEquality(conversation.recipients, recipients)) {
                     madeChange = true;
                     return {
@@ -55,13 +52,12 @@ const useConversation = (id) => {
     };
 
     const formattedConversations = conversations.map((conversation, index) => {
-        const recipients = conversation.recipients.map((recipient) => {
+        const recipients = conversation.recipients.map(recipient => {
             const contact =
                 availableContacts &&
-                availableContacts.find((contact) => {
+                availableContacts.find(contact => {
                     return +contact.id === recipient;
                 });
-
 
             const name =
                 (contact && `${contact.firstName} ${contact.lastName}`) ||
@@ -70,10 +66,10 @@ const useConversation = (id) => {
             return { id: recipient, name };
         });
 
-        const messages = conversation.messages.map((message) => {
+        const messages = conversation.messages.map(message => {
             const contact =
                 availableContacts &&
-                availableContacts.find((contact) => {
+                availableContacts.find(contact => {
                     return +contact.id === message.sender;
                 });
             const name = (contact && contact.firstName) || message.sender;
@@ -84,7 +80,6 @@ const useConversation = (id) => {
         const selected = index === selectedConversationIndex;
         return { ...conversation, messages, recipients, selected };
     });
-
 
     return {
         conversations: formattedConversations,

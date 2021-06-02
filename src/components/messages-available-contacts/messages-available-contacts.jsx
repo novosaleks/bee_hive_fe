@@ -1,5 +1,6 @@
 import MessagesContact from '../messages-contact';
 import { useContactContext } from '../../common/context/contactContext';
+import { useConversationContext } from '../../common/context/conversationContext';
 
 import { Form } from 'react-bootstrap';
 

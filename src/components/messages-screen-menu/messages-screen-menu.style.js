@@ -3,20 +3,11 @@ import { StyledDiv } from '../../common/style';
 import { getValueFromTheme } from '../../common/utils';
 
 export const MenuWrapper = styled.div`
-  position: fixed;
-  top: 0;
-  left: 0;
-  z-index: 1;
-  min-height: 100vh;
-  width: 4vw;
-  background-color: ${getValueFromTheme('messagesScreenSidebarColor')};
-
-  .toggler {
-    position: absolute;
+    position: fixed;
     top: 0;
     left: 0;
     z-index: 1;
-    min-height: 100vh;
+    min-height: 200vh;
     width: 4vw;
     background-color: ${getValueFromTheme('messagesScreenSidebarColor')};
     .toggler {
@@ -72,7 +63,6 @@ export const Hamburger = styled.section`
     display: flex;
     align-items: center;
     justify-content: start;
-
     div {
         position: relative;
         flex: none;
@@ -85,7 +75,6 @@ export const Hamburger = styled.section`
         align-items: center;
         justify-content: center;
         transition: all 0.4s ease;
-
         &::before,
         &::after {
             content: '';
@@ -96,7 +85,6 @@ export const Hamburger = styled.section`
             height: 2px;
             background: inherit;
         }
-
         &::after {
             top: 10px;
         }

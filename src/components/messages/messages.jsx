@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import MessagesOpenConversation from '../messages-open-conversation';
 import MessagesSidebar from '../messages-sidebar';
 
@@ -7,12 +8,19 @@ import { useConversationContext } from '../../common/context/conversationContext
 
 const Messages = ({ identifyUser }) => {
     const { selectedConversation } = useConversationContext();
+    const [stateSidebar, setStateSidebar] = useState(false);
 
+    const handleClick = () => {
+        setStateSidebar(prevState => !prevState);
+    };
     return (
-        <MessagesDivBlock conversationOpen={selectedConversation}>
+        <MessagesDivBlock
+            conversationOpen={selectedConversation}
+            stateSidebar={stateSidebar}>
             <MessagesSidebar
                 identifyUser={identifyUser}
                 conversationOpen={selectedConversation}
+                handleClick={handleClick}
             />
             {!selectedConversation && (
                 <NotificationDiv>
@@ -21,7 +29,9 @@ const Messages = ({ identifyUser }) => {
                     </SearchContactsTitle>
                 </NotificationDiv>
             )}
-            {selectedConversation && <MessagesOpenConversation />}
+            {selectedConversation && (
+                <MessagesOpenConversation handleClick={handleClick} />
+            )}
         </MessagesDivBlock>
     );
 };

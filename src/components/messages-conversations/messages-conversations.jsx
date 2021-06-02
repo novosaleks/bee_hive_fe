@@ -8,17 +8,16 @@ import {
     ConversationsBlockStyled,
 } from './messages-conversations.style';
 
-const MessagesConversations = ({ smallBlock }) => {
-    const { conversations, selectConversationIndex, selectedConversation } =
-        useConversationContext();
+const MessagesConversations = ({ smallBlock, handleClick }) => {
+    const { conversations, selectConversationIndex } = useConversationContext();
 
     return (
-        <ConversationsBlockStyled>
+        <ConversationsBlockStyled className='conversations'>
             {conversations.map((conversation, index) => {
-                const lastMessage = selectedConversation.messages.length - 1;
+                const lastMessage = conversation.messages.length - 1;
 
                 return (
-                    <StyledDiv key={index}>
+                    <StyledDiv key={index} onClick={handleClick}>
                         <ConversationStyledDiv
                             onClick={() => selectConversationIndex(index)}
                             className={conversation.selected ? 'active' : null}>
@@ -36,9 +35,8 @@ const MessagesConversations = ({ smallBlock }) => {
                                         .join(', ')}
                                     <span>
                                         {0 <= lastMessage &&
-                                            selectedConversation.messages[
-                                                lastMessage
-                                            ].text}
+                                            conversation.messages[lastMessage]
+                                                .text}
                                     </span>
                                 </ContactInfoDiv>
                             </StyledDiv>

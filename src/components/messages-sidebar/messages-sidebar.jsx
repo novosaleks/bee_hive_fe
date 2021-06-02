@@ -11,7 +11,7 @@ import { Modal } from 'react-bootstrap';
 
 import MessagesConversations from '../messages-conversations';
 
-const MessagesSidebar = ({ identifyUser, conversationOpen }) => {
+const MessagesSidebar = ({ identifyUser, conversationOpen, handleClick }) => {
     const [modalOpen, setModalOpen] = useState(false);
 
     const closeModal = () => {
@@ -19,13 +19,15 @@ const MessagesSidebar = ({ identifyUser, conversationOpen }) => {
     };
 
     return (
-        <MessagesSidebarStyled conversationOpen={conversationOpen}>
+        <MessagesSidebarStyled
+            conversationOpen={conversationOpen}
+            className='message-sidebar'>
             {/* button to start a chat with a few users */}
             <NewConversationButton onClick={() => setModalOpen(true)}>
                 New Conversation
             </NewConversationButton>
 
-            <MessagesConversations smallBlock />
+            <MessagesConversations smallBlock handleClick={handleClick} />
 
             {/* modal for choosing with which avaliable contacts user whant to start a chat with */}
 

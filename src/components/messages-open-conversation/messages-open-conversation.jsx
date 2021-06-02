@@ -10,8 +10,7 @@ import {
     Left,
 } from './messages-open-conversation.style';
 import MessagesContact from '../messages-contact';
-import MessagesChatHeader from '../messages-chat-header';
-const MessagesOpenConversation = () => {
+const MessagesOpenConversation = ({ handleClick }) => {
     const [text, setText] = useState('');
     const setRef = useCallback(node => {
         if (node) {
@@ -20,17 +19,17 @@ const MessagesOpenConversation = () => {
     }, []);
     const { sendMessage, selectedConversation } = useConversationContext();
 
-    function handleSubmit(e) {
+    const handleSubmit = e => {
         e.preventDefault();
 
         text !== '' && sendMessage(selectedConversation.recipients, text);
         setText('');
-    }
+    };
 
     return (
-        <OpenConversationGroup>
+        <OpenConversationGroup className='open-conversation'>
             <MessagesContactHeader>
-                <Left />
+                <Left onClick={handleClick} />
                 <MessagesContact contactSearch={false} smallBlock />
             </MessagesContactHeader>
 

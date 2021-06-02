@@ -38,7 +38,7 @@ const MessagesGlobalSearch = ({
                                     />
                                 }
                                 onChange={() =>
-                                    handleCheckboxChange(+contact.id)
+                                    handleCheckboxChange(contact.id)
                                 }
                                 className='mt-2'
                             />
