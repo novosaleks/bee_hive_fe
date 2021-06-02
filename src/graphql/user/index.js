@@ -97,3 +97,37 @@ export const GET_USER_BY_ID = gql`
         }
     }
 `;
+
+export const SUBSCRIBE_TO_USER = gql`
+    mutation SubscribeToUser($userIdToSubscribe: ID!) {
+        subscribeToUser(userIdToSubscribe: $userIdToSubscribe)
+    }
+`;
+
+export const GET_SUBSCRIBERS_BY_USER_ID = gql`
+    query GetSubscribersByUserId($userId: ID!) {
+        getSubscribersByUserId(userId: $userId) {
+            id
+            firstName
+            lastName
+            occupation
+            location
+            birthDate
+            userInfo
+        }
+    }
+`;
+
+export const GET_SUBSCRIPTIONS_BY_USER_ID = gql`
+    query GetSubscriptionsByUserId($userId: ID!) {
+        getSubscriptionsByUserId(userId: $userId) {
+            id
+            firstName
+            lastName
+            occupation
+            location
+            birthDate
+            userInfo
+        }
+    }
+`;
