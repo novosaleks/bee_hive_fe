@@ -8,11 +8,7 @@ export const OpenConversationGroup = styled(StyledDiv)`
     overflow: auto;
     height: 98vh;
     margin-bottom: 1%;
-    @media (max-width: 700px) {
-        grid-area: 1 / 1 / 2 / 5;
-        width: 86vw;
-        margin-left: 6%;
-    }
+
     @media (max-width: 400px) {
         .post-author {
             font-size: 1em;

@@ -10,10 +10,6 @@ export const MessagesSidebarStyled = styled(StyledDiv)`
             margin-right: 5%;
             grid-area: 1 / 1 / 2 / 2;
         `}
-
-    @media(max-width: 700px) {
-        display: none;
-    }
 `;
 
 export const NewConversationButton = styled(Button)`
