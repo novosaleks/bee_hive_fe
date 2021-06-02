@@ -3,6 +3,7 @@ import { useQuery } from '@apollo/client';
 import { THEMES } from '../../common/utils/constants';
 
 import { Wrapper } from './toggle-switch-theme.style';
+
 const ToggleSwitchTheme = () => {
     const { loading, error, data } = useQuery(GET_ACTIVE_THEME);
     if (loading) return <div>Loading...</div>;
@@ -15,17 +16,17 @@ const ToggleSwitchTheme = () => {
                 <input
                     className='toggle-input'
                     type='checkbox'
-                    defaultValue={THEMES[activeTheme]}
+                    checked={THEMES[activeTheme] === 'dark'}
                     onChange={e =>
                         e.target.checked === true
                             ? setActiveTheme(THEMES.dark)
                             : setActiveTheme(THEMES.light)
                     }
                 />
-                <div className='toggle-bg'></div>
+                <div className='toggle-bg' />
                 <div className='toggle-switch'>
-                    <div className='toggle-switch-figure'></div>
-                    <div className='toggle-switch-figureAlt'></div>
+                    <div className='toggle-switch-figure' />
+                    <div className='toggle-switch-figureAlt' />
                 </div>
             </div>
         </Wrapper>
