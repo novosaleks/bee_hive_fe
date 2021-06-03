@@ -1,7 +1,7 @@
+import { useQuery } from '@apollo/client';
+import { GET_ALL_USERS } from '../../graphql/user';
 import useLocalStorage from './useLocalStorage';
 import { useState } from 'react';
-
-import useContact from './useContact';
 
 const useConversation = id => {
     const [conversations, setConversations] = useLocalStorage(
@@ -10,10 +10,15 @@ const useConversation = id => {
     );
     const [selectedConversationIndex, setSelectedConversationIndex] =
         useState(0);
-    const availableContacts = useContact();
+    const { loading, error, data } = useQuery(GET_ALL_USERS);
+
+    if (loading) return <div>LOADING...</div>;
+
+    if (error) return <div>Error: {error.message}</div>;
+
+    const users = data.getAllUsers;
 
     const createConversation = recipient => {
-        console.log(recipient);
         setConversations(prevConversations => {
             return [...prevConversations, { recipient, messages: [] }];
         });
@@ -24,6 +29,7 @@ const useConversation = id => {
             let madeChange = false;
             const newMessage = { sender, text };
             const newConversations = prevConversations.map(conversation => {
+                //if it is a new conversation
                 if (conversation.recipient !== recipient) {
                     madeChange = true;
                     return {
@@ -38,6 +44,7 @@ const useConversation = id => {
             if (madeChange) {
                 return newConversations;
             } else {
+                //if it is already existing conversation
                 return [
                     ...prevConversations,
                     { recipient, messages: [newMessage] },
@@ -51,17 +58,25 @@ const useConversation = id => {
     };
 
     const formattedConversations = conversations.map((conversation, index) => {
-        const contact = availableContacts?.find(contact => {
+        //define user who recieve the message
+        const contact = users?.find(contact => {
             return contact.id === conversation.recipient;
         });
+        //define the user name
         const name = `${contact?.firstName} ${contact?.lastName}`;
+
         const recipient = { id: conversation.recipient, name };
 
         const messages = conversation.messages.map(message => {
-            const contact = availableContacts?.find(contact => {
+            // find user who sent the message
+            const contact = users?.find(contact => {
                 return contact.id === message.sender;
             });
+
+            //define his name
             const name = contact?.firstName;
+
+            //boolean: if this user is cuurent user
             const fromMe = id === message.sender;
             return { ...message, senderName: name, fromMe };
         });

@@ -178,6 +178,7 @@ export const SearchContactsTitle = styled.h2`
     font-size: 1.2rem;
     color: ${getValueFromTheme('searchContactsTextColor')};
     padding: 3px;
+    text-align: center;
 `;
 export const DropDown = styled(StyledDiv)`
     background-color: ${getValueFromTheme('primaryBgColorDiv')};

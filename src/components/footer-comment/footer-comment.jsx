@@ -7,12 +7,12 @@ import { CommentBlock } from './footer-comment.style';
 import useQueriedData from '../../common/hooks/useQueriedData';
 
 const FooterComment = ({
-                           comment,
-                           allReplies,
-                           replyBlock,
-                           componentId,
-                           photoModal,
-                       }) => {
+    comment,
+    allReplies,
+    replyBlock,
+    componentId,
+    photoModal,
+}) => {
     const [data, fallback] = useQueriedData(GET_ALL_USERS);
 
     if (fallback) {
@@ -39,6 +39,7 @@ const FooterComment = ({
             <UserAvatar
                 rating={'#C53B0E'}
                 rateScore={'1,5'}
+                photo={auth}
                 width={smallBlock ? 70 : [70, 135]}
                 height={smallBlock ? 70 : [70, 135]}
                 {...{ smallBlock }}

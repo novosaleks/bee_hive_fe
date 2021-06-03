@@ -13,7 +13,7 @@ const MessagesConversations = ({ smallBlock, handleClick }) => {
 
     return (
         <ConversationsBlockStyled className='conversations'>
-            {conversations.map((conversation, index) => {
+            {conversations?.map((conversation, index) => {
                 const lastMessage = conversation.messages.length - 1;
 
                 return (
@@ -21,7 +21,10 @@ const MessagesConversations = ({ smallBlock, handleClick }) => {
                         <ConversationStyledDiv
                             onClick={() => selectConversationIndex(index)}
                             className={conversation.selected ? 'active' : null}>
-                            <StyledDiv direction='row' content='flex-start'>
+                            <StyledDiv
+                                direction='row'
+                                content='flex-start'
+                                align='flex-start'>
                                 <UserAvatar
                                     rating={'#C53B0E'}
                                     rateScore={'1,5'}

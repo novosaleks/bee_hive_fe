@@ -25,7 +25,9 @@ const Navbar = ({ children }) => {
                 <MobileMenu onClick={handlerClick} isOpen={openState} />
             </InnerContent>
             <DivLine />
-            <MobileNavbarLinks isOpen={openState}>{children}</MobileNavbarLinks>
+            <MobileNavbarLinks isOpen={openState} onClick={handlerClick}>
+                {children}
+            </MobileNavbarLinks>
         </NavbarWrapper>
     );
 };

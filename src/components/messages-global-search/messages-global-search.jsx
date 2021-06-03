@@ -1,6 +1,4 @@
-import React from 'react';
 import MessagesContact from '../messages-contact';
-import { useContactContext } from '../../common/context/contactContext';
 
 import { MessagesGlobalSearchDiv } from './messages-global-search.style';
 import {
@@ -8,15 +6,14 @@ import {
     SearchContactsTitle,
 } from '../../common/style/index';
 
-const MessagesGlobalSearch = ({ identifyUser, handleSubmit }) => {
-    const availableContacts = useContactContext();
+const MessagesGlobalSearch = ({ identifyUser, handleClick, users }) => {
     return (
         <MessagesGlobalSearchDiv>
             <SearchContactsDiv>
                 <SearchContactsTitle>Global Search</SearchContactsTitle>
             </SearchContactsDiv>
 
-            {availableContacts
+            {users
                 ?.filter((user, index) =>
                     index < 5 && user.id !== identifyUser ? user : null
                 )
@@ -26,7 +23,8 @@ const MessagesGlobalSearch = ({ identifyUser, handleSubmit }) => {
                         contactSearch
                         contactID={contact.id}
                         key={contact.id}
-                        event={() => handleSubmit(contact.id)}
+                        event={() => handleClick(contact.id)}
+                        users={users}
                     />
                 ))}
         </MessagesGlobalSearchDiv>

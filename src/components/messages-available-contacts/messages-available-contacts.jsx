@@ -1,5 +1,4 @@
 import MessagesContact from '../messages-contact';
-import { useContactContext } from '../../common/context/contactContext';
 
 import { MessagesAvailiableContactsDiv } from './messages-available-contacts.style';
 import {
@@ -11,10 +10,9 @@ const MessagesAvailableContacts = ({
     identifyUser,
     handleSubmit,
     searchTerm,
+    users,
 }) => {
-    const availableContacts = useContactContext();
-
-    const contacts = availableContacts?.filter(user =>
+    const contacts = users?.filter(user =>
         (user.firstName.toLowerCase().includes(searchTerm.toLowerCase()) ||
             user.lastName.toLowerCase().includes(searchTerm.toLowerCase())) &&
         user.id !== identifyUser
@@ -37,6 +35,7 @@ const MessagesAvailableContacts = ({
                         contactID={contact.id}
                         key={contact.id}
                         event={() => handleSubmit(contact.id)}
+                        users={users}
                     />
                 ))
             )}
