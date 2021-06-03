@@ -80,6 +80,9 @@ export const GET_CURRENT_USER = gql`
             userInfo
             createdAt
             updatedAt
+            avatar {
+                location
+            }
         }
     }
 `;
@@ -94,6 +97,9 @@ export const GET_USER_BY_ID = gql`
             location
             birthDate
             userInfo
+            avatar {
+                location
+            }
         }
     }
 `;

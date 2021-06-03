@@ -27,7 +27,7 @@ const SideBarUserInfo = ({ user }) => {
             <UserAvatar
                 rating={'#c53b0e'}
                 rateScore={'1,5'}
-                // photo={photo}
+                photo={user.avatar}
                 width={[130, 190]}
                 height={[130, 190]}
             />
