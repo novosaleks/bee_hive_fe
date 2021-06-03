@@ -16,10 +16,20 @@ import MessagesAvailableContacts from '../messages-available-contacts';
 const MessagesNewChatModal = ({ closeModal, identifyUser }) => {
     const [searchTerm, setSearchTerm] = useState('');
 
-    const { createConversation } = useConversationContext();
+    const { createConversation, conversations } = useConversationContext();
 
     const handleClick = contactId => {
-        createConversation(contactId);
+        //all user with whome we already have a conversation
+        const existingRecipientsId = [];
+        conversations.forEach(conversation =>
+            existingRecipientsId.push(conversation.recipient.id)
+        );
+
+        //create conversation just if we do not have exicting conversation with this user yet
+        if (!existingRecipientsId.includes(contactId)) {
+            createConversation(contactId);
+        }
+
         closeModal();
     };
     const { loading, error, data } = useQuery(GET_ALL_USERS);
