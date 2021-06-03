@@ -2,7 +2,7 @@ import UnauthorizedRoute from './routes/unauthorizedRoute';
 import UserRoute from './routes/userRoute';
 import { useQuery } from '@apollo/client';
 import { GET_CURRENT_USER } from '../../graphql/user';
-import { Switch } from 'react-router-dom';
+import { Redirect, Switch } from 'react-router-dom';
 import ProfileScreen from '../../pages/profile-screen';
 import NavbarContainer from '../navbar-container';
 import SettingsScreen from '../../pages/settings-screen';
@@ -50,6 +50,9 @@ const RoutingContainer = () => {
                 <RegisterScreen />
             </UnauthorizedRouteContainer>
             <UserRouteContainer exact path='/'>
+                <Redirect to={`/user/${user.id}`} />
+            </UserRouteContainer>
+            <UserRouteContainer exact path='/user/:userId'>
                 <NavbarContainer />
                 <ProfileScreen />
             </UserRouteContainer>
