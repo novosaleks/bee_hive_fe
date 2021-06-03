@@ -6,7 +6,7 @@ import {
     TabAndLineDiv,
     TabWrapper,
 } from './sidebar-tab.style';
-const SidebarTab = ({ activeTabLabel, clickHandler, tabs }) => {
+const SidebarTab = ({ activeTab, clickHandler, messageBlock, tabs }) => {
     return (
         <TabsDivStyled>
             {tabs.map(tab => (

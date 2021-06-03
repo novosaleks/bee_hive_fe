@@ -5,50 +5,36 @@ import { useContactContext } from '../../common/context/contactContext';
 import { useConversationContext } from '../../common/context/conversationContext';
 import { MessagesContactsDiv } from './messages-contact.style';
 
-const MessagesContact = ({
-    smallBlock,
-    contactSearch,
-    contactID,
-    status,
-    ratingColor,
-    statusColor,
-    rateScore,
-    photo,
-}) => {
+const MessagesContact = ({ smallBlock, contactSearch, event }) => {
     const { selectedConversation } = useConversationContext();
     const availableContacts = useContactContext();
-    const recipients = selectedConversation && selectedConversation.recipients;
+    const recipient = selectedConversation && selectedConversation.recipient;
 
-    const contact =
-        contactID &&
-        availableContacts.find(contact => contact.id === contactID);
-    const contactName = contact && `${contact.firstName} ${contact.lastName}`;
-    //make GQL query by id of the recipeint to find all needed info about the user:
-    //status,
-    // ratingColor,
-    // statusColor,
-    // rateScore,
-    // photo
-
+    const contact = availableContacts.find(
+        contact => contact.id === recipient.id
+    );
+    const handleClick = () => {
+        if (contactSearch) {
+            event();
+        }
+    };
     return (
-        <MessagesContactsDiv contactSearch={contactSearch}>
+        <MessagesContactsDiv
+            contactSearch={contactSearch}
+            onClick={handleClick}>
             <UserAvatar
-                rating={ratingColor || '#C53B0E'}
-                rateScore={rateScore || '1,5'}
-                photo={photo}
+                rating={contact.ratingColor || '#C53B0E'}
+                rateScore={contact.rateScore || '1,5'}
+                photo={contact.photo}
                 width={70}
                 height={70}
                 {...{ smallBlock }}
             />
             <StyledDiv width='90%' align='flex-end' ml='20px'>
                 <PostAuthorAndData
-                    name={
-                        contactSearch
-                            ? contactName
-                            : recipients.map(r => r.name).join(', ')
-                    }
-                    data={status || 'Online'}
-                    color={statusColor || '#5DAC38'}
+                    name={recipient.name}
+                    data={contact.status || 'Online'}
+                    color={contact.statusColor || '#5DAC38'}
                 />
             </StyledDiv>
         </MessagesContactsDiv>

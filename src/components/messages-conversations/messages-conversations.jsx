@@ -30,9 +30,7 @@ const MessagesConversations = ({ smallBlock, handleClick }) => {
                                     {...{ smallBlock }}
                                 />
                                 <ContactInfoDiv content='flex-start' ml='3px'>
-                                    {conversation.recipients
-                                        .map(r => r.name)
-                                        .join(', ')}
+                                    {conversation.recipient.name}
                                     <span>
                                         {0 <= lastMessage &&
                                             conversation.messages[lastMessage]

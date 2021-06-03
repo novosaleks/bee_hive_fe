@@ -5,6 +5,8 @@ import MessagesNewChatModal from '../messages-new-chat-modal';
 import {
     MessagesSidebarStyled,
     NewConversationButton,
+    ModalDialog,
+    ModalContent,
 } from './messages-sidebar.style';
 
 import { Modal } from 'react-bootstrap';
@@ -16,6 +18,11 @@ const MessagesSidebar = ({ identifyUser, conversationOpen, handleClick }) => {
 
     const closeModal = () => {
         setModalOpen(false);
+    };
+    const handleClickModal = e => {
+        if (e.target.classList.contains('modal-bg')) {
+            closeModal();
+        }
     };
 
     return (
@@ -31,12 +38,24 @@ const MessagesSidebar = ({ identifyUser, conversationOpen, handleClick }) => {
 
             {/* modal for choosing with which avaliable contacts user whant to start a chat with */}
 
-            <Modal show={modalOpen} onHide={closeModal}>
+            {/* <Modal show={modalOpen} onHide={closeModal}>
                 <MessagesNewChatModal
                     closeModal={closeModal}
                     identifyUser={identifyUser}
                 />
-            </Modal>
+            </Modal> */}
+            {modalOpen && (
+                <ModalDialog
+                    className='modal-bg'
+                    onClick={e => handleClickModal(e)}>
+                    <ModalContent>
+                        <MessagesNewChatModal
+                            closeModal={closeModal}
+                            identifyUser={identifyUser}
+                        />
+                    </ModalContent>
+                </ModalDialog>
+            )}
         </MessagesSidebarStyled>
     );
 };
