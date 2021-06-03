@@ -1,21 +1,23 @@
 import { Link } from 'react-router-dom';
+
+import { PostInfo } from './post-author-and-data.style';
 import { DivLine, StyledDiv, StyledText } from '../../common/style/index';
 
 const PostAuthorAndData = ({ name, authorId, smallBlock, color, date }) => {
     return (
         <StyledDiv>
             <StyledDiv align='center' direction='row' content='space-between'>
-                <StyledText
+                <PostInfo
                     fontSize={smallBlock ? '0.9em' : ['1.2em', '1.6em']}
                     align='left'>
                     <Link to={`/user/${authorId}`}>{name}</Link>
-                </StyledText>
-                <StyledText
+                </PostInfo>
+                <PostInfo
                     fontSize={smallBlock ? '0.7em' : ['0.6em', '1em']}
                     align='right'
                     color={color}>
                     {date}
-                </StyledText>
+                </PostInfo>
             </StyledDiv>
             <DivLine />
         </StyledDiv>
