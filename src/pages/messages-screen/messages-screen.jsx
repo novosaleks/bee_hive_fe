@@ -1,7 +1,6 @@
 import { useState } from 'react';
 
 import { StyledMessagePageWrapper } from './messages-screen.style';
-import { StyledDivPage } from '../../common/style/index';
 
 import { tabs } from '../../common/tabs';
 import MessagesScreenMenu from '../../components/messages-screen-menu';
@@ -31,13 +30,12 @@ const MessagesScreen = () => {
                 clickHandler={clickHandler}
                 tabs={tabs.messagesPage}
             />
-            <StyledDivPage pt={3}>
-                {tabs.messagesPage[0].label === activeTab ? (
-                    <MessageContainer identifyUser={identifyUser} />
-                ) : (
-                    <ActionsNotifications />
-                )}
-            </StyledDivPage>
+
+            {tabs.messagesPage[0].label === activeTab ? (
+                <MessageContainer identifyUser={identifyUser} />
+            ) : (
+                <ActionsNotifications />
+            )}
         </StyledMessagePageWrapper>
     );
 };

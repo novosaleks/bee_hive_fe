@@ -1,34 +1,15 @@
 import styled from 'styled-components';
-import { StyledDiv, StyledText } from '../../common/style';
-import { getValueFromTheme } from '../../common/utils';
+import { StyledDiv } from '../../common/style';
 
-export const NotificationBlock = styled(StyledDiv)`
-    border: 2px solid ${getValueFromTheme('primaryColor')};
-    flex-direction: row;
-    padding: 5px;
-    margin-top: 2%;
-    margin-bottom: 5%;
-    width: 85vw;
-    height: 12vw;
-    overflow: hidden;
-`;
-export const NotificationTextDiv = styled(StyledDiv)`
-    align-items: flex-start;
-    margin-left: 5%;
-`;
-export const NotificationText = styled(StyledText)`
-    margin: 0;
-    font-size: 1.2rem;
-    span {
-        color: ${(props) => getValueFromTheme(props.ratingTextColor)};
+export const Notifications = styled(StyledDiv)`
+    @media (max-width: 700px) {
+        width: 90%;
+        margin-left: 10%;
+        i {
+            font-size: 1rem;
+        }
+        p {
+            font-size: 0.9rem;
+        }
     }
-`;
-export const PostTextStyled = styled(StyledText)`
-    width: 40vw;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    font-style: italic;
-    opacity: 0.8;
-    margin: 0;
 `;

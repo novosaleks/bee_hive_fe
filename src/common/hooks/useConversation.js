@@ -51,21 +51,17 @@ const useConversation = id => {
     };
 
     const formattedConversations = conversations.map((conversation, index) => {
-        const contact =
-            availableContacts &&
-            availableContacts.find(contact => {
-                return contact.id === conversation.recipient;
-            });
-        const name = contact && `${contact.firstName} ${contact.lastName}`;
+        const contact = availableContacts?.find(contact => {
+            return contact.id === conversation.recipient;
+        });
+        const name = `${contact?.firstName} ${contact?.lastName}`;
         const recipient = { id: conversation.recipient, name };
 
         const messages = conversation.messages.map(message => {
-            const contact =
-                availableContacts &&
-                availableContacts.find(contact => {
-                    return +contact.id === message.sender;
-                });
-            const name = (contact && contact.firstName) || message.sender;
+            const contact = availableContacts?.find(contact => {
+                return contact.id === message.sender;
+            });
+            const name = contact?.firstName;
             const fromMe = id === message.sender;
             return { ...message, senderName: name, fromMe };
         });

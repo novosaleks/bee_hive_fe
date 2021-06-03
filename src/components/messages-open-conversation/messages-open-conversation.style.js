@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import { StyledDiv, Button } from '../../common/style';
 import { getValueFromTheme } from '../../common/utils';
 export const OpenConversationGroup = styled(StyledDiv)`
@@ -68,7 +68,7 @@ export const MessagesContactHeader = styled(StyledDiv)`
     }
 `;
 
-export const Left = styled.button`
+export const LeftArrow = styled.button`
     display: none;
     width: 30px;
     height: 30px;
@@ -90,4 +90,44 @@ export const Left = styled.button`
     @media (max-width: 400px) {
         margin-left: 5px;
     }
+`;
+
+export const Message = styled.div`
+    display: flex;
+    flex-direction: column;
+    margin-top: 0.25rem;
+    margin-bottom: 0.25rem;
+    ${props =>
+        props.fromMe
+            ? css`
+                  align-self: flex-end;
+                  align-items: flex-end;
+              `
+            : css`
+                  align-items: start;
+              `}
+`;
+export const MessageText = styled.div`
+    border-radius: 5px;
+    padding: 0.25rem;
+    ${props =>
+        props.fromMe
+            ? css`
+                  background: #f8f9fa;
+                  color: #6c757d;
+              `
+            : css`
+                  border-color: #f8f9fa;
+                  color: #f8f9fa;
+              `}
+`;
+export const MessageSender = styled.div`
+    color: #f8f9fa;
+    font-size: 80%;
+    font-weight: 400;
+    ${props =>
+        props.fromMe &&
+        css`
+            text-align: right;
+        `}
 `;

@@ -15,6 +15,11 @@ export const InnerContent = styled.div`
     justify-content: space-between;
     width: 85%;
     margin: 0 auto;
+    @media (max-width: 700px) {
+        img {
+            margin-left: 5%;
+        }
+    }
     @media (max-width: 290px) {
         img {
             width: 90px;
