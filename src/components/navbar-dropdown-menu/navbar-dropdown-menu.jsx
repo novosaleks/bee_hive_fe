@@ -11,11 +11,13 @@ import { useQuery } from '@apollo/client';
 import { GET_CURRENT_USER } from '../../graphql/user';
 
 const NavbarDropdownMenu = () => {
+    const [headerBottom, setHeaderBottom] = useState(null);
     const [headerLeft, setHeaderLeft] = useState(null);
     const [openState, setOpenState] = useState(false);
 
     const HeaderRef = useRef();
     const resizeHandler = () => {
+        setHeaderBottom(HeaderRef.current?.getBoundingClientRect().bottom);
         setHeaderLeft(HeaderRef.current?.getBoundingClientRect().left);
     };
     useEffect(() => {
@@ -55,7 +57,11 @@ const NavbarDropdownMenu = () => {
                 <UserName>{user.firstName}</UserName>
                 <img src={dropdown} alt='icon for dopdown menu' />
             </NavbarDropdownMenuHeaderDiv>
-            <NavbarDropdownMenuBody left={headerLeft} isOpen={openState} />
+            <NavbarDropdownMenuBody
+                left={headerLeft}
+                bottom={headerBottom}
+                isOpen={openState}
+            />
         </>
     );
 };

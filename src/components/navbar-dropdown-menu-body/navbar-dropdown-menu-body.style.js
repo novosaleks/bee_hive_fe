@@ -1,18 +1,21 @@
-import styled, { css } from 'styled-components';
+import styled from 'styled-components';
 import { StyledDiv, DropDown, media } from '../../common/style/index';
 
 export const NavbarDropdownMenuBodyDiv = styled(DropDown)`
-    @media (max-width: 398px) {
+    top: ${props => props.bottom + 35}px;
+    ${media.laptop} {
+        left: 72%;
+    }
+    ${media.miniMobile} {
         left: 10%;
+        top: ${props => props.bottom + 55}px;
     }
-    @media (max-width: 610px) {
-        left: ${props => props.left - 150}px;
+    @media (max-width: 639px) and (min-width: 380px) {
+        left: 20%;
     }
-    @media (min-width: 910px) {
-        top: 20%;
-    }
-    @media (min-width: 989px) and (max-width: 1060px) {
-        left: 75%;
+    @media (max-width: 290px) {
+        width: 180px;
+        top: ${props => props.bottom + 35}px;
     }
 `;
 export const NavbarDropdownItem = styled(StyledDiv)`
