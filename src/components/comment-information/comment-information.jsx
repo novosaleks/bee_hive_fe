@@ -32,6 +32,7 @@ const CommentInformation = ({
                 {...{ smallBlock }}
                 name={`${auth.firstName} ${auth.lastName}`}
                 date={comment.createdAt}
+                authorId={comment.authorId}
             />
             {edit ? (
                 <CommentEdit
