@@ -1,12 +1,11 @@
-import { useState } from 'react';
-import { Modal, Form } from 'react-bootstrap';
+import React, { useState } from 'react';
 
 import {
-    ChatModalButton,
     ChatModalInput,
     ModalHeader,
     ModalBody,
 } from './messages-new-chat-modal.style';
+import { DivLine } from '../../common/style';
 
 import { useConversationContext } from '../../common/context/conversationContext';
 
@@ -14,35 +13,22 @@ import MessagesGlobalSearch from '../messages-global-search';
 import MessagesAvailableContacts from '../messages-available-contacts';
 
 const MessagesNewChatModal = ({ closeModal, identifyUser }) => {
-    const [selectedContactIds, setSelectedContactIds] = useState([]);
     const [searchTerm, setSearchTerm] = useState('');
 
     const { createConversation } = useConversationContext();
 
-    const handleSubmit = e => {
-        e.preventDefault();
-
-        selectedContactIds.length !== 0 &&
-            createConversation(selectedContactIds);
+    const handleSubmit = contactId => {
+        createConversation(contactId);
+        // selectedContactIds.length !== 0 &&
+        //     createConversation(selectedContactIds);
         closeModal();
-    };
-
-    const handleCheckboxChange = contactId => {
-        setSelectedContactIds(prevSelectedContactIds => {
-            if (prevSelectedContactIds.includes(contactId)) {
-                return prevSelectedContactIds.filter(prevId => {
-                    return contactId !== prevId;
-                });
-            } else {
-                return [...prevSelectedContactIds, contactId];
-            }
-        });
     };
 
     return (
         <>
-            <Modal.Header closeButton>Create Conversation</Modal.Header>
-            <Modal.Body overflow='auto'>
+            <ModalHeader>Create Conversation</ModalHeader>
+            <DivLine backgroundColor='#E8E6E6' />
+            <ModalBody overflow='auto'>
                 <ChatModalInput
                     placeholder='Start conversation with ...'
                     value={searchTerm}
@@ -50,29 +36,25 @@ const MessagesNewChatModal = ({ closeModal, identifyUser }) => {
                     mb={3}
                 />
 
-                <Form onSubmit={handleSubmit}>
+                <>
                     {searchTerm === '' ? (
                         <MessagesGlobalSearch
                             {...{
                                 identifyUser,
-                                selectedContactIds,
-                                handleCheckboxChange,
+                                handleSubmit,
                             }}
                         />
                     ) : (
                         <MessagesAvailableContacts
                             {...{
                                 identifyUser,
-                                selectedContactIds,
-                                handleCheckboxChange,
+                                handleSubmit,
                                 searchTerm,
                             }}
                         />
                     )}
-
-                    <ChatModalButton type='submit'>Create</ChatModalButton>
-                </Form>
-            </Modal.Body>
+                </>
+            </ModalBody>
         </>
     );
 };

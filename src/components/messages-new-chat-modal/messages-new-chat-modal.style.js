@@ -1,9 +1,6 @@
 import styled from 'styled-components';
-import { Button, Input } from '../../common/style';
+import { Input, StyledText } from '../../common/style';
 
-export const ChatModalButton = styled(Button)`
-    font-size: 1.3rem;
-`;
 export const ChatModalInput = styled(Input)`
     border-bottom: 2px solid #000;
     &::placeholder {
@@ -11,14 +8,12 @@ export const ChatModalInput = styled(Input)`
     }
 `;
 
-export const ModalHeader = styled.div`
-    display: flex;
-    align-items: flex-start;
-    justify-content: space-between;
-    padding: 1rem 1rem;
-    border-bottom: 1px solid #dee2e6;
-    border-top-left-radius: calc(0.3rem - 1px);
-    border-top-right-radius: calc(0.3rem - 1px);
+export const ModalHeader = styled(StyledText)`
+    color: #909ba3;
+    font-weight: 500;
+    font-size: 1.1em;
+    padding: 3%;
+    padding-bottom: 2px;
 `;
 
 export const ModalBody = styled.div`

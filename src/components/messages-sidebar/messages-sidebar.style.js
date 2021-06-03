@@ -22,27 +22,19 @@ export const NewConversationButton = styled(Button)`
 `;
 
 export const ModalDialog = styled.div`
-    display: block;
     position: fixed;
-    width: 100%;
-    height: 100%;
-    margin: 0.5rem auto;
-    pointer-events: none;
-    transition: transform 0.3s ease-out;
-    @media (min-width: 576px) {
-        max-width: 500px;
-        margin: 1.75rem auto;
-    }
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 4;
 `;
 export const ModalContent = styled.div`
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-    pointer-events: auto;
+    display: block;
+    max-width: 80%;
+    max-height: 60%;
+    margin: 20px auto;
+    box-shadow: 3px 5px 7px rgba(0, 0, 0, 0.5);
     background-color: #fff;
-    background-clip: padding-box;
-    border: 1px solid rgba(0, 0, 0, 0.2);
-    border-radius: 0.3rem;
-    outline: 0;
 `;

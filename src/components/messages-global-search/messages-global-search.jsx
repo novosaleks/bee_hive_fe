@@ -8,11 +8,7 @@ import {
     SearchContactsTitle,
 } from '../../common/style/index';
 
-const MessagesGlobalSearch = ({
-    identifyUser,
-    selectedContactIds,
-    handleCheckboxChange,
-}) => {
+const MessagesGlobalSearch = ({ identifyUser, handleSubmit }) => {
     const availableContacts = useContactContext();
     return (
         <MessagesGlobalSearchDiv>
@@ -26,23 +22,13 @@ const MessagesGlobalSearch = ({
                         index < 5 && user.id !== identifyUser ? user : null
                     )
                     .map(contact => (
-                        <Form.Group controlId={contact.id} key={contact.id}>
-                            <Form.Check
-                                type='checkbox'
-                                value={selectedContactIds.includes(+contact.id)}
-                                label={
-                                    <MessagesContact
-                                        smallBlock
-                                        contactSearch
-                                        contactID={contact.id}
-                                    />
-                                }
-                                onChange={() =>
-                                    handleCheckboxChange(contact.id)
-                                }
-                                className='mt-2'
-                            />
-                        </Form.Group>
+                        <MessagesContact
+                            smallBlock
+                            contactSearch
+                            contactID={contact.id}
+                            key={contact.id}
+                            event={() => handleSubmit(contact.id)}
+                        />
                     ))}
         </MessagesGlobalSearchDiv>
     );
