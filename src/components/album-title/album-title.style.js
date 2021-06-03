@@ -3,7 +3,7 @@ import { StyledDiv } from '../../common/style/index';
 
 export const Header = styled(StyledDiv)`
     flex-direction: row;
-    padding: 3%;
+    padding: 3px;
     align-items: center;
     justify-content: space-between;
     img {

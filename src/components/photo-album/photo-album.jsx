@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 import AlbumOpenModal from '../album-open-modal';
 import AlbumsSlider from '../albums-slider';
@@ -17,6 +17,9 @@ const PhotoAlbum = () => {
         setAlbumId(albumId);
         setImages(images);
     };
+    useEffect(() => {
+        document.body.style.overflow = isOpen ? 'hidden' : 'auto';
+    }, [isOpen]);
 
     return (
         <>

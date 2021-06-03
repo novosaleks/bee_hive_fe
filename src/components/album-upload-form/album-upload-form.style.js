@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import { getValueFromTheme } from '../../common/utils';
 
 export const Form = styled.form`
-    margin: 30px auto 2px;
+    margin: 5px auto 2px;
     text-align: center;
 `;
 export const Label = styled.label`
@@ -11,7 +11,7 @@ export const Label = styled.label`
     height: 30px;
     border: 1px solid ${getValueFromTheme('primaryColor')};
     border-radius: 50%;
-    margin: 10px auto;
+    margin: 5px auto;
     line-height: 18px;
     color: ${getValueFromTheme('primaryColor')};
     font-weight: bold;
@@ -29,7 +29,7 @@ export const Label = styled.label`
 `;
 
 export const Output = styled.div`
-    height: 40px;
+    height: 20px;
     font-size: 0.8rem;
     .progress-bar {
         height: 5px;

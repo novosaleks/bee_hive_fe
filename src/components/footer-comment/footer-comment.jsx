@@ -12,7 +12,6 @@ const FooterComment = ({
     replyBlock,
     componentId,
     photoModal,
-    authorId,
 }) => {
     const { loading, error, data } = useQuery(GET_ALL_USERS);
 

@@ -5,7 +5,7 @@ export const ImgGrid = styled.div`
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     grid-gap: 40px;
-    height: 70%;
+    height: 80%;
     overflow: auto;
     div {
         overflow: hidden;
