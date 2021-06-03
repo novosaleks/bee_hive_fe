@@ -50,7 +50,7 @@ const RoutingContainer = () => {
                 <RegisterScreen />
             </UnauthorizedRouteContainer>
             <UserRouteContainer exact path='/'>
-                <Redirect to={`/user/${user.id}`} />
+                <Redirect to={`/user/${user?.id}`} />
             </UserRouteContainer>
             <UserRouteContainer exact path='/user/:userId'>
                 <NavbarContainer />
