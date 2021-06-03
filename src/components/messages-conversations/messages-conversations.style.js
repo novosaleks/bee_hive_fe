@@ -31,4 +31,7 @@ export const ContactInfoDiv = styled.div`
         overflow: hidden;
         text-overflow: ellipsis;
     }
+    @media (max-width: 600px) {
+        width: 40vw;
+    }
 `;

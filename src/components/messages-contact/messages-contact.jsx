@@ -1,18 +1,22 @@
 import { StyledDiv } from '../../common/style/index';
 import UserAvatar from '../user-avatar';
 import PostAuthorAndData from '../post-author-and-data';
-import { useContactContext } from '../../common/context/contactContext';
 import { useConversationContext } from '../../common/context/conversationContext';
 import { MessagesContactsDiv } from './messages-contact.style';
 
-const MessagesContact = ({ smallBlock, contactSearch, event }) => {
+const MessagesContact = ({
+    smallBlock,
+    contactSearch,
+    event,
+    users,
+    contactID,
+}) => {
     const { selectedConversation } = useConversationContext();
-    const availableContacts = useContactContext();
     const recipient = selectedConversation?.recipient;
 
-    const contact = availableContacts?.find(
-        contact => contact.id === recipient.id
-    );
+    const contact = contactSearch
+        ? users?.find(contact => contact.id === contactID)
+        : users?.find(contact => contact.id === recipient.id);
     const handleClick = () => {
         if (contactSearch) {
             event();

@@ -1,17 +1,5 @@
-<<<<<<< HEAD
-import UserAvatar from '../user-avatar';
-import { StyledDiv } from '../../common/style/index';
-import {
-    NotificationBlock,
-    NotificationTextDiv,
-    NotificationText,
-    PostTextStyled,
-} from './actions-notifications.style';
-=======
-import React from 'react';
 import ActionNotification from '../action-notification';
 import { Notifications } from './actions-notifications.style';
->>>>>>> d167428... adaptive notifications
 
 import { useQuery } from '@apollo/client';
 // import { GET_ALL_NOTIFICATIONS } from '../../graphql/notification';

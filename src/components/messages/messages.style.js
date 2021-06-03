@@ -27,7 +27,8 @@ export const MessagesDivBlock = styled(StyledDivPage)`
             grid-column-gap: 5px;
         `}
     @media(max-width: 700px) {
-        margin-left: ${props => (props.conversationOpen ? '1%' : '5%')};
+        width: 90%;
+        margin-left: ${props => (props.conversationOpen ? '1%' : '10%')};
         .message-sidebar {
             display: ${props => props.conversationOpen && 'none'};
             ${props => props.stateSidebar && CSS_Sidebar_Mobile}

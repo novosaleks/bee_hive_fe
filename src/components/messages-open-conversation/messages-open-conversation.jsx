@@ -31,11 +31,13 @@ const MessagesOpenConversation = ({ handleClick }) => {
 
     return (
         <OpenConversationGroup className='open-conversation'>
+            {/* user with whom we have the chat */}
             <MessagesContactHeader>
                 <LeftArrow onClick={handleClick} />
                 <MessagesContact contactSearch={false} smallBlock />
             </MessagesContactHeader>
 
+            {/* our chat */}
             <OpenConversationDiv>
                 <MessageDiv>
                     {selectedConversation.messages.map((message, index) => {
@@ -59,6 +61,7 @@ const MessagesOpenConversation = ({ handleClick }) => {
                     })}
                 </MessageDiv>
             </OpenConversationDiv>
+
             <StyledDiv direction='row' mt={1} content='space-between'>
                 <Input
                     placeholder='Type ...'

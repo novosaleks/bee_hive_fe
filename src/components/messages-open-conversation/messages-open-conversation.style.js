@@ -110,6 +110,9 @@ export const Message = styled.div`
 export const MessageText = styled.div`
     border-radius: 5px;
     padding: 0.25rem;
+    word-break: break-word;
+    overflow-y: hidden;
+    max-width: 45vw;
     ${props =>
         props.fromMe
             ? css`

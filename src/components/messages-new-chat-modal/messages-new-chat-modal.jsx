@@ -1,5 +1,6 @@
-import React, { useState } from 'react';
-
+import { useState } from 'react';
+import { useQuery } from '@apollo/client';
+import { GET_ALL_USERS } from '../../graphql/user';
 import {
     ChatModalInput,
     ModalHeader,
@@ -17,11 +18,17 @@ const MessagesNewChatModal = ({ closeModal, identifyUser }) => {
 
     const { createConversation } = useConversationContext();
 
-    const handleSubmit = contactId => {
+    const handleClick = contactId => {
         createConversation(contactId);
         closeModal();
     };
+    const { loading, error, data } = useQuery(GET_ALL_USERS);
 
+    if (loading) return <div>LOADING...</div>;
+
+    if (error) return <div>Error: {error.message}</div>;
+
+    const users = data.getAllUsers;
     return (
         <>
             <ModalHeader>Create Conversation</ModalHeader>
@@ -39,15 +46,17 @@ const MessagesNewChatModal = ({ closeModal, identifyUser }) => {
                         <MessagesGlobalSearch
                             {...{
                                 identifyUser,
-                                handleSubmit,
+                                handleClick,
+                                users,
                             }}
                         />
                     ) : (
                         <MessagesAvailableContacts
                             {...{
                                 identifyUser,
-                                handleSubmit,
+                                handleClick,
                                 searchTerm,
+                                users,
                             }}
                         />
                     )}

@@ -9,8 +9,6 @@ import {
     ModalContent,
 } from './messages-sidebar.style';
 
-import { Modal } from 'react-bootstrap';
-
 import MessagesConversations from '../messages-conversations';
 
 const MessagesSidebar = ({ identifyUser, conversationOpen, handleClick }) => {
@@ -38,12 +36,6 @@ const MessagesSidebar = ({ identifyUser, conversationOpen, handleClick }) => {
 
             {/* modal for choosing with which avaliable contacts user whant to start a chat with */}
 
-            {/* <Modal show={modalOpen} onHide={closeModal}>
-                <MessagesNewChatModal
-                    closeModal={closeModal}
-                    identifyUser={identifyUser}
-                />
-            </Modal> */}
             {modalOpen && (
                 <ModalDialog
                     className='modal-bg'
