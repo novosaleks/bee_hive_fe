@@ -1,22 +1,32 @@
-import { StyledDiv, StyledText } from '../../common/style/index';
-import { PhotoAlbumDiv, PhotoAlbumNameDiv } from './photo-album.style';
+import { useState } from 'react';
 
-const PhotoAlbum = ({ albumName }) => {
+import AlbumOpenModal from '../album-open-modal';
+import AlbumsSlider from '../albums-slider';
+
+const PhotoAlbum = () => {
+    const [isOpen, setIsOpen] = useState(false);
+    const [description, setDescription] = useState(null);
+    const [title, setTitle] = useState(null);
+    const [albumId, setAlbumId] = useState(null);
+    const [images, setImages] = useState();
+
+    const handelClick = (description, title, albumId, images) => {
+        setIsOpen(prevState => !prevState);
+        setDescription(description);
+        setTitle(title);
+        setAlbumId(albumId);
+        setImages(images);
+    };
+
     return (
-        <StyledDiv direction='row' content='space-between'>
-            <PhotoAlbumDiv content='flex-end'>
-                <StyledText>Photo</StyledText>
-                <PhotoAlbumNameDiv>
-                    <StyledText>{albumName || 'Album Name'}</StyledText>
-                </PhotoAlbumNameDiv>
-            </PhotoAlbumDiv>
-            <PhotoAlbumDiv content='flex-end'>
-                <StyledText>Photo</StyledText>
-                <PhotoAlbumNameDiv>
-                    <StyledText>{albumName || 'Album Name'}</StyledText>
-                </PhotoAlbumNameDiv>
-            </PhotoAlbumDiv>
-        </StyledDiv>
+        <>
+            <AlbumsSlider handelClick={handelClick} />
+            {isOpen && (
+                <AlbumOpenModal
+                    {...{ description, title, albumId, images, setIsOpen }}
+                />
+            )}
+        </>
     );
 };
 

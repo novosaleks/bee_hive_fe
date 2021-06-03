@@ -1,6 +1,15 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import { StyledDiv, StyledText, media } from '../../common/style/index';
 import { getValueFromTheme } from '../../common/utils';
+
+const CSS__PHOTO_MODAL = css`
+    left: 15%;
+    top: 6.5%;
+    ${media.miniMobile} {
+        left: -15%;
+        top: 0;
+    }
+`;
 
 export const ExplanationStyledDiv = styled(StyledDiv)`
     background-color: ${getValueFromTheme('primaryBgColor')};
@@ -15,6 +24,7 @@ export const ExplanationStyledDiv = styled(StyledDiv)`
     ${media.miniMobile} {
         left: 30%;
     }
+    ${props => props.photoModal && CSS__PHOTO_MODAL}
 `;
 export const ExplanationStyledText = styled(StyledText)`
     opacity: 0.7;

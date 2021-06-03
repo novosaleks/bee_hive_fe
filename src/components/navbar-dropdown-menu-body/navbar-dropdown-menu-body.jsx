@@ -2,15 +2,15 @@ import Logout from '../../components/logout';
 import ToggleSwitchTheme from '../toggle-switch-theme';
 import settings from '../../assets/settings.svg';
 
-import { NavLink, DivLine, StyledDiv, StyledText } from '../../common/style';
+import { NavLink, DivLine } from '../../common/style';
 import {
     NavbarDropdownMenuBodyDiv,
     NavbarDropdownItem,
 } from './navbar-dropdown-menu-body.style';
 
-const NavbarDropdownMenuBody = ({ left, bottom, isOpen }) => {
+const NavbarDropdownMenuBody = ({ left, isOpen }) => {
     return (
-        <NavbarDropdownMenuBodyDiv {...{ left, bottom, isOpen }}>
+        <NavbarDropdownMenuBodyDiv {...{ left, isOpen }}>
             <NavbarDropdownItem direction='row'>
                 <img src={settings} alt='settings icon' />
                 <NavLink to='/settings'>Settings</NavLink>

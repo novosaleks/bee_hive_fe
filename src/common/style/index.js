@@ -4,10 +4,12 @@ import { space, layout, typography, color, flexbox } from 'styled-system';
 import { getValueFromTheme } from '../utils';
 import { Link } from 'react-router-dom';
 
+import arrow from '../../assets/arrow.png';
+
 export const media = {
     miniMobile: '@media(max-width: 639px)',
-    mobile: '@media(max-width: 949px)',
-    laptop: '@media(min-width: 950px) and (max-width: 1300px)',
+    mobile: '@media(max-width: 988px)',
+    laptop: '@media(min-width: 989px) and (max-width: 1300px)',
 };
 
 export const PrimaryBackground = styled.div`
@@ -176,4 +178,93 @@ export const SearchContactsTitle = styled.h2`
     font-size: 1.2rem;
     color: ${getValueFromTheme('searchContactsTextColor')};
     padding: 3px;
+`;
+export const DropDown = styled(StyledDiv)`
+    background-color: ${getValueFromTheme('primaryBgColorDiv')};
+    width: 240px;
+    height: 150px;
+    padding: 1%;
+    position: absolute;
+    justify-content: center;
+    align-items: flex-start;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    left: ${props => props.left}px;
+    right: ${props => props.right}px;
+    top: ${props => (props.bottom && props.bottom + 'px') || '28%'};
+    visibility: hidden;
+    z-index: 0;
+    transition: 1.2s;
+    opacity: 0;
+    ${props =>
+        props.isOpen &&
+        css`
+            opacity: 1;
+            z-index: 3;
+            visibility: visible;
+        `}
+`;
+
+export const SubmitButton = styled.button`
+    align-self: flex-end;
+    background: ${getValueFromTheme('primaryBgColor')};
+    transform: rotateX(0.003deg);
+    color: ${getValueFromTheme('primaryColor')};
+    text-decoration: none;
+    font-size: 1.2em;
+    display: inline-block;
+    font-family: Montserrat;
+    text-transform: uppercase;
+    text-align: center;
+    border: 2px solid ${getValueFromTheme('primaryColor')};
+    transition: 0.02s 0.2s cubic-bezier(0.1, 0, 0.1, 1);
+    padding: 0.2%;
+    margin-right: 1%;
+    width: 40vh;
+    &::before {
+        content: '';
+        display: inline-block;
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 100%;
+        bottom: 0;
+        background: ${getValueFromTheme('primaryColor')};
+        transition: 0.5s 0.2s cubic-bezier(0.1, 0, 0.1, 1),
+            left 0.3s cubic-bezier(0.1, 0, 0.1, 1);
+        z-index: -1;
+    }
+    &::after {
+        content: '';
+        display: inline-block;
+        background-image: url(${arrow});
+        position: absolute;
+        top: 0;
+        left: calc(100% - 3em);
+        right: 3em;
+        bottom: 0;
+        background-size: 1.5em;
+        background-repeat: no-repeat;
+        background-position: center;
+        transition: right 0.3s cubic-bezier(0.1, 0, 0.1, 1);
+    }
+    &:hover {
+        &::before {
+            left: calc(100% - 3em);
+            right: 0;
+            transition: 0.3s cubic-bezier(0.1, 0, 0.1, 1),
+                left 0.3s 0.2s cubic-bezier(0.1, 0, 0.1, 1);
+        }
+        &::after {
+            right: 0;
+            transition: right 0.3s 0.2s cubic-bezier(0.1, 0, 0.1, 1);
+        }
+    }
+    @media (max-width: 495px) {
+        font-size: 1em;
+        padding: 0;
+        width: 23vh;
+        &::after {
+            background-size: 1.3em;
+        }
+    }
 `;
