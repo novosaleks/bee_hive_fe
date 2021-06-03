@@ -1,8 +1,6 @@
 import styled from 'styled-components';
 import { getValueFromTheme } from '../../common/utils';
 
-const body = document.body;
-
 export const Window = styled.div`
     position: fixed;
     top: 0;
@@ -12,7 +10,6 @@ export const Window = styled.div`
     background: rgba(0, 0, 0, 0.5);
     z-index: 3;
     overflow: hidden;
-    ${(body.style.overflow = 'hidden')}
 `;
 
 export const AlbumOpenModalDiv = styled.div`

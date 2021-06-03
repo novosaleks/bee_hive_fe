@@ -26,6 +26,7 @@ const CommentInformation = ({
             <DeleteEditComment
                 commentId={comment.commentId}
                 handleEdit={handleEdit}
+                authorId={comment.authorId}
             />
             <PostAuthorAndData
                 {...{ smallBlock }}

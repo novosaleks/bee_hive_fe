@@ -5,7 +5,7 @@ import { useNewComment } from '../../common/context/newCommentContext';
 
 import DeleteEditIconsBlock from '../delete-edit-icons-block';
 
-const DeleteEditComment = ({ commentId, handleEdit }) => {
+const DeleteEditComment = ({ commentId, handleEdit, authorId }) => {
     const [removeComment, { data }] = useMutation(REMOVE_COMMENT);
     const updateComments = useNewComment();
 
@@ -36,6 +36,7 @@ const DeleteEditComment = ({ commentId, handleEdit }) => {
         <DeleteEditIconsBlock
             editComponent={editComment}
             deleteComponent={deleteComment}
+            authorId={authorId}
         />
     );
 };
