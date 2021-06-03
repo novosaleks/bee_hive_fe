@@ -17,6 +17,7 @@ const MessagesContact = ({
     const contact = contactSearch
         ? users?.find(contact => contact.id === contactID)
         : users?.find(contact => contact.id === recipient.id);
+
     const handleClick = () => {
         if (contactSearch) {
             event();
@@ -36,8 +37,11 @@ const MessagesContact = ({
             />
             <StyledDiv width='90%' align='flex-end' ml='20px'>
                 <PostAuthorAndData
-                    name={recipient?.name}
-                    data={contact?.status || 'Online'}
+                    name={
+                        recipient?.name ||
+                        `${contact.firstName} ${contact.lastName}`
+                    }
+                    date={contact?.status || 'Online'}
                     color={contact?.statusColor || '#5DAC38'}
                 />
             </StyledDiv>
