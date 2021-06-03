@@ -19,8 +19,6 @@ const MessagesNewChatModal = ({ closeModal, identifyUser }) => {
 
     const handleSubmit = contactId => {
         createConversation(contactId);
-        // selectedContactIds.length !== 0 &&
-        //     createConversation(selectedContactIds);
         closeModal();
     };
 

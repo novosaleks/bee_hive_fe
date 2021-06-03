@@ -14,17 +14,13 @@ const MessagesAvailableContacts = ({
 }) => {
     const availableContacts = useContactContext();
 
-    const contacts =
-        availableContacts &&
-        availableContacts.filter(user =>
-            (user.firstName.toLowerCase().includes(searchTerm.toLowerCase()) ||
-                user.lastName
-                    .toLowerCase()
-                    .includes(searchTerm.toLowerCase())) &&
-            user.id !== identifyUser
-                ? user
-                : null
-        );
+    const contacts = availableContacts?.filter(user =>
+        (user.firstName.toLowerCase().includes(searchTerm.toLowerCase()) ||
+            user.lastName.toLowerCase().includes(searchTerm.toLowerCase())) &&
+        user.id !== identifyUser
+            ? user
+            : null
+    );
 
     return (
         <MessagesAvailiableContactsDiv content='start'>

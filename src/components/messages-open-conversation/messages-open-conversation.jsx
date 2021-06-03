@@ -7,7 +7,10 @@ import {
     MessageDiv,
     SendButton,
     MessagesContactHeader,
-    Left,
+    LeftArrow,
+    Message,
+    MessageText,
+    MessageSender,
 } from './messages-open-conversation.style';
 import MessagesContact from '../messages-contact';
 const MessagesOpenConversation = ({ handleClick }) => {
@@ -29,7 +32,7 @@ const MessagesOpenConversation = ({ handleClick }) => {
     return (
         <OpenConversationGroup className='open-conversation'>
             <MessagesContactHeader>
-                <Left onClick={handleClick} />
+                <LeftArrow onClick={handleClick} />
                 <MessagesContact contactSearch={false} smallBlock />
             </MessagesContactHeader>
 
@@ -39,31 +42,19 @@ const MessagesOpenConversation = ({ handleClick }) => {
                         const lastMessage =
                             selectedConversation.messages.length - 1 === index;
                         return (
-                            <div
+                            <Message
                                 ref={lastMessage ? setRef : null}
                                 key={index}
-                                className={`my-1 d-flex flex-column ${
-                                    message.fromMe
-                                        ? 'align-self-end align-items-end'
-                                        : 'align-items-start'
-                                }`}>
-                                <div
-                                    className={`rounded px-2 py-1 ${
-                                        message.fromMe
-                                            ? 'bg-light text-muted'
-                                            : 'border'
-                                    }`}>
+                                fromMe={message.fromMe}>
+                                <MessageText fromMe={message.fromMe}>
                                     {message.text}
-                                </div>
-                                <div
-                                    className={`text-light small ${
-                                        message.fromMe ? 'text-right ' : ''
-                                    }`}>
+                                </MessageText>
+                                <MessageSender fromMe={message.fromMe}>
                                     {message.fromMe
                                         ? 'You'
                                         : message.senderName}
-                                </div>
-                            </div>
+                                </MessageSender>
+                            </Message>
                         );
                     })}
                 </MessageDiv>

@@ -1,4 +1,4 @@
-import { Form } from 'react-bootstrap';
+import React from 'react';
 import MessagesContact from '../messages-contact';
 import { useContactContext } from '../../common/context/contactContext';
 
@@ -16,20 +16,19 @@ const MessagesGlobalSearch = ({ identifyUser, handleSubmit }) => {
                 <SearchContactsTitle>Global Search</SearchContactsTitle>
             </SearchContactsDiv>
 
-            {availableContacts &&
-                availableContacts
-                    .filter((user, index) =>
-                        index < 5 && user.id !== identifyUser ? user : null
-                    )
-                    .map(contact => (
-                        <MessagesContact
-                            smallBlock
-                            contactSearch
-                            contactID={contact.id}
-                            key={contact.id}
-                            event={() => handleSubmit(contact.id)}
-                        />
-                    ))}
+            {availableContacts
+                ?.filter((user, index) =>
+                    index < 5 && user.id !== identifyUser ? user : null
+                )
+                .map(contact => (
+                    <MessagesContact
+                        smallBlock
+                        contactSearch
+                        contactID={contact.id}
+                        key={contact.id}
+                        event={() => handleSubmit(contact.id)}
+                    />
+                ))}
         </MessagesGlobalSearchDiv>
     );
 };
