@@ -3,6 +3,7 @@ import SettingsContainer from '../settings-container';
 import SettingsForm from '../../components/settings-form';
 import { useQuery } from '@apollo/client';
 import { GET_CURRENT_USER } from '../../graphql/user';
+import UploadPhoto from '../../components/upload-photo';
 
 const GeneralInformationContainer = () => {
     const [user, setUser] = useState(null);
@@ -77,6 +78,7 @@ const GeneralInformationContainer = () => {
         <>
             {formFields && (
                 <SettingsContainer title='General information settings'>
+                    <UploadPhoto />
                     {formFields.map(({ label, name, type, defaultValue }) => {
                         return (
                             <SettingsForm
