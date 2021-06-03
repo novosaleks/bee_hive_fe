@@ -11,7 +11,7 @@ import SubscriptionScreen from '../../pages/subscription-screen';
 import MessagesScreen from '../../pages/messages-screen';
 import LoginScreen from '../../pages/login-screen';
 import RegisterScreen from '../../pages/register-screen';
-import NotFound from '../../pages/not-found';
+import ErrorContainer from '../error-container';
 
 const RoutingContainer = () => {
     const { loading, error, data } = useQuery(GET_CURRENT_USER);
@@ -21,7 +21,7 @@ const RoutingContainer = () => {
 
     const user = data.currentUser;
 
-    const UserRouteComponent = props => {
+    const UserRouteContainer = props => {
         const { children, ...componentProps } = props;
 
         return (
@@ -31,7 +31,7 @@ const RoutingContainer = () => {
         );
     };
 
-    const UnauthorizedRouteComponent = props => {
+    const UnauthorizedRouteContainer = props => {
         const { children, ...componentProps } = props;
 
         return (
@@ -43,33 +43,33 @@ const RoutingContainer = () => {
 
     return (
         <Switch>
-            <UnauthorizedRouteComponent exact path='/login'>
+            <UnauthorizedRouteContainer exact path='/login'>
                 <LoginScreen />
-            </UnauthorizedRouteComponent>
-            <UnauthorizedRouteComponent exact path='/register'>
+            </UnauthorizedRouteContainer>
+            <UnauthorizedRouteContainer exact path='/register'>
                 <RegisterScreen />
-            </UnauthorizedRouteComponent>
-            <UserRouteComponent exact path='/'>
+            </UnauthorizedRouteContainer>
+            <UserRouteContainer exact path='/'>
                 <NavbarContainer />
                 <ProfileScreen />
-            </UserRouteComponent>
-            <UserRouteComponent exact path='/settings'>
+            </UserRouteContainer>
+            <UserRouteContainer exact path='/settings'>
                 <NavbarContainer />
                 <SettingsScreen />
-            </UserRouteComponent>
-            <UserRouteComponent exact path='/news'>
+            </UserRouteContainer>
+            <UserRouteContainer exact path='/news'>
                 <NavbarContainer />
                 <NewsScreen />
-            </UserRouteComponent>
-            <UserRouteComponent exact path='/messages'>
+            </UserRouteContainer>
+            <UserRouteContainer exact path='/messages'>
                 <NavbarContainer />
                 <MessagesScreen />
-            </UserRouteComponent>
-            <UserRouteComponent exact path='/subscription'>
+            </UserRouteContainer>
+            <UserRouteContainer exact path='/subscription'>
                 <NavbarContainer />
                 <SubscriptionScreen />
-            </UserRouteComponent>
-            <NotFound />
+            </UserRouteContainer>
+            <ErrorContainer type={'not found'} />
         </Switch>
     );
 };
