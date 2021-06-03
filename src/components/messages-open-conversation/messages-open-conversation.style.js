@@ -57,8 +57,9 @@ export const SendButton = styled(Button)`
 export const MessagesContactHeader = styled(StyledDiv)`
     flex-direction: row;
     @media (max-width: 400px) {
-        width: 86vw;
-        margin-left: 6%;
+        width: 100%;
+        box-sizing: border-box;
+        margin-left: 4%;
         .user-avatar {
             height: 55px;
             min-width: 30px;
