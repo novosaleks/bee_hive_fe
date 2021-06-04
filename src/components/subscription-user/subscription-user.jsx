@@ -21,7 +21,7 @@ const SubscriptionUser = ({ id, isFollow, smallBlock }) => {
                 <UserAvatar
                     rating={user?.ratingColor || '#C53B0E'}
                     rateScore={user?.rateScore || '1,5'}
-                    photo={user?.photo}
+                    photo={user?.avatar?.location}
                     width={smallBlock ? 70 : [70, 135]}
                     height={smallBlock ? 70 : [70, 135]}
                     {...{ smallBlock }}
