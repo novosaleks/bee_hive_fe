@@ -39,7 +39,6 @@ const FooterComment = ({
             <UserAvatar
                 rating={'#C53B0E'}
                 rateScore={'1,5'}
-                photo={auth}
                 width={smallBlock ? 70 : [70, 135]}
                 height={smallBlock ? 70 : [70, 135]}
                 {...{ smallBlock }}

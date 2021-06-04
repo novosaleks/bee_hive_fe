@@ -3,71 +3,23 @@ import following from '../../assets/following.svg';
 import messages from '../../assets/messages.svg';
 import notifications from '../../assets/notifications.svg';
 
-//EXAMPLE OF THE DATA (DI NOT NEED IN REAL PROJECT)
+//EXAMPLE OF THE DATA (DO NOT NEED IN REAL PROJECT)
 //INSTEAD HERE WE WIIL USE QUERY FROM GRAPHQL
 const subscriptions = {
     followers: [
         {
-            name: 'Stan Pupcin',
-            photo: null,
-            status: 'in the gym',
-            ratingColor: '#5DAC38',
-            statusColor: '#5DAC38',
-            rateScore: '4,6',
+            id: '1',
             isFollow: false,
-            login: 'user35668',
         },
         {
-            name: 'Ann Pupcin',
-            photo: null,
-            status: 'at home',
-            ratingColor: '#5DAC38',
-            statusColor: '#5DAC38',
-            rateScore: '5',
+            id: '2',
             isFollow: true,
-            login: 'user35668',
-        },
-        {
-            name: 'Mark Pupcin',
-            photo: null,
-            status: 'at home',
-            ratingColor: '#5DAC38',
-            statusColor: '#5DAC38',
-            rateScore: '4',
-            isFollow: false,
-            login: 'user35668',
         },
     ],
     following: [
         {
-            name: 'Ivan Pupcin',
-            photo: null,
-            status: 'in the gym',
-            ratingColor: '#C53B0E',
-            statusColor: '#5DAC38',
-            rateScore: '1,6',
+            id: '2',
             isFollow: true,
-            login: 'user35668',
-        },
-        {
-            name: 'Ann Pupcin',
-            photo: null,
-            status: 'at home',
-            ratingColor: '#5DAC38',
-            statusColor: '#5DAC38',
-            rateScore: '5',
-            isFollow: true,
-            login: 'user35668',
-        },
-        {
-            name: 'Tom Pupcin',
-            photo: null,
-            status: 'at the middle of nowhere',
-            ratingColor: '#5DAC38',
-            statusColor: '#C53B0E',
-            rateScore: '4',
-            isFollow: true,
-            login: 'user35668',
         },
     ],
 };

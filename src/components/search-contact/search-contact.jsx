@@ -2,9 +2,9 @@ import { StyledDiv } from '../../common/style/index';
 import UserAvatar from '../user-avatar';
 import PostAuthorAndData from '../post-author-and-data';
 import { useConversationContext } from '../../common/context/conversationContext';
-import { MessagesContactsDiv } from './messages-contact.style';
+import { ContactsDiv } from './search-contact.style';
 
-const MessagesContact = ({
+const SearchContact = ({
     smallBlock,
     contactSearch,
     event,
@@ -24,9 +24,7 @@ const MessagesContact = ({
         }
     };
     return (
-        <MessagesContactsDiv
-            contactSearch={contactSearch}
-            onClick={handleClick}>
+        <ContactsDiv contactSearch={contactSearch} onClick={handleClick}>
             <UserAvatar
                 rating={contact?.ratingColor || '#C53B0E'}
                 rateScore={contact?.rateScore || '1,5'}
@@ -45,8 +43,8 @@ const MessagesContact = ({
                     color={contact?.statusColor || '#5DAC38'}
                 />
             </StyledDiv>
-        </MessagesContactsDiv>
+        </ContactsDiv>
     );
 };
 
-export default MessagesContact;
+export default SearchContact;

@@ -26,8 +26,7 @@ const MessagesScreen = () => {
     return (
         <StyledMessagePageWrapper>
             <MessagesScreenMenu
-                activeTab={activeTab}
-                clickHandler={clickHandler}
+                {...{ activeTab, clickHandler }}
                 tabs={tabs.messagesPage}
             />
 

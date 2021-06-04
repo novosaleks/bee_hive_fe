@@ -14,12 +14,12 @@ const CONTACT_SEARCH = css`
     }
 `;
 
-export const MessagesContactsDiv = styled(StyledDiv)`
+export const ContactsDiv = styled(StyledDiv)`
     flex-direction: row;
     justify-content: flex-start;
     cursor: pointer;
     padding: 5px;
     box-sizing: border-box;
     background-color: ${getValueFromTheme('primaryBgColor')};
-    ${(props) => props.contactSearch && CONTACT_SEARCH}
+    ${props => props.contactSearch && CONTACT_SEARCH}
 `;

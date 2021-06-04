@@ -1,5 +1,4 @@
-import { useQuery } from '@apollo/client';
-import { GET_ALL_USERS } from '../../graphql/user';
+import useContact from './useContact';
 import useLocalStorage from './useLocalStorage';
 import { useState } from 'react';
 
@@ -10,13 +9,7 @@ const useConversation = id => {
     );
     const [selectedConversationIndex, setSelectedConversationIndex] =
         useState(0);
-    const { loading, error, data } = useQuery(GET_ALL_USERS);
-
-    if (loading) return <div>LOADING...</div>;
-
-    if (error) return <div>Error: {error.message}</div>;
-
-    const users = data.getAllUsers;
+    const users = useContact();
 
     const createConversation = recipient => {
         setConversations(prevConversations => {
