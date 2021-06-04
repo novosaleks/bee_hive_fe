@@ -1,7 +1,3 @@
-import { useEffect, useState } from 'react';
-import { useQuery } from '@apollo/client';
-import { GET_PHOTO_BY_USER_ID } from '../../graphql/photo';
-
 import { DivImgForUserAvatar, RateScore } from './user-avatar.style';
 
 const UserAvatar = props => {
