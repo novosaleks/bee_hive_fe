@@ -1,17 +1,15 @@
-import MessagesContact from '../messages-contact';
+import React from 'react';
+import SearchContact from '../search-contact';
+import { useContactContext } from '../../common/context/contactContext';
 
-import { MessagesAvailiableContactsDiv } from './messages-available-contacts.style';
+import { AvailiableContactsDiv } from './available-contacts.style';
 import {
     SearchContactsDiv,
     SearchContactsTitle,
 } from '../../common/style/index';
 
-const MessagesAvailableContacts = ({
-    identifyUser,
-    handleSubmit,
-    searchTerm,
-    users,
-}) => {
+const AvailableContacts = ({ identifyUser, handleSubmit, searchTerm }) => {
+    const users = useContactContext();
     const contacts = users?.filter(user =>
         (user.firstName.toLowerCase().includes(searchTerm.toLowerCase()) ||
             user.lastName.toLowerCase().includes(searchTerm.toLowerCase())) &&
@@ -21,7 +19,7 @@ const MessagesAvailableContacts = ({
     );
 
     return (
-        <MessagesAvailiableContactsDiv content='start'>
+        <AvailiableContactsDiv content='start'>
             <SearchContactsDiv>
                 <SearchContactsTitle>Search Result</SearchContactsTitle>
             </SearchContactsDiv>
@@ -29,7 +27,7 @@ const MessagesAvailableContacts = ({
                 <p>We do not know this user...</p>
             ) : (
                 contacts.map(contact => (
-                    <MessagesContact
+                    <SearchContact
                         smallBlock
                         contactSearch
                         contactID={contact.id}
@@ -39,8 +37,8 @@ const MessagesAvailableContacts = ({
                     />
                 ))
             )}
-        </MessagesAvailiableContactsDiv>
+        </AvailiableContactsDiv>
     );
 };
 
-export default MessagesAvailableContacts;
+export default AvailableContacts;

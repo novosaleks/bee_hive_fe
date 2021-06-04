@@ -1,14 +1,16 @@
-import MessagesContact from '../messages-contact';
+import SearchContact from '../search-contact';
+import { useContactContext } from '../../common/context/contactContext';
 
-import { MessagesGlobalSearchDiv } from './messages-global-search.style';
+import { GlobalSearchDiv } from './search-global.style';
 import {
     SearchContactsDiv,
     SearchContactsTitle,
 } from '../../common/style/index';
 
-const MessagesGlobalSearch = ({ identifyUser, handleClick, users }) => {
+const SearchGlobal = ({ identifyUser, handleClick }) => {
+    const users = useContactContext();
     return (
-        <MessagesGlobalSearchDiv>
+        <GlobalSearchDiv>
             <SearchContactsDiv>
                 <SearchContactsTitle>Global Search</SearchContactsTitle>
             </SearchContactsDiv>
@@ -18,7 +20,7 @@ const MessagesGlobalSearch = ({ identifyUser, handleClick, users }) => {
                     index < 5 && user.id !== identifyUser ? user : null
                 )
                 .map(contact => (
-                    <MessagesContact
+                    <SearchContact
                         smallBlock
                         contactSearch
                         contactID={contact.id}
@@ -27,8 +29,8 @@ const MessagesGlobalSearch = ({ identifyUser, handleClick, users }) => {
                         users={users}
                     />
                 ))}
-        </MessagesGlobalSearchDiv>
+        </GlobalSearchDiv>
     );
 };
 
-export default MessagesGlobalSearch;
+export default SearchGlobal;
