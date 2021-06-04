@@ -28,6 +28,7 @@ const MessagesConversationRecipient = ({ smallBlock }) => {
                     name={recipient?.name}
                     date={contact?.status || 'Online'}
                     color={contact?.statusColor || '#5DAC38'}
+                    authorId={recipient?.id}
                 />
             </StyledDiv>
         </ContactsDiv>

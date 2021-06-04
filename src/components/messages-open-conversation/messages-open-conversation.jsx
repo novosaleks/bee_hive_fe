@@ -7,11 +7,7 @@ const MessagesOpenConversation = ({ handleClick }) => {
     return (
         <OpenConversationGroup className='open-conversation'>
             {/* user with whom we have the chat */}
-            <MessagesConversationHeader
-                event={handleClick}
-                contactSearch={false}
-                smallBlock
-            />
+            <MessagesConversationHeader event={handleClick} smallBlock />
 
             {/* our chat */}
             <MessagesChat />
