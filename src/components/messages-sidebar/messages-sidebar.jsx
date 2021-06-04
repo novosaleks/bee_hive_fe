@@ -1,26 +1,35 @@
 import { useState } from 'react';
 
-import MessagesNewChatModal from '../messages-new-chat-modal';
+import { useConversationContext } from '../../common/context/conversationContext';
+import SearchModal from '../search-modal';
+import MessagesConversations from '../messages-conversations';
 
 import {
     MessagesSidebarStyled,
     NewConversationButton,
-    ModalDialog,
-    ModalContent,
 } from './messages-sidebar.style';
 
-import MessagesConversations from '../messages-conversations';
-
-const MessagesSidebar = ({ identifyUser, conversationOpen, handleClick }) => {
+const MessagesSidebar = ({ conversationOpen, handleClick }) => {
+    const { createConversation, conversations } = useConversationContext();
     const [modalOpen, setModalOpen] = useState(false);
 
     const closeModal = () => {
         setModalOpen(false);
     };
-    const handleClickModal = e => {
-        if (e.target.classList.contains('modal-bg')) {
-            closeModal();
+
+    const handleClickConversation = contactId => {
+        //all user with whome we already have a conversation
+        const existingRecipientsId = [];
+        conversations.forEach(conversation =>
+            existingRecipientsId.push(conversation.recipient.id)
+        );
+
+        //create conversation just if we do not have exicting conversation with this user yet
+        if (!existingRecipientsId.includes(contactId)) {
+            createConversation(contactId);
         }
+
+        closeModal();
     };
 
     return (
@@ -37,16 +46,13 @@ const MessagesSidebar = ({ identifyUser, conversationOpen, handleClick }) => {
             {/* modal for choosing with which avaliable contacts user whant to start a chat with */}
 
             {modalOpen && (
-                <ModalDialog
-                    className='modal-bg'
-                    onClick={e => handleClickModal(e)}>
-                    <ModalContent>
-                        <MessagesNewChatModal
-                            closeModal={closeModal}
-                            identifyUser={identifyUser}
-                        />
-                    </ModalContent>
-                </ModalDialog>
+                <SearchModal
+                    closeModal={closeModal}
+                    handleClick={handleClickConversation}
+                    placeholder='Start conversation with ...'
+                    contactSearch='messages'
+                    title='Create Conversation'
+                />
             )}
         </MessagesSidebarStyled>
     );

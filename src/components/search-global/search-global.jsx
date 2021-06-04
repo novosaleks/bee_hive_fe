@@ -7,7 +7,7 @@ import {
     SearchContactsTitle,
 } from '../../common/style/index';
 
-const SearchGlobal = ({ identifyUser, handleClick }) => {
+const SearchGlobal = ({ identifyUser, handleClick, contactSearch }) => {
     const users = useContactContext();
     return (
         <GlobalSearchDiv>
@@ -22,7 +22,7 @@ const SearchGlobal = ({ identifyUser, handleClick }) => {
                 .map(contact => (
                     <SearchContact
                         smallBlock
-                        contactSearch
+                        contactSearch={contactSearch}
                         contactID={contact.id}
                         key={contact.id}
                         event={() => handleClick(contact.id)}

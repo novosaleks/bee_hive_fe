@@ -1,13 +1,9 @@
-import ContactProvider from '../../common/context/contactContext';
-import useContact from '../../common/hooks/useContact';
-
 import FollowUser from '../follow-user';
 import { StyledDiv } from '../../common/style/index';
-const FollowUsersBlock = ({ tabsInfo, activeTab }) => {
-    const users = useContact();
 
+const FollowUsersBlock = ({ tabsInfo, activeTab }) => {
     return (
-        <ContactProvider value={users}>
+        <>
             {tabsInfo.map(
                 info =>
                     info.label === activeTab && (
@@ -20,7 +16,7 @@ const FollowUsersBlock = ({ tabsInfo, activeTab }) => {
                         </StyledDiv>
                     )
             )}
-        </ContactProvider>
+        </>
     );
 };
 

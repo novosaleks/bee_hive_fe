@@ -6,7 +6,7 @@ import { SearchContactsTitle } from '../../common/style/index';
 import { MessagesDivBlock, NotificationDiv } from './messages.style';
 import { useConversationContext } from '../../common/context/conversationContext';
 
-const Messages = ({ identifyUser }) => {
+const Messages = () => {
     const { selectedConversation } = useConversationContext();
     const [stateSidebar, setStateSidebar] = useState(false);
 
@@ -18,7 +18,6 @@ const Messages = ({ identifyUser }) => {
             conversationOpen={selectedConversation}
             stateSidebar={stateSidebar}>
             <MessagesSidebar
-                identifyUser={identifyUser}
                 conversationOpen={selectedConversation}
                 handleClick={handleClick}
             />
