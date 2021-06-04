@@ -13,25 +13,25 @@ const SideBarUserInfo = ({ user }) => {
     const [userData, fallback] = useQueriedData(GET_CURRENT_USER);
 
     return (
-        fallback ||
-        <StyledSidebarDiv>
-            <UserAvatar
-                rating={'#c53b0e'}
-                photo={user.avatar?.location}
-                rateScore={'1,5'}
-                width={[130, 190]}
-                height={[130, 190]}
-            />
-            <StyledText>{`${user.firstName} ${user.lastName}`}</StyledText>
-            <DivLine />
-            <StyledText color={'#5dac38'}>{'Drink coffee'}</StyledText>
-            <DivLine />
-            <UserInfo user={user} />
-            {userData.currentUser.id !== user.id && <FollowButton />}
-            <UserExtraInfo user={user} />
-        </StyledSidebarDiv>
+        fallback || (
+            <StyledSidebarDiv>
+                <UserAvatar
+                    rating={'#c53b0e'}
+                    photo={user.avatar?.location}
+                    rateScore={'1,5'}
+                    width={[130, 190]}
+                    height={[130, 190]}
+                />
+                <StyledText>{`${user.firstName} ${user.lastName}`}</StyledText>
+                <DivLine />
+                <StyledText color={'#5dac38'}>{'Drink coffee'}</StyledText>
+                <DivLine />
+                <UserInfo user={user} />
+                {userData.currentUser.id !== user.id && <FollowButton />}
+                <UserExtraInfo user={user} />
+            </StyledSidebarDiv>
+        )
     );
 };
-
 
 export default SideBarUserInfo;

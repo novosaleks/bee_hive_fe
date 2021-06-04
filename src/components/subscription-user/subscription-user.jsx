@@ -3,7 +3,7 @@ import UserAvatar from '../user-avatar';
 import PostAuthorAndData from '../post-author-and-data';
 import FollowButton from '../follow-button';
 import { StyledDiv } from '../../common/style/index';
-import { NavLink } from '../../common/style';
+
 const SubscriptionUser = ({ id, isFollow, smallBlock }) => {
     const users = useContact();
 
@@ -37,17 +37,14 @@ const SubscriptionUser = ({ id, isFollow, smallBlock }) => {
                     width={smallBlock ? '70px' : '150px'}
                     height='30px'
                 />
-                <NavLink to={`/${id}`} width={1}>
-                    <PostAuthorAndData
-                        name={
-                            `${user?.firstName} ${user?.lastName}` ||
-                            'First and last name'
-                        }
-                        date={user?.status || 'Online'}
-                        color={user?.statusColor || '#5DAC38'}
-                        {...{ smallBlock }}
-                    />
-                </NavLink>
+
+                <PostAuthorAndData
+                    name={`${user?.firstName} ${user?.lastName}`}
+                    date={user?.status || 'Online'}
+                    color={user?.statusColor || '#5DAC38'}
+                    authorId={id}
+                    {...{ smallBlock }}
+                />
             </StyledDiv>
         </StyledDiv>
     );

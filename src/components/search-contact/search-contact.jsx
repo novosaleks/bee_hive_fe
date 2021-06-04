@@ -30,6 +30,7 @@ const SearchContact = ({
                     name={`${contact.firstName} ${contact.lastName}`}
                     date={contact?.status || 'Online'}
                     color={contact?.statusColor || '#5DAC38'}
+                    authorId={contactID}
                 />
             </StyledDiv>
         </ContactsDiv>

@@ -5,7 +5,7 @@ import {
     LeftArrow,
 } from './messages-conversation-header.style';
 
-const MessagesConversationHeader = ({ event, contactSearch, smallBlock }) => {
+const MessagesConversationHeader = ({ event, smallBlock }) => {
     return (
         <MessagesContactHeader>
             <LeftArrow onClick={event} />
