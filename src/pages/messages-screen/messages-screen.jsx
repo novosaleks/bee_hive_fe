@@ -7,22 +7,19 @@ import { tabs } from '../../common/tabs';
 import MessagesScreenMenu from '../../components/messages-screen-menu';
 import ActionsNotifications from '../../components/actions-notifications';
 
-import { useQuery } from '@apollo/client';
 import { GET_CURRENT_USER } from '../../graphql/user';
 import MessageContainer from '../../containers/message-container';
+import useQueriedData from '../../common/hooks/useQueriedData';
 
 const MessagesScreen = () => {
     const [activeTab, setActiveTab] = useState(tabs.messagesPage[0].label);
     const clickHandler = label => () => {
         setActiveTab(label);
     };
-    const { loading, error, data } = useQuery(GET_CURRENT_USER);
-    if (loading) {
-        return <div>LOADING...</div>;
-    }
+    const [data, fallback] = useQueriedData(GET_CURRENT_USER);
 
-    if (error) {
-        return <div>Error: {error.message}</div>;
+    if (fallback) {
+        return fallback;
     }
 
     const identifyUser = data.currentUser.id;

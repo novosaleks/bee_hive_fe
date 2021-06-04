@@ -1,10 +1,10 @@
-import { useQuery } from '@apollo/client';
 import { GET_ALL_USERS } from '../../graphql/user';
+import useQueriedData from './useQueriedData';
 
 const useContact = () => {
-    const { loading, error, data } = useQuery(GET_ALL_USERS);
+    const [ data, fallback ] = useQueriedData(GET_ALL_USERS);
 
-    if (loading || error) {
+    if (fallback) {
         return null;
     }
 

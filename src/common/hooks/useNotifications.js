@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import Portal from '../../containers/portal';
 import Notification from '../../components/notification';
 
-export const useNotifications = () => {
+const useNotifications = () => {
     const [notificationParams, setNotificationParams] = useState({});
 
     const timeout = 3500;
