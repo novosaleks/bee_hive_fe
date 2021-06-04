@@ -1,6 +1,7 @@
 import UserAvatar from '../user-avatar';
 
 import { useConversationContext } from '../../common/context/conversationContext';
+import { useContactContext } from '../../common/context/contactContext';
 import { StyledDiv, DivLine } from '../../common/style/index';
 import {
     ConversationStyledDiv,
@@ -9,7 +10,12 @@ import {
 } from './messages-conversations.style';
 
 const MessagesConversations = ({ smallBlock, handleClick }) => {
-    const { conversations, selectConversationIndex } = useConversationContext();
+    const { conversations, selectConversationIndex, selectedConversation } =
+        useConversationContext();
+    const users = useContactContext();
+
+    const recipient = selectedConversation?.recipient;
+    const contact = users?.find(contact => contact.id === recipient.id);
 
     return (
         <ConversationsBlockStyled className='conversations'>
@@ -26,8 +32,9 @@ const MessagesConversations = ({ smallBlock, handleClick }) => {
                                 content='flex-start'
                                 align='flex-start'>
                                 <UserAvatar
-                                    rating={'#C53B0E'}
-                                    rateScore={'1,5'}
+                                    rating={contact?.ratingColor || '#C53B0E'}
+                                    rateScore={contact?.rateScore || '1,5'}
+                                    photo={contact?.avatar?.location}
                                     width={smallBlock ? 70 : [70, 135]}
                                     height={smallBlock ? 70 : [70, 135]}
                                     {...{ smallBlock }}
