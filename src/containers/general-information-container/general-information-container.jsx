@@ -1,14 +1,14 @@
 import { useEffect, useState } from 'react';
 import SettingsContainer from '../settings-container';
 import SettingsForm from '../../components/settings-form';
-import { useQuery } from '@apollo/client';
 import { GET_CURRENT_USER } from '../../graphql/user';
 import UploadPhoto from '../../components/upload-photo';
+import useQueriedData from '../../common/hooks/useQueriedData';
 
 const GeneralInformationContainer = () => {
     const [user, setUser] = useState(null);
     const [formFields, setFormFields] = useState(null);
-    const { loading, error, data } = useQuery(GET_CURRENT_USER);
+    const [data, fallback] = useQueriedData(GET_CURRENT_USER);
 
     useEffect(() => {
         if (data) {
@@ -71,8 +71,9 @@ const GeneralInformationContainer = () => {
         }
     }, [user]);
 
-    if (loading) return <div>Loading...</div>;
-    if (error) return <div>{`Error: ${error.message}`}</div>;
+    if (fallback) {
+        return fallback;
+    }
 
     return (
         <>

@@ -1,15 +1,17 @@
 import { GET_ACTIVE_THEME, setActiveTheme } from '../../graphql/theme';
-import { useQuery } from '@apollo/client';
 import { THEMES } from '../../common/utils/constants';
 
 import { Wrapper } from './toggle-switch-theme.style';
+import useQueriedData from '../../common/hooks/useQueriedData';
 
 const ToggleSwitchTheme = () => {
-    const { loading, error, data } = useQuery(GET_ACTIVE_THEME);
+    const [data, fallback] = useQueriedData(GET_ACTIVE_THEME);
+
+    if (fallback) {
+        return fallback;
+    }
 
     let activeTheme = data.activeTheme;
-    if (loading) return <div>Loading...</div>;
-    if (error) return <div>{`Error: ${error.message}`}</div>;
 
     return (
         <Wrapper className='wrapper'>
@@ -17,7 +19,7 @@ const ToggleSwitchTheme = () => {
                 <input
                     className='toggle-input'
                     type='checkbox'
-                    checked={THEMES[activeTheme] === THEMES.dark ? true : false}
+                    checked={THEMES[activeTheme] === THEMES.dark}
                     onChange={e =>
                         e.target.checked === true
                             ? setActiveTheme(THEMES.dark)

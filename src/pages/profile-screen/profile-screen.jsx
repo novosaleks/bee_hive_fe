@@ -8,14 +8,14 @@ import {
     StyledDivPage,
     StyledPageContent,
 } from '../../common/style/index';
-import { useQuery } from '@apollo/client';
 import { GET_USER_BY_ID } from '../../graphql/user';
 import { useParams } from 'react-router-dom';
+import useQueriedData from '../../common/hooks/useQueriedData';
 
 const ProfileScreen = () => {
     const [user, setUser] = useState(null);
     const { userId } = useParams();
-    const { loading, error, data } = useQuery(GET_USER_BY_ID, {
+    const [data, fallback] = useQueriedData(GET_USER_BY_ID, {
         variables: { userId: userId },
     });
 
@@ -25,8 +25,9 @@ const ProfileScreen = () => {
         }
     }, [data]);
 
-    if (loading) return <div>Loading...</div>;
-    if (error) return <div>{`Error! ${error.message}`}</div>;
+    if (fallback) {
+        return fallback;
+    }
 
     return (
         <>

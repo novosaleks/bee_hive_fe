@@ -6,9 +6,9 @@ import {
     UserName,
 } from './navbar-dropdown-menu.style';
 
-import { useQuery } from '@apollo/client';
 import { GET_CURRENT_USER } from '../../graphql/user';
 import SelfAvatar from '../../containers/self-avatar';
+import useQueriedData from '../../common/hooks/useQueriedData';
 
 const NavbarDropdownMenu = () => {
     const [headerLeft, setHeaderLeft] = useState(null);
@@ -27,14 +27,10 @@ const NavbarDropdownMenu = () => {
             window.removeEventListener('DOMContentLoaded', resizeHandler, true);
         };
     }, []);
-    const { loading, error, data } = useQuery(GET_CURRENT_USER);
+    const [data, fallback] = useQueriedData(GET_CURRENT_USER);
 
-    if (loading) {
-        return <div>LOADING...</div>;
-    }
-
-    if (error) {
-        return <div>Error: {error.message}</div>;
+    if (fallback) {
+        return fallback;
     }
 
     const user = data.currentUser;

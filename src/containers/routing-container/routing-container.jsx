@@ -1,6 +1,5 @@
 import UnauthorizedRoute from './routes/unauthorizedRoute';
 import UserRoute from './routes/userRoute';
-import { useQuery } from '@apollo/client';
 import { GET_CURRENT_USER } from '../../graphql/user';
 import { Redirect, Switch } from 'react-router-dom';
 import ProfileScreen from '../../pages/profile-screen';
@@ -12,12 +11,14 @@ import MessagesScreen from '../../pages/messages-screen';
 import LoginScreen from '../../pages/login-screen';
 import RegisterScreen from '../../pages/register-screen';
 import ErrorContainer from '../error-container';
+import useQueriedData from '../../common/hooks/useQueriedData';
 
 const RoutingContainer = () => {
-    const { loading, error, data } = useQuery(GET_CURRENT_USER);
+    const [data, fallback] = useQueriedData(GET_CURRENT_USER);
 
-    if (loading) return <div>Loading...</div>;
-    if (error) return <div>{`Error: ${error.message}`}</div>;
+    if (fallback) {
+        return fallback;
+    }
 
     const user = data.currentUser;
 

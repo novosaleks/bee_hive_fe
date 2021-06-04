@@ -3,11 +3,11 @@ import SettingsSelect from '../../components/settings-select';
 import { SelectContainer } from './page-information-container.style';
 
 import { GET_ACTIVE_THEME, setActiveTheme } from '../../graphql/theme';
-import { useQuery } from '@apollo/client';
 import { THEMES } from '../../common/utils/constants';
+import useQueriedData from '../../common/hooks/useQueriedData';
 
 const PageInformationContainer = () => {
-    const { loading, error, data } = useQuery(GET_ACTIVE_THEME);
+    const [data, fallback] = useQueriedData(GET_ACTIVE_THEME);
 
     const selectForms = [
         {
@@ -38,8 +38,9 @@ const PageInformationContainer = () => {
         });
     };
 
-    if (loading) return <div>Loading...</div>;
-    if (error) return <div>{`Error: ${error.message}`}</div>;
+    if (fallback) {
+        return fallback;
+    }
 
     const activeTheme = data.activeTheme;
 
