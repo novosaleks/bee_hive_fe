@@ -1,22 +1,20 @@
-import { StyledDiv } from '../../common/style/index';
+import { useConversationContext } from '../../common/context/conversationContext';
+import { useContactContext } from '../../common/context/contactContext';
+
 import UserAvatar from '../user-avatar';
 import PostAuthorAndData from '../post-author-and-data';
-import { ContactsDiv } from './search-contact.style';
 
-const SearchContact = ({
-    smallBlock,
-    contactSearch,
-    event,
-    users,
-    contactID,
-}) => {
-    const contact = users?.find(contact => contact.id === contactID);
+import { ContactsDiv } from './messages-conversation-recipient.style';
+import { StyledDiv } from '../../common/style/index';
 
-    const handleClick = () => {
-        if (contactSearch === 'messages') return event();
-    };
+const MessagesConversationRecipient = ({ smallBlock }) => {
+    const { selectedConversation } = useConversationContext();
+    const users = useContactContext();
+
+    const recipient = selectedConversation?.recipient;
+    const contact = users?.find(contact => contact.id === recipient.id);
     return (
-        <ContactsDiv onClick={handleClick}>
+        <ContactsDiv>
             <UserAvatar
                 rating={contact?.ratingColor || '#C53B0E'}
                 rateScore={contact?.rateScore || '1,5'}
@@ -27,7 +25,7 @@ const SearchContact = ({
             />
             <StyledDiv width='90%' align='flex-end' ml='20px'>
                 <PostAuthorAndData
-                    name={`${contact.firstName} ${contact.lastName}`}
+                    name={recipient?.name}
                     date={contact?.status || 'Online'}
                     color={contact?.statusColor || '#5DAC38'}
                 />
@@ -36,4 +34,4 @@ const SearchContact = ({
     );
 };
 
-export default SearchContact;
+export default MessagesConversationRecipient;

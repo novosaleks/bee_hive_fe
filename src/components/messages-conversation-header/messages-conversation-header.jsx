@@ -1,4 +1,4 @@
-import SearchContact from '../search-contact';
+import MessagesConversationRecipient from '../messages-conversation-recipient';
 
 import {
     MessagesContactHeader,
@@ -9,7 +9,7 @@ const MessagesConversationHeader = ({ event, contactSearch, smallBlock }) => {
     return (
         <MessagesContactHeader>
             <LeftArrow onClick={event} />
-            <SearchContact {...{ contactSearch, smallBlock }} />
+            <MessagesConversationRecipient {...{ smallBlock }} />
         </MessagesContactHeader>
     );
 };

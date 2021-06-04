@@ -6,6 +6,7 @@ import { StyledDiv } from '../../common/style/index';
 import { NavLink } from '../../common/style';
 const SubscriptionUser = ({ id, isFollow, smallBlock }) => {
     const users = useContact();
+
     const user = users?.find(user => {
         return user.id === id;
     });
@@ -18,9 +19,9 @@ const SubscriptionUser = ({ id, isFollow, smallBlock }) => {
             content='space-between'>
             <StyledDiv width='18%'>
                 <UserAvatar
-                    rating={user.ratingColor || '#C53B0E'}
-                    rateScore={user.rateScore || '1,5'}
-                    photo={user.photo}
+                    rating={user?.ratingColor || '#C53B0E'}
+                    rateScore={user?.rateScore || '1,5'}
+                    photo={user?.photo}
                     width={smallBlock ? 70 : [70, 135]}
                     height={smallBlock ? 70 : [70, 135]}
                     {...{ smallBlock }}
@@ -39,11 +40,11 @@ const SubscriptionUser = ({ id, isFollow, smallBlock }) => {
                 <NavLink to={`/${id}`} width={1}>
                     <PostAuthorAndData
                         name={
-                            `${user.firstName} ${user.lastName}` ||
+                            `${user?.firstName} ${user?.lastName}` ||
                             'First and last name'
                         }
-                        date={user.status || 'Online'}
-                        color={user.statusColor || '#5DAC38'}
+                        date={user?.status || 'Online'}
+                        color={user?.statusColor || '#5DAC38'}
                         {...{ smallBlock }}
                     />
                 </NavLink>

@@ -36,7 +36,6 @@ const NavbarDropdownMenu = () => {
     }
 
     const user = data.currentUser;
-
     const handlerClick = () => {
         setOpenState(prevState => !prevState);
     };
@@ -44,11 +43,7 @@ const NavbarDropdownMenu = () => {
     return (
         <>
             <NavbarDropdownMenuHeaderDiv ref={HeaderRef} onClick={handlerClick}>
-                <SelfAvatar
-                    width={50}
-                    height={50}
-                    dropdownBlock={true}
-                />
+                <SelfAvatar width={50} height={50} dropdownBlock={true} />
                 <UserName>{user.firstName}</UserName>
                 <img src={dropdown} alt='icon for dopdown menu' />
             </NavbarDropdownMenuHeaderDiv>

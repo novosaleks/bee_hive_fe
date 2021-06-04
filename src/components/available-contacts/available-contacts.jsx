@@ -8,7 +8,12 @@ import {
     SearchContactsTitle,
 } from '../../common/style/index';
 
-const AvailableContacts = ({ identifyUser, handleSubmit, searchTerm }) => {
+const AvailableContacts = ({
+    identifyUser,
+    handleSubmit,
+    searchTerm,
+    contactSearch,
+}) => {
     const users = useContactContext();
     const contacts = users?.filter(user =>
         (user.firstName.toLowerCase().includes(searchTerm.toLowerCase()) ||
@@ -17,19 +22,18 @@ const AvailableContacts = ({ identifyUser, handleSubmit, searchTerm }) => {
             ? user
             : null
     );
-
     return (
         <AvailiableContactsDiv content='start'>
             <SearchContactsDiv>
                 <SearchContactsTitle>Search Result</SearchContactsTitle>
             </SearchContactsDiv>
-            {contacts.length === 0 ? (
+            {contacts?.length === 0 ? (
                 <p>We do not know this user...</p>
             ) : (
                 contacts.map(contact => (
                     <SearchContact
                         smallBlock
-                        contactSearch
+                        contactSearch={contactSearch}
                         contactID={contact.id}
                         key={contact.id}
                         event={() => handleSubmit(contact.id)}

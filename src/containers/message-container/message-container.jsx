@@ -12,7 +12,7 @@ const MessageContainer = ({ identifyUser }) => {
     return (
         <ContactProvider value={users}>
             <ConversationProvider value={conversationValue}>
-                <Messages identifyUser={identifyUser} />
+                <Messages />
             </ConversationProvider>
         </ContactProvider>
     );
