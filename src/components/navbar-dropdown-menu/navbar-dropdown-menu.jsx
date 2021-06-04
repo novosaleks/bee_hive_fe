@@ -1,5 +1,4 @@
 import { useRef, useState, useEffect } from 'react';
-import UserAvatar from '../user-avatar';
 import NavbarDropdownMenuBody from '../navbar-dropdown-menu-body';
 import dropdown from '../../assets/dropdown.svg';
 import {
@@ -9,6 +8,7 @@ import {
 
 import { useQuery } from '@apollo/client';
 import { GET_CURRENT_USER } from '../../graphql/user';
+import SelfAvatar from '../../containers/self-avatar';
 
 const NavbarDropdownMenu = () => {
     const [headerBottom, setHeaderBottom] = useState(null);
@@ -48,8 +48,7 @@ const NavbarDropdownMenu = () => {
     return (
         <>
             <NavbarDropdownMenuHeaderDiv ref={HeaderRef} onClick={handlerClick}>
-                <UserAvatar
-                    photo={false}
+                <SelfAvatar
                     width={50}
                     height={50}
                     dropdownBlock={true}

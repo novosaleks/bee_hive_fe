@@ -20,14 +20,15 @@ const SideBarUserInfo = ({ user }) => {
         }
     }, [userData]);
 
+
     if (loading) return <div>Loading...</div>;
     if (error) return <div>{`Error! ${error.message}`}</div>;
     return (
         <StyledSidebarDiv>
             <UserAvatar
                 rating={'#c53b0e'}
+                photo={user.avatar?.location}
                 rateScore={'1,5'}
-                photo={user.avatar}
                 width={[130, 190]}
                 height={[130, 190]}
             />
