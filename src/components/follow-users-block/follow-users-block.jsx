@@ -1,23 +1,17 @@
-import FollowUser from '../follow-user';
-import { StyledDiv } from '../../common/style/index';
+import { useParams } from 'react-router-dom';
+import Subscribers from '../subscribers';
+import Subscription from '../subscriptions';
 
-const FollowUsersBlock = ({ tabsInfo, activeTab }) => {
-    return (
-        <>
-            {tabsInfo.map(
-                info =>
-                    info.label === activeTab && (
-                        <StyledDiv
-                            StyledDiv
-                            alignSelf='center'
-                            label={info.label}
-                            key={info.label}>
-                            <FollowUser follow={info.data} />
-                        </StyledDiv>
-                    )
-            )}
-        </>
-    );
+const FollowUsersBlock = ({ activeTab }) => {
+    const { userId } = useParams();
+    console.log(userId, 'userId');
+
+    const tabsContent = {
+        'page followers': <Subscribers userId={userId} />,
+        'page following': <Subscription userId={userId} />,
+    };
+
+    return tabsContent[activeTab];
 };
 
 export default FollowUsersBlock;

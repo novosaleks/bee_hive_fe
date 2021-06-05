@@ -70,6 +70,9 @@ const RoutingContainer = () => {
                 <MessagesScreen />
             </UserRouteContainer>
             <UserRouteContainer exact path='/subscription'>
+                <Redirect to={`/subscription/${user?.id}`} />
+            </UserRouteContainer>
+            <UserRouteContainer exact path='/subscription/:userId'>
                 <NavbarContainer />
                 <SubscriptionScreen />
             </UserRouteContainer>

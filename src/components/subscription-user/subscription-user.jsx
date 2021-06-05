@@ -1,15 +1,9 @@
-import useContact from '../../common/hooks/useContact';
 import UserAvatar from '../user-avatar';
 import PostAuthorAndData from '../post-author-and-data';
 import FollowButton from '../follow-button';
 import { StyledDiv } from '../../common/style/index';
 
-const SubscriptionUser = ({ id, isFollow, smallBlock }) => {
-    const users = useContact();
-
-    const user = users?.find(user => {
-        return user.id === id;
-    });
+const SubscriptionUser = ({ user, smallBlock }) => {
     return (
         <StyledDiv
             align='center'
@@ -32,17 +26,11 @@ const SubscriptionUser = ({ id, isFollow, smallBlock }) => {
                 width={smallBlock ? '70%' : '80%'}
                 align='flex-end'
                 ml='20px'>
-                <FollowButton
-                    isFollow={isFollow}
-                    width={smallBlock ? '70px' : '150px'}
-                    height='30px'
-                />
-
                 <PostAuthorAndData
                     name={`${user?.firstName} ${user?.lastName}`}
                     date={user?.status || 'Online'}
                     color={user?.statusColor || '#5DAC38'}
-                    authorId={id}
+                    authorId={user.id}
                     {...{ smallBlock }}
                 />
             </StyledDiv>

@@ -180,6 +180,13 @@ export const SearchContactsTitle = styled.h2`
     padding: 3px;
     text-align: center;
 `;
+
+export const NotificationDiv = styled(SearchContactsDiv)`
+    height: 30vh;
+    margin-bottom: 40vh;
+    ${flexbox};
+`;
+
 export const DropDown = styled(StyledDiv)`
     background-color: ${getValueFromTheme('primaryBgColorDiv')};
     width: 240px;

@@ -30,15 +30,13 @@ export const tabs = {
             img: followers,
             title: 'Followers',
             alt: 'Followers icon',
-            label: 'followers',
-            data: subscriptions.followers,
+            label: 'page followers',
         },
         {
             img: following,
             title: 'Following',
             alt: 'Following icon',
-            label: 'following',
-            data: subscriptions.following,
+            label: 'page following',
         },
     ],
     messagesPage: [

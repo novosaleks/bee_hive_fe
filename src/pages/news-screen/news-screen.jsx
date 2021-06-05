@@ -1,3 +1,6 @@
+import useQueriedData from '../../common/hooks/useQueriedData';
+import { GET_ALL_USERS } from '../../graphql/user';
+
 import {
     StyledPageWrapper,
     StyledDivPage,
@@ -5,47 +8,20 @@ import {
 } from '../../common/style/index';
 import { SidebarDivStyled } from './news-screen.style';
 import Title from '../../components/title';
-import FollowUser from '../../components/follow-user';
+import UsersPreview from '../../components/users-preview';
 import WallBlock from '../../components/wall-block';
 const NewsScreen = () => {
-    const usersOnline = [
-        {
-            name: 'Stan Pupcin',
-            photo: null,
-            status: 'in the gym',
-            ratingColor: '#5DAC38',
-            statusColor: '#5DAC38',
-            rateScore: '4,6',
-            isFollow: false,
-            login: 'user35668',
-        },
-        {
-            name: 'Ann Pupcin',
-            photo: null,
-            status: 'at home',
-            ratingColor: '#5DAC38',
-            statusColor: '#5DAC38',
-            rateScore: '5',
-            isFollow: true,
-            login: 'user35668',
-        },
-        {
-            name: 'Mark Pupcin',
-            photo: null,
-            status: 'at home',
-            ratingColor: '#5DAC38',
-            statusColor: '#5DAC38',
-            rateScore: '4',
-            isFollow: false,
-            login: 'user35668',
-        },
-    ];
+    const [data, fallback] = useQueriedData(GET_ALL_USERS);
+    const users = data.getAllUsers;
+    if (fallback) {
+        return fallback;
+    }
     return (
         <StyledPageWrapper>
             <StyledDivPage>
                 <SidebarDivStyled>
                     <Title>Users online</Title>
-                    <FollowUser follow={usersOnline} smallBlock={true} />
+                    <UsersPreview users={users} smallBlock />
                 </SidebarDivStyled>
                 <StyledPageContent>
                     <WallBlock />

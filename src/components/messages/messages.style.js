@@ -42,10 +42,6 @@ export const MessagesDivBlock = styled(StyledDivPage)`
     }
 `;
 
-export const NotificationDiv = styled(SearchContactsDiv)`
-    height: 30vh;
-    margin-bottom: 40vh;
-`;
 export const NotificationTitle = styled.h2`
     font-size: 1.2rem;
     color: ${getValueFromTheme('searchContactsTextColor')};
