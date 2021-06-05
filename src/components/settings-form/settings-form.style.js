@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import { CommonForm, media } from '../../common/style';
+import { getValueFromTheme } from '../../common/utils';
 import { fontSize } from 'styled-system';
 
 export const Form = styled(CommonForm)`
@@ -15,7 +16,7 @@ export const Form = styled(CommonForm)`
 
 export const Label = styled.label`
     flex-basis: 120px;
-    color: #675849;
+    color: ${getValueFromTheme('settingText')};
     cursor: pointer;
 
     ${fontSize}

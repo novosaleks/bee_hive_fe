@@ -4,7 +4,6 @@ import Subscription from '../subscriptions';
 
 const FollowUsersBlock = ({ activeTab }) => {
     const { userId } = useParams();
-    console.log(userId, 'userId');
 
     const tabsContent = {
         'page followers': <Subscribers userId={userId} />,

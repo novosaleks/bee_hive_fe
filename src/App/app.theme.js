@@ -18,6 +18,7 @@ export const theme = {
         badColor: '#EF6A3F',
         reallyBadColor: '#C53B0E',
         buttonBgColor: '#ffffff',
+        settingText: '#675849',
     },
     dark: {
         primaryColor: '#f15a29',
@@ -25,7 +26,7 @@ export const theme = {
         primaryBgColorPage: '#374955',
         primaryBgColorDiv: '#9baebc',
         textColor: '#fff',
-        inputColor: '#fff',
+        inputColor: '#f0f0ef',
         focusColor: '#acacac',
         hoverColor: '#BDD3E9',
         messagesScreenSidebarColor: '#324b51',
@@ -38,5 +39,6 @@ export const theme = {
         badColor: '#EF6A3F',
         reallyBadColor: '#C53B0E',
         buttonBgColor: '#9BAEBC',
+        settingText: '#9BAEBC',
     },
 };

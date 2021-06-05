@@ -3,6 +3,7 @@ import SettingsContainer from '../settings-container';
 import SettingsForm from '../../components/settings-form';
 import { GET_CURRENT_USER } from '../../graphql/user';
 import UploadPhoto from '../../components/upload-photo';
+import RemoveUserAccount from '../../components/remove-user-account';
 import useQueriedData from '../../common/hooks/useQueriedData';
 
 const GeneralInformationContainer = () => {
@@ -91,6 +92,7 @@ const GeneralInformationContainer = () => {
                             />
                         );
                     })}
+                    <RemoveUserAccount />
                 </SettingsContainer>
             )}
         </>

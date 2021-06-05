@@ -1,5 +1,6 @@
 import { useMutation } from '@apollo/client';
 import { UPLOAD_PHOTO } from '../../graphql/photo';
+import { Label, Title, Wrapper } from './upload-photo.style';
 
 const UploadPhoto = () => {
     const [uploadPhoto] = useMutation(UPLOAD_PHOTO, {
@@ -15,11 +16,14 @@ const UploadPhoto = () => {
     }) => validity.valid && uploadPhoto({ variables: { file, avatar: true } });
 
     return (
-        <div>
-            <label>Avatar:</label>
-            <input type='file' required onChange={handleUploadPhoto} />
+        <Wrapper>
+            <Title fontSize={['0.6rem', '1rem']}>Avatar:</Title>
+            <Label>
+                <input type='file' required onChange={handleUploadPhoto} />
+                <span>+</span>
+            </Label>
             {/* <button onClick={handleUploadPhoto}>Change</button> */}
-        </div>
+        </Wrapper>
     );
 };
 

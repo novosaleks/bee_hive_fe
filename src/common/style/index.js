@@ -36,7 +36,7 @@ export const Input = styled.input`
     min-height: 35px;
     outline: none;
     transition: all 0.1s;
-
+    color: ${getValueFromTheme('inputColor')};
     ${space};
 
     &:focus {
