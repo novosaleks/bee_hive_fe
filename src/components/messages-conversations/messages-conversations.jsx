@@ -15,7 +15,7 @@ const MessagesConversations = ({ smallBlock, handleClick }) => {
     const users = useContactContext();
 
     const recipient = selectedConversation?.recipient;
-    const contact = users?.find(contact => contact.id === recipient.id);
+    const contact = users?.find(contact => contact?.id === recipient?.id);
 
     return (
         <ConversationsBlockStyled className='conversations'>
