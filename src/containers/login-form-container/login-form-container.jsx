@@ -18,11 +18,13 @@ const LoginFormContainer = () => {
 
     useEffect(() => {
         if (data) {
-            const success = data.login;
-            if (success) {
+            const response = data.login;
+            if (response.success) {
+                // TODO add a notification
+                console.log(response.message);
                 window.location.href = '/';
             } else {
-                notify({ text: 'Authorization failed', type: 'fail' });
+                notify({ text: response.message, type: 'fail' });
             }
         }
     }, [data]);

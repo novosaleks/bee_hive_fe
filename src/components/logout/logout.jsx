@@ -8,9 +8,14 @@ const Logout = () => {
 
     useEffect(() => {
         if (data) {
-            const success = data.logout;
-            if (success) {
+            const response = data.logout;
+            if (response.success) {
+                // TODO add a notification
+                console.log(response.message);
                 window.location.reload();
+            } else {
+                // TODO add a notification
+                console.error(response.message);
             }
         }
     }, [data]);
