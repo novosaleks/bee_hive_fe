@@ -66,6 +66,15 @@ export const UPDATE_USER = gql`
     }
 `;
 
+export const REMOVE_USER = gql`
+    mutation RemoveUser($userId: ID!) {
+        removeUser(userId: $userId) {
+            success
+            message
+        }
+    }
+`;
+
 export const GET_CURRENT_USER = gql`
     query CurrentUser {
         currentUser {
@@ -106,7 +115,10 @@ export const GET_USER_BY_ID = gql`
 
 export const SUBSCRIBE_TO_USER = gql`
     mutation SubscribeToUser($userIdToSubscribe: ID!) {
-        subscribeToUser(userIdToSubscribe: $userIdToSubscribe)
+        subscribeToUser(userIdToSubscribe: $userIdToSubscribe) {
+            success
+            message
+        }
     }
 `;
 
