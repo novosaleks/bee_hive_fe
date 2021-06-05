@@ -4,13 +4,13 @@ import NewPostInput from '../new-post-input';
 import UserNews from '../../containers/user-news-container';
 import Title from '../title';
 
-import { DivLine, StyledDiv } from '../../common/style/index';
+import { formatDate } from '../../common/utils';
+
+import { DivLine, StyledDiv, StyledText } from '../../common/style/index';
 import { WallBodyDiv, UserPostBlock } from './wall.style';
 
 import { useQuery } from '@apollo/client';
 import { GET_WALL_POSTS_BY_USER_ID } from '../../graphql/post';
-
-import { formatDate } from '../../common/utils';
 
 import { UpdateWallProvider } from '../../common/context/updateWallContext';
 
@@ -43,24 +43,34 @@ const Wall = ({ user }) => {
                 <WallBodyDiv>
                     <NewPostInput userId={user.id} />
                     {posts &&
-                        posts.map((post, index, arr) => (
-                            <UserPostBlock key={post.id}>
-                                <UserNews
-                                    name={
-                                        post.author.firstName +
-                                        ' ' +
-                                        post.author.lastName
-                                    }
-                                    postId={post.id}
-                                    photo={post.author.avatar?.location}
-                                    authorId={post.author.id}
-                                    text={post.text}
-                                    date={formatDate(post.createdAt)}
-                                />
-                                {/* Don't render DivLine after the last post */}
-                                {index !== arr.length - 1 && <DivLine />}
-                            </UserPostBlock>
-                        ))}
+                        posts.map((post, index, arr) => {
+                            const time =
+                                post.createdAt === post.updatedAt ? (
+                                    formatDate(post.createdAt)
+                                ) : (
+                                    <StyledText>
+                                        edited at {formatDate(post.updatedAt)}
+                                    </StyledText>
+                                );
+                            return (
+                                <UserPostBlock key={post.id}>
+                                    <UserNews
+                                        name={
+                                            post.author.firstName +
+                                            ' ' +
+                                            post.author.lastName
+                                        }
+                                        postId={post.id}
+                                        photo={post.author.avatar?.location}
+                                        authorId={post.author.id}
+                                        text={post.text}
+                                        date={time}
+                                    />
+                                    {/* Don't render DivLine after the last post */}
+                                    {index !== arr.length - 1 && <DivLine />}
+                                </UserPostBlock>
+                            );
+                        })}
                 </WallBodyDiv>
             </StyledDiv>
         </UpdateWallProvider>

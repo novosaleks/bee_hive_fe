@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
 
 import { PostInfo } from './post-author-and-data.style';
-import { DivLine, StyledDiv } from '../../common/style/index';
+import { DivLine, StyledDiv, StyledText } from '../../common/style/index';
 
 const PostAuthorAndData = ({ name, authorId, smallBlock, color, date }) => {
     return (

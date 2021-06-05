@@ -12,5 +12,11 @@ export const getValidateMessage = validationType => {
 
 export const formatDate = date => {
     const d = new Date(date);
-    return `${d.getDate()}.${d.getMonth() + 1}.${d.getFullYear()}`;
+    let time = `${addZero(d.getHours())}:${addZero(d.getMinutes())}`;
+    time += ` ${addZero(d.getDate())}.${addZero(d.getMonth() + 1)}`;
+    return `${time}.${d.getFullYear()}`;
+};
+
+const addZero = date => {
+    return date < 10 ? `0${date}` : `${date}`;
 };
