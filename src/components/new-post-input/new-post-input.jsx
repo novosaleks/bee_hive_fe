@@ -12,12 +12,15 @@ const NewPostInput = ({ userId }) => {
 
     useEffect(() => {
         if (data) {
-            const success = data.createPost;
-            if (success) {
+            const response = data.createPost;
+            if (response.success) {
                 // TODO add a notification
-                console.log('Success! The new post has been created!');
+                console.log(response.message);
                 inputRef.current.value = '';
                 updateWall();
+            } else {
+                // TODO add a notification
+                console.error(response.message);
             }
         }
     }, [data]);

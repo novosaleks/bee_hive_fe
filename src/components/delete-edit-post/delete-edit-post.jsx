@@ -15,11 +15,14 @@ const DeleteEditPost = ({ postId, authorId, handleEdit }) => {
 
     useEffect(() => {
         if (data) {
-            const success = data.removePost;
-            if (success) {
+            const response = data.removePost;
+            if (response) {
                 // TODO add a notification
-                console.log('Success! The post has been deleted!');
+                console.log(response.message);
                 updateWall();
+            } else {
+                // TODO add a notification
+                console.error(response.message);
             }
         }
     }, [data]);

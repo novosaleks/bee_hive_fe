@@ -2,19 +2,28 @@ import { gql } from '@apollo/client';
 
 export const CREATE_POST = gql`
     mutation CreatePost($recipientId: ID!, $text: String!) {
-        createPost(recipientId: $recipientId, text: $text)
+        createPost(recipientId: $recipientId, text: $text) {
+            success
+            message
+        }
     }
 `;
 
 export const UPDATE_POST = gql`
     mutation UpdatePost($postId: ID!, $text: String!) {
-        updatePost(postId: $postId, text: $text)
+        updatePost(postId: $postId, text: $text) {
+            success
+            message
+        }
     }
 `;
 
 export const REMOVE_POST = gql`
     mutation RemovePost($postId: ID!) {
-        removePost(postId: $postId)
+        removePost(postId: $postId) {
+            success
+            message
+        }
     }
 `;
 

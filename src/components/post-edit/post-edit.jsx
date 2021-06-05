@@ -13,12 +13,15 @@ const PostEdit = ({ postId, text, handleEdit }) => {
 
     useEffect(() => {
         if (data) {
-            const success = data.updatePost;
-            if (success) {
+            const response = data.updatePost;
+            if (response.success) {
                 // TODO add a notification
-                console.log('Success! The post has been edited!');
+                console.log(response.message);
                 handleEdit(false);
                 updateWall();
+            } else {
+                // TODO add a notification
+                console.error(response.message);
             }
         }
     }, [data]);
