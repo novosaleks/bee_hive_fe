@@ -2,8 +2,8 @@ import { useState } from 'react';
 import MessagesOpenConversation from '../messages-open-conversation';
 import MessagesSidebar from '../messages-sidebar';
 
-import { SearchContactsTitle } from '../../common/style/index';
-import { MessagesDivBlock, NotificationDiv } from './messages.style';
+import { SearchContactsTitle, NotificationDiv } from '../../common/style/index';
+import { MessagesDivBlock } from './messages.style';
 import { useConversationContext } from '../../common/context/conversationContext';
 
 const Messages = () => {

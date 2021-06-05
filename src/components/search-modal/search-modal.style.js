@@ -12,8 +12,8 @@ export const ModalDialog = styled.div`
 `;
 export const ModalContent = styled.div`
     display: block;
-    max-width: 80%;
-    max-height: 60%;
+    width: 80vw;
+    height: 60vh;
     margin: 20px auto;
     box-shadow: 3px 5px 7px rgba(0, 0, 0, 0.5);
     background-color: #fff;
@@ -31,5 +31,6 @@ export const ModalBody = styled.div`
     position: relative;
     flex: 1 1 auto;
     padding: 1rem;
+    height: 80%;
     overflow: auto;
 `;

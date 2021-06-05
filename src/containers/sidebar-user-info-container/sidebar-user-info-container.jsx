@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import UserAvatar from '../../components/user-avatar';
 import UserInfo from '../../components/user-info';
 import UserExtraInfo from '../../components/user-extra-info';
@@ -6,7 +7,7 @@ import FollowButton from '../../components/follow-button';
 import { GET_CURRENT_USER } from '../../graphql/user';
 
 import { StyledSidebarDiv } from './sidebar-user-info-container.style';
-import { DivLine, StyledText } from '../../common/style/index';
+import { DivLine, StyledText, Button } from '../../common/style/index';
 import useQueriedData from '../../common/hooks/useQueriedData';
 
 const SideBarUserInfo = ({ user }) => {
@@ -27,7 +28,24 @@ const SideBarUserInfo = ({ user }) => {
                 <StyledText color={'#5dac38'}>{'Drink coffee'}</StyledText>
                 <DivLine />
                 <UserInfo user={user} />
-                {userData.currentUser.id !== user.id && <FollowButton />}
+                {userData.currentUser.id !== user.id && (
+                    <>
+                        <FollowButton
+                            userId={user.id}
+                            currentUserId={userData.currentUser.id}
+                        />
+
+                        <Link to={`/subscription/${user.id}`}>
+                            <Button
+                                backgroundColor='#72898F'
+                                borderColor='#DFEEEA'
+                                color='#DFEEEA'
+                                width='100%'>
+                                Subsciptions
+                            </Button>
+                        </Link>
+                    </>
+                )}
                 <UserExtraInfo user={user} />
             </StyledSidebarDiv>
         )
