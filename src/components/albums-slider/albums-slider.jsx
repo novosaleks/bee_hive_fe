@@ -8,7 +8,11 @@ import {
     AlbomsBlock,
 } from './albums-slider.style';
 
-import { StyledText } from '../../common/style';
+import {
+    StyledText,
+    SearchContactsTitle,
+    SearchContactsDiv,
+} from '../../common/style';
 
 const AlbumsSlider = ({ handelClick }) => {
     //  const { albums } = albumContext();
@@ -116,29 +120,37 @@ const AlbumsSlider = ({ handelClick }) => {
     ];
     return (
         <AlbomsBlock>
-            <Swiper slidesPerView={2} spaceBetween={50}>
-                {albums.map(album => (
-                    <SwiperSlide key={album.id} virtualIndex={album.id}>
-                        <PhotoAlbumDiv
-                            content='flex-end'
-                            onClick={() =>
-                                handelClick(
-                                    album.description,
-                                    album.title,
-                                    album.id,
-                                    album.images
-                                )
-                            }>
-                            <StyledText className='description'>
-                                {album.description}
-                            </StyledText>
-                            <PhotoAlbumNameDiv>
-                                <StyledText>{album.title}</StyledText>
-                            </PhotoAlbumNameDiv>
-                        </PhotoAlbumDiv>
-                    </SwiperSlide>
-                ))}
-            </Swiper>
+            {albums?.length !== 0 ? (
+                <Swiper slidesPerView={2} spaceBetween={50}>
+                    {albums?.map(album => (
+                        <SwiperSlide key={album.id} virtualIndex={album.id}>
+                            <PhotoAlbumDiv
+                                content='flex-end'
+                                onClick={() =>
+                                    handelClick(
+                                        album.description,
+                                        album.title,
+                                        album.id,
+                                        album.images
+                                    )
+                                }>
+                                <StyledText className='description'>
+                                    {album.description}
+                                </StyledText>
+                                <PhotoAlbumNameDiv>
+                                    <StyledText>{album.title}</StyledText>
+                                </PhotoAlbumNameDiv>
+                            </PhotoAlbumDiv>
+                        </SwiperSlide>
+                    ))}
+                </Swiper>
+            ) : (
+                <SearchContactsDiv>
+                    <SearchContactsTitle>
+                        You do not have any albums yet
+                    </SearchContactsTitle>
+                </SearchContactsDiv>
+            )}
         </AlbomsBlock>
     );
 };

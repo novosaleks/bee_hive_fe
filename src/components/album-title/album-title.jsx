@@ -3,6 +3,7 @@ import { useMutation } from '@apollo/client';
 import { UPDATE_PHOTO_ALBUM } from '../../graphql/photo-album';
 
 import albumContext from '../../common/context/albumContext';
+import RemovePhotoAlbum from '../remove-photo-album';
 import CloseContainer from '../close-container';
 import settings from '../../assets/settings.svg';
 
@@ -52,6 +53,7 @@ const AlbumTitle = ({ description, title, albumId, setIsOpen }) => {
         <StyledDiv>
             <Header>
                 <img src={settings} alt='settings icon' onClick={handelClick} />
+                <RemovePhotoAlbum {...{ setIsOpen, albumId }} />
                 <CloseContainer
                     event={() => {
                         setIsOpen(false);
