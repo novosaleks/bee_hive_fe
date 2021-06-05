@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useMutation } from '@apollo/client';
-import { UPDATE_ALBUM } from '../../graphql/album';
+import { UPDATE_PHOTO_ALBUM } from '../../graphql/photo-album';
 
 import albumContext from '../../common/context/albumContext';
 import CloseContainer from '../close-container';
@@ -12,7 +12,7 @@ import AlbumSettingsModal from '../album-setting-modal';
 
 const AlbumTitle = ({ description, title, albumId, setIsOpen }) => {
     const [isOpenModal, setIsOpenModal] = useState(false);
-    const [updateAlbum, { data }] = useMutation(UPDATE_ALBUM);
+    const [updatePhotoAlbum, { data }] = useMutation(UPDATE_PHOTO_ALBUM);
 
     //update album, gql mutation
 
@@ -20,17 +20,21 @@ const AlbumTitle = ({ description, title, albumId, setIsOpen }) => {
 
     useEffect(() => {
         if (data) {
-            const success = data.updateAlbum;
-            if (success) {
-                console.log('Success! You updated the album!');
+            const response = data.updatePhotoAlbum;
+            if (response.success) {
+                // TODO add a notification
+                console.log(response.message);
                 setIsOpenModal(false);
                 // updateAlbums();
+            } else {
+                // TODO add a notification
+                console.error(response.message);
             }
         }
     }, [data]);
 
     const handleSubmit = async (inputValue, textaraValue) => {
-        await updateAlbum({
+        await updatePhotoAlbum({
             variables: {
                 albumId: albumId,
                 title: inputValue,
