@@ -43,15 +43,15 @@ export const TabsDivStyled = styled(StyledDiv)`
     position: sticky;
     top: 40%;
 
-    ${(props) => props.messageBlock && CSS_FOR_MESSAGE_SCREEN__TabsDivStyled}
+    ${props => props.messageBlock && CSS_FOR_MESSAGE_SCREEN__TabsDivStyled}
 
     ${media.mobile} {
         flex-direction: row;
         width: 60%;
         top: 0;
+        position: relative;
 
-        ${(props) =>
-            props.messageBlock && CSS_FOR_MESSAGE_SCREEN__TabsDivStyled}
+        ${props => props.messageBlock && CSS_FOR_MESSAGE_SCREEN__TabsDivStyled}
     } ;
 `;
 export const TabDivStyled = styled(StyledDiv)`
@@ -61,37 +61,35 @@ export const TabDivStyled = styled(StyledDiv)`
         width: 45px;
         height: 50px;
     }
-    ${(props) => props.messageBlock && CSS_FOR_MESSAGE_SCREEN__TabDivStyled};
+    ${props => props.messageBlock && CSS_FOR_MESSAGE_SCREEN__TabDivStyled};
 
     ${media.mobile} {
         flex-direction: column;
         justify-content: center;
 
-        ${(props) =>
-            props.messageBlock && CSS_FOR_MESSAGE_SCREEN__TabDivStyled};
+        ${props => props.messageBlock && CSS_FOR_MESSAGE_SCREEN__TabDivStyled};
     } ;
 `;
 export const TabAndLineDiv = styled(StyledDiv)`
     ${media.laptop && media.mobile} {
         flex-direction: row;
 
-        ${(props) =>
-            props.messageBlock && CSS_FOR_MESSAGE_SCREEN__TabAndLineDiv}
+        ${props => props.messageBlock && CSS_FOR_MESSAGE_SCREEN__TabAndLineDiv}
     } ;
 `;
 export const TabLine = styled(DivLine)`
-    ${(props) => props.messageBlock && CSS_FOR_MESSAGE_SCREEN__TabLine};
+    ${props => props.messageBlock && CSS_FOR_MESSAGE_SCREEN__TabLine};
     ${media.laptop && media.mobile} {
         height: 103px;
         width: 2px;
-        ${(props) => props.messageBlock && CSS_FOR_MESSAGE_SCREEN__TabLine};
+        ${props => props.messageBlock && CSS_FOR_MESSAGE_SCREEN__TabLine};
     } ;
 `;
 
 export const TabWrapper = styled(StyledDiv)`
-    ${(props) => props.messageBlock && CSS_FOR_MESSAGE_SCREEN__TabWrapper};
+    ${props => props.messageBlock && CSS_FOR_MESSAGE_SCREEN__TabWrapper};
     &.active {
-        background-color: ${(props) =>
+        background-color: ${props =>
             props.messageBlock
                 ? '#064E5A'
                 : getValueFromTheme('primaryBgColor')};

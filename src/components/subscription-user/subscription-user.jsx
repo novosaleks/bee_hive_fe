@@ -1,6 +1,5 @@
 import UserAvatar from '../user-avatar';
 import PostAuthorAndData from '../post-author-and-data';
-import FollowButton from '../follow-button';
 import { StyledDiv } from '../../common/style/index';
 
 const SubscriptionUser = ({ user, smallBlock }) => {

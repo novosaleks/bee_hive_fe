@@ -22,22 +22,20 @@ const SettingsScreen = () => {
         ],
     };
 
-    const [activeTabLabel, setActiveTabLabel] = useState(
-        tabs.settingsPage[0].label
-    );
+    const [activeTab, setActiveTab] = useState(tabs.settingsPage[0].label);
 
     const clickHandler = label => () => {
-        setActiveTabLabel(label);
+        setActiveTab(label);
     };
 
     return (
         <StyledPageWrapper>
             <StyledDivPage justifyContent='flex-start'>
                 <SidebarTab
-                    {...{ activeTabLabel, clickHandler }}
+                    {...{ activeTab, clickHandler }}
                     tabs={tabs.settingsPage}
                 />
-                <TabsContentContainer label={activeTabLabel} />
+                <TabsContentContainer label={activeTab} />
             </StyledDivPage>
         </StyledPageWrapper>
     );
