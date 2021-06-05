@@ -13,7 +13,8 @@ const UploadPhoto = () => {
             validity,
             files: [file],
         },
-    }) => validity.valid && uploadPhoto({ variables: { file, avatar: true } });
+    }) =>
+        validity.valid && uploadPhoto({ variables: { file, isAvatar: true } });
 
     return (
         <Wrapper>

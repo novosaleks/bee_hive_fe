@@ -8,8 +8,16 @@ export const GET_PHOTO_BY_USER_ID = gql`
 `;
 
 export const UPLOAD_PHOTO = gql`
-    mutation UploadPhoto($file: Upload!, $avatar: Boolean) {
-        uploadPhoto(file: $file, avatar: $avatar) {
+    mutation UploadPhoto(
+        $photoAlbumId: ID
+        $file: Upload!
+        $isAvatar: Boolean
+    ) {
+        uploadPhoto(
+            photoAlbumId: $photoAlbumId
+            file: $file
+            isAvatar: $isAvatar
+        ) {
             success
             message
         }
