@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import useQueriedData from '../../common/hooks/useQueriedData';
 import { GET_SUBSCRIPTIONS_BY_USER_ID } from '../../graphql/user';
+import { GET_CURRENT_USER } from '../../graphql/user';
 
 import SubscriptionUser from '../subscription-user';
 import {
@@ -10,6 +11,8 @@ import {
 } from '../../common/style/index';
 
 const Subscription = ({ userId }) => {
+    const [userData, fallbackUserData] = useQueriedData(GET_CURRENT_USER);
+    const [currentUserId, setCurrentUserId] = useState(null);
     const [subscription, setSubscription] = useState(null);
     const [data, fallback] = useQueriedData(GET_SUBSCRIPTIONS_BY_USER_ID, {
         variables: { userId: userId },
@@ -18,14 +21,16 @@ const Subscription = ({ userId }) => {
     useEffect(() => {
         if (data) {
             setSubscription(data.getSubscriptionsByUserId);
+        } else if (userData) {
+            setCurrentUserId(userData.currentUser.id);
         }
-    }, [data]);
+    }, [data, userData]);
 
-    if (fallback) {
-        return fallback;
+    if (fallback || fallbackUserData) {
+        return fallback || fallbackUserData;
     }
     return (
-        <>
+        <StyledDiv alignSelf='center'>
             {subscription?.length !== 0 ? (
                 subscription?.map(subscriber => (
                     <StyledDiv alignSelf='center' key={subscriber.id}>
@@ -35,11 +40,12 @@ const Subscription = ({ userId }) => {
             ) : (
                 <NotificationDiv alignSelf='flex-end'>
                     <SearchContactsTitle>
-                        You do not have any subscription!
+                        {currentUserId === userId ? 'You' : 'This user'} do not
+                        have any subscription!
                     </SearchContactsTitle>
                 </NotificationDiv>
             )}
-        </>
+        </StyledDiv>
     );
 };
 
