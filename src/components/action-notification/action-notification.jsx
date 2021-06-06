@@ -13,7 +13,7 @@ const ActionNotification = ({ notification, user }) => {
             <UserAvatar
                 rating={user.ratingColor}
                 rateScore={user.rateScore}
-                photo={user.avatar?.location}
+                photo={user.avatar?.url}
                 width={60}
                 height={60}
                 smallBlock={true}

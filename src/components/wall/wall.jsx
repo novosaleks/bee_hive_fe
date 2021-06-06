@@ -61,7 +61,7 @@ const Wall = ({ user }) => {
                                             post.author.lastName
                                         }
                                         postId={post.id}
-                                        photo={post.author.avatar?.location}
+                                        photo={post.author.avatar?.url}
                                         authorId={post.author.id}
                                         text={post.text}
                                         date={time}

@@ -18,7 +18,7 @@ const SideBarUserInfo = ({ user }) => {
             <StyledSidebarDiv>
                 <UserAvatar
                     rating={'#c53b0e'}
-                    photo={user.avatar?.location}
+                    photo={user.avatar?.url}
                     rateScore={'1,5'}
                     width={[130, 190]}
                     height={[130, 190]}

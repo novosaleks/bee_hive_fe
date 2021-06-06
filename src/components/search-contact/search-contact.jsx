@@ -20,7 +20,7 @@ const SearchContact = ({
             <UserAvatar
                 rating={contact?.ratingColor || '#C53B0E'}
                 rateScore={contact?.rateScore || '1,5'}
-                photo={contact?.avatar?.location}
+                photo={contact?.avatar?.url}
                 width={70}
                 height={70}
                 {...{ smallBlock }}

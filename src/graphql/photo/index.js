@@ -1,8 +1,8 @@
 import { gql } from '@apollo/client';
 
-export const GET_PHOTO_BY_USER_ID = gql`
+export const GET_PHOTOS_BY_USER_ID = gql`
     query GetPhotoByUserId($userId: ID!) {
-        location
+        url
         isAvatar
     }
 `;

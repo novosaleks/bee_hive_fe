@@ -90,7 +90,7 @@ export const GET_CURRENT_USER = gql`
             createdAt
             updatedAt
             avatar {
-                location
+                url
             }
         }
     }
@@ -107,7 +107,7 @@ export const GET_USER_BY_ID = gql`
             birthDate
             userInfo
             avatar {
-                location
+                url
             }
         }
     }
