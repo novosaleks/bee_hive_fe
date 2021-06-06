@@ -5,7 +5,7 @@ import { getValueFromTheme } from '../../common/utils';
 export const MessagesContactHeader = styled(StyledDiv)`
     flex-direction: row;
     @media (max-width: 400px) {
-        width: 100%;
+        width: 95%;
         box-sizing: border-box;
         margin-left: 4%;
         .user-avatar {

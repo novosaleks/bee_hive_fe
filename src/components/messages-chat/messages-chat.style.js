@@ -42,7 +42,7 @@ export const MessageText = styled.div`
                   color: #6c757d;
               `
             : css`
-                  border-color: #f8f9fa;
+                  border: 1px solid #f8f9fa;
                   color: #f8f9fa;
               `}
 `;

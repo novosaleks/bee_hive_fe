@@ -146,6 +146,7 @@ export const StyledDivPage = styled(StyledDiv)`
     ${layout};
     ${media.mobile} {
         flex-direction: column;
+        justify-content: flex-start;
     }
 `;
 export const StyledPageContent = styled(StyledDiv)`
