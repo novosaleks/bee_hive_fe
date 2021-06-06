@@ -1,12 +1,8 @@
 import styled from 'styled-components';
-import { StyledDiv, media } from '../../common/style/index';
+import { StyledDivPage, media } from '../../common/style/index';
 
-export const SidebarDivStyled = styled(StyledDiv)`
-    width: 20%;
-    position: sticky;
-    top: 10%;
-    margin-right: 5%;
+export const StyledDivPageNews = styled(StyledDivPage)`
     ${media.mobile} {
-        display: none;
-    } ;
+        flex-direction: row;
+    }
 `;

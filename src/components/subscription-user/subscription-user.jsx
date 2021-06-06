@@ -2,7 +2,7 @@ import UserAvatar from '../user-avatar';
 import PostAuthorAndData from '../post-author-and-data';
 import { StyledDiv } from '../../common/style/index';
 
-const SubscriptionUser = ({ user, smallBlock }) => {
+const SubscriptionUser = ({ user }) => {
     return (
         <StyledDiv
             align='center'
@@ -15,22 +15,17 @@ const SubscriptionUser = ({ user, smallBlock }) => {
                     rating={user?.ratingColor || '#C53B0E'}
                     rateScore={user?.rateScore || '1,5'}
                     photo={user?.avatar?.url}
-                    width={smallBlock ? 70 : [70, 135]}
-                    height={smallBlock ? 70 : [70, 135]}
-                    {...{ smallBlock }}
+                    width={[70, 135]}
+                    height={[70, 135]}
                 />
             </StyledDiv>
 
-            <StyledDiv
-                width={smallBlock ? '70%' : '80%'}
-                align='flex-end'
-                ml='20px'>
+            <StyledDiv width={'80%'} align='flex-end' ml='20px'>
                 <PostAuthorAndData
                     name={`${user?.firstName} ${user?.lastName}`}
                     date={user?.status || 'Online'}
                     color={user?.statusColor || '#5DAC38'}
                     authorId={user.id}
-                    {...{ smallBlock }}
                 />
             </StyledDiv>
         </StyledDiv>
