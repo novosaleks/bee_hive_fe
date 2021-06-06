@@ -49,6 +49,9 @@ export const GET_WALL_POSTS_BY_USER_ID = gql`
                 id
                 firstName
                 lastName
+                avatar {
+                    url
+                }
             }
         }
     }
