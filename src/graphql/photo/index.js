@@ -1,9 +1,22 @@
 import { gql } from '@apollo/client';
 
 export const GET_PHOTOS_BY_USER_ID = gql`
-    query GetPhotoByUserId($userId: ID!) {
-        url
-        isAvatar
+    query GetPhotosByUserId($userId: ID!) {
+        getPhotosByUserId(userId: $userId) {
+            id
+            url
+            isAvatar
+        }
+    }
+`;
+
+export const GET_PHOTOS_BY_PHOTO_ALBUM_ID = gql`
+    query GetPhotosByPhotoAlbumId($photoAlbumId: ID!) {
+        getPhotosByPhotoAlbumId(photoAlbumId: $photoAlbumId) {
+            id
+            url
+            isAvatar
+        }
     }
 `;
 
