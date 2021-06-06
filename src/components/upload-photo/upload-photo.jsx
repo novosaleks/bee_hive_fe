@@ -2,18 +2,23 @@ import { useMutation } from '@apollo/client';
 import { UPLOAD_PHOTO } from '../../graphql/photo';
 import { Label, Title, Wrapper } from './upload-photo.style';
 
+import { useNotificationService } from '../../common/context/notificationContext';
+
 const UploadPhoto = () => {
+    const notify = useNotificationService();
+
     const [uploadPhoto] = useMutation(UPLOAD_PHOTO, {
-        // TODO add a notification
-        onCompleted: data => console.log(data),
+        onCompleted: () => {
+            notify({ text: 'Avatar was loaded successfully', type: 'success' });
+        },
     });
 
     const handleUploadPhoto = ({
-        target: {
-            validity,
-            files: [file],
-        },
-    }) =>
+                                   target: {
+                                       validity,
+                                       files: [file],
+                                   },
+                               }) =>
         validity.valid && uploadPhoto({ variables: { file, isAvatar: true } });
 
     return (

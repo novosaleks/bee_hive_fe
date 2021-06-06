@@ -20,8 +20,6 @@ const LoginFormContainer = () => {
         if (data) {
             const response = data.login;
             if (response.success) {
-                // TODO add a notification
-                console.log(response.message);
                 window.location.href = '/';
             } else {
                 notify({ text: response.message, type: 'fail' });

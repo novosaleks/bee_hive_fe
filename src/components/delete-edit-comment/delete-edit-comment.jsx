@@ -4,6 +4,7 @@ import { REMOVE_COMMENT } from '../../graphql/comment';
 import { useNewComment } from '../../common/context/newCommentContext';
 
 import DeleteEditIconsBlock from '../delete-edit-icons-block';
+import { useNotificationService } from '../../common/context/notificationContext';
 
 const DeleteEditComment = ({ commentId, handleEdit, authorId }) => {
     const [removeComment, { data }] = useMutation(REMOVE_COMMENT);
@@ -13,12 +14,13 @@ const DeleteEditComment = ({ commentId, handleEdit, authorId }) => {
         handleEdit(true);
     };
 
+    const notify = useNotificationService();
+
     useEffect(() => {
         if (data) {
             const success = data.removeComment;
             if (success) {
-                // TODO add a notification
-                console.log('Success! The comment has been deleted!');
+                notify({ text: 'Success! The comment has been deleted!', type: 'success' });
                 updateComments();
             }
         }

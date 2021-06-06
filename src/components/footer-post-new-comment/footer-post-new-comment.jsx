@@ -11,6 +11,7 @@ import {
     ButtonsBlock,
 } from './footer-post-new-comment.style';
 import { SubmitButton } from '../../common/style';
+import { useNotificationService } from '../../common/context/notificationContext';
 
 const FooterPostNewComment = ({
     setOpenNewCommentState,
@@ -26,12 +27,13 @@ const FooterPostNewComment = ({
     const addresId = addresseeId || '';
     const addrCommentId = addresCommentId || '';
 
+    const notify = useNotificationService();
+
     useEffect(() => {
         if (data) {
             const success = data.addComment;
             if (success) {
-                // TODO add a notification
-                console.log('Success! The new comment has been added!');
+                notify({text: 'Success! The new comment has been added!', type: 'success'});
                 textareaRef.current.value = '';
                 updateComments();
             }

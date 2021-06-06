@@ -12,7 +12,7 @@ import UsersPreview from '../../components/users-preview';
 import WallBlock from '../../components/wall-block';
 const NewsScreen = () => {
     const [data, fallback] = useQueriedData(GET_ALL_USERS);
-    const users = data.getAllUsers;
+    const users = data?.getAllUsers;
     if (fallback) {
         return fallback;
     }

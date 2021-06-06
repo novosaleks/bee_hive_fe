@@ -7,6 +7,7 @@ import { SUBSCRIBE_TO_USER } from '../../graphql/user';
 import { useState } from 'react';
 import { Button } from '../../common/style/index';
 import { getValueFromTheme } from '../../common/utils';
+import { useNotificationService } from '../../common/context/notificationContext';
 
 const FollowButton = ({ userId, currentUserId }) => {
     const [subscribed, setSubscribed] = useState(null);
@@ -15,22 +16,23 @@ const FollowButton = ({ userId, currentUserId }) => {
         GET_SUBSCRIPTIONS_BY_USER_ID,
         {
             variables: { userId: userId },
-        }
+        },
     );
+
+    const notify = useNotificationService();
 
     useEffect(() => {
         if (data) {
             const success = data.subscribeToUser;
             if (success) {
-                // TODO add a notification
-                console.log('Success! You subscribed to the user!');
+                notify({ text: 'Success! You subscribed to the user!', type: 'success'});
             }
         } else if (subscriptionData) {
             //check whether currentUser subscribed to the user
             setSubscribed(
                 subscriptionData.getSubscriptionsByUserId.some(
-                    subscriber => subscriber.id === currentUserId
-                )
+                    subscriber => subscriber.id === currentUserId,
+                ),
             );
         }
     }, [data, subscriptionData]);

@@ -5,23 +5,24 @@ import { UPDATE_POST } from '../../graphql/post';
 import { useUpdateWall } from '../../common/context/updateWallContext';
 
 import ComponentEdit from '../component-edit/component-edit';
+import { useNotificationService } from '../../common/context/notificationContext';
 
 const PostEdit = ({ postId, text, handleEdit }) => {
     const [updatePost, { data }] = useMutation(UPDATE_POST);
     const inputRef = useRef();
     const updateWall = useUpdateWall();
 
+    const notify = useNotificationService();
+
     useEffect(() => {
         if (data) {
             const response = data.updatePost;
             if (response.success) {
-                // TODO add a notification
-                console.log(response.message);
+                notify({text: response.message, type: 'success'})
                 handleEdit(false);
                 updateWall();
             } else {
-                // TODO add a notification
-                console.error(response.message);
+                notify({text: response.message, type: 'fail'})
             }
         }
     }, [data]);

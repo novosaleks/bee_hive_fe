@@ -36,7 +36,7 @@ const ProfileScreen = () => {
                     <StyledDivPage>
                         <SideBarUserInfo user={user} />
                         <StyledPageContent>
-                            {/* <AlbumsContainer user={user} /> */}
+                             <AlbumsContainer user={user} />
                             <Wall user={user} />
                         </StyledPageContent>
                     </StyledDivPage>

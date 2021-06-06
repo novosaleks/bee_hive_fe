@@ -10,10 +10,13 @@ import settings from '../../assets/settings.svg';
 import { Header } from './album-title.style';
 import { StyledDiv, StyledText } from '../../common/style/index';
 import AlbumSettingsModal from '../album-setting-modal';
+import { useNotificationService } from '../../common/context/notificationContext';
 
 const AlbumTitle = ({ description, title, albumId, setIsOpen }) => {
     const [isOpenModal, setIsOpenModal] = useState(false);
     const [updatePhotoAlbum, { data }] = useMutation(UPDATE_PHOTO_ALBUM);
+
+    const notify = useNotificationService();
 
     //update album, gql mutation
 
@@ -23,13 +26,11 @@ const AlbumTitle = ({ description, title, albumId, setIsOpen }) => {
         if (data) {
             const response = data.updatePhotoAlbum;
             if (response.success) {
-                // TODO add a notification
-                console.log(response.message);
+                notify({text: response.message, type: 'success'});
                 setIsOpenModal(false);
                 // updateAlbums();
             } else {
-                // TODO add a notification
-                console.error(response.message);
+                notify({text: response.message, type: 'fail'});
             }
         }
     }, [data]);

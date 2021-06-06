@@ -9,6 +9,7 @@ import add from '../../assets/add.svg';
 import { TitleDiv } from './albums-block.style';
 import { StyledDiv, StyledText, DivLine } from '../../common/style/index';
 import AlbumSettingsModal from '../album-setting-modal';
+import { useNotificationService } from '../../common/context/notificationContext';
 
 const AlbumsBlock = () => {
     const [isOpenModal, setIsOpenModal] = useState(false);
@@ -19,17 +20,17 @@ const AlbumsBlock = () => {
 
     // const { updateAlbums } = albumContext();
 
+    const notify = useNotificationService();
+
     useEffect(() => {
         if (data) {
             const response = data.createPhotoAlbum;
             if (response.success) {
-                // TODO add a notification
-                console.log(response.message);
+                notify({text: response.message, type: 'success'})
                 setIsOpenModal(false);
                 // updateAlbums();
             } else {
-                // TODO add a notification
-                console.error(response.message);
+                notify({text: response.message, type: 'fail'})
             }
         }
     }, [data]);

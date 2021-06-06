@@ -10,6 +10,7 @@ import albumContext from '../../common/context/albumContext';
 import deleteIcon from '../../assets/deleteIcon.svg';
 
 import { DeleteImg } from './remove-photo-album.style';
+import { useNotificationService } from '../../common/context/notificationContext';
 
 const RemovePhotoAlbum = ({ setIsOpen, albumId }) => {
     const [userData, fallback] = useQueriedData(GET_CURRENT_USER);
@@ -23,6 +24,8 @@ const RemovePhotoAlbum = ({ setIsOpen, albumId }) => {
         }
     }, [userData]);
 
+    const notify = useNotificationService();
+
     //remove album, gql mutation
 
     // const { updateAlbums } = albumContext();
@@ -31,13 +34,11 @@ const RemovePhotoAlbum = ({ setIsOpen, albumId }) => {
         if (data) {
             const response = data.removePhotoAlbum;
             if (response.success) {
-                // TODO add a notification
-                console.log(response.message);
+                notify({ text: response.message, type: 'success' });
                 setIsOpen(false);
                 // updateAlbums();
             } else {
-                // TODO add a notification
-                console.error(response.message);
+                notify({ text: response.message, type: 'fail' });
             }
         }
     }, [data]);

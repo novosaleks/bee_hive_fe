@@ -4,23 +4,24 @@ import { InputPost, PostButton } from './new-post-input.style';
 import { useMutation } from '@apollo/client';
 import { CREATE_POST } from '../../graphql/post';
 import { useUpdateWall } from '../../common/context/updateWallContext';
+import { useNotificationService } from '../../common/context/notificationContext';
 
 const NewPostInput = ({ userId }) => {
     const [createPost, { data }] = useMutation(CREATE_POST);
     const inputRef = useRef();
     const updateWall = useUpdateWall();
 
+    const notify = useNotificationService();
+
     useEffect(() => {
         if (data) {
             const response = data.createPost;
             if (response.success) {
-                // TODO add a notification
-                console.log(response.message);
+                notify({text: response.message, type: 'success'})
                 inputRef.current.value = '';
                 updateWall();
             } else {
-                // TODO add a notification
-                console.error(response.message);
+                notify({text: response.message, type: 'fails'})
             }
         }
     }, [data]);
