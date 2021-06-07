@@ -28,11 +28,18 @@ export const CommentInfoDiv = styled.div`
         padding: 3%;
     }
 
-    @media (max-width: 330px) {
+    @media (max-width: 400px) {
         width: 70%;
         ul {
             width: 100vw;
             margin-left: -55%;
+        }
+    }
+    @media (max-width: 315px) {
+        width: 62%;
+        ul {
+            width: 100vw;
+            margin-left: -75%;
         }
     }
 `;

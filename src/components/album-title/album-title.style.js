@@ -12,4 +12,9 @@ export const Header = styled(StyledDiv)`
         margin-right: 5%;
         cursor: pointer;
     }
+    .close-container {
+        @media (max-width: 495px) {
+            top: -10px;
+        }
+    }
 `;

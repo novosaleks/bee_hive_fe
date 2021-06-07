@@ -15,12 +15,21 @@ export const CommentBlock = styled(StyledDiv)`
     justify-content: start;
     .user-avatar {
         align-self: start;
+
+        div {
+            align-self: flex-end;
+        }
     }
     @media (max-width: 575px) {
         width: 90vw;
         position: relative;
         right: 0;
         margin-right: 35%;
+        .user-avatar {
+            /* div {
+                width: 25px !important;
+            } */
+        }
     }
     ${props => props.replyBlock && CSS__REPLY_BLOCK}
 `;

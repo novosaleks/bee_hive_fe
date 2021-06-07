@@ -9,12 +9,12 @@ export const DivImgForUserAvatar = styled.div`
     ${layout};
     border-radius: 50%;
     border: 10px solid
-        ${(props) => props.rating || getValueFromTheme('primaryBgColorDiv')};
+        ${props => props.rating || getValueFromTheme('primaryBgColorDiv')};
     background-color: ${getValueFromTheme('primaryBgColorDiv')};
-    ${(props) =>
+    ${props =>
         props.photo &&
         css`
-            background-image: url(${(props) => props.photo});
+            background-image: url(${props => props.photo});
             background-size: cover;
             background-position: center center;
             background-repeat: no-repeat;
@@ -34,7 +34,7 @@ export const RateScore = styled.div`
     align-self: flex-end;
     border: 1px solid ${getValueFromTheme('primaryBgColorPage')};
 
-    ${(props) =>
+    ${props =>
         props.smallBlock &&
         css`
             width: 25px;
@@ -53,7 +53,7 @@ export const RateScore = styled.div`
     ${media.miniMobile} {
         width: 25px;
         height: 20px;
-        font-size: 0.7em;
+        font-size: 0.6em;
         position: relative;
         left: 25%;
     } ;

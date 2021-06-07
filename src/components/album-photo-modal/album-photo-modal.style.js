@@ -37,7 +37,11 @@ export const AlbumPhotomodal__CSS = styled.div`
                 border-width: 2px;
                 div {
                     height: 15px;
+                    width: 20px;
                     left: 15%;
+                    @media (max-width: 330px) {
+                        font-size: 8px;
+                    }
                 }
             }
             .post-author,
@@ -69,7 +73,13 @@ export const AlbumPhotomodal__CSS = styled.div`
             width: 120%;
         }
         @media (max-width: 330px) {
-            width: 130%;
+            width: 90vw;
+            margin-left: -90%;
+            .user-avatar {
+                div {
+                    font-size: 8px;
+                }
+            }
             .replied-to {
                 font-size: 0.6rem;
             }

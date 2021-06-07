@@ -15,7 +15,7 @@ export const NavbarDropdownMenuBodyDiv = styled(DropDown)`
     }
     @media (max-width: 290px) {
         width: 180px;
-        top: ${props => props.bottom + 35}px;
+        top: ${props => (props.bottom > 10 ? props.bottom + 35 : 90)}px;
     }
 `;
 export const NavbarDropdownItem = styled(StyledDiv)`

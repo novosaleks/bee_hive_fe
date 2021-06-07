@@ -10,4 +10,7 @@ export const DeleteImg = styled.img`
     &:hover {
         opacity: 1;
     }
+    @media (max-width: 480px) {
+        left: 20%;
+    }
 `;
