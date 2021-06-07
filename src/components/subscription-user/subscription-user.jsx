@@ -14,7 +14,7 @@ const SubscriptionUser = ({ user }) => {
                 <UserAvatar
                     rating={user?.ratingColor || '#C53B0E'}
                     rateScore={user?.rateScore || '1,5'}
-                    photo={user?.avatar?.url}
+                    photo={user?.avatar?.location}
                     width={[70, 135]}
                     height={[70, 135]}
                 />

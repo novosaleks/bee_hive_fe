@@ -1,7 +1,7 @@
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/swiper-bundle.css';
 
-import {useAlbumContext} from '../../common/context/albumContext';
+import { useAlbumContext } from '../../common/context/albumContext';
 import {
     PhotoAlbumDiv,
     PhotoAlbumNameDiv,
@@ -15,7 +15,7 @@ import {
 } from '../../common/style';
 
 const AlbumsSlider = ({ handleClick }) => {
-     const { albums } = useAlbumContext();
+    const { albums } = useAlbumContext();
 
     //DATA EXAMPLE
     // const albums = [
@@ -118,8 +118,9 @@ const AlbumsSlider = ({ handleClick }) => {
     //         ],
     //     },
     // ];
+    console.log(albums?.length <= 2);
     return (
-        <AlbomsBlock>
+        <AlbomsBlock smallAlbum={albums?.length <= 2}>
             {albums?.length !== 0 ? (
                 <Swiper slidesPerView={2} spaceBetween={50}>
                     {albums?.map(album => (

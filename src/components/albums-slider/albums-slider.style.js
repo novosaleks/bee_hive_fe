@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
 import { getValueFromTheme } from '../../common/utils';
 import { StyledDiv } from '../../common/style/index';
@@ -7,6 +7,17 @@ import albumBGImg from '../../assets/albumBGImg.jpg';
 export const AlbomsBlock = styled(StyledDiv)`
     flex-direction: row;
     justify-content: space-between;
+
+    ${props =>
+        props.smallAlbum &&
+        css`
+            .swiper-slide {
+                width: 140px !important;
+                @media (min-width: 1000px) {
+                    width: 320px !important;
+                }
+            }
+        `}
 `;
 
 export const PhotoAlbumDiv = styled(StyledDiv)`
@@ -27,7 +38,7 @@ export const PhotoAlbumDiv = styled(StyledDiv)`
         box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
     }
     @media (min-width: 1000px) {
-        width: 320px;
+        width: 320px !important;
     }
 `;
 
