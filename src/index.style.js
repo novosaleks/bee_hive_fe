@@ -10,9 +10,9 @@ const GlobalStyles = createGlobalStyle`
     -webkit-appearance: none;
     display: none;
   }
-  *{
-    transition: 1s;
-  }
+  //*{
+  //  transition: 1s;
+  //}
    &::-webkit-scrollbar {
         width: 3px;
         background-color: #f9f9fd;

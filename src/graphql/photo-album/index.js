@@ -34,7 +34,7 @@ export const REMOVE_PHOTO_ALBUM = gql`
 
 export const GET_PHOTO_ALBUMS_BY_USER_ID = gql`
     query GetPhotoAlbumsByUserId($userId: ID!) {
-        getPhotoAlbumsByUserId {
+        getPhotoAlbumsByUserId(userId: $userId) {
             id
             title
             description

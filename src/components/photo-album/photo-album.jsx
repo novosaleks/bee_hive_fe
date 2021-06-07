@@ -10,7 +10,7 @@ const PhotoAlbum = () => {
     const [albumId, setAlbumId] = useState(null);
     const [images, setImages] = useState();
 
-    const handelClick = (description, title, albumId, images) => {
+    const handleClick = (description, title, albumId, images) => {
         setIsOpen(prevState => !prevState);
         setDescription(description);
         setTitle(title);
@@ -18,12 +18,12 @@ const PhotoAlbum = () => {
         setImages(images);
     };
     useEffect(() => {
-        document.body.style.overflow = isOpen ? 'hidden' : 'auto';
+        document.body.style.overflow = isOpen ? 'hidden' : '';
     }, [isOpen]);
 
     return (
         <>
-            <AlbumsSlider handelClick={handelClick} />
+            <AlbumsSlider handleClick={handleClick} />
             {isOpen && (
                 <AlbumOpenModal
                     {...{ description, title, albumId, images, setIsOpen }}

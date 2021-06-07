@@ -4,6 +4,7 @@ import useAlbums from '../../common/hooks/useAlbums';
 
 const AlbumsContainer = ({ user }) => {
     const albumsValue = useAlbums(user.id);
+
     return (
         <AlbumsProvider value={albumsValue}>
             <AlbumsBlock />

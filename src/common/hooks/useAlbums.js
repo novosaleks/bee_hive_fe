@@ -16,6 +16,7 @@ const useAlbums = id => {
             setAlbums(data.getPhotoAlbumsByUserId);
         }
     }, [data]);
+
     if (loading) return <div>Loading...</div>;
     if (error) return <div>{`Error ${error.message}`}</div>;
 

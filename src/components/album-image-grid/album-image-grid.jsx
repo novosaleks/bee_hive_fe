@@ -3,14 +3,13 @@ import { ImgGrid } from './album-image-grid.style';
 
 import { StyledText } from '../../common/style';
 
-const AlbumImageGrid = ({ setSelectedImg, setSelectedImgId, images }) => {
+const AlbumImageGrid = ({ setSelectedImg, setSelectedImgId, images = [] }) => {
     const handelClick = (url, id) => {
         setSelectedImg(url);
         setSelectedImgId(id);
     };
 
     const displayImg =
-        images &&
         images.map(image => (
             <motion.div
                 key={image.id}

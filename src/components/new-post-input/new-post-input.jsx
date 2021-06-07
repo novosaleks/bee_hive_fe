@@ -21,7 +21,7 @@ const NewPostInput = ({ userId }) => {
                 inputRef.current.value = '';
                 updateWall();
             } else {
-                notify({text: response.message, type: 'fails'})
+                notify({text: response.message, type: 'fail'})
             }
         }
     }, [data]);

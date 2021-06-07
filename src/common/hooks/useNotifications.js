@@ -1,5 +1,4 @@
 import { useEffect, useState } from 'react';
-import Portal from '../../containers/portal';
 import Notification from '../../components/notification';
 
 const useNotifications = () => {
@@ -13,16 +12,14 @@ const useNotifications = () => {
         if (text) {
             const id = setTimeout(() => {
                 setNotificationParams({});
-            }, 30000);
+            }, timeout + 5000);
 
             return () => clearTimeout(id);
         }
     }, [text]);
 
     const element = text ? (
-        <Portal>
             <Notification type={type} timeout={timeout}>{text}</Notification>
-        </Portal>
     ) : null;
 
     return [element, setNotificationParams];

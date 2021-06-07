@@ -8,6 +8,7 @@ import { Button } from '../../common/style';
 import { useMutation } from '@apollo/client';
 import { UPDATE_USER } from '../../graphql/user';
 import { useNotificationService } from '../../common/context/notificationContext';
+import { useUpdateCurrentUser } from '../../common/context/updateCurrentUserContext';
 
 const SettingsForm = ({ label, name, type, defaultValue }) => {
     const {
@@ -16,7 +17,8 @@ const SettingsForm = ({ label, name, type, defaultValue }) => {
         formState: { errors },
     } = useForm();
     const [updateUser, { data }] = useMutation(UPDATE_USER);
-    console.log(name, defaultValue);
+
+    const updateCurrentUser = useUpdateCurrentUser();
 
     const notify = useNotificationService();
 
@@ -24,11 +26,10 @@ const SettingsForm = ({ label, name, type, defaultValue }) => {
         if (data) {
             const response = data.updateUser;
             if (response.success) {
-                notify({ text: 'Successfully updated', type: 'success' });
-                console.log(response.message);
+                notify({ text: response.message, type: 'success' });
+                updateCurrentUser();
             } else {
-                notify({ text: 'Error', type: 'fail' });
-                console.error(response.message);
+                notify({ text: response.message, type: 'fail' });
             }
         }
     }, [data]);
