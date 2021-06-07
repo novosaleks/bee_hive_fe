@@ -149,3 +149,22 @@ export const GET_SUBSCRIPTIONS_BY_USER_ID = gql`
         }
     }
 `;
+
+export const GET_NEWS_BY_USER_ID = gql`
+    query GetNewsByUserId($userId: ID!) {
+        getNewsByUserId(userId: $userId) {
+            id
+            text
+            createdAt
+            updatedAt
+            author {
+                id
+                firstName
+                lastName
+                avatar {
+                    url
+                }
+            }
+        }
+    }
+`;
