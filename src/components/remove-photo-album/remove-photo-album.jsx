@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { GET_CURRENT_USER } from '../../graphql/user';
-import { useParams } from 'react-router';
+import { useParams } from 'react-router-dom';
 import useQueriedData from '../../common/hooks/useQueriedData';
 import { useMutation } from '@apollo/client';
 import { REMOVE_PHOTO_ALBUM } from '../../graphql/photo-album';
@@ -13,7 +13,7 @@ import { DeleteImg } from './remove-photo-album.style';
 import { useNotificationService } from '../../common/context/notificationContext';
 
 const RemovePhotoAlbum = ({ setIsOpen, albumId }) => {
-    const [userData, fallback] = useQueriedData(GET_CURRENT_USER);
+    const { data: userData, fallback} = useQueriedData(GET_CURRENT_USER);
     const [removePhotoAlbum, { data }] = useMutation(REMOVE_PHOTO_ALBUM);
 
     const [currentUserId, setCurrentUserId] = useState(null);
@@ -43,7 +43,7 @@ const RemovePhotoAlbum = ({ setIsOpen, albumId }) => {
         }
     }, [data]);
 
-    const handelClick = async () => {
+    const handleClick = async () => {
         await removePhotoAlbum({
             variables: {
                 photoAlbumId: albumId,
@@ -57,7 +57,7 @@ const RemovePhotoAlbum = ({ setIsOpen, albumId }) => {
                     <DeleteImg
                         src={deleteIcon}
                         alt='delete post'
-                        onClick={handelClick}
+                        onClick={handleClick}
                     />
                 )}
             </>

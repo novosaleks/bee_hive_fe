@@ -15,7 +15,7 @@ const MessagesScreen = () => {
     const clickHandler = label => () => {
         setActiveTab(label);
     };
-    const [data, fallback] = useQueriedData(GET_CURRENT_USER);
+    const {data, fallback} = useQueriedData(GET_CURRENT_USER);
 
     if (fallback) {
         return fallback;

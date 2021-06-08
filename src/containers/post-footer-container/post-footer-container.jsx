@@ -1,7 +1,4 @@
 import { useState } from 'react';
-//useEffect
-// import { useQuery } from '@apollo/client';
-// import { GET_COMMENTS_BY_COMPONENT_ID } from '../../graphql/comment';
 
 import FooterPostNewComment from '../../components/footer-post-new-comment';
 import RateBlock from '../../components/rate-block';
@@ -18,7 +15,6 @@ import {
 const PostFooter = ({ componentId, photoModal }) => {
     const [openCommentsState, setOpenCommentsState] = useState(false);
     const [openNewCommentState, setOpenNewCommentState] = useState(false);
-    //  const [commentsContent, setCommentsContent] = useState([]);
     const handlerClickComments = () => {
         setOpenCommentsState(prevState => !prevState);
     };
@@ -26,22 +22,11 @@ const PostFooter = ({ componentId, photoModal }) => {
         setOpenNewCommentState(prevState => !prevState);
     };
 
-    //  const { loading, error, data, refetch } = useQuery(GET_COMMENTS_BY_COMPONENT_ID, {
-    //      variables: { componentId: componentId },
-    //  });
-
-    //  useEffect(() => {
-    //      if (data) {
-    //          setCommentsContent(data.getCommentsByComponentId);
-    //      }
-    //  }, [data]);
 
     const updateComments = () => {
         //  refetch();
     };
 
-    //  if (loading) return <div>Loading...</div>;
-    //  if (error) return <div>{`Error ${error.message}`}</div>;
 
     //DATA EXAMPLE
     const commentsContent = [

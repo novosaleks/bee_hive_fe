@@ -13,7 +13,7 @@ const FooterComment = ({
     componentId,
     photoModal,
 }) => {
-    const [data, fallback] = useQueriedData(GET_ALL_USERS);
+    const {data, fallback} = useQueriedData(GET_ALL_USERS);
 
     if (fallback) {
         return fallback;

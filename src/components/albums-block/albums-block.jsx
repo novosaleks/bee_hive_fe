@@ -61,7 +61,7 @@ const AlbumsBlock = () => {
     }, [isOpenModal]);
 
     // open/close AlbumSettingsModal
-    const handelClick = () => {
+    const handleClick = () => {
         setIsOpenModal(prevState => !prevState);
     };
 
@@ -72,7 +72,7 @@ const AlbumsBlock = () => {
                 <img
                     src={add}
                     alt='add new album icon'
-                    onClick={handelClick}
+                    onClick={handleClick}
                     ref={HeaderRef}
                 />
             </TitleDiv>
@@ -82,7 +82,7 @@ const AlbumsBlock = () => {
                     bottom={headerBottom + 10}
                     isOpen={isOpenModal}
                     albomBlock={true}
-                    handelClick={handelClick}
+                    handleClick={handleClick}
                     handleSubmit={handleSubmit}
                 />
             )}

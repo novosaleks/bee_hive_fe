@@ -51,7 +51,7 @@ const useConversation = id => {
     };
 
     const formattedConversations = conversations.map((conversation, index) => {
-        //define user who recieve the message
+        //define user who receive the message
         const contact = users?.find(contact => {
             return contact.id === conversation.recipient;
         });
@@ -69,7 +69,7 @@ const useConversation = id => {
             //define his name
             const name = contact?.firstName;
 
-            //boolean: if this user is cuurent user
+            //boolean: if this user is current user
             const fromMe = id === message.sender;
             return { ...message, senderName: name, fromMe };
         });

@@ -28,7 +28,6 @@ const UploadPhoto = () => {
                 <input type='file' required onChange={handleUploadPhoto} />
                 <span>+</span>
             </Label>
-            {/* <button onClick={handleUploadPhoto}>Change</button> */}
         </Wrapper>
     );
 };

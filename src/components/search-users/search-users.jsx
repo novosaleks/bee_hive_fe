@@ -1,20 +1,18 @@
 import { useState } from 'react';
-import { useQuery } from '@apollo/client';
 import { GET_CURRENT_USER } from '../../graphql/user';
 
 import SearchGlobal from '../search-global';
 import AvailableContacts from '../available-contacts';
 
 import { SearchModalInput } from './search-users.style';
+import useQueriedData from '../../common/hooks/useQueriedData';
+
 const SearchUser = ({ handleClick, placeholder, contactSearch }) => {
     const [searchTerm, setSearchTerm] = useState('');
-    const { loading, error, data } = useQuery(GET_CURRENT_USER);
-    if (loading) {
-        return <div>LOADING...</div>;
-    }
+    const { fallback, data } = useQueriedData(GET_CURRENT_USER);
 
-    if (error) {
-        return <div>Error: {error.message}</div>;
+    if (fallback) {
+        return fallback;
     }
 
     const identifyUser = data.currentUser.id;

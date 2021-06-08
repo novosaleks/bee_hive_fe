@@ -4,7 +4,7 @@ import { ImgGrid } from './album-image-grid.style';
 import { StyledText } from '../../common/style';
 
 const AlbumImageGrid = ({ setSelectedImg, setSelectedImgId, images = [] }) => {
-    const handelClick = (url, id) => {
+    const handleClick = (url, id) => {
         setSelectedImg(url);
         setSelectedImgId(id);
     };
@@ -15,7 +15,7 @@ const AlbumImageGrid = ({ setSelectedImg, setSelectedImgId, images = [] }) => {
                 key={image.id}
                 layout
                 whileHover={{ opacity: 1 }}
-                onClick={() => handelClick(image.url, image.id)}>
+                onClick={() => handleClick(image.url, image.id)}>
                 <motion.img
                     src={image.url}
                     alt='uploaded pic'

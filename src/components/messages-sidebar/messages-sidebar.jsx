@@ -18,13 +18,13 @@ const MessagesSidebar = ({ conversationOpen, handleClick }) => {
     };
 
     const handleClickConversation = contactId => {
-        //all user with whome we already have a conversation
+        //all user with whose we already have a conversation
         const existingRecipientsId = [];
         conversations.forEach(conversation =>
             existingRecipientsId.push(conversation.recipient.id)
         );
 
-        //create conversation just if we do not have exicting conversation with this user yet
+        //create conversation just if we do not have existing conversation with this user yet
         if (!existingRecipientsId.includes(contactId)) {
             createConversation(contactId);
         }
@@ -43,7 +43,7 @@ const MessagesSidebar = ({ conversationOpen, handleClick }) => {
 
             <MessagesConversations smallBlock handleClick={handleClick} />
 
-            {/* modal for choosing with which avaliable contacts user whant to start a chat with */}
+            {/* modal for choosing with which available contacts user want to start a chat with */}
 
             {modalOpen && (
                 <SearchModal

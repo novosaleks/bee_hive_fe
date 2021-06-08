@@ -11,7 +11,7 @@ import { DivLine, StyledText, Button } from '../../common/style/index';
 import useQueriedData from '../../common/hooks/useQueriedData';
 
 const SideBarUserInfo = ({ user }) => {
-    const [userData, fallback] = useQueriedData(GET_CURRENT_USER);
+    const {data: userData, fallback} = useQueriedData(GET_CURRENT_USER);
     return (
         fallback || (
             <StyledSidebarDiv>

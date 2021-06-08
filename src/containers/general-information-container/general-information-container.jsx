@@ -9,7 +9,7 @@ import useQueriedData from '../../common/hooks/useQueriedData';
 const GeneralInformationContainer = () => {
     const [user, setUser] = useState(null);
     const [formFields, setFormFields] = useState(null);
-    const [data, fallback] = useQueriedData(GET_CURRENT_USER);
+    const { data, fallback } = useQueriedData(GET_CURRENT_USER);
 
     useEffect(() => {
         if (data) {

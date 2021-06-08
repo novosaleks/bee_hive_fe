@@ -1,7 +1,7 @@
 import { useQuery } from '@apollo/client';
 
 const useQueriedData = (action, options = {}) => {
-    const { loading, error, data } = useQuery(action, options);
+    const { loading, error, data, refetch } = useQuery(action, options);
 
     let fallback = null;
 
@@ -12,7 +12,7 @@ const useQueriedData = (action, options = {}) => {
         fallback = <div>{`Error: ${error.message}`}</div>;
     }
 
-    return [data, fallback];
+    return {data, fallback, refetch};
 };
 
 export default useQueriedData;

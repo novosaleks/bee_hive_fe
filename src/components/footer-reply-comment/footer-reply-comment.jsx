@@ -9,7 +9,7 @@ import { StyledText } from '../../common/style';
 import useQueriedData from '../../common/hooks/useQueriedData';
 
 const FooterReplyComment = ({ comment }) => {
-    const [data, fallback] = useQueriedData(GET_ALL_USERS);
+    const {data, fallback} = useQueriedData(GET_ALL_USERS);
 
     if (fallback) {
         return fallback;

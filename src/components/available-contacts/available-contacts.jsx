@@ -1,4 +1,3 @@
-import React from 'react';
 import SearchContact from '../search-contact';
 import { useContactContext } from '../../common/context/contactContext';
 

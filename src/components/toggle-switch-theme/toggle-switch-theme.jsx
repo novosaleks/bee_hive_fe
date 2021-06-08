@@ -5,7 +5,7 @@ import { Wrapper } from './toggle-switch-theme.style';
 import useQueriedData from '../../common/hooks/useQueriedData';
 
 const ToggleSwitchTheme = () => {
-    const [data, fallback] = useQueriedData(GET_ACTIVE_THEME);
+    const {data, fallback} = useQueriedData(GET_ACTIVE_THEME);
 
     if (fallback) {
         return fallback;

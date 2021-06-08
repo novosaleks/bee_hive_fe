@@ -6,21 +6,21 @@ import Title from '../title';
 
 import { formatDate } from '../../common/utils';
 
-import { DivLine, StyledDiv, StyledText } from '../../common/style/index';
+import { DivLine, StyledDiv } from '../../common/style/index';
 import { WallBodyDiv, UserPostBlock } from './wall.style';
 
-import { useQuery } from '@apollo/client';
 import { GET_WALL_POSTS_BY_USER_ID } from '../../graphql/post';
 
 import { UpdateWallProvider } from '../../common/context/updateWallContext';
+import useQueriedData from '../../common/hooks/useQueriedData';
 
 const Wall = ({ user }) => {
     const [posts, setPosts] = useState([]);
-    const { loading, error, data, refetch } = useQuery(
+    const { fallback, data, refetch } = useQueriedData(
         GET_WALL_POSTS_BY_USER_ID,
         {
             variables: { userId: user.id },
-        }
+        },
     );
 
     useEffect(() => {
@@ -33,8 +33,9 @@ const Wall = ({ user }) => {
         refetch();
     };
 
-    if (loading) return <div>Loading...</div>;
-    if (error) return <div>{`Error ${error.message}`}</div>;
+    if (fallback) {
+        return fallback;
+    }
 
     return (
         <UpdateWallProvider updateWall={updateWall}>
@@ -42,37 +43,36 @@ const Wall = ({ user }) => {
                 <Title>Wall</Title>
                 <WallBodyDiv>
                     <NewPostInput userId={user.id} />
-                    {posts &&
-                        posts.map((post, index, arr) => {
-                            const time =
-                                post.createdAt === post.updatedAt ? (
-                                    formatDate(post.createdAt)
-                                ) : (
-                                    <StyledText>
-                                        edited at {formatDate(post.updatedAt)}
-                                    </StyledText>
-                                );
-                            return (
-                                <UserPostBlock key={post.id}>
-                                    <UserNews
-                                        name={
-                                            post.author.firstName +
-                                            ' ' +
-                                            post.author.lastName
-                                        }
-                                        postId={post.id}
-                                        photo={post.author.avatar?.url}
-                                        authorId={post.author.id}
-                                        text={post.text}
-                                        date={time}
-                                        ratingColor={user.karma}
-                                        rateScore={user.karma}
-                                    />
-                                    {/* Don't render DivLine after the last post */}
-                                    {index !== arr.length - 1 && <DivLine />}
-                                </UserPostBlock>
+                    {posts.map((post, index, arr) => {
+                        const time =
+                            post.createdAt === post.updatedAt ? (
+                                formatDate(post.createdAt)
+                            ) : (
+                                <span>
+                                    edited at {formatDate(post.updatedAt)}
+                                </span>
                             );
-                        })}
+                        return (
+                            <UserPostBlock key={post.id}>
+                                <UserNews
+                                    name={
+                                        post.author.firstName +
+                                        ' ' +
+                                        post.author.lastName
+                                    }
+                                    postId={post.id}
+                                    photo={post.author.avatar?.url}
+                                    authorId={post.author.id}
+                                    text={post.text}
+                                    date={time}
+                                    ratingColor={user.karma}
+                                    rateScore={user.karma}
+                                />
+                                {/* Don't render DivLine after the last post */}
+                                {index !== arr.length - 1 && <DivLine />}
+                            </UserPostBlock>
+                        );
+                    })}
                 </WallBodyDiv>
             </StyledDiv>
         </UpdateWallProvider>

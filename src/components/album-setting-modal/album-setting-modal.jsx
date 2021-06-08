@@ -6,11 +6,11 @@ const AlbumSettingsModal = ({
     right,
     bottom,
     isOpen,
-    albomBlock,
+    albumBlock,
     settingModal,
     placeholderTitle,
     placeholderDescription,
-    handelClick,
+    handleClick,
     handleSubmit,
 }) => {
     //get current value from input/textarea
@@ -24,7 +24,7 @@ const AlbumSettingsModal = ({
     };
 
     return (
-        <DropDownAlbum {...{ right, bottom, isOpen, albomBlock, settingModal }}>
+        <DropDownAlbum {...{ right, bottom, isOpen, albumBlock, settingModal }}>
             <Input
                 type='text'
                 placeholder={placeholderTitle || 'Title for your album'}
@@ -36,7 +36,7 @@ const AlbumSettingsModal = ({
                 ref={textareaRef}
             />
             <ButtonsSubmitClose
-                handleClickClose={handelClick}
+                handleClickClose={handleClick}
                 handleClickSubmit={setEmptyValuesAfterSubmit}
                 settingModal={true}
             />
