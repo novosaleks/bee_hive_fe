@@ -10,10 +10,21 @@ export const getValidateMessage = validationType => {
     return validateOptions[validationType];
 };
 
-export const formatDate = date => {
+export const formatDate = (date, withoutMin) => {
     const d = new Date(date);
-    let time = `${addZero(d.getHours())}:${addZero(d.getMinutes())}`;
-    time += ` ${addZero(d.getDate())}.${addZero(d.getMonth() + 1)}`;
+
+    //get needed format of the date
+    const minAndSeconds = `${addZero(d.getHours())}:${addZero(d.getMinutes())}`;
+    const dayAndMonth = ` ${addZero(d.getDate())}.${addZero(d.getMonth() + 1)}`;
+
+    let time;
+
+    //add minutes and seconds when we need that
+    if (!withoutMin) {
+        time = minAndSeconds;
+    }
+
+    time ? (time += dayAndMonth) : (time = dayAndMonth);
     return `${time}.${d.getFullYear()}`;
 };
 
