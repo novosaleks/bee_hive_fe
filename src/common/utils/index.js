@@ -17,14 +17,9 @@ export const formatDate = (date, withoutMin) => {
     const minAndSeconds = `${addZero(d.getHours())}:${addZero(d.getMinutes())}`;
     const dayAndMonth = ` ${addZero(d.getDate())}.${addZero(d.getMonth() + 1)}`;
 
-    let time;
-
     //add minutes and seconds when we need that
-    if (!withoutMin) {
-        time = minAndSeconds;
-    }
+    let time = !withoutMin ? `${minAndSeconds}${dayAndMonth}` : dayAndMonth;
 
-    time ? (time += dayAndMonth) : (time = dayAndMonth);
     return `${time}.${d.getFullYear()}`;
 };
 
