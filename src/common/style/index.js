@@ -111,6 +111,7 @@ export const StyledLabel = styled.div`
     text-align: center;
     width: 80%;
     margin: 0 auto;
+    color: ${getValueFromTheme('textColor')};
     ${space};
 `;
 

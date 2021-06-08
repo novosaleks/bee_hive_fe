@@ -44,8 +44,6 @@ const Wall = ({ user }) => {
                     <NewPostInput userId={user.id} />
                     {posts &&
                         posts.map((post, index, arr) => {
-                            console.log(post);
-
                             const time =
                                 post.createdAt === post.updatedAt ? (
                                     formatDate(post.createdAt)
