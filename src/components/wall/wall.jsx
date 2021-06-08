@@ -65,6 +65,8 @@ const Wall = ({ user }) => {
                                         authorId={post.author.id}
                                         text={post.text}
                                         date={time}
+                                        ratingColor={user.karma}
+                                        rateScore={user.karma}
                                     />
                                     {/* Don't render DivLine after the last post */}
                                     {index !== arr.length - 1 && <DivLine />}

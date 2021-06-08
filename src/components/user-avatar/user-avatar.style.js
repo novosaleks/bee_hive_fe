@@ -1,6 +1,7 @@
 import styled, { css } from 'styled-components';
 import { media } from '../../common/style/index';
 import { getValueFromTheme } from '../../common/utils';
+import { RatingColor } from '../../common/utils/constants';
 import { layout } from 'styled-system';
 
 export const DivImgForUserAvatar = styled.div`
@@ -9,7 +10,11 @@ export const DivImgForUserAvatar = styled.div`
     ${layout};
     border-radius: 50%;
     border: 10px solid
-        ${props => props.rating || getValueFromTheme('primaryBgColorDiv')};
+        ${props => {
+            return getValueFromTheme(
+                RatingColor[Math.floor(props.ratingColor)]
+            );
+        }};
     background-color: ${getValueFromTheme('primaryBgColorDiv')};
     ${props =>
         props.photo &&

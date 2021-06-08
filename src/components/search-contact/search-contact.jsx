@@ -18,8 +18,8 @@ const SearchContact = ({
     return (
         <ContactsDiv onClick={handleClick}>
             <UserAvatar
-                rating={contact?.ratingColor || '#C53B0E'}
-                rateScore={contact?.rateScore || '1,5'}
+                ratingColor={contact?.karma || '0'}
+                rateScore={contact?.rateScore || '0'}
                 photo={contact?.avatar?.url}
                 width={70}
                 height={70}

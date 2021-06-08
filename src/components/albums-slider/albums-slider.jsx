@@ -118,7 +118,7 @@ const AlbumsSlider = ({ handleClick }) => {
     //         ],
     //     },
     // ];
-    console.log(albums?.length <= 2);
+
     return (
         <AlbomsBlock smallAlbum={albums?.length <= 2}>
             {albums?.length !== 0 ? (

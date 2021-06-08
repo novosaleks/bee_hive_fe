@@ -86,7 +86,7 @@ const PostFooter = ({ componentId, photoModal }) => {
     return (
         <NewCommentProvider value={updateComments}>
             <PostFooterMainBlock>
-                <RateBlock photoModal={photoModal} />
+                <RateBlock photoModal={photoModal} postId={componentId} />
 
                 {/* open/hide textarea for adding a comment */}
                 <img

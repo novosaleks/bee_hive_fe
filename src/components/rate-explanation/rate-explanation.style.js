@@ -16,6 +16,7 @@ export const ExplanationStyledDiv = styled(StyledDiv)`
     width: 155px;
     height: 155px;
     padding: 1%;
+    z-index: 4;
     position: absolute;
     left: ${props => props.hintLeft}px;
     top: ${props => props.hintBottom}px;

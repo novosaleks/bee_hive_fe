@@ -11,8 +11,8 @@ const ActionNotification = ({ notification, user }) => {
     return (
         <NotificationBlock>
             <UserAvatar
-                rating={user.ratingColor}
-                rateScore={user.rateScore}
+                ratingColor={user?.karma || '0'}
+                rateScore={user.rateScore || '0'}
                 photo={user.avatar?.url}
                 width={60}
                 height={60}

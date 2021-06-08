@@ -12,20 +12,19 @@ import useQueriedData from '../../common/hooks/useQueriedData';
 
 const SideBarUserInfo = ({ user }) => {
     const [userData, fallback] = useQueriedData(GET_CURRENT_USER);
-
     return (
         fallback || (
             <StyledSidebarDiv>
                 <UserAvatar
-                    rating={'#c53b0e'}
+                    ratingColor={user?.karma || '0'}
                     photo={user.avatar?.url}
-                    rateScore={'1,5'}
+                    rateScore={user?.karma || '0'}
                     width={[130, 190]}
                     height={[130, 190]}
                 />
                 <StyledText>{`${user.firstName} ${user.lastName}`}</StyledText>
                 <DivLine />
-                <StyledText color={'#5dac38'}>{'Drink coffee'}</StyledText>
+                <StyledText color={'#5dac38'}>{'Online'}</StyledText>
                 <DivLine />
                 <UserInfo user={user} />
                 {userData.currentUser.id !== user.id && (

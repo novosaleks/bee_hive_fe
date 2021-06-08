@@ -12,8 +12,8 @@ const SubscriptionUser = ({ user }) => {
             content='space-between'>
             <StyledDiv width='18%'>
                 <UserAvatar
-                    rating={user?.ratingColor || '#C53B0E'}
-                    rateScore={user?.rateScore || '1,5'}
+                    ratingColor={user?.karma || '0'}
+                    rateScore={user?.rateScore || '0'}
                     photo={user?.avatar?.url}
                     width={[70, 135]}
                     height={[70, 135]}

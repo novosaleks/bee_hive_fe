@@ -5,16 +5,19 @@ import hintImg from '../../assets/hintImg.svg';
 import { RateDiv, RatingHintImg } from './rate-block.style';
 import { StyledDiv } from '../../common/style/index';
 
-const RateBlock = ({ photoModal }) => {
+const RateBlock = ({ photoModal, postId }) => {
     const RatingBlockRef = useRef();
     const RatingHintRef = useRef();
     const [openState, setOpenState] = useState(false);
     const [bottomOfRatingBlock, setBottomOfRatingBlock] = useState(null);
     const [leftOfRatingBlock, setLeftOfRatingBlock] = useState(null);
+
+    //open/close rate explanation
     const handlerClick = () => {
         setOpenState(prevState => !prevState);
     };
 
+    //get top and left for elem with position absolute
     const scrollHandler = () => {
         setBottomOfRatingBlock(
             RatingBlockRef.current?.getBoundingClientRect().bottom +
@@ -41,7 +44,7 @@ const RateBlock = ({ photoModal }) => {
     return (
         <StyledDiv>
             <RateDiv direction='row' content='flex-start' ref={RatingBlockRef}>
-                <RatingSuns />
+                <RatingSuns postId={postId} />
                 <RatingHintImg
                     src={hintImg}
                     onClick={handlerClick}

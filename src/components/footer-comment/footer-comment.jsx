@@ -37,8 +37,8 @@ const FooterComment = ({
             photoModal={photoModal}
             className='comment-block'>
             <UserAvatar
-                rating={'#C53B0E'}
-                rateScore={'1,5'}
+                ratingColor={auth?.karma || '0'}
+                rateScore={auth?.karma || '0'}
                 photo={auth.avatar?.url}
                 width={smallBlock ? 70 : [70, 135]}
                 height={smallBlock ? 70 : [70, 135]}

@@ -11,7 +11,7 @@ const UserAvatarAndStatusOnline = ({
     return (
         <AvatarAndStatusDiv>
             <UserAvatar
-                rating={ratingColor || '#C53B0E'}
+                ratingColor={ratingColor}
                 rateScore={rateScore || '1,5'}
                 photo={photo}
                 width={[70, 135]}
