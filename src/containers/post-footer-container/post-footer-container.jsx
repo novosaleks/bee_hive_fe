@@ -1,6 +1,7 @@
-import { useState, useEffect } from 'react';
-import { useQuery } from '@apollo/client';
-import { GET_COMMENTS_BY_COMPONENT_ID } from '../../graphql/comment';
+import { useState } from 'react';
+//useEffect
+// import { useQuery } from '@apollo/client';
+// import { GET_COMMENTS_BY_COMPONENT_ID } from '../../graphql/comment';
 
 import FooterPostNewComment from '../../components/footer-post-new-comment';
 import RateBlock from '../../components/rate-block';

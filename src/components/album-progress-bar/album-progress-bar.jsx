@@ -1,8 +1,8 @@
-import { useEffect } from 'react';
-import { useMutation } from '@apollo/client';
+// import { useEffect } from 'react';
+// import { useMutation } from '@apollo/client';
 // import { ADD_PHOTO } from '../../graphql/photo-album';
 
-import { motion } from 'framer-motion';
+// import { motion } from 'framer-motion';
 
 const AlbumProgressBar = ({ file, setFile }) => {
     // const [addPhoto, { progress, url }] = useMutation(ADD_PHOTO);

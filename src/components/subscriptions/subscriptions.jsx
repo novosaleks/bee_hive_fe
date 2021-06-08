@@ -1,7 +1,6 @@
 import { useEffect, useState } from 'react';
 import useQueriedData from '../../common/hooks/useQueriedData';
 import { GET_SUBSCRIPTIONS_BY_USER_ID } from '../../graphql/user';
-import { GET_CURRENT_USER } from '../../graphql/user';
 
 import SubscriptionUser from '../subscription-user';
 import {
@@ -10,9 +9,7 @@ import {
     NotificationDiv,
 } from '../../common/style/index';
 
-const Subscription = ({ userId }) => {
-    const [userData, fallbackUserData] = useQueriedData(GET_CURRENT_USER);
-    const [currentUserId, setCurrentUserId] = useState(null);
+const Subscription = ({ userId, currentUserId }) => {
     const [subscription, setSubscription] = useState(null);
     const [data, fallback] = useQueriedData(GET_SUBSCRIPTIONS_BY_USER_ID, {
         variables: { userId: userId },
@@ -21,13 +18,11 @@ const Subscription = ({ userId }) => {
     useEffect(() => {
         if (data) {
             setSubscription(data.getSubscriptionsByUserId);
-        } else if (userData) {
-            setCurrentUserId(userData.currentUser.id);
         }
-    }, [data, userData]);
+    }, [data]);
 
-    if (fallback || fallbackUserData) {
-        return fallback || fallbackUserData;
+    if (fallback) {
+        return fallback;
     }
     return (
         <StyledDiv alignSelf='center'>

@@ -1,5 +1,5 @@
 import styled, { css } from 'styled-components';
-import { StyledDivPage, SearchContactsDiv } from '../../common/style';
+import { StyledDivPage } from '../../common/style';
 import { getValueFromTheme } from '../../common/utils';
 
 const CSS_Sidebar_Mobile = css`

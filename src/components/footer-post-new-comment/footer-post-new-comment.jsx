@@ -33,7 +33,10 @@ const FooterPostNewComment = ({
         if (data) {
             const success = data.addComment;
             if (success) {
-                notify({text: 'Success! The new comment has been added!', type: 'success'});
+                notify({
+                    text: 'Success! The new comment has been added!',
+                    type: 'success',
+                });
                 textareaRef.current.value = '';
                 updateComments();
             }

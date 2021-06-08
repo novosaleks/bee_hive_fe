@@ -3,27 +3,6 @@ import following from '../../assets/following.svg';
 import messages from '../../assets/messages.svg';
 import notifications from '../../assets/notifications.svg';
 
-//EXAMPLE OF THE DATA (DO NOT NEED IN REAL PROJECT)
-//INSTEAD HERE WE WIIL USE QUERY FROM GRAPHQL
-const subscriptions = {
-    followers: [
-        {
-            id: '1',
-            isFollow: false,
-        },
-        {
-            id: '2',
-            isFollow: true,
-        },
-    ],
-    following: [
-        {
-            id: '2',
-            isFollow: true,
-        },
-    ],
-};
-
 export const tabs = {
     subscriptionPage: [
         {
@@ -45,14 +24,12 @@ export const tabs = {
             title: 'Messages',
             alt: 'Messages icon',
             label: 'messages',
-            //  data: ,
         },
         {
             img: notifications,
             title: 'Notifications',
             alt: 'Notifications icon',
             label: 'notifications',
-            //  data: ,
         },
     ],
 };

@@ -28,7 +28,10 @@ const SubscriptionScreen = () => {
                             {...{ activeTab, clickHandler }}
                             tabs={tabs.subscriptionPage}
                         />
-                        <FollowUsersBlock {...{ activeTab }} />
+                        <FollowUsersBlock
+                            {...{ activeTab }}
+                            currentUserId={userData.currentUser.id}
+                        />
                     </ContactProvider>
                 </StyledDivPage>
             </StyledPageWrapper>

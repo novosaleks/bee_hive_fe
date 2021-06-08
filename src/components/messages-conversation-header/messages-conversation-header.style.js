@@ -1,6 +1,5 @@
-import styled, { css } from 'styled-components';
-import { StyledDiv, Button } from '../../common/style';
-import { getValueFromTheme } from '../../common/utils';
+import styled from 'styled-components';
+import { StyledDiv } from '../../common/style';
 
 export const MessagesContactHeader = styled(StyledDiv)`
     flex-direction: row;

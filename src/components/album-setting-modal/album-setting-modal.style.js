@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { DropDown, SubmitButton } from '../../common/style/index';
+import { DropDown } from '../../common/style/index';
 import { getValueFromTheme } from '../../common/utils';
 
 export const DropDownAlbum = styled(DropDown)`

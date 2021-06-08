@@ -1,4 +1,4 @@
-import styled, { css } from 'styled-components';
+import styled from 'styled-components';
 import { getValueFromTheme } from '../../common/utils';
 
 export const ImgModal = styled.div`
@@ -25,7 +25,7 @@ export const ImgModal = styled.div`
     }
 `;
 
-export const AlbumPhotomodal__CSS = styled.div`
+export const AlbumPhotomodalCSS = styled.div`
     .comment-block {
         @media (max-width: 575px) {
             width: 100%;

@@ -5,7 +5,7 @@ import useQueriedData from '../../common/hooks/useQueriedData';
 import { useMutation } from '@apollo/client';
 import { REMOVE_PHOTO_ALBUM } from '../../graphql/photo-album';
 
-import albumContext from '../../common/context/albumContext';
+// import albumContext from '../../common/context/albumContext';
 
 import deleteIcon from '../../assets/deleteIcon.svg';
 

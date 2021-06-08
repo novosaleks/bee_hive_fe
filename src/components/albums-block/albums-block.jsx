@@ -2,7 +2,7 @@ import { useState, useEffect, useRef } from 'react';
 import { useMutation } from '@apollo/client';
 import { CREATE_PHOTO_ALBUM } from '../../graphql/photo-album';
 
-import albumContext from '../../common/context/albumContext';
+// import albumContext from '../../common/context/albumContext';
 import PhotoAlbum from '../photo-album';
 
 import add from '../../assets/add.svg';
@@ -26,11 +26,11 @@ const AlbumsBlock = () => {
         if (data) {
             const response = data.createPhotoAlbum;
             if (response.success) {
-                notify({text: response.message, type: 'success'})
+                notify({ text: response.message, type: 'success' });
                 setIsOpenModal(false);
                 // updateAlbums();
             } else {
-                notify({text: response.message, type: 'fail'})
+                notify({ text: response.message, type: 'fail' });
             }
         }
     }, [data]);
@@ -71,7 +71,7 @@ const AlbumsBlock = () => {
                 <StyledText> Photo albums</StyledText>
                 <img
                     src={add}
-                    alt='add new photo album icon'
+                    alt='add new album icon'
                     onClick={handelClick}
                     ref={HeaderRef}
                 />

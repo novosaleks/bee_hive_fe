@@ -20,7 +20,10 @@ const DeleteEditComment = ({ commentId, handleEdit, authorId }) => {
         if (data) {
             const success = data.removeComment;
             if (success) {
-                notify({ text: 'Success! The comment has been deleted!', type: 'success' });
+                notify({
+                    text: 'Success! The comment has been deleted!',
+                    type: 'success',
+                });
                 updateComments();
             }
         }

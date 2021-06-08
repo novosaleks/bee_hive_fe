@@ -20,10 +20,10 @@ const DeleteEditPost = ({ postId, authorId, handleEdit }) => {
         if (data) {
             const response = data.removePost;
             if (response) {
-                notify({text: response.message, type: 'success'})
+                notify({ text: response.message, type: 'success' });
                 updateWall();
             } else {
-                notify({text: response.message, type: 'fail'})
+                notify({ text: response.message, type: 'fail' });
             }
         }
     }, [data]);

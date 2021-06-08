@@ -17,7 +17,10 @@ const CommentEdit = ({ commentId, text, handleEdit }) => {
         if (data) {
             const success = data.updateComment;
             if (success) {
-                notify({ text: 'Success! The comment has been edited!', type: 'success' });
+                notify({
+                    text: 'Success! The comment has been edited!',
+                    type: 'success',
+                });
                 handleEdit(false);
                 updateComments();
             }
