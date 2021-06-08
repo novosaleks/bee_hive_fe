@@ -6,6 +6,7 @@ export const GET_ALL_USERS = gql`
             id
             firstName
             lastName
+            karma
             email
             password
         }
@@ -81,6 +82,7 @@ export const GET_CURRENT_USER = gql`
             id
             firstName
             lastName
+            karma
             email
             password
             occupation
@@ -102,6 +104,7 @@ export const GET_USER_BY_ID = gql`
             id
             firstName
             lastName
+            karma
             occupation
             location
             birthDate
