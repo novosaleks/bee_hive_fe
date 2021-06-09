@@ -131,6 +131,7 @@ export const GET_SUBSCRIBERS_BY_USER_ID = gql`
             id
             firstName
             lastName
+            karma
             occupation
             location
             birthDate
@@ -145,6 +146,7 @@ export const GET_SUBSCRIPTIONS_BY_USER_ID = gql`
             id
             firstName
             lastName
+            karma
             occupation
             location
             birthDate
@@ -164,6 +166,7 @@ export const GET_NEWS_BY_USER_ID = gql`
                 id
                 firstName
                 lastName
+                karma
                 avatar {
                     url
                 }
