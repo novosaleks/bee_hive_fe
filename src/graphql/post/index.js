@@ -34,6 +34,19 @@ export const GET_POSTS_BY_AUTHOR_ID = gql`
             text
             createdAt
             updatedAt
+            veryGood
+            good
+            neutral
+            bad
+            veryBad
+            author {
+                id
+                firstName
+                lastName
+                avatar {
+                    url
+                }
+            }
         }
     }
 `;
@@ -45,6 +58,11 @@ export const GET_WALL_POSTS_BY_USER_ID = gql`
             text
             createdAt
             updatedAt
+            veryGood
+            good
+            neutral
+            bad
+            veryBad
             author {
                 id
                 firstName
