@@ -69,7 +69,7 @@ const RatingSuns = ({ postId }) => {
     return (
         <StyledDiv direction='row' content='space-between' width='130px'>
             {suns.map((sun, index) => (
-                <StyledImg
+                <StyledImg role='button' tabIndex='0'
                     key={sun.alt}
                     className={toggleActiveStyles(index)}
                     onClick={() => {

@@ -13,7 +13,7 @@ const CSS__PHOTO_MODAL = css`
 
 export const ExplanationStyledDiv = styled(StyledDiv)`
     background-color: ${getValueFromTheme('primaryBgColor')};
-    width: 155px;
+    width: 170px;
     height: 155px;
     padding: 1%;
     z-index: 4;

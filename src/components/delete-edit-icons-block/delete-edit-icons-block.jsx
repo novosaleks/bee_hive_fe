@@ -25,7 +25,7 @@ const DeleteEditIconsBlock = ({ editComponent, deleteComponent, authorId }) => {
                 <DeleteEditDiv className='delete-edit-icons'>
                     {/* if it's our post show edit post button */}
                     {currentUserId === authorId && (
-                        <StyledImg
+                        <StyledImg role='button' tabIndex='1'
                             src={editIcon}
                             alt='edit post'
                             onClick={editComponent}
@@ -35,7 +35,7 @@ const DeleteEditIconsBlock = ({ editComponent, deleteComponent, authorId }) => {
                     {/* if it's our post or our wall show delete post button */}
                     {(currentUserId === authorId ||
                         currentUserId === profileId) && (
-                        <StyledImg
+                        <StyledImg role='button' tabIndex='1'
                             src={deleteIcon}
                             alt='delete post'
                             onClick={deleteComponent}
