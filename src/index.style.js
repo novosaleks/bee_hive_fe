@@ -1,6 +1,10 @@
 import { createGlobalStyle } from 'styled-components';
 
 const GlobalStyles = createGlobalStyle`
+  body{
+      font-family: 'Source Code Pro', monospace;
+  }
+
   input[type=date]::-webkit-inner-spin-button {
     -webkit-appearance: none;
     display: none;
@@ -10,9 +14,12 @@ const GlobalStyles = createGlobalStyle`
     -webkit-appearance: none;
     display: none;
   }
-  //*{
-  //  transition: 1s;
-  //}
+  /* *{
+  transition: 1s;
+  } */
+
+  
+
    &::-webkit-scrollbar {
         width: 3px;
         background-color: #f9f9fd;
