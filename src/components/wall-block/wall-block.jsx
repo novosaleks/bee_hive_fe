@@ -6,10 +6,11 @@ import { formatDate } from '../../common/utils';
 import UsersNews from '../../containers/user-news-container';
 import Title from '../title';
 
+import { UpdateWallProvider } from '../../common/context/updateWallContext';
 import { DivLine, StyledDiv } from '../../common/style/index';
 
 const WallBlock = ({ currentUserId }) => {
-    const { data, fallback } = useQueriedData(GET_NEWS_BY_USER_ID, {
+    const { data, fallback, refetch } = useQueriedData(GET_NEWS_BY_USER_ID, {
         variables: { userId: currentUserId },
     });
     const [news, setNews] = useState(null);
@@ -19,42 +20,46 @@ const WallBlock = ({ currentUserId }) => {
         }
     }, [data]);
 
-    console.log(news);
+    const updateWall = () => {
+        refetch();
+    };
+
     return (
         fallback || (
-            <StyledDiv marginTop='5%'>
-                <Title>Wall</Title>
-                {news?.map((newsItem, index, arr) => {
-                    const time =
-                        newsItem.createdAt === newsItem.updatedAt ? (
-                            formatDate(newsItem.createdAt)
-                        ) : (
-                            <span>
-                                edited at {formatDate(newsItem.updatedAt)}
-                            </span>
+            <UpdateWallProvider updateWall={updateWall}>
+                <StyledDiv marginTop='5%'>
+                    <Title>Wall</Title>
+                    {news?.map((newsItem, index, arr) => {
+                        const time =
+                            newsItem.createdAt === newsItem.updatedAt ? (
+                                formatDate(newsItem.createdAt)
+                            ) : (
+                                <span>
+                                    edited at {formatDate(newsItem.updatedAt)}
+                                </span>
+                            );
+                        return (
+                            <StyledDiv key={newsItem.id}>
+                                <UsersNews
+                                    name={
+                                        newsItem.author.firstName +
+                                        ' ' +
+                                        newsItem.author.lastName
+                                    }
+                                    postId={newsItem.id}
+                                    post={newsItem}
+                                    rateScore={newsItem.author.karma || '0'}
+                                    photo={newsItem.author.avatar?.url}
+                                    authorId={newsItem.author.id}
+                                    text={newsItem.text}
+                                    date={time}
+                                />
+                                {index !== arr.length - 1 && <DivLine />}
+                            </StyledDiv>
                         );
-                    return (
-                        <StyledDiv key={newsItem.id}>
-                            <UsersNews
-                                name={
-                                    newsItem.author.firstName +
-                                    ' ' +
-                                    newsItem.author.lastName
-                                }
-                                postId={newsItem.id}
-                                post={newsItem}
-                                ratingColor={newsItem.author.karma || '0'}
-                                rateScore={newsItem.author.karma || '0'}
-                                photo={newsItem.author.avatar?.url}
-                                authorId={newsItem.author.id}
-                                text={newsItem.text}
-                                date={time}
-                            />
-                            {index !== arr.length - 1 && <DivLine />}
-                        </StyledDiv>
-                    );
-                })}
-            </StyledDiv>
+                    })}
+                </StyledDiv>
+            </UpdateWallProvider>
         )
     );
 };

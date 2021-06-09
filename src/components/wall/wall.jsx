@@ -36,7 +36,6 @@ const Wall = ({ user }) => {
     if (fallback) {
         return fallback;
     }
-    console.log(posts);
     return (
         <UpdateWallProvider updateWall={updateWall}>
             <StyledDiv marginTop='5%'>
@@ -66,7 +65,6 @@ const Wall = ({ user }) => {
                                     authorId={post.author.id}
                                     text={post.text}
                                     date={time}
-                                    ratingColor={user.karma}
                                     rateScore={user.karma}
                                 />
                                 {/* Don't render DivLine after the last post */}

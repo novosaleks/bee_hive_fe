@@ -13,7 +13,7 @@ const FooterComment = ({
     componentId,
     photoModal,
 }) => {
-    const {data, fallback} = useQueriedData(GET_ALL_USERS);
+    const { data, fallback } = useQueriedData(GET_ALL_USERS);
 
     if (fallback) {
         return fallback;
@@ -37,7 +37,6 @@ const FooterComment = ({
             photoModal={photoModal}
             className='comment-block'>
             <UserAvatar
-                ratingColor={auth?.karma || '0'}
                 rateScore={auth?.karma || '0'}
                 photo={auth.avatar?.url}
                 width={smallBlock ? 70 : [70, 135]}

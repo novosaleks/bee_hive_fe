@@ -162,6 +162,11 @@ export const GET_NEWS_BY_USER_ID = gql`
             text
             createdAt
             updatedAt
+            veryGood
+            good
+            neutral
+            bad
+            veryBad
             author {
                 id
                 firstName

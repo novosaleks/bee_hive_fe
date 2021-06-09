@@ -5,7 +5,6 @@ import { StyledDiv } from '../../common/style/index';
 const UserNews = ({
     name,
     status,
-    ratingColor,
     statusColor,
     rateScore,
     photo,
@@ -25,7 +24,6 @@ const UserNews = ({
             <UserAvatarAndStatusOnline
                 {...{
                     status,
-                    ratingColor,
                     statusColor,
                     rateScore,
                     photo,

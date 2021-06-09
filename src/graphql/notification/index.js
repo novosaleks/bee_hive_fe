@@ -6,9 +6,9 @@ export const GET_ALL_NOTIFICATIONS = gql`
             photo
             firstName
             lastName
-            userRatingColor
+            userRatingScore
             userRateScore
-            ratingColor
+            rateScore
             ratingTextColor
             postText
         }

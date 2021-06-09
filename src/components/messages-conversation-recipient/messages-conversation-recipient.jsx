@@ -16,7 +16,6 @@ const MessagesConversationRecipient = ({ smallBlock }) => {
     return (
         <ContactsDiv>
             <UserAvatar
-                ratingColor={contact?.karma}
                 rateScore={contact?.karma || '0'}
                 photo={contact?.avatar?.url}
                 width={70}

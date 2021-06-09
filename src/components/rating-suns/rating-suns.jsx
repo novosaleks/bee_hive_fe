@@ -1,15 +1,10 @@
 import { useState } from 'react';
 import { useEffect } from 'react';
 import { useMutation } from '@apollo/client';
+import { useUpdateWall } from '../../common/context/updateWallContext';
 import { SET_OPINION_BY_POST_ID } from '../../graphql/opinion';
-import { OPINIONS } from '../../common/utils/constants';
+import { OPINIONS, suns } from '../../common/utils/constants';
 import { useNotificationService } from '../../common/context/notificationContext';
-
-import reallyBad from '../../assets/sun1.svg';
-import bad from '../../assets/sun2.svg';
-import neutral from '../../assets/sun3.svg';
-import good from '../../assets/sun4.svg';
-import reallyGood from '../../assets/sun5.svg';
 
 import { StyledDiv } from '../../common/style/index';
 import { StyledImg } from './rating-suns.style';
@@ -18,13 +13,8 @@ const RatingSuns = ({ postId, post }) => {
     const [setOpinionByPostId, { data }] = useMutation(SET_OPINION_BY_POST_ID);
     const notify = useNotificationService();
     const [sunState, setActiveSunState] = useState(null);
-    const suns = [
-        { src: reallyBad, alt: 'really bad post', name: 'veryBad' },
-        { src: bad, alt: 'just bad post', name: 'bad' },
-        { src: neutral, alt: 'neutral post', name: 'neutral' },
-        { src: good, alt: 'just good post', name: 'good' },
-        { src: reallyGood, alt: 'really good post', name: 'veryGood' },
-    ];
+    const updateWall = useUpdateWall();
+
     useEffect(() => {
         if (data) {
             const response = data.setOpinionByPostId;
@@ -62,11 +52,12 @@ const RatingSuns = ({ postId, post }) => {
     const handleClick = index => {
         toggleActive(index);
         setUserOpinion(index);
+        updateWall();
     };
 
     return (
         <StyledDiv direction='row' content='space-between' width='130px'>
-            {suns.map((sun, index) => (
+            {suns?.map((sun, index) => (
                 <StyledImg
                     role='button'
                     tabIndex='0'

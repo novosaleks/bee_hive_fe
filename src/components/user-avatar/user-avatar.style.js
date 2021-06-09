@@ -10,11 +10,7 @@ export const DivImgForUserAvatar = styled.div`
     ${layout};
     border-radius: 50%;
     border: 10px solid
-        ${props => {
-            return getValueFromTheme(
-                RatingColor[Math.floor(props.ratingColor)]
-            );
-        }};
+        ${props => getValueFromTheme(RatingColor[Math.floor(props.rateScore)])};
     background-color: ${getValueFromTheme('primaryBgColorDiv')};
     ${props =>
         props.photo &&

@@ -11,12 +11,11 @@ import { DivLine, StyledText, Button } from '../../common/style/index';
 import useQueriedData from '../../common/hooks/useQueriedData';
 
 const SideBarUserInfo = ({ user }) => {
-    const {data: userData, fallback} = useQueriedData(GET_CURRENT_USER);
+    const { data: userData, fallback } = useQueriedData(GET_CURRENT_USER);
     return (
         fallback || (
             <StyledSidebarDiv>
                 <UserAvatar
-                    ratingColor={user?.karma || '0'}
                     photo={user.avatar?.url}
                     rateScore={user?.karma || '0'}
                     width={[130, 190]}

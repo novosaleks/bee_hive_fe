@@ -32,7 +32,6 @@ const MessagesConversations = ({ smallBlock, handleClick }) => {
                                 content='flex-start'
                                 align='flex-start'>
                                 <UserAvatar
-                                    ratingColor={contact?.karma}
                                     rateScore={contact?.karma || '0'}
                                     photo={contact?.avatar?.url}
                                     width={smallBlock ? 70 : [70, 135]}

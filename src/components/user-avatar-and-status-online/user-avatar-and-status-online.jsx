@@ -3,7 +3,6 @@ import { AvatarAndStatusDiv } from './user-avatar-and-status-online.style';
 import { StyledText } from '../../common/style/index';
 const UserAvatarAndStatusOnline = ({
     status,
-    ratingColor,
     statusColor,
     rateScore,
     photo,
@@ -11,8 +10,7 @@ const UserAvatarAndStatusOnline = ({
     return (
         <AvatarAndStatusDiv>
             <UserAvatar
-                ratingColor={ratingColor}
-                rateScore={rateScore || '1,5'}
+                rateScore={rateScore || '0'}
                 photo={photo}
                 width={[70, 135]}
                 height={[70, 135]}
