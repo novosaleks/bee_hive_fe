@@ -14,16 +14,16 @@ import reallyGood from '../../assets/sun5.svg';
 import { StyledDiv } from '../../common/style/index';
 import { StyledImg } from './rating-suns.style';
 
-const RatingSuns = ({ postId }) => {
+const RatingSuns = ({ postId, post }) => {
     const [setOpinionByPostId, { data }] = useMutation(SET_OPINION_BY_POST_ID);
     const notify = useNotificationService();
     const [sunState, setActiveSunState] = useState(null);
     const suns = [
-        { src: reallyBad, alt: 'really bad post' },
-        { src: bad, alt: 'just bad post' },
-        { src: neutral, alt: 'neutral post' },
-        { src: good, alt: 'just good post' },
-        { src: reallyGood, alt: 'really good post' },
+        { src: reallyBad, alt: 'really bad post', name: 'veryBad' },
+        { src: bad, alt: 'just bad post', name: 'bad' },
+        { src: neutral, alt: 'neutral post', name: 'neutral' },
+        { src: good, alt: 'just good post', name: 'good' },
+        { src: reallyGood, alt: 'really good post', name: 'veryGood' },
     ];
     useEffect(() => {
         if (data) {
@@ -36,18 +36,16 @@ const RatingSuns = ({ postId }) => {
         }
     }, [data]);
 
+    useEffect(() => {
+        const value = Object.values(post).find(value => value === 1);
+        const key = Object.keys(post).find(key => post[key] === value);
+        setActiveSunState(key || null);
+    }, []);
+
     const toggleActive = index => {
         setActiveSunState(prevState => {
-            return prevState?.src !== suns[index].src ? suns[index] : null;
+            return prevState !== suns[index].name ? suns[index].name : null;
         });
-    };
-
-    const toggleActiveStyles = index => {
-        if (suns[index].src === sunState?.src) {
-            return 'active';
-        }
-
-        return null;
     };
 
     const setUserOpinion = async index => {
@@ -69,9 +67,11 @@ const RatingSuns = ({ postId }) => {
     return (
         <StyledDiv direction='row' content='space-between' width='130px'>
             {suns.map((sun, index) => (
-                <StyledImg role='button' tabIndex='0'
+                <StyledImg
+                    role='button'
+                    tabIndex='0'
                     key={sun.alt}
-                    className={toggleActiveStyles(index)}
+                    className={sunState === sun.name ? 'active' : null}
                     onClick={() => {
                         handleClick(index);
                     }}

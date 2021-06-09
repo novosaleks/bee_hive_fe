@@ -6,7 +6,7 @@ import DeleteEditPost from '../delete-edit-post';
 import { RightBarDiv } from './user-news-right-bar.style';
 import PostFooter from '../../containers/post-footer-container';
 
-const UserNewsRightBar = ({ name, date, postId, authorId, text }) => {
+const UserNewsRightBar = ({ name, date, postId, authorId, text, post }) => {
     const [edit, setEdit] = useState(false);
 
     const handleEdit = edit => {
@@ -26,7 +26,7 @@ const UserNewsRightBar = ({ name, date, postId, authorId, text }) => {
             ) : (
                 <PostText text={text} />
             )}
-            <PostFooter componentId={postId} />
+            <PostFooter componentId={postId} post={post} />
         </RightBarDiv>
     );
 };

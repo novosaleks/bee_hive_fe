@@ -5,7 +5,7 @@ import hintImg from '../../assets/hintImg.svg';
 import { RateDiv, RatingHintImg } from './rate-block.style';
 import { StyledDiv } from '../../common/style/index';
 
-const RateBlock = ({ photoModal, postId }) => {
+const RateBlock = ({ photoModal, postId, post }) => {
     const RatingBlockRef = useRef();
     const RatingHintRef = useRef();
     const [openState, setOpenState] = useState(false);
@@ -44,7 +44,7 @@ const RateBlock = ({ photoModal, postId }) => {
     return (
         <StyledDiv>
             <RateDiv direction='row' content='flex-start' ref={RatingBlockRef}>
-                <RatingSuns postId={postId} />
+                <RatingSuns postId={postId} post={post} />
                 <RatingHintImg
                     src={hintImg}
                     onClick={handlerClick}

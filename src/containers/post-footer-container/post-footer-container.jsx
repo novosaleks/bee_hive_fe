@@ -12,7 +12,7 @@ import {
     CommentsPreview,
 } from './post-footer-container.style';
 
-const PostFooter = ({ componentId, photoModal }) => {
+const PostFooter = ({ componentId, photoModal, post }) => {
     const [openCommentsState, setOpenCommentsState] = useState(false);
     const [openNewCommentState, setOpenNewCommentState] = useState(false);
     const handlerClickComments = () => {
@@ -22,11 +22,9 @@ const PostFooter = ({ componentId, photoModal }) => {
         setOpenNewCommentState(prevState => !prevState);
     };
 
-
     const updateComments = () => {
         //  refetch();
     };
-
 
     //DATA EXAMPLE
     const commentsContent = [
@@ -71,7 +69,11 @@ const PostFooter = ({ componentId, photoModal }) => {
     return (
         <NewCommentProvider value={updateComments}>
             <PostFooterMainBlock>
-                <RateBlock photoModal={photoModal} postId={componentId} />
+                <RateBlock
+                    photoModal={photoModal}
+                    postId={componentId}
+                    post={post}
+                />
 
                 {/* open/hide textarea for adding a comment */}
                 <img

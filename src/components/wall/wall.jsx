@@ -20,7 +20,7 @@ const Wall = ({ user }) => {
         GET_WALL_POSTS_BY_USER_ID,
         {
             variables: { userId: user.id },
-        },
+        }
     );
 
     useEffect(() => {
@@ -36,7 +36,7 @@ const Wall = ({ user }) => {
     if (fallback) {
         return fallback;
     }
-
+    console.log(posts);
     return (
         <UpdateWallProvider updateWall={updateWall}>
             <StyledDiv marginTop='5%'>
@@ -61,6 +61,7 @@ const Wall = ({ user }) => {
                                         post.author.lastName
                                     }
                                     postId={post.id}
+                                    post={post}
                                     photo={post.author.avatar?.url}
                                     authorId={post.author.id}
                                     text={post.text}

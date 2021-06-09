@@ -19,6 +19,7 @@ const WallBlock = ({ currentUserId }) => {
         }
     }, [data]);
 
+    console.log(news);
     return (
         fallback || (
             <StyledDiv marginTop='5%'>
@@ -28,10 +29,12 @@ const WallBlock = ({ currentUserId }) => {
                         newsItem.createdAt === newsItem.updatedAt ? (
                             formatDate(newsItem.createdAt)
                         ) : (
-                            <span>edited at {formatDate(newsItem.updatedAt)}</span>
+                            <span>
+                                edited at {formatDate(newsItem.updatedAt)}
+                            </span>
                         );
                     return (
-                        <>
+                        <StyledDiv key={newsItem.id}>
                             <UsersNews
                                 name={
                                     newsItem.author.firstName +
@@ -39,13 +42,16 @@ const WallBlock = ({ currentUserId }) => {
                                     newsItem.author.lastName
                                 }
                                 postId={newsItem.id}
+                                post={newsItem}
+                                ratingColor={newsItem.author.karma || '0'}
+                                rateScore={newsItem.author.karma || '0'}
                                 photo={newsItem.author.avatar?.url}
                                 authorId={newsItem.author.id}
                                 text={newsItem.text}
                                 date={time}
                             />
                             {index !== arr.length - 1 && <DivLine />}
-                        </>
+                        </StyledDiv>
                     );
                 })}
             </StyledDiv>
