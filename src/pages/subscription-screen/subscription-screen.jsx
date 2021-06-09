@@ -12,7 +12,7 @@ import { tabs } from '../../common/tabs';
 import { StyledPageWrapper, StyledDivPage } from '../../common/style/index';
 
 const SubscriptionScreen = () => {
-    const [userData, fallback] = useQueriedData(GET_CURRENT_USER);
+    const { data: userData, fallback } = useQueriedData(GET_CURRENT_USER);
     const [activeTab, setActiveTab] = useState(tabs.subscriptionPage[0].label);
     const clickHandler = label => () => {
         setActiveTab(label);

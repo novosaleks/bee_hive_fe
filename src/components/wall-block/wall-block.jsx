@@ -6,9 +6,10 @@ import { formatDate } from '../../common/utils';
 import UsersNews from '../../containers/user-news-container';
 import Title from '../title';
 
-import { DivLine, StyledDiv, StyledText } from '../../common/style/index';
+import { DivLine, StyledDiv } from '../../common/style/index';
+
 const WallBlock = ({ currentUserId }) => {
-    const [data, fallback] = useQueriedData(GET_NEWS_BY_USER_ID, {
+    const { data, fallback } = useQueriedData(GET_NEWS_BY_USER_ID, {
         variables: { userId: currentUserId },
     });
     const [news, setNews] = useState(null);
@@ -17,6 +18,7 @@ const WallBlock = ({ currentUserId }) => {
             setNews(data.getNewsByUserId);
         }
     }, [data]);
+
     return (
         fallback || (
             <StyledDiv marginTop='5%'>
@@ -26,9 +28,7 @@ const WallBlock = ({ currentUserId }) => {
                         newsItem.createdAt === newsItem.updatedAt ? (
                             formatDate(newsItem.createdAt)
                         ) : (
-                            <StyledText>
-                                edited at {formatDate(newsItem.updatedAt)}
-                            </StyledText>
+                            <span>edited at {formatDate(newsItem.updatedAt)}</span>
                         );
                     return (
                         <>

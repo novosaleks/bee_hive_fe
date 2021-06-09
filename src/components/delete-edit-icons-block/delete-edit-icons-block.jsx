@@ -10,7 +10,7 @@ import { DeleteEditDiv, StyledImg } from './delete-edit-icons-block.style';
 import useQueriedData from '../../common/hooks/useQueriedData';
 
 const DeleteEditIconsBlock = ({ editComponent, deleteComponent, authorId }) => {
-    const [userData, fallback] = useQueriedData(GET_CURRENT_USER);
+    const {data: userData, fallback} = useQueriedData(GET_CURRENT_USER);
     const [currentUserId, setCurrentUserId] = useState(null);
     const { userId: profileId } = useParams();
     useEffect(() => {

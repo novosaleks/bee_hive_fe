@@ -12,7 +12,7 @@ import { useNotificationService } from '../../common/context/notificationContext
 const FollowButton = ({ userId, currentUserId }) => {
     const [subscribed, setSubscribed] = useState(null);
     const [subscribeToUser, { data }] = useMutation(SUBSCRIBE_TO_USER);
-    const [subscriptionData, fallback] = useQueriedData(
+    const {data: subscriptionData, fallback} = useQueriedData(
         GET_SUBSCRIBERS_BY_USER_ID,
         {
             variables: { userId: userId },

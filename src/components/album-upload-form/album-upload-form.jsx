@@ -1,20 +1,34 @@
 import { useState } from 'react';
-import AlbumProgressBar from '../album-progress-bar';
 
 import { Form, Label, Output, Error } from './album-upload-form.style';
+import { useMutation } from '@apollo/client';
+import { UPLOAD_PHOTO } from '../../graphql/photo';
 
 const AlbumUploadForm = ({ albumId }) => {
     const [file, setFile] = useState(null);
     const [error, setError] = useState(null);
 
+    const [uploadPhoto] = useMutation(UPLOAD_PHOTO, {
+        onCompleted: () => console.log('on load photo'),
+    });
+
     const types = ['image/png', 'image/jpeg'];
 
-    const handleChange = e => {
+    const handleChange = async e => {
         let selected = e.target.files[0];
 
         if (selected && types.includes(selected.type)) {
             setFile(selected);
             setError('');
+
+            await uploadPhoto({
+                variables: {
+                    photoAlbumId: albumId,
+                    file: selected,
+                    isAvatar: false,
+                },
+            });
+
         } else {
             setFile(null);
             setError('Please select an image file (png or jpg)');
@@ -30,13 +44,6 @@ const AlbumUploadForm = ({ albumId }) => {
             <Output>
                 {error && <Error>{error}</Error>}
                 {file && <div>{file.name}</div>}
-                {file && (
-                    <AlbumProgressBar
-                        file={file}
-                        setFile={setFile}
-                        albumId={albumId}
-                    />
-                )}
             </Output>
         </Form>
     );

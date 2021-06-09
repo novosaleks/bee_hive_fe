@@ -11,7 +11,7 @@ export const OPINIONS = {
 export const RatingColor = {
     0: 'reallyBadColor',
     1: 'badColor',
-    2: 'nautralColor',
+    2: 'neutralColor',
     3: 'goodColor',
     4: 'reallyGoodColor',
 };

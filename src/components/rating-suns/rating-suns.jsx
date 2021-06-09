@@ -7,7 +7,7 @@ import { useNotificationService } from '../../common/context/notificationContext
 
 import reallyBad from '../../assets/sun1.svg';
 import bad from '../../assets/sun2.svg';
-import nautral from '../../assets/sun3.svg';
+import neutral from '../../assets/sun3.svg';
 import good from '../../assets/sun4.svg';
 import reallyGood from '../../assets/sun5.svg';
 
@@ -21,7 +21,7 @@ const RatingSuns = ({ postId }) => {
     const suns = [
         { src: reallyBad, alt: 'really bad post' },
         { src: bad, alt: 'just bad post' },
-        { src: nautral, alt: 'nautral post' },
+        { src: neutral, alt: 'neutral post' },
         { src: good, alt: 'just good post' },
         { src: reallyGood, alt: 'really good post' },
     ];
@@ -29,7 +29,6 @@ const RatingSuns = ({ postId }) => {
         if (data) {
             const response = data.setOpinionByPostId;
             if (response) {
-                console.log(response);
                 notify({ text: response.message, type: 'success' });
             } else {
                 notify({ text: response.message, type: 'fail' });
@@ -62,7 +61,7 @@ const RatingSuns = ({ postId }) => {
         });
     };
 
-    const handelClick = index => {
+    const handleClick = index => {
         toggleActive(index);
         setUserOpinion(index);
     };
@@ -74,7 +73,7 @@ const RatingSuns = ({ postId }) => {
                     key={sun.alt}
                     className={toggleActiveStyles(index)}
                     onClick={() => {
-                        handelClick(index);
+                        handleClick(index);
                     }}
                     {...sun}
                 />

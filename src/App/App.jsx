@@ -4,27 +4,17 @@ import 'bootstrap/dist/css/bootstrap-reboot.min.css';
 import 'bootstrap/dist/css/bootstrap-grid.min.css';
 import { ThemeProvider } from 'styled-components';
 import { theme } from './app.theme';
-import useNotifications from '../common/hooks/useNotifications';
 
 import NotificationProvider from '../common/context/notificationContext';
 import UpdateCurrentUserProvider from '../common/context/updateCurrentUserContext';
 
-import { useQuery } from '@apollo/client';
 import { GET_ACTIVE_THEME } from '../graphql/theme';
 import { GET_CURRENT_USER } from '../graphql/user';
-import Portal from '../containers/portal';
+import useQueriedData from '../common/hooks/useQueriedData';
 
 const App = () => {
-    const { data } = useQuery(GET_ACTIVE_THEME);
-    const { refetch } = useQuery(GET_CURRENT_USER);
-
-    const [notification, setNotification] = useNotifications();
-
-    const notify = ({ text, type }) => {
-        const props = { text, type };
-
-        setNotification(props);
-    };
+    const { data } = useQueriedData(GET_ACTIVE_THEME);
+    const { refetch } = useQueriedData(GET_CURRENT_USER);
 
     const updateUsers = () => {
         refetch();
@@ -34,10 +24,7 @@ const App = () => {
 
     return (
         <ThemeProvider theme={theme[activeTheme]}>
-            <NotificationProvider value={notify}>
-                <Portal id='notification'>
-                    {notification}
-                </Portal>
+            <NotificationProvider>
                 <UpdateCurrentUserProvider value={updateUsers}>
                     <RoutingContainer />
                 </UpdateCurrentUserProvider>

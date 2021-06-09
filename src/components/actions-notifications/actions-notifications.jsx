@@ -1,10 +1,9 @@
 import ActionNotification from '../action-notification';
 import { Notifications } from './actions-notifications.style';
 
-import { useQuery } from '@apollo/client';
-// import { GET_ALL_NOTIFICATIONS } from '../../graphql/notification';
 import { GET_ALL_USERS } from '../../graphql/user';
-const NOTOFICATIONS_EXEMPLE = [
+import useQueriedData from '../../common/hooks/useQueriedData';
+const NOTIFICATIONS_EXAMPLE = [
     {
         userId: '1',
         rating: 'really good',
@@ -22,19 +21,19 @@ const NOTOFICATIONS_EXEMPLE = [
 ];
 
 const ActionsNotifications = () => {
-    const { loading, error, data } = useQuery(GET_ALL_USERS);
+    const { fallback, data } = useQueriedData(GET_ALL_USERS);
     // const {  data } = useQuery(GET_ALL_NOTIFICATIONS);
 
-    if (loading) return <div>LOADING...</div>;
-
-    if (error) return <div>Error: {error.message}</div>;
+    if (fallback) {
+        return fallback;
+    }
 
     const users = data.getAllUsers;
     // const notifications = data.getAllNotifications;
 
     return (
         <Notifications>
-            {NOTOFICATIONS_EXEMPLE.map(notification => {
+            {NOTIFICATIONS_EXAMPLE.map(notification => {
                 const user = users?.find(
                     user => user.id === notification.userId
                 );

@@ -15,7 +15,7 @@ import useQueriedData from '../../common/hooks/useQueriedData';
 const ProfileScreen = () => {
     const [user, setUser] = useState(null);
     const { userId } = useParams();
-    const [data, fallback] = useQueriedData(GET_USER_BY_ID, {
+    const {data, fallback} = useQueriedData(GET_USER_BY_ID, {
         variables: { userId: userId },
     });
 

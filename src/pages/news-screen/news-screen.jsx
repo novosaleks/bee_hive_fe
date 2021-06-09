@@ -4,7 +4,7 @@ import { StyledPageWrapper, StyledPageContent } from '../../common/style/index';
 import { StyledDivPageNews } from './news-screen.style';
 import WallBlock from '../../components/wall-block';
 const NewsScreen = () => {
-    const [userData, fallback] = useQueriedData(GET_CURRENT_USER);
+    const {data: userData, fallback} = useQueriedData(GET_CURRENT_USER);
     return (
         fallback || (
             <StyledPageWrapper>

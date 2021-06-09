@@ -15,11 +15,11 @@ export const UPDATE_PHOTO_ALBUM = gql`
         $title: String
         $description: String
     ) {
-        updatePhotoAlbum(
-            photoAlbumId: $photoAlbumId
-            title: $title
-            description: $description
-        )
+        updatePhotoAlbum(photoAlbumId: $photoAlbumId, title: $title, description: $description)
+        {
+            success
+            message
+        }
     }
 `;
 

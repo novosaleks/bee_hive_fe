@@ -7,7 +7,7 @@ import { THEMES } from '../../common/utils/constants';
 import useQueriedData from '../../common/hooks/useQueriedData';
 
 const PageInformationContainer = () => {
-    const [data, fallback] = useQueriedData(GET_ACTIVE_THEME);
+    const { data, fallback } = useQueriedData(GET_ACTIVE_THEME);
 
     const selectForms = [
         {

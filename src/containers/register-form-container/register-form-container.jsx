@@ -23,7 +23,6 @@ const RegisterFormContainer = () => {
         if (data) {
             const response = data.createUser;
             if (response.success) {
-                console.log(response.message);
                 notify({ text: response.message, type: 'success' });
                 history.push('/login');
             } else {

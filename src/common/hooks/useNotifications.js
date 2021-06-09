@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import Notification from '../../components/notification';
+import Portal from '../../containers/portal';
 
 const useNotifications = () => {
     const [notificationParams, setNotificationParams] = useState({});
@@ -12,14 +13,16 @@ const useNotifications = () => {
         if (text) {
             const id = setTimeout(() => {
                 setNotificationParams({});
-            }, timeout + 5000);
+            }, timeout);
 
             return () => clearTimeout(id);
         }
     }, [text]);
 
     const element = text ? (
+        <Portal id='notification'>
             <Notification type={type} timeout={timeout}>{text}</Notification>
+        </Portal>
     ) : null;
 
     return [element, setNotificationParams];
