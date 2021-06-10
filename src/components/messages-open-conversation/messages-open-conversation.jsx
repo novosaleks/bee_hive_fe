@@ -13,6 +13,7 @@ const MessagesOpenConversation = ({ handleClick, userId }) => {
         GET_MESSAGES_BY_USER_ID,
         {
             variables: { userId: userId },
+            pollInterval: 500,
         }
     );
 

@@ -16,7 +16,7 @@ export const ConversationStyledDiv = styled(StyledDiv)`
     }
 `;
 
-export const ContactInfoDiv = styled.h4`
+export const ContactInfoDiv = styled.div`
     width: 20vw;
     margin-left: 15px;
     font-weight: 400;

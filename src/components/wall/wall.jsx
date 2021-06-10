@@ -20,6 +20,7 @@ const Wall = ({ user }) => {
         GET_WALL_POSTS_BY_USER_ID,
         {
             variables: { userId: user.id },
+            pollInterval: 500,
         }
     );
 

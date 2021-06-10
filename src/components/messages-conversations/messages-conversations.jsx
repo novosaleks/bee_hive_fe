@@ -17,6 +17,7 @@ const MessagesConversations = ({ smallBlock, handleClick }) => {
     //get all messages with certain user
     const { data } = useQueriedData(GET_MESSAGES_BY_USER_ID, {
         variables: { userId: selectedConversation?.recipient.id },
+        pollInterval: 500,
     });
 
     //get data by the query GET_MESSAGES_BY_USER_ID, if we have new userId or data

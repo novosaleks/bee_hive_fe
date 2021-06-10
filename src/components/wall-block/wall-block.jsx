@@ -12,6 +12,7 @@ import { DivLine, StyledDiv } from '../../common/style/index';
 const WallBlock = ({ currentUserId }) => {
     const { data, fallback, refetch } = useQueriedData(GET_NEWS_BY_USER_ID, {
         variables: { userId: currentUserId },
+        pollInterval: 500,
     });
     const [news, setNews] = useState(null);
     useEffect(() => {
