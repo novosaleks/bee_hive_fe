@@ -18,3 +18,22 @@ export const formatDate = (date, withoutMin) => {
 const addZero = date => {
     return date < 10 ? `0${date}` : `${date}`;
 };
+
+export const isOnline = lastVisit => {
+    const now = new Date();
+    if (lastVisit.getFullYear() !== now.getFullYear()) {
+        return false;
+    }
+    if (now.getMonth() !== lastVisit.getMonth()) {
+        return false;
+    }
+    if (now.getDate() !== lastVisit.getDate()) {
+        return false;
+    }
+    if (now.getHours() !== lastVisit.getHours()) {
+        return false;
+    }
+    if (now.getMinutes() > lastVisit.getMinutes() + 1) {
+        return false;
+    }
+};
