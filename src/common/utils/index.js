@@ -23,20 +23,21 @@ export const isOnline = lastVisit => {
     if (!lastVisit) {
         return false;
     }
+    const userLastVisit = new Date(lastVisit);
     const now = new Date();
-    if (lastVisit.getFullYear() !== now.getFullYear()) {
+    if (userLastVisit.getFullYear() !== now.getFullYear()) {
         return false;
     }
-    if (now.getMonth() !== lastVisit.getMonth()) {
+    if (now.getMonth() !== userLastVisit.getMonth()) {
         return false;
     }
-    if (now.getDate() !== lastVisit.getDate()) {
+    if (now.getDate() !== userLastVisit.getDate()) {
         return false;
     }
-    if (now.getHours() !== lastVisit.getHours()) {
+    if (now.getHours() !== userLastVisit.getHours()) {
         return false;
     }
-    if (now.getMinutes() > lastVisit.getMinutes() + 1) {
+    if (now.getMinutes() > userLastVisit.getMinutes() + 1) {
         return false;
     }
     return true;
