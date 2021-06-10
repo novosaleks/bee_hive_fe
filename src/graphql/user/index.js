@@ -9,7 +9,7 @@ export const GET_ALL_USERS = gql`
             karma
             email
             password
-            avatar { 
+            avatar {
                 url
             }
         }
@@ -120,8 +120,17 @@ export const GET_USER_BY_ID = gql`
 `;
 
 export const SUBSCRIBE_TO_USER = gql`
-    mutation SubscribeToUser($userIdToSubscribe: ID!) {
-        subscribeToUser(userIdToSubscribe: $userIdToSubscribe) {
+    mutation SubscribeToUser($userId: ID!) {
+        subscribeToUser(userId: $userId) {
+            success
+            message
+        }
+    }
+`;
+
+export const UNSUBSCRIBE_TO_USER = gql`
+    mutation UnsubscribeToUser($userId: ID!) {
+        unsubscribeToUser(userId: $userId) {
             success
             message
         }
