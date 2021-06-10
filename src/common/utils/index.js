@@ -36,4 +36,5 @@ export const isOnline = lastVisit => {
     if (now.getMinutes() > lastVisit.getMinutes() + 1) {
         return false;
     }
+    return true;
 };
