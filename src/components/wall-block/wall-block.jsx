@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { GET_NEWS_BY_USER_ID } from '../../graphql/user';
 import useQueriedData from '../../common/hooks/useQueriedData';
-import { formatDate } from '../../common/utils';
+import { formatDate, isOnline } from '../../common/utils';
 
 import UsersNews from '../../containers/user-news-container';
 import Title from '../title';
@@ -54,6 +54,16 @@ const WallBlock = ({ currentUserId }) => {
                                     authorId={newsItem.author.id}
                                     text={newsItem.text}
                                     date={time}
+                                    status={
+                                        isOnline(newsItem.author?.lastVisit)
+                                            ? 'Online'
+                                            : 'Offline'
+                                    }
+                                    statusColor={
+                                        isOnline(newsItem.author?.lastVisit)
+                                            ? '#5DAC38'
+                                            : '#C53B0E'
+                                    }
                                 />
                                 {index !== arr.length - 1 && <DivLine />}
                             </StyledDiv>

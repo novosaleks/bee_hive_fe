@@ -1,5 +1,6 @@
 import UserAvatar from '../user-avatar';
 import PostAuthorAndData from '../post-author-and-data';
+import { isOnline } from '../../common/utils';
 import { StyledDiv } from '../../common/style/index';
 
 const SubscriptionUser = ({ user }) => {
@@ -22,8 +23,8 @@ const SubscriptionUser = ({ user }) => {
             <StyledDiv width={'80%'} align='flex-end' ml='20px'>
                 <PostAuthorAndData
                     name={`${user?.firstName} ${user?.lastName}`}
-                    date={user?.status || 'Online'}
-                    color={user?.statusColor || '#5DAC38'}
+                    date={isOnline(user?.lastVisit) ? 'Online' : 'Offline'}
+                    color={isOnline(user?.lastVisit) ? '#5DAC38' : '#C53B0E'}
                     authorId={user.id}
                 />
             </StyledDiv>

@@ -1,5 +1,5 @@
 import { useConversationContext } from '../../common/context/conversationContext';
-
+import { isOnline } from '../../common/utils';
 import UserAvatar from '../user-avatar';
 import PostAuthorAndData from '../post-author-and-data';
 
@@ -22,8 +22,8 @@ const MessagesConversationRecipient = ({ smallBlock }) => {
             <StyledDiv width='90%' align='flex-end' ml='20px'>
                 <PostAuthorAndData
                     name={recipient?.name}
-                    date={contact?.status || 'Online'}
-                    color={contact?.statusColor || '#5DAC38'}
+                    date={isOnline(contact?.lastVisit) ? 'Online' : 'Offline'}
+                    color={isOnline(contact?.lastVisit) ? '#5DAC38' : '#C53B0E'}
                     authorId={recipient?.id}
                 />
             </StyledDiv>

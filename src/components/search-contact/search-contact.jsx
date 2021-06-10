@@ -2,7 +2,7 @@ import { StyledDiv } from '../../common/style/index';
 import UserAvatar from '../user-avatar';
 import PostAuthorAndData from '../post-author-and-data';
 import { ContactsDiv } from './search-contact.style';
-
+import { isOnline } from '../../common/utils';
 const SearchContact = ({
     smallBlock,
     contactSearch,
@@ -27,8 +27,8 @@ const SearchContact = ({
             <StyledDiv width='90%' align='flex-end' ml='20px'>
                 <PostAuthorAndData
                     name={`${contact.firstName} ${contact.lastName}`}
-                    date={contact?.status || 'Online'}
-                    color={contact?.statusColor || '#5DAC38'}
+                    date={isOnline(contact?.lastVisit) ? 'Online' : 'Offline'}
+                    color={isOnline(contact?.lastVisit) ? '#5DAC38' : '#C53B0E'}
                     authorId={contactID}
                 />
             </StyledDiv>

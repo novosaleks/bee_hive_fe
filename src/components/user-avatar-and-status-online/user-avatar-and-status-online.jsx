@@ -15,9 +15,7 @@ const UserAvatarAndStatusOnline = ({
                 width={[70, 135]}
                 height={[70, 135]}
             />
-            <StyledText color={statusColor || '#5DAC38'}>
-                {status || 'Online'}
-            </StyledText>
+            <StyledText color={statusColor}>{status}</StyledText>
         </AvatarAndStatusDiv>
     );
 };

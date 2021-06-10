@@ -4,7 +4,7 @@ import NewPostInput from '../new-post-input';
 import UserNews from '../../containers/user-news-container';
 import Title from '../title';
 
-import { formatDate } from '../../common/utils';
+import { formatDate, isOnline } from '../../common/utils';
 
 import { DivLine, StyledDiv } from '../../common/style/index';
 import { WallBodyDiv, UserPostBlock } from './wall.style';
@@ -67,6 +67,16 @@ const Wall = ({ user }) => {
                                     text={post.text}
                                     date={time}
                                     rateScore={user.karma}
+                                    status={
+                                        isOnline(user?.lastVisit)
+                                            ? 'Online'
+                                            : 'Offline'
+                                    }
+                                    statusColor={
+                                        isOnline(user?.lastVisit)
+                                            ? '#5DAC38'
+                                            : '#C53B0E'
+                                    }
                                 />
                                 {/* Don't render DivLine after the last post */}
                                 {index !== arr.length - 1 && <DivLine />}
