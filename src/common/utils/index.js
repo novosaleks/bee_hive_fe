@@ -20,6 +20,9 @@ const addZero = date => {
 };
 
 export const isOnline = lastVisit => {
+    if (!lastVisit) {
+        return false;
+    }
     const now = new Date();
     if (lastVisit.getFullYear() !== now.getFullYear()) {
         return false;
