@@ -43,6 +43,8 @@ export const GET_POSTS_BY_AUTHOR_ID = gql`
                 id
                 firstName
                 lastName
+                karma
+                lastVisit
                 avatar {
                     url
                 }
@@ -67,6 +69,8 @@ export const GET_WALL_POSTS_BY_USER_ID = gql`
                 id
                 firstName
                 lastName
+                karma
+                lastVisit
                 avatar {
                     url
                 }

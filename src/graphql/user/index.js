@@ -7,6 +7,7 @@ export const GET_ALL_USERS = gql`
             firstName
             lastName
             karma
+            lastVisit
             email
             password
             avatar {
@@ -86,6 +87,7 @@ export const GET_CURRENT_USER = gql`
             firstName
             lastName
             karma
+            lastVisit
             email
             password
             occupation
@@ -108,6 +110,7 @@ export const GET_USER_BY_ID = gql`
             firstName
             lastName
             karma
+            lastVisit
             occupation
             location
             birthDate
@@ -144,6 +147,7 @@ export const GET_SUBSCRIBERS_BY_USER_ID = gql`
             firstName
             lastName
             karma
+            lastVisit
             occupation
             location
             birthDate
@@ -159,6 +163,7 @@ export const GET_SUBSCRIPTIONS_BY_USER_ID = gql`
             firstName
             lastName
             karma
+            lastVisit
             occupation
             location
             birthDate
@@ -184,6 +189,7 @@ export const GET_NEWS_BY_USER_ID = gql`
                 firstName
                 lastName
                 karma
+                lastVisit
                 avatar {
                     url
                 }

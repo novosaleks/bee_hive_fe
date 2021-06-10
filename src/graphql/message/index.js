@@ -12,6 +12,7 @@ export const GET_MESSAGES_BY_USER_ID = gql`
                 firstName
                 lastName
                 karma
+                lastVisit
                 avatar {
                     url
                 }
@@ -21,6 +22,7 @@ export const GET_MESSAGES_BY_USER_ID = gql`
                 firstName
                 lastName
                 karma
+                lastVisit
                 avatar {
                     url
                 }
@@ -28,6 +30,7 @@ export const GET_MESSAGES_BY_USER_ID = gql`
         }
     }
 `;
+
 export const SEND_MESSAGE = gql`
     mutation SendMessage($recipientId: ID!, $text: String!) {
         sendMessage(recipientId: $recipientId, text: $text) {
