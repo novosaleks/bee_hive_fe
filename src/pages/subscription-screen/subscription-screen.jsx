@@ -18,6 +18,7 @@ const SubscriptionScreen = () => {
         setActiveTab(label);
     };
     const users = useContact();
+
     return (
         fallback || (
             <StyledPageWrapper>

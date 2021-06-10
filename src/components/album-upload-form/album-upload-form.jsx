@@ -2,14 +2,23 @@ import { useState } from 'react';
 
 import { Form, Label, Output, Error } from './album-upload-form.style';
 import { useMutation } from '@apollo/client';
-import { UPLOAD_PHOTO } from '../../graphql/photo';
+import { GET_PHOTOS_BY_PHOTO_ALBUM_ID, UPLOAD_PHOTO } from '../../graphql/photo';
+import useQueriedData from '../../common/hooks/useQueriedData';
 
 const AlbumUploadForm = ({ albumId }) => {
     const [file, setFile] = useState(null);
     const [error, setError] = useState(null);
 
+    const { refetch } = useQueriedData(GET_PHOTOS_BY_PHOTO_ALBUM_ID,
+        {
+            variables: {
+                photoAlbumId: albumId,
+            },
+        },
+    );
+
     const [uploadPhoto] = useMutation(UPLOAD_PHOTO, {
-        onCompleted: () => console.log('on load photo'),
+        onCompleted: refetch,
     });
 
     const types = ['image/png', 'image/jpeg'];

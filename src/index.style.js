@@ -4,20 +4,6 @@ const GlobalStyles = createGlobalStyle`
   body{
       font-family: 'Source Code Pro', monospace;
   }
-
-  input[type=date]::-webkit-inner-spin-button {
-    -webkit-appearance: none;
-    display: none;
-  }
-
-  input[type=date]::-webkit-calendar-picker-indicator {
-    -webkit-appearance: none;
-    display: none;
-  }
-  /* *{
-  transition: 1s;
-  } */
-
   
 
    &::-webkit-scrollbar {

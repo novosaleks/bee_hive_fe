@@ -9,6 +9,7 @@ import {
 
 const SearchGlobal = ({ identifyUser, handleClick, contactSearch }) => {
     const users = useContactContext();
+
     return (
         <GlobalSearchDiv>
             <SearchContactsDiv>

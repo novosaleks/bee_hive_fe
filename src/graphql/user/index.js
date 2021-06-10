@@ -9,6 +9,9 @@ export const GET_ALL_USERS = gql`
             karma
             email
             password
+            avatar { 
+                url
+            }
         }
     }
 `;
