@@ -49,7 +49,7 @@ const Wall = ({ user }) => {
                                 formatDate(post.createdAt)
                             ) : (
                                 <span>
-                                    liked at {formatDate(post.updatedAt)}
+                                    edited at {formatDate(post.updatedAt)}
                                 </span>
                             );
                         return (
