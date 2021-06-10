@@ -20,6 +20,7 @@ const RatingSuns = ({ postId, post }) => {
             const response = data.setOpinionByPostId;
             if (response) {
                 notify({ text: response.message, type: 'success' });
+                updateWall();
             } else {
                 notify({ text: response.message, type: 'fail' });
             }

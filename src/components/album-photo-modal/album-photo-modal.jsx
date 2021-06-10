@@ -1,9 +1,8 @@
-import PostFooter from '../../containers/post-footer-container';
 import { motion } from 'framer-motion';
 
-import { ImgModal, AlbumPhotomodalCSS } from './album-photo-modal.style';
+import { ImgModal } from './album-photo-modal.style';
 
-const AlbumPhotoModal = ({ setSelectedImg, selectedImg, photoId }) => {
+const AlbumPhotoModal = ({ setSelectedImg, selectedImg }) => {
     const handleClick = e => {
         if (e.target.classList.contains('backdrop')) {
             setSelectedImg(null);
@@ -24,9 +23,6 @@ const AlbumPhotoModal = ({ setSelectedImg, selectedImg, photoId }) => {
                     animate={{ y: 0 }}
                     className='backdrop-img'
                 />
-                <AlbumPhotomodalCSS>
-                    <PostFooter componentId={photoId} photoModal={true} />
-                </AlbumPhotomodalCSS>
             </ImgModal>
         </motion.div>
     );

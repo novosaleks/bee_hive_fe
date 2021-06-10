@@ -30,7 +30,6 @@ const AlbumsSlider = ({ handleClick }) => {
                                         album.description,
                                         album.title,
                                         album.id,
-                                        album.images
                                     )
                                 }>
                                 <StyledText className='description'>
