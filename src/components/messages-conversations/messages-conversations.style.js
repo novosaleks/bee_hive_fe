@@ -16,21 +16,12 @@ export const ConversationStyledDiv = styled(StyledDiv)`
     }
 `;
 
-export const ContactInfoDiv = styled.div`
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-end;
+export const ContactInfoDiv = styled.h4`
     width: 20vw;
     margin-left: 15px;
+    font-weight: 400;
+    font-size: 1rem;
 
-    span {
-        width: 100px;
-        font-style: italic;
-        opacity: 0.8;
-        white-space: nowrap;
-        overflow: hidden;
-        text-overflow: ellipsis;
-    }
     @media (max-width: 600px) {
         width: 40vw;
     }

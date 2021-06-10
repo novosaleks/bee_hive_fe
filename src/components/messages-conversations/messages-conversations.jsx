@@ -27,11 +27,10 @@ const MessagesConversations = ({ smallBlock, handleClick }) => {
         }
     }, [data]);
 
-    const contact = selectedConversation?.recipient.contact;
-
     return (
         <ConversationsBlockStyled className='conversations'>
             {conversations?.map((conversation, index) => {
+                const contact = conversation?.recipient.contact;
                 const lastMessage = messages?.length - 1;
 
                 return (
@@ -41,10 +40,7 @@ const MessagesConversations = ({ smallBlock, handleClick }) => {
                             className={
                                 conversation?.selected ? 'active' : null
                             }>
-                            <StyledDiv
-                                direction='row'
-                                content='flex-start'
-                                align='flex-start'>
+                            <StyledDiv direction='row' content='flex-start'>
                                 <UserAvatar
                                     rateScore={contact?.karma || '0'}
                                     photo={contact?.avatar?.url}
@@ -52,12 +48,8 @@ const MessagesConversations = ({ smallBlock, handleClick }) => {
                                     height={smallBlock ? 70 : [70, 135]}
                                     {...{ smallBlock }}
                                 />
-                                <ContactInfoDiv content='flex-start' ml='3px'>
+                                <ContactInfoDiv ml='3px'>
                                     {conversation?.recipient.name}
-                                    <span>
-                                        {0 <= lastMessage &&
-                                            messages[lastMessage]?.text}
-                                    </span>
                                 </ContactInfoDiv>
                             </StyledDiv>
                         </ConversationStyledDiv>
