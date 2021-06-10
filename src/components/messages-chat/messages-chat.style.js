@@ -9,7 +9,7 @@ export const OpenConversationDiv = styled(StyledDiv)`
     justify-content: flex-start;
 `;
 export const MessageDiv = styled(StyledDiv)`
-    align-items: start;
+    align-items: flex-start;
     justify-self: end;
     padding: 5px;
 `;

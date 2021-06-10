@@ -9,7 +9,7 @@ const media = {
 export const RateDiv = styled(StyledDiv)`
     margin-top: 3%;
     width: 170px;
-    height: 30px;
+    height: 50px;
     align-self: flex-start;
     background-color: ${getValueFromTheme('primaryBgColor')};
 

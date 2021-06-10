@@ -9,7 +9,7 @@ import {
     NewConversationButton,
 } from './messages-sidebar.style';
 
-const MessagesSidebar = ({ conversationOpen, handleClick }) => {
+const MessagesSidebar = ({ conversationOpen, handleClick, messages }) => {
     const { createConversation, conversations } = useConversationContext();
     const [modalOpen, setModalOpen] = useState(false);
 
@@ -20,7 +20,7 @@ const MessagesSidebar = ({ conversationOpen, handleClick }) => {
     const handleClickConversation = contactId => {
         //all user with whose we already have a conversation
         const existingRecipientsId = [];
-        conversations.forEach(conversation =>
+        conversations?.forEach(conversation =>
             existingRecipientsId.push(conversation.recipient.id)
         );
 
@@ -41,7 +41,11 @@ const MessagesSidebar = ({ conversationOpen, handleClick }) => {
                 New Conversation
             </NewConversationButton>
 
-            <MessagesConversations smallBlock handleClick={handleClick} />
+            <MessagesConversations
+                smallBlock
+                handleClick={handleClick}
+                messages={messages}
+            />
 
             {/* modal for choosing with which available contacts user want to start a chat with */}
 

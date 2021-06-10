@@ -1,5 +1,7 @@
-import { useCallback } from 'react';
-import { useConversationContext } from '../../common/context/conversationContext';
+import { useCallback, useState, useEffect } from 'react';
+import { GET_CURRENT_USER } from '../../graphql/user';
+import useQueriedData from '../../common/hooks/useQueriedData';
+
 import {
     OpenConversationDiv,
     MessageDiv,
@@ -8,35 +10,46 @@ import {
     MessageSender,
 } from './messages-chat.style';
 
-const MessagesChat = () => {
+const MessagesChat = ({ messages }) => {
+    const { data: userData, fallback } = useQueriedData(GET_CURRENT_USER);
+    const [currentUserId, setCurrentUserId] = useState(null);
+
+    useEffect(() => {
+        if (userData) {
+            setCurrentUserId(userData.currentUser.id);
+        }
+    }, [userData]);
+
     const setRef = useCallback(node => {
         if (node) {
             node.scrollIntoView({ smooth: true });
         }
     }, []);
-    const { selectedConversation } = useConversationContext();
+
     return (
-        <OpenConversationDiv>
-            <MessageDiv>
-                {selectedConversation.messages.map((message, index) => {
-                    const lastMessage =
-                        selectedConversation.messages.length - 1 === index;
-                    return (
-                        <Message
-                            ref={lastMessage ? setRef : null}
-                            key={index}
-                            fromMe={message.fromMe}>
-                            <MessageText fromMe={message.fromMe}>
-                                {message.text}
-                            </MessageText>
-                            <MessageSender fromMe={message.fromMe}>
-                                {message.fromMe ? 'You' : message.senderName}
-                            </MessageSender>
-                        </Message>
-                    );
-                })}
-            </MessageDiv>
-        </OpenConversationDiv>
+        fallback || (
+            <OpenConversationDiv>
+                <MessageDiv>
+                    {messages?.map((message, index) => {
+                        const lastMessage = messages?.length - 1 === index;
+                        const fromMe = message?.author.id === currentUserId;
+                        return (
+                            <Message
+                                ref={lastMessage ? setRef : null}
+                                key={index}
+                                fromMe={fromMe}>
+                                <MessageText fromMe={fromMe}>
+                                    {message?.text}
+                                </MessageText>
+                                <MessageSender fromMe={fromMe}>
+                                    {fromMe ? 'You' : message?.author.firstName}
+                                </MessageSender>
+                            </Message>
+                        );
+                    })}
+                </MessageDiv>
+            </OpenConversationDiv>
+        )
     );
 };
 

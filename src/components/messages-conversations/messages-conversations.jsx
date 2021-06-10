@@ -1,7 +1,8 @@
 import UserAvatar from '../user-avatar';
-
+import { useEffect, useState } from 'react';
+import { GET_MESSAGES_BY_USER_ID } from '../../graphql/message';
+import useQueriedData from '../../common/hooks/useQueriedData';
 import { useConversationContext } from '../../common/context/conversationContext';
-import { useContactContext } from '../../common/context/contactContext';
 import { StyledDiv, DivLine } from '../../common/style/index';
 import {
     ConversationStyledDiv,
@@ -12,21 +13,34 @@ import {
 const MessagesConversations = ({ smallBlock, handleClick }) => {
     const { conversations, selectConversationIndex, selectedConversation } =
         useConversationContext();
-    const users = useContactContext();
+    const [messages, setMessages] = useState(null);
+    //get all messages with certain user
+    const { data } = useQueriedData(GET_MESSAGES_BY_USER_ID, {
+        variables: { userId: selectedConversation?.recipient.id },
+    });
 
-    const recipient = selectedConversation?.recipient;
-    const contact = users?.find(contact => contact?.id === recipient?.id);
+    //get data by the query GET_MESSAGES_BY_USER_ID, if we have new userId or data
+    useEffect(() => {
+        if (data) {
+            const messages = data.getMessagesByUserId;
+            setMessages(messages);
+        }
+    }, [data]);
+
+    const contact = selectedConversation?.recipient.contact;
 
     return (
         <ConversationsBlockStyled className='conversations'>
             {conversations?.map((conversation, index) => {
-                const lastMessage = conversation.messages.length - 1;
+                const lastMessage = messages?.length - 1;
 
                 return (
                     <StyledDiv key={index} onClick={handleClick}>
                         <ConversationStyledDiv
                             onClick={() => selectConversationIndex(index)}
-                            className={conversation.selected ? 'active' : null}>
+                            className={
+                                conversation?.selected ? 'active' : null
+                            }>
                             <StyledDiv
                                 direction='row'
                                 content='flex-start'
@@ -39,11 +53,10 @@ const MessagesConversations = ({ smallBlock, handleClick }) => {
                                     {...{ smallBlock }}
                                 />
                                 <ContactInfoDiv content='flex-start' ml='3px'>
-                                    {conversation.recipient.name}
+                                    {conversation?.recipient.name}
                                     <span>
                                         {0 <= lastMessage &&
-                                            conversation.messages[lastMessage]
-                                                .text}
+                                            messages[lastMessage]?.text}
                                     </span>
                                 </ContactInfoDiv>
                             </StyledDiv>

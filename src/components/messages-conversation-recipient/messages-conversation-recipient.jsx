@@ -1,5 +1,4 @@
 import { useConversationContext } from '../../common/context/conversationContext';
-import { useContactContext } from '../../common/context/contactContext';
 
 import UserAvatar from '../user-avatar';
 import PostAuthorAndData from '../post-author-and-data';
@@ -9,10 +8,8 @@ import { StyledDiv } from '../../common/style/index';
 
 const MessagesConversationRecipient = ({ smallBlock }) => {
     const { selectedConversation } = useConversationContext();
-    const users = useContactContext();
-
     const recipient = selectedConversation?.recipient;
-    const contact = users?.find(contact => contact.id === recipient.id);
+    const contact = recipient?.contact;
     return (
         <ContactsDiv>
             <UserAvatar

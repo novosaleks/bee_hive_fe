@@ -44,7 +44,12 @@ const RateBlock = ({ photoModal, postId, post }) => {
     return (
         <StyledDiv>
             <RateDiv direction='row' content='flex-start' ref={RatingBlockRef}>
-                <RatingSuns postId={postId} post={post} />
+                <RatingSuns
+                    {...{
+                        postId,
+                        post,
+                    }}
+                />
                 <RatingHintImg
                     src={hintImg}
                     onClick={handlerClick}

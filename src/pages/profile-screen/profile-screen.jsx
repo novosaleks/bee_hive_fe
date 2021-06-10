@@ -8,9 +8,9 @@ import {
     StyledDivPage,
     StyledPageContent,
 } from '../../common/style/index';
-import { GET_USER_BY_ID } from '../../graphql/user';
 import { useParams } from 'react-router-dom';
 import useQueriedData from '../../common/hooks/useQueriedData';
+import { GET_USER_BY_ID } from '../../graphql/user';
 
 const ProfileScreen = () => {
     const [user, setUser] = useState(null);
@@ -25,24 +25,22 @@ const ProfileScreen = () => {
         }
     }, [data]);
 
-    if (fallback) {
-        return fallback;
-    }
-
     return (
-        <>
-            {user && (
-                <StyledPageWrapper>
-                    <StyledDivPage>
-                        <SideBarUserInfo user={user} />
-                        <StyledPageContent>
-                            <AlbumsContainer user={user} />
-                            <Wall user={user} />
-                        </StyledPageContent>
-                    </StyledDivPage>
-                </StyledPageWrapper>
-            )}
-        </>
+        fallback || (
+            <>
+                {user && (
+                    <StyledPageWrapper>
+                        <StyledDivPage>
+                            <SideBarUserInfo user={user} />
+                            <StyledPageContent>
+                                <AlbumsContainer user={user} />
+                                <Wall user={user} />
+                            </StyledPageContent>
+                        </StyledDivPage>
+                    </StyledPageWrapper>
+                )}
+            </>
+        )
     );
 };
 

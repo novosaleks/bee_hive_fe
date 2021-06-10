@@ -1,53 +1,27 @@
-import useContact from './useContact';
-import useLocalStorage from './useLocalStorage';
 import { useState } from 'react';
 
+import useContact from './useContact';
+import useLocalStorage from './useLocalStorage';
+
 const useConversation = id => {
+    //varaibles
     const [conversations, setConversations] = useLocalStorage(
         'conversations',
         []
     );
     const [selectedConversationIndex, setSelectedConversationIndex] =
         useState(0);
+    const [selectedConversationUserId, setSelectedConversationUserId] =
+        useState(null);
+
+    //varaibles from users hooks
     const users = useContact();
 
     const createConversation = recipient => {
+        setSelectedConversationUserId(recipient);
         setConversations(prevConversations => {
-            return [...prevConversations, { recipient, messages: [] }];
+            return [...prevConversations, { recipient }];
         });
-    };
-
-    const addMessageToConversation = ({ recipient, text, sender }) => {
-        setConversations(prevConversations => {
-            let madeChange = false;
-            const newMessage = { sender, text };
-            const newConversations = prevConversations.map(conversation => {
-                //if it is a new conversation
-                if (conversation.recipient !== recipient) {
-                    madeChange = true;
-                    return {
-                        ...conversation,
-                        messages: [...conversation.messages, newMessage],
-                    };
-                }
-
-                return conversation;
-            });
-
-            if (madeChange) {
-                return newConversations;
-            } else {
-                //if it is already existing conversation
-                return [
-                    ...prevConversations,
-                    { recipient, messages: [newMessage] },
-                ];
-            }
-        });
-    };
-
-    const sendMessage = (recipient, text) => {
-        addMessageToConversation({ recipient, text, sender: id });
     };
 
     const formattedConversations = conversations.map((conversation, index) => {
@@ -58,31 +32,19 @@ const useConversation = id => {
         //define the user name
         const name = `${contact?.firstName} ${contact?.lastName}`;
 
-        const recipient = { id: conversation.recipient, name };
+        const recipient = { id: conversation.recipient, name, contact };
 
-        const messages = conversation.messages.map(message => {
-            // find user who sent the message
-            const contact = users?.find(contact => {
-                return contact.id === message.sender;
-            });
-
-            //define his name
-            const name = contact?.firstName;
-
-            //boolean: if this user is current user
-            const fromMe = id === message.sender;
-            return { ...message, senderName: name, fromMe };
-        });
-
+        //define whether it is selected conversation or not
         const selected = index === selectedConversationIndex;
-        return { ...conversation, messages, recipient, selected };
+
+        return { ...conversation, recipient, selected };
     });
 
     return {
         conversations: formattedConversations,
         selectedConversation: formattedConversations[selectedConversationIndex],
-        sendMessage,
         selectConversationIndex: setSelectedConversationIndex,
+        selectedConversationUserId,
         createConversation,
     };
 };

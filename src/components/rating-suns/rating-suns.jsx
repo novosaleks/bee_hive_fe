@@ -6,13 +6,14 @@ import { SET_OPINION_BY_POST_ID } from '../../graphql/opinion';
 import { OPINIONS, suns } from '../../common/utils/constants';
 import { useNotificationService } from '../../common/context/notificationContext';
 
-import { StyledDiv } from '../../common/style/index';
+import { StyledDiv, StyledText } from '../../common/style/index';
 import { StyledImg } from './rating-suns.style';
 
 const RatingSuns = ({ postId, post }) => {
-    const [setOpinionByPostId, { data }] = useMutation(SET_OPINION_BY_POST_ID);
-    const notify = useNotificationService();
     const [sunState, setActiveSunState] = useState(null);
+    const [setOpinionByPostId, { data }] = useMutation(SET_OPINION_BY_POST_ID);
+
+    const notify = useNotificationService();
     const updateWall = useUpdateWall();
 
     useEffect(() => {
@@ -20,17 +21,12 @@ const RatingSuns = ({ postId, post }) => {
             const response = data.setOpinionByPostId;
             if (response) {
                 notify({ text: response.message, type: 'success' });
+                updateWall();
             } else {
                 notify({ text: response.message, type: 'fail' });
             }
         }
     }, [data]);
-
-    useEffect(() => {
-        const value = Object.values(post).find(value => value === 1);
-        const key = Object.keys(post).find(key => post[key] === value);
-        setActiveSunState(key || null);
-    }, []);
 
     const toggleActive = index => {
         setActiveSunState(prevState => {
@@ -52,22 +48,23 @@ const RatingSuns = ({ postId, post }) => {
     const handleClick = index => {
         toggleActive(index);
         setUserOpinion(index);
-        updateWall();
     };
 
     return (
         <StyledDiv direction='row' content='space-between' width='130px'>
             {suns?.map((sun, index) => (
-                <StyledImg
-                    role='button'
-                    tabIndex='0'
-                    key={sun.alt}
-                    className={sunState === sun.name ? 'active' : null}
-                    onClick={() => {
-                        handleClick(index);
-                    }}
-                    {...sun}
-                />
+                <StyledDiv key={sun.alt}>
+                    <StyledImg
+                        role='button'
+                        tabIndex='0'
+                        className={sunState === sun.name ? 'active' : null}
+                        onClick={() => {
+                            handleClick(index);
+                        }}
+                        {...sun}
+                    />
+                    <StyledText m='0'>{post[sun.name]}</StyledText>
+                </StyledDiv>
             ))}
         </StyledDiv>
     );

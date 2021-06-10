@@ -8,6 +8,7 @@ import { useConversationContext } from '../../common/context/conversationContext
 
 const Messages = () => {
     const { selectedConversation } = useConversationContext();
+
     const [stateSidebar, setStateSidebar] = useState(false);
 
     const handleClick = () => {
@@ -28,8 +29,12 @@ const Messages = () => {
                     </SearchContactsTitle>
                 </NotificationDiv>
             )}
+
             {selectedConversation && (
-                <MessagesOpenConversation handleClick={handleClick} />
+                <MessagesOpenConversation
+                    handleClick={handleClick}
+                    userId={selectedConversation?.recipient.id}
+                />
             )}
         </MessagesDivBlock>
     );
