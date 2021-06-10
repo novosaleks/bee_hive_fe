@@ -11,7 +11,7 @@ import {
 
 const Subscription = ({ userId, currentUserId }) => {
     const [subscription, setSubscription] = useState(null);
-    const {data, fallback} = useQueriedData(GET_SUBSCRIPTIONS_BY_USER_ID, {
+    const { data, fallback } = useQueriedData(GET_SUBSCRIPTIONS_BY_USER_ID, {
         variables: { userId: userId },
     });
 
