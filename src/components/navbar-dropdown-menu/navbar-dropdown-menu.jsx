@@ -29,7 +29,7 @@ const NavbarDropdownMenu = () => {
             window.removeEventListener('DOMContentLoaded', resizeHandler, true);
         };
     }, []);
-    const {data, fallback} = useQueriedData(GET_CURRENT_USER);
+    const { data, fallback } = useQueriedData(GET_CURRENT_USER);
 
     if (fallback) {
         return fallback;
@@ -51,6 +51,7 @@ const NavbarDropdownMenu = () => {
                 left={headerLeft}
                 bottom={headerBottom}
                 isOpen={openState}
+                handlerClick={handlerClick}
             />
         </>
     );

@@ -1,7 +1,5 @@
 import styled, { css } from 'styled-components';
 import { media } from '../../common/style';
-import hamburgerMenu from '../../assets/hamburger-menu.svg';
-import cancelIcon from '../../assets/cancelIcon.svg';
 import { getValueFromTheme } from '../../common/utils';
 
 export const NavbarWrapper = styled.div`
@@ -60,13 +58,83 @@ export const MobileNavbarLinks = styled.div`
         padding: 1%;
     }
 `;
-export const MobileMenu = styled.div`
+
+export const Hamburger = styled.section`
     ${media.mobile} {
-        background-image: url(${props =>
-            props.isOpen ? cancelIcon : hamburgerMenu});
-        background-repeat: no-repeat;
-        width: 55px;
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: 1;
+        width: 100%;
         height: 60px;
-        cursor: pointer;
+        padding: 0.5rem;
+        display: flex;
+        align-items: center;
+        justify-content: start;
+        div {
+            position: relative;
+            flex: none;
+            width: 100%;
+            height: 2px;
+            background-color: ${getValueFromTheme(
+                'messagesScreenSidebarTextColor'
+            )};
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.4s ease;
+            &::before,
+            &::after {
+                content: '';
+                position: absolute;
+                top: -10px;
+                z-index: 1;
+                width: 100%;
+                height: 2px;
+                background: inherit;
+            }
+            &::after {
+                top: 10px;
+            }
+        }
+    }
+`;
+export const MenuWrapper = styled.div`
+    display: none;
+    ${media.mobile} {
+        display: inline-block;
+        position: relative;
+        z-index: 1;
+        height: 55px;
+        width: 60px;
+        background-color: ${getValueFromTheme('mobileNavigationColor')};
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+        border-radius: 5px;
+        .toggler {
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: 2;
+            cursor: pointer;
+            width: 50px;
+            height: 50px;
+            opacity: 0;
+        }
+        //animation for menu
+        .toggler:checked + section > div {
+            transform: rotate(135deg);
+        }
+        .toggler:checked + section > div::before,
+        .toggler:checked + section > div::after {
+            top: 0;
+            transform: rotate(90deg);
+        }
+        .toggler:checked:hover + section > div {
+            transform: rotate(225deg);
+        }
+
+        input[type='checkbox'] {
+            width: inherit;
+        }
     }
 `;

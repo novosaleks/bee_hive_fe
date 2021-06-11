@@ -20,6 +20,7 @@ export const theme = {
         reallyBadColor: '#C53B0E',
         buttonBgColor: '#ffffff',
         settingText: '#675849',
+        mobileNavigationColor: '#064E5A',
     },
     dark: {
         primaryColor: '#f15a29',
@@ -42,5 +43,6 @@ export const theme = {
         reallyBadColor: '#C53B0E',
         buttonBgColor: '#9BAEBC',
         settingText: '#9BAEBC',
+        mobileNavigationColor: '#064E5A',
     },
 };

@@ -5,6 +5,8 @@ import {
     NavbarWrapper,
     MobileMenu,
     MobileNavbarLinks,
+    Hamburger,
+    MenuWrapper,
 } from './navbar.style';
 
 import NavbarDropDownMenu from '../navbar-dropdown-menu';
@@ -22,7 +24,12 @@ const Navbar = ({ children }) => {
                 <img src={logo_mini} alt='logo' />
                 <NavbarLinks>{children}</NavbarLinks>
                 <NavbarDropDownMenu />
-                <MobileMenu onClick={handlerClick} isOpen={openState} />
+                <MenuWrapper onClick={handlerClick} isOpen={openState}>
+                    <input type='checkbox' className='toggler' />
+                    <Hamburger>
+                        <div />
+                    </Hamburger>
+                </MenuWrapper>
             </InnerContent>
             <DivLine />
             <MobileNavbarLinks isOpen={openState} onClick={handlerClick}>

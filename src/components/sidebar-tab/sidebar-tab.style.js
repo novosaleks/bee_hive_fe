@@ -91,7 +91,7 @@ export const TabWrapper = styled(StyledDiv)`
     &.active {
         background-color: ${props =>
             props.messageBlock
-                ? '#064E5A'
+                ? getValueFromTheme('mobileNavigationColor')
                 : getValueFromTheme('primaryBgColor')};
     }
 `;
